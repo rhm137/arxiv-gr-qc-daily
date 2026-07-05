@@ -385,7 +385,6 @@ def build_html(json_path: str, output_path: str, date_display: str) -> None:
     </div>
 </summary>
 <div class="detail">
-    <div class="cn-title">{cn_title}</div>
     <h4>摘要</h4>
     <p>{cn_abstract}</p>
     <h4>评价</h4>
