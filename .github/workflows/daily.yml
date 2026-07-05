@@ -109,6 +109,9 @@ jobs:
 
       - name: Generate summary for push
         if: steps.check.outputs.paper_count != '0'
+        env:
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          DATE_DISPLAY: ${{ steps.date.outputs.display_date }}
         run: |
           python -c "
           import json, re, os
@@ -128,9 +131,12 @@ jobs:
           def esc(s):
               return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
-          lines = [f'<h3>arXiv gr-qc 日报 | ${{ steps.date.outputs.display_date }}</h3>']
+          run_url = os.environ.get('RUN_URL', '#')
+          date_display = os.environ.get('DATE_DISPLAY', '')
+
+          lines = [f'<h3>arXiv gr-qc 日报 | {date_display}</h3>']
           lines.append(f'<p>共 <b>{len(ordered)}</b> 篇（gr-qc主分类 {len(primary)} + 交叉 {len(cross)}）<br>')
-          lines.append(f'<a href=\"https://github.com/\${{ github.repository }}/actions/runs/\${{ github.run_id }}\">查看完整 HTML 报告</a></p>')
+          lines.append(f'<a href=\"{run_url}\">查看完整 HTML 报告</a></p>')
           lines.append('<hr>')
 
           for i, p in enumerate(ordered, 1):
