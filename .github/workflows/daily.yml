@@ -17,7 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
-      contents: write   # Required for gh-pages deploy
+      contents: read
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout repo
@@ -171,15 +173,19 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\"}"
 
+      - name: Setup Pages
+        if: steps.check.outputs.paper_count != '0'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: steps.check.outputs.paper_count != '0'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./outputs-public
+
       - name: Deploy to GitHub Pages
         if: steps.check.outputs.paper_count != '0'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./outputs-public
-          keep_files: true
-          destination_dir: .
-          exclude_assets: '.gitignore,all-papers.json,raw-data.xml,summary.html'
+        uses: actions/deploy-pages@v4
 
       - name: No papers notification
         if: steps.check.outputs.paper_count == '0'
