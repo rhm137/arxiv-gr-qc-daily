@@ -16,6 +16,8 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write   # Required for gh-pages deploy
 
     steps:
       - name: Checkout repo
@@ -102,15 +104,18 @@ jobs:
       - name: Generate HTML report
         if: steps.check.outputs.paper_count != '0'
         run: |
-          HTML_FILE="./outputs/arxiv-gr-qc-${{ steps.date.outputs.api_date }}.html"
+          HTML_FILE="./outputs-public/arxiv-gr-qc-${{ steps.date.outputs.api_date }}.html"
+          mkdir -p ./outputs-public
           python scripts/build_html.py ./outputs/all-papers.json "$HTML_FILE" "${{ steps.date.outputs.display_date }}"
+          # Always update latest.html
+          cp "$HTML_FILE" ./outputs-public/latest.html
           echo "html_file=$HTML_FILE" >> $GITHUB_OUTPUT
         id: html
 
       - name: Generate summary for push
         if: steps.check.outputs.paper_count != '0'
         env:
-          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
           DATE_DISPLAY: ${{ steps.date.outputs.display_date }}
         run: |
           python -c "
@@ -131,12 +136,12 @@ jobs:
           def esc(s):
               return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
-          run_url = os.environ.get('RUN_URL', '#')
+          page_url = os.environ.get('PAGE_URL', '#')
           date_display = os.environ.get('DATE_DISPLAY', '')
 
           lines = [f'<h3>arXiv gr-qc 日报 | {date_display}</h3>']
           lines.append(f'<p>共 <b>{len(ordered)}</b> 篇（gr-qc主分类 {len(primary)} + 交叉 {len(cross)}）<br>')
-          lines.append(f'<a href=\"{run_url}\">查看完整 HTML 报告</a></p>')
+          lines.append(f'<a href=\"{page_url}\">查看完整 HTML 报告（含公式和详细评价）</a></p>')
           lines.append('<hr>')
 
           for i, p in enumerate(ordered, 1):
@@ -166,13 +171,15 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\"}"
 
-      - name: Upload HTML artifact
-        if: success() && steps.check.outputs.paper_count != '0'
-        uses: actions/upload-artifact@v4
+      - name: Deploy to GitHub Pages
+        if: steps.check.outputs.paper_count != '0'
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: arxiv-gr-qc-${{ steps.date.outputs.api_date }}
-          path: ${{ steps.html.outputs.html_file }}
-          retention-days: 90
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./outputs-public
+          keep_files: true
+          destination_dir: .
+          exclude_assets: '.gitignore,all-papers.json,raw-data.xml,summary.html'
 
       - name: No papers notification
         if: steps.check.outputs.paper_count == '0'
