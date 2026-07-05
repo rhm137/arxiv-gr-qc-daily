@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv gr-qc — 2026年07月02日</title>
+<style>
+:root {
+    --bg: #fafaf8;
+    --card-bg: #ffffff;
+    --text: #2c2c2c;
+    --text-secondary: #666;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --border: #e5e7eb;
+    --tag-bg: #f3f4f6;
+    --tag-text: #4b5563;
+    --cross-bg: #fef3c7;
+    --cross-text: #92400e;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --radius: 8px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --font-mono: "SF Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Cover ── */
+.cover {
+    max-width: 800px;
+    margin: 80px auto 60px;
+    text-align: center;
+    padding: 0 24px;
+}
+.cover .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 20px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+}
+.cover h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111;
+}
+.cover .date {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+.stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.stats .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 32px;
+    min-width: 140px;
+    box-shadow: var(--shadow);
+}
+.stats .stat-card .num {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+}
+.stats .stat-card .label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* ── TOC ── */
+.toc-section {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+}
+.toc-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+}
+.toc-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+    list-style: none;
+}
+.toc-list li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+.toc-list a {
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+.toc-list a:hover { text-decoration: underline; }
+.toc-list .toc-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    min-width: 24px;
+    flex-shrink: 0;
+}
+.toc-list .toc-cross {
+    font-size: 11px;
+    background: var(--cross-bg);
+    color: var(--cross-text);
+    padding: 1px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ── Papers ── */
+.papers {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+}
+.paper-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.paper-card summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    user-select: none;
+}
+.paper-card summary::-webkit-details-marker { display: none; }
+.paper-card summary::before {
+    content: "▶";
+    font-size: 11px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+.paper-card[open] summary::before { transform: rotate(90deg); }
+
+.paper-card .card-body {
+    flex: 1;
+    min-width: 0;
+}
+.paper-card .card-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+.paper-card .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 4px;
+}
+.paper-card .card-authors {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+.paper-card .card-title-cn {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+.paper-card .card-oneline {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.paper-card .detail {
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+}
+.paper-card .detail h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 20px 0 8px;
+}
+.paper-card .detail p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+.paper-card .detail .cn-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    margin: 16px 0 12px;
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.footer a { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .toc-list { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 26px; }
+    .stats { gap: 8px; }
+    .stats .stat-card { padding: 14px 20px; min-width: 100px; }
+    .stats .stat-card .num { font-size: 24px; }
+}
+</style>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre',
+                   'code', 'summary', 'details'],
+    ignoreHtmlClass: 'no-math'
+  },
+  startup: {
+    ready() {
+      MathJax.startup.defaultReady();
+      // Lazy typeset when <details> is toggled open
+      document.querySelectorAll('details.paper-card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) {
+            MathJax.typesetPromise([el.querySelector('.detail')]);
+          }
+        });
+      });
+    }
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+
+<!-- ── Cover ── -->
+<div class="cover">
+    <div class="badge">arXiv gr-qc</div>
+    <h1>引力与量子宇宙学</h1>
+    <p class="date">2026年07月02日</p>
+    <div class="stats">
+        <div class="stat-card">
+            <div class="num">19</div>
+            <div class="label">论文总数</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">11</div>
+            <div class="label">主分类 gr-qc</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">8</div>
+            <div class="label">交叉列表</div>
+        </div>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--text-secondary);">交叉来源：astro-ph.HE (2)、hep-th (2)、astro-ph.IM (1)、astro-ph.EP (1)、astro-ph.CO (1)、physics.hist-ph (1)</p>
+</div>
+
+<!-- ── TOC ── -->
+<div class="toc-section">
+    <h2>📋 目录</h2>
+    <ol class="toc-list">
+        <li><a href="#paper-1"><span class="toc-num">1.</span>具有无质量Kim-Lee反作用时空作为内部的粘合虫洞的稳定区域</a></li><li><a href="#paper-2"><span class="toc-num">2.</span>Kalb-Ramond引力中类Reissner-Nordström黑洞在外加测试磁场下的粒子动力学与准周期振荡</a></li><li><a href="#paper-3"><span class="toc-num">3.</span>经典与圈量子宇宙学中的相互作用暗能量：超流体暗物质与尘埃物质的动力学系统分析</a></li><li><a href="#paper-4"><span class="toc-num">4.</span>爱因斯坦-蜂鸟引力中的旋转黑洞与Kerr/CFT对应</a></li><li><a href="#paper-5"><span class="toc-num">5.</span>各向异性物质浸没在磁场中的黑洞周围粒子的混沌行为</a></li><li><a href="#paper-6"><span class="toc-num">6.</span>膨胀Reissner-Nordström-AdS黑洞中爱因斯坦框架与弦框架下的相变与Lyapunov指数</a></li><li><a href="#paper-7"><span class="toc-num">7.</span>具有原生标量毛的中子星</a></li><li><a href="#paper-8"><span class="toc-num">8.</span>非最小耦合引力的Teleparallel引力中的玻色子星：能量条件的违反与极端质量比旋近的引力波波形</a></li><li><a href="#paper-9"><span class="toc-num">9.</span>爱因斯坦-高斯-博内特黑洞时空中费米子纠缠的非局域关联</a></li><li><a href="#paper-10"><span class="toc-num">10.</span>直接波不是视界性质的有意义检验</a></li><li><a href="#paper-11"><span class="toc-num">11.</span>标量-张量理论中的黑洞持续性</a></li><li><a href="#paper-12"><span class="toc-num">12.</span>后牛顿哈密顿系统的高阶显式辛分裂方法</a><span class="toc-cross">← astro-ph.IM</span></li><li><a href="#paper-13"><span class="toc-num">13.</span>月球潮汐势对地球不同位置时钟频率的影响</a><span class="toc-cross">← astro-ph.EP</span></li><li><a href="#paper-14"><span class="toc-num">14.</span>来自原初黑洞的引力波：连接低频标量诱导信号与高频双星并合</a><span class="toc-cross">← astro-ph.CO</span></li><li><a href="#paper-15"><span class="toc-num">15.</span>从视界到无穷远的稳态GRMHD喷流的偏振结构</a><span class="toc-cross">← astro-ph.HE</span></li><li><a href="#paper-16"><span class="toc-num">16.</span>Lubkin-Page典型性界对Type~II von~Neumann因子的适用性</a><span class="toc-cross">← hep-th</span></li><li><a href="#paper-17"><span class="toc-num">17.</span>SKA时代利用双脉冲星检验引力理论</a><span class="toc-cross">← astro-ph.HE</span></li><li><a href="#paper-18"><span class="toc-num">18.</span>从压缩超冷系统走向引力子激射</a><span class="toc-cross">← hep-th</span></li><li><a href="#paper-19"><span class="toc-num">19.</span>黑洞成像中的黑箱</a><span class="toc-cross">← physics.hist-ph</span></li>
+    </ol>
+</div>
+
+<!-- ── Papers ── -->
+<div class="papers">
+    
+<details class="paper-card" id="paper-1">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#1  ·  2607.01687v1</div>
+        <div class="card-title">Stability regions of glued wormholes with massless Kim-Lee backreacted spacetimes as interior</div>
+        <div class="card-title-cn">具有无质量Kim-Lee反作用时空作为内部的粘合虫洞的稳定区域</div>
+        <div class="card-authors">G. F. Akhtaryanova, R. Kh. Karimov, R. N. Izmailov, A. Bhattacharya</div>
+        <div class="card-oneline">速览：本文研究零ADM质量虫洞（如Ellis-Bronnikov虫洞）作为粘合虫洞内部时的稳定性问题，探讨通过薄壳粘合到有质量外部时空后能否实现稳定。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">具有无质量Kim-Lee反作用时空作为内部的粘合虫洞的稳定区域</div>
+    <h4>摘要</h4>
+    <p>渐近零Arnowitt-Deser-Misner (ADM)质量的虫洞，例如零质量可穿越的Ellis-Bronnikov虫洞，在天体物理应用（如银河系微引力透镜）中具有重要兴趣。然而，当单独考虑时，它们对小扰动是不稳定的。另一方面，它们有可能作为可穿越粘合虫洞的内部伙伴而稳定，该虫洞通过将内部与观测相关的有质量外部时空在球对称薄壳上适当粘合而成。尽管外部时空具有非零ADM质量，无质量内部伙伴保持无质量，并共享粘合虫洞的稳定性。然后，薄壳的动力学划定了我们在此希望研究的粘合虫洞的稳定区域，采用由Garcia、Lobo和Visser发现的薄壳“质量”和“外力”约束的新概念。我们将考虑两类情况，其中零ADM质量的内部是Kim-Lee虫洞，分别粘合到外部Schwarzschild真空和Reissner-Nordström时空。结果表明，尽管两种内部Kim-Lee时空在物理上非常不同（一个标量带电，另一个电带电），但两种情况下的稳定区域几乎相似。详细分析了实现粘合虫洞稳定性的条件。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文研究零ADM质量虫洞（如Ellis-Bronnikov虫洞）作为粘合虫洞内部时的稳定性问题，探讨通过薄壳粘合到有质量外部时空后能否实现稳定。
+
+方法/框架：采用Garcia、Lobo和Visser提出的薄壳“质量”和“外力”约束新概念，分析薄壳动力学以划定稳定区域。考虑两种内部Kim-Lee虫洞（标量带电和电带电）分别粘合到Schwarzschild和Reissner-Nordström外部时空。
+
+主要发现：两种物理上不同的内部Kim-Lee虫洞（标量带电和电带电）在粘合后，其稳定区域几乎相似。详细给出了实现稳定性的条件。
+
+评价与展望：该工作为无质量虫洞的稳定性提供了新途径，通过粘合到有质量外部时空可能实现稳定，对虫洞天体物理应用（如微引力透镜）有重要意义。未来可进一步研究其他外部时空或更复杂的内部模型。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01687v1"
+        target="_blank" rel="noopener">2607.01687v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-2">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#2  ·  2607.01723v1</div>
+        <div class="card-title">Particle dynamics and quasi-periodic oscillations of a Reissner--Nordström-like black hole in Kalb--Ramond gravity under an external magnetic test field</div>
+        <div class="card-title-cn">Kalb-Ramond引力中类Reissner-Nordström黑洞在外加测试磁场下的粒子动力学与准周期振荡</div>
+        <div class="card-authors">Faizuddin Ahmed, Ahmad Al-Badawi, Sardor Murodov, Bekzod Rahmatov et al. (5 authors)</div>
+        <div class="card-oneline">速览：本文研究Kalb-Ramond引力中类Reissner-Nordström黑洞在外加测试磁场下的带电粒子动力学和准周期振荡，旨在探索洛伦兹破坏参数对黑洞观测特征的影响。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">Kalb-Ramond引力中类Reissner-Nordström黑洞在外加测试磁场下的粒子动力学与准周期振荡</div>
+    <h4>摘要</h4>
+    <p>我们研究了在存在外加测试磁场的情况下，Kalb-Ramond (KR) 引力中类Reissner-Nordström黑洞周围带电测试粒子的动力学和准周期振荡。KR背景引入了一个洛伦兹破坏参数 $\ell$，它改变了时空几何、视界结构、圆形轨道以及粒子运动的特征频率。与标准的Wald型方案不同，磁场构型是根据带电KR背景上的无源麦克斯韦方程构建的，使得磁场分布能够一致地适应修正后的几何。我们推导了运动方程、有效势、圆形轨道的条件以及带电粒子的轨道频率和径向进动频率。结果表明，黑洞电荷 $Q/M$、KR参数 $\ell$、粒子比电荷 $\varepsilon$ 以及磁耦合参数 $\beta = bM$ 共同影响最内稳定圆轨道 (ISCO) 和准周期振荡 (QPO) 频率。然后，我们将所得频率应用于相对论进动模型，其中上QPO频率被识别为轨道频率，下QPO频率被识别为近星点进动频率。利用GRO J1655-40、XTE J1550-564和M82 X-1的观测孪生峰QPO数据，我们进行了马尔可夫链蒙特卡洛分析以约束模型参数。得到的后验约束表明，带有外加磁场的带电KR黑洞模型能够在所采用的参数范围内一致地再现观测到的QPO对。这些发现表明，QPO观测可以作为探测强引力环境中洛伦兹破坏黑洞几何和电磁效应的有用现象学工具。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文研究Kalb-Ramond引力中类Reissner-Nordström黑洞在外加测试磁场下的带电粒子动力学和准周期振荡，旨在探索洛伦兹破坏参数对黑洞观测特征的影响。
+
+方法/框架：采用无源麦克斯韦方程构建与修正几何一致的磁场构型，推导运动方程和有效势，计算ISCO和QPO频率，并利用相对论进动模型将理论频率与观测数据匹配，通过MCMC分析约束模型参数。
+
+主要发现：黑洞电荷、KR参数、粒子比电荷和磁耦合参数共同影响ISCO和QPO频率；模型能一致解释GRO J1655-40等源的孪生峰QPO数据，表明洛伦兹破坏效应可被观测约束。
+
+评价与展望：该工作为利用QPO探测洛伦兹破坏引力理论提供了新途径，但模型参数空间较大，未来需结合更多观测数据和多波段分析以提升约束精度。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01723v1"
+        target="_blank" rel="noopener">2607.01723v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-3">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#3  ·  2607.01724v1</div>
+        <div class="card-title">Classical and Loop Quantum Cosmology of Interacting Dark Energy: A Dynamical System Analysis with Superfluid Dark Matter and Dust Matter</div>
+        <div class="card-title-cn">经典与圈量子宇宙学中的相互作用暗能量：超流体暗物质与尘埃物质的动力学系统分析</div>
+        <div class="card-authors">Mohd Shahalam, K. Yerzhanov, G. Bauyrzhan, P. K. Dhankar</div>
+        <div class="card-oneline">速览：本文研究在经典引力与圈量子宇宙学框架下，具有不同暗物质模型（超流体与无压尘埃）的相互作用暗能量-暗物质系统的宇宙学动力学，特别关注其渐近行为。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">经典与圈量子宇宙学中的相互作用暗能量：超流体暗物质与尘埃物质的动力学系统分析</div>
+    <h4>摘要</h4>
+    <p>我们在经典爱因斯坦引力与圈量子宇宙学框架下研究了相互作用暗能量与暗物质的宇宙学动力学。考虑了两种暗物质模型：由广义三次状态方程描述的超流体暗物质以及标准无压流体。暗能量组分采用广义非线性状态方程和常数状态方程进行建模。我们考察了两个唯象相互作用项 $Q=α\dotρ_m$ 和 $Q=β\dotρ_d$，它们控制着暗区之间的能量转移。在经典引力中，无压物质模型展现出稳定的晚期吸引子，而超流体暗物质模型仅存在鞍点和非双曲临界点。将分析扩展到圈量子宇宙学后，量子几何修正用非奇异的量子反弹取代了大爆炸奇点，并显著改变了相空间动力学。结果，经典无压物质模型的稳定吸引子消失，所有相互作用模型仅具有鞍点和非双曲临界点。这些发现突显了暗物质性质和量子引力效应对相互作用暗区渐近演化的显著影响。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文研究在经典引力与圈量子宇宙学框架下，具有不同暗物质模型（超流体与无压尘埃）的相互作用暗能量-暗物质系统的宇宙学动力学，特别关注其渐近行为。
+
+方法/框架：采用动力学系统分析方法，在经典爱因斯坦引力与圈量子宇宙学中，分别对超流体暗物质（广义三次状态方程）和标准无压尘埃两种暗物质模型，结合广义非线性或常数状态方程的暗能量，以及两种唯象相互作用项进行相空间分析。
+
+主要发现：经典引力下，无压物质模型存在稳定晚期吸引子，而超流体模型仅有鞍点与非双曲点；圈量子宇宙学中，量子反弹修正消除了经典稳定吸引子，所有模型仅剩鞍点与非双曲临界点，表明量子几何效应显著改变系统渐近演化。
+
+评价与展望：该工作系统比较了暗物质性质与量子引力修正对暗区耦合动力学的影响，为理解宇宙晚期加速膨胀提供了新视角。未来可进一步考虑更现实的相互作用形式或引入观测约束，以检验模型可行性。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01724v1"
+        target="_blank" rel="noopener">2607.01724v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-4">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#4  ·  2607.01884v1</div>
+        <div class="card-title">Rotating Black Holes and the Kerr/CFT Correspondence in Einstein-Bumblebee Gravity</div>
+        <div class="card-title-cn">爱因斯坦-蜂鸟引力中的旋转黑洞与Kerr/CFT对应</div>
+        <div class="card-authors">Yu-Qi Chen, Jin-Yang Shen, Hai-Shan Liu</div>
+        <div class="card-oneline">速览：本文旨在解决爱因斯坦-蜂鸟引力中旋转黑洞的热力学性质及其微观熵的起源问题，特别是检验Kerr/CFT对应在存在洛伦兹破缺背景下的适用性。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">爱因斯坦-蜂鸟引力中的旋转黑洞与Kerr/CFT对应</div>
+    <h4>摘要</h4>
+    <p>我们在五维爱因斯坦-蜂鸟引力中构造了具有相等角动量的旋转黑洞，包括有宇宙学常数和无宇宙学常数的情况。通过两种不同的方法——Wald形式论和Komar积分——研究了它们的热力学性质。值得注意的是，从这两种方法计算出的守恒荷，包括质量、角动量和熵，相差一个仅由蜂鸟耦合常数决定的常数前因子。随后，我们应用Kerr/CFT对应推导了这些黑洞的微观熵，发现它精确地再现了Komar积分版本的熵，而非Wald熵。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文旨在解决爱因斯坦-蜂鸟引力中旋转黑洞的热力学性质及其微观熵的起源问题，特别是检验Kerr/CFT对应在存在洛伦兹破缺背景下的适用性。
+
+方法/框架：作者构造了五维等角动量旋转黑洞解，并分别采用Wald形式论和Komar积分计算热力学量，然后利用Kerr/CFT对应从边界共形场论推导微观熵。
+
+主要发现：两种方法给出的守恒荷相差一个由蜂鸟耦合常数决定的常数因子；Kerr/CFT对应得到的微观熵与Komar积分熵一致，而非Wald熵，表明在洛伦兹破缺引力中，Komar积分可能更适用于定义熵。
+
+评价与展望：该工作拓展了Kerr/CFT对应到洛伦兹破缺引力理论，为理解量子引力中的对称性提供了新视角。未来可进一步研究其他破缺模型或更高维情况，并探索实验检验的可能性。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01884v1"
+        target="_blank" rel="noopener">2607.01884v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-5">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#5  ·  2607.01910v1</div>
+        <div class="card-title">Chaotic behaviors of particles around the black hole with an anisotropic matter immersed in a magnetic field</div>
+        <div class="card-title-cn">各向异性物质浸没在磁场中的黑洞周围粒子的混沌行为</div>
+        <div class="card-authors">Khusan Alibekov, Hocheol Lee, Yovqochev Pahlavon, Bobomurat Ahmedov et al. (7 authors)</div>
+        <div class="card-oneline">速览：该论文研究了各向异性物质和外磁场对黑洞周围粒子混沌动力学的影响，探讨了非线性引力-磁相互作用如何导致粒子轨迹从规则到混沌的转变。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">各向异性物质浸没在磁场中的黑洞周围粒子的混沌行为</div>
+    <h4>摘要</h4>
+    <p>我们通过Harrison变换给出了描述静态黑洞与各向异性物质共存并浸没在外磁场中的爱因斯坦-麦克斯韦方程的精确解。我们的发现表明，各向异性物质参数的增加系统地抑制了局部混沌行为，这通过Lyapunov指数的减小得以体现。相反，外磁场的变化会导致全局混沌行为的定性改变。通过庞加莱截面分析，我们展示了非线性引力-磁相互作用导致的规则轨迹与混沌轨迹之间的转变。这些因素在塑造黑洞周围粒子的混沌动力学中扮演着不同但互补的角色。这项研究为探索磁化黑洞时空中的不可积粒子运动以及探测银河系中心黑洞（其磁场可能源于环绕天体物理黑洞的等离子体效应）提供了新的理论框架。</p>
+    <h4>评价</h4>
+    <p>研究问题：该论文研究了各向异性物质和外磁场对黑洞周围粒子混沌动力学的影响，探讨了非线性引力-磁相互作用如何导致粒子轨迹从规则到混沌的转变。
+
+方法/框架：通过Harrison变换获得静态黑洞与各向异性物质共存于外磁场中的精确解，利用Lyapunov指数和庞加莱截面分析局部和全局混沌行为。
+
+主要发现：各向异性物质参数增加会抑制局部混沌（Lyapunov指数减小），而外磁场变化则引起全局混沌行为的定性改变，庞加莱截面显示规则与混沌轨迹之间的转变。
+
+评价与展望：该工作为磁化黑洞时空中的不可积粒子运动提供了新理论框架，有助于理解银河系中心黑洞周围的等离子体效应和磁场起源，未来可进一步研究天体物理观测中的混沌特征。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01910v1"
+        target="_blank" rel="noopener">2607.01910v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-6">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#6  ·  2607.01912v1</div>
+        <div class="card-title">Phase Transitions with Lyapunov Exponents under Einstein and String Frames in Dilatonic Reissner--Nordström--AdS Black Holes</div>
+        <div class="card-title-cn">膨胀Reissner-Nordström-AdS黑洞中爱因斯坦框架与弦框架下的相变与Lyapunov指数</div>
+        <div class="card-authors">Hocheol Lee, Bogeun Gwak</div>
+        <div class="card-oneline">速览：本文探讨了膨胀Reissner-Nordström-AdS黑洞中，Lyapunov指数作为相变动力学探针的有效性，并比较了爱因斯坦框架和弦框架下的行为差异。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">膨胀Reissner-Nordström-AdS黑洞中爱因斯坦框架与弦框架下的相变与Lyapunov指数</div>
+    <h4>摘要</h4>
+    <p>我们在爱因斯坦-麦克斯韦-膨胀理论中，研究了膨胀Reissner-Nordström-AdS黑洞中作为相变动力学探针的Lyapunov指数。在爱因斯坦框架和弦框架下，分析了带电探测粒子的热力学量和Lyapunov指数，从而直接比较了黑洞的热力学相结构与Lyapunov指数所捕捉的相结构。热力学量（包括霍金温度和Wald熵）在共形框架变换下保持不变，因此在两个框架中产生相同的相结构。相反，对于有质量探测粒子，由于膨胀耦合，Lyapunov指数表现出非平凡的框架依赖性，而在无质量极限下未发现框架依赖性。数值分析表明，尽管Lyapunov指数本身依赖于框架，但Lyapunov指数所捕捉的相结构特征（包括特征尖点行为和转变点）与框架选择无关。因此，Lyapunov指数表现出依赖于框架的值，而它所捕捉的临界结构在共形框架下保持不变。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了膨胀Reissner-Nordström-AdS黑洞中，Lyapunov指数作为相变动力学探针的有效性，并比较了爱因斯坦框架和弦框架下的行为差异。
+
+方法/框架：作者在爱因斯坦-麦克斯韦-膨胀理论框架下，分别计算了两种共形框架（爱因斯坦框架和弦框架）中带电探测粒子的Lyapunov指数，并与热力学量（如霍金温度和Wald熵）的相结构进行对比。
+
+主要发现：热力学量在框架变换下不变，而Lyapunov指数对有质量粒子表现出框架依赖性，但无质量粒子则无此依赖。数值分析显示，Lyapunov指数所捕捉的相结构特征（如尖点和转变点）与框架无关，尽管指数值本身依赖于框架。
+
+评价与展望：该工作揭示了Lyapunov指数作为相变探针的稳健性，但其框架依赖性需谨慎解释。未来可进一步研究其他黑洞解或考虑量子效应，以深化对引力与物质耦合的理解。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01912v1"
+        target="_blank" rel="noopener">2607.01912v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-7">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#7  ·  2607.01937v1</div>
+        <div class="card-title">Neutron stars with primary scalar hair</div>
+        <div class="card-title-cn">具有原生标量毛的中子星</div>
+        <div class="card-authors">Hamza Boumaza, Christos Charmousis, David Langlois, Etienne Ligout</div>
+        <div class="card-oneline">速览：本文探讨了在DHOST引力理论中，具有原生标量毛的中子星解，以及标量毛如何影响恒星的结构和性质。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">具有原生标量毛的中子星</div>
+    <h4>摘要</h4>
+    <p>我们研究了在简并高阶标量张量（DHOST）引力理论子家族中，具有原生标量毛的静态球对称中子星解。通过求解修正的Tolman-Oppenheimer-Volkoff（TOV）方程，我们构建了多方和真实状态方程的平衡构型，并分析了标量毛对恒星结构的影响。我们检查了得到的度规和标量场轮廓以及质量-半径关系，显示了与广义相对论（GR）预测的偏差。正的标量电荷导致比GR更致密的恒星，并且在临界阈值以上会导致奇点。因此，观测可以对这些理论中超越GR效应的参数及其潜在标量毛施加严格约束。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了在DHOST引力理论中，具有原生标量毛的中子星解，以及标量毛如何影响恒星的结构和性质。
+
+方法/框架：作者通过求解修正的TOV方程，结合多方和真实状态方程，构建了平衡构型，并分析了度规和标量场轮廓以及质量-半径关系。
+
+主要发现：正的标量电荷使中子星比GR更致密，且在超过临界阈值时会导致奇点；质量-半径关系显示出与GR的显著偏差。
+
+评价与展望：该研究为通过天文观测约束DHOST理论提供了重要依据，未来可结合引力波或X射线观测进一步检验标量毛的存在及其参数。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01937v1"
+        target="_blank" rel="noopener">2607.01937v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-8">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#8  ·  2607.02017v1</div>
+        <div class="card-title">Boson Stars in Teleparallel Gravity with a Nonminimally Coupled Field: The Violation of Energy Conditions and Gravitational Waveforms from EMRIs</div>
+        <div class="card-title-cn">非最小耦合引力的Teleparallel引力中的玻色子星：能量条件的违反与极端质量比旋近的引力波波形</div>
+        <div class="card-authors">Long-Xing Huang, Ke Yang, Yong-Qiang Wang</div>
+        <div class="card-oneline">速览：本文探讨了在非最小耦合的Teleparallel引力中玻色子星模型的性质，特别是能量条件的违反情况，以及由这些玻色子星构成的极端质量比旋近（EMRIs）产生的引力波波形。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">非最小耦合引力的Teleparallel引力中的玻色子星：能量条件的违反与极端质量比旋近的引力波波形</div>
+    <h4>摘要</h4>
+    <p>在这项工作中，我们研究了非最小耦合的Teleparallel引力框架下的玻色子星模型，并获得了基态和激发态的静态、球对称解。结果表明，激发态解的能量密度可能变为负值。对于这些解，四种常用的能量条件不再满足。相比之下，对于我们研究的所有基态解，能量密度保持正值，并且所有四种能量条件始终满足。此外，考虑到天体物理观测的重要性，我们研究了由这些玻色子星组成的极端质量比旋近（EMRIs）的引力波信号。我们的结果表明，这些波形的频域特征应变落在LISA的可探测范围内，这可以为区分致密天体提供潜在证据。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了在非最小耦合的Teleparallel引力中玻色子星模型的性质，特别是能量条件的违反情况，以及由这些玻色子星构成的极端质量比旋近（EMRIs）产生的引力波波形。
+
+方法/框架：作者在Teleparallel引力框架下引入非最小耦合，求解了基态和激发态的静态球对称玻色子星解，并分析了能量条件。随后，他们计算了EMRIs的引力波波形，评估了其频率域特征应变。
+
+主要发现：激发态玻色子星解的能量密度可能为负，导致四种标准能量条件被违反；而基态解则满足所有能量条件。EMRIs的引力波信号在LISA的探测范围内，有望用于区分这类致密天体。
+
+评价与展望：该工作拓展了玻色子星在修正引力理论中的研究，揭示了能量条件违反的新现象，并为未来引力波观测提供了理论模板。后续可进一步探讨激发态解的稳定性及其在天体物理中的实际意义。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02017v1"
+        target="_blank" rel="noopener">2607.02017v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-9">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#9  ·  2607.02039v1</div>
+        <div class="card-title">Nonlocal correlations of fermionic entanglement in the spacetime of Einstein-Gauss-Bonnet black hole</div>
+        <div class="card-title-cn">爱因斯坦-高斯-博内特黑洞时空中费米子纠缠的非局域关联</div>
+        <div class="card-authors">Yifei Xu, Yanjun Chen, Qi Xiao, Xiaolong Gong</div>
+        <div class="card-oneline">速览：本文探讨了爱因斯坦-高斯-博内特（EGB）黑洞时空中费米子纠缠的非局域关联，具体研究了量子相干性的非局域优势（NAQC）和贝尔非局域性（BN）随Hawking温度的变化行为。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">爱因斯坦-高斯-博内特黑洞时空中费米子纠缠的非局域关联</div>
+    <h4>摘要</h4>
+    <p>弯曲时空中非经典关联的研究为量子信息理论与引力物理的交叉提供了关键见解。本文研究了$d$维球对称爱因斯坦-高斯-博内特（EGB）黑洞时空中的两种非局域关联度量：量子相干性的非局域优势（NAQC）和贝尔非局域性（BN）。我们考虑两个观察者（Alice和Rob）初始共享一个最大纠缠贝尔态：Alice自由落入黑洞（惯性Kruskal坐标系），而Rob在视界外加速（非惯性类Schwarzschild坐标系）。Unruh-Hawking效应修改了Rob的场模式，需要Bogoliubov变换来关联两个坐标系。我们推导了费米子场的混合二分密度矩阵以及NAQC和BN的解析表达式，这些表达式依赖于Hawking温度（本身由$\alpha$、$d$和$r_h$决定）。我们的结果表明，两种关联都随Hawking温度的增加而单调退化，确认了NAQC-BN层级关系在EGB时空中仍然成立，并突出了高曲率修正对量子资源的影响。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了爱因斯坦-高斯-博内特（EGB）黑洞时空中费米子纠缠的非局域关联，具体研究了量子相干性的非局域优势（NAQC）和贝尔非局域性（BN）随Hawking温度的变化行为。
+
+方法/框架：采用两个观察者（Alice和Rob）初始共享最大纠缠贝尔态的设定，Alice自由落入黑洞（惯性Kruskal帧），Rob在视界外加速（非惯性类Schwarzschild帧）。通过Unruh-Hawking效应和Bogoliubov变换关联两个坐标系，推导出费米子场的混合二分密度矩阵及NAQC和BN的解析表达式。
+
+主要发现：NAQC和BN均随Hawking温度增加而单调退化，且NAQC-BN的层级关系在EGB时空中依然成立。结果揭示了高曲率修正（由参数$\alpha$、维度$d$和视界半径$r_h$体现）对量子资源的影响。
+
+评价与展望：该工作将非局域关联研究拓展到EGB引力理论，为理解弯曲时空中的量子信息提供了新视角。未来可进一步探索其他修正引力理论下的量子关联特性，或考虑多体纠缠和退相干效应。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02039v1"
+        target="_blank" rel="noopener">2607.02039v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-10">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#10  ·  2607.02380v1</div>
+        <div class="card-title">The Direct Wave is Not a Meaningful Test of Horizon Properties</div>
+        <div class="card-title-cn">直接波不是视界性质的有意义检验</div>
+        <div class="card-authors">Anuj Kankani, Sean T. McWilliams</div>
+        <div class="card-oneline">速览：本文探讨直接波是否能够可靠地检验黑洞残余视界的性质，特别是频率和阻尼时间与视界频率或表面引力的关联性。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">直接波不是视界性质的有意义检验</div>
+    <h4>摘要</h4>
+    <p>最近，在黑洞双星并合辐射中识别出一个独特的非准正则模成分，称为直接波。直接波的频率和阻尼时间被认为与残余视界的性质相关。这导致了对GW250114的基于直接波的分析，包括对霍金面积定律的检验。然而，正如我们在这里使用数值相对论应变数据所展示的，直接波频率与视界频率或表面引力并不相关，除了在$\chi_f \approx 0.7$附近的一个偶然交叉点，该点与GW250114的残余自旋紧密对应。我们表明，虽然直接波的瞬时频率是准稳定的，但阻尼时间显示出显著的演化，因此包含固定阻尼时间的单一阻尼正弦模型并不合适。我们进一步表明，基于视界性质的演化频率模型也不能为具有大残余自旋的系统建模直接波成分。我们证明，使用基于直接波解释的视界频率来检验霍金面积定律，会导致在实际上没有违反时出现明显的霍金面积定律违反。因此，我们的结果表明直接波不是残余视界性质的可靠探针。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨直接波是否能够可靠地检验黑洞残余视界的性质，特别是频率和阻尼时间与视界频率或表面引力的关联性。
+
+方法/框架：使用数值相对论应变数据，分析直接波的瞬时频率和阻尼时间的演化特性，并检验基于视界性质的模型是否适用于直接波成分。
+
+主要发现：直接波频率与视界频率仅在特定自旋值附近偶然相关，阻尼时间显著演化，固定阻尼时间的模型不适用；基于视界性质的演化模型对大自旋系统无效；基于直接波的霍金面积定律检验会导致虚假违反。
+
+评价与展望：本文揭示了直接波作为视界性质探针的局限性，对引力波天文学中检验强场引力理论的方法提出了重要警示，未来需发展更精确的模型来区分直接波与其他成分。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02380v1"
+        target="_blank" rel="noopener">2607.02380v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-11">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#11  ·  2607.02409v1</div>
+        <div class="card-title">Black Hole Persistence in Scalar Tensor Theories</div>
+        <div class="card-title-cn">标量-张量理论中的黑洞持续性</div>
+        <div class="card-authors">Balkar Yildirim, Alan Albert Coley</div>
+        <div class="card-oneline">速览：本文研究标量-张量引力理论中，黑洞在非奇异宇宙反弹过程中是否能够持续存在的问题。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">标量-张量理论中的黑洞持续性</div>
+    <h4>摘要</h4>
+    <p>我们构建了一个微扰标量-张量解，描述嵌入在演化宇宙学背景中的中心不均匀性，旨在研究黑洞在非奇异反弹中的持续性。标量-张量引力为实现反弹宇宙学提供了自然框架，而包含局域不均匀性使场方程求解变得相当困难。因此，我们采用微扰方案，微扰参数为$ε$，其中领头阶方程由辐射完美流体驱动的空间平坦反弹FLRW时空求解。在下一阶，通过广义McVittie几何引入中心不均匀性，微扰编码在相应的一阶度量和标量场函数中。我们首先允许具有径向和切向压强的各向异性流体，其对角分量求解对角场方程。场方程在反弹点$η=0$附近展开至$\mathcal{O}(η^4)$求解。得到的完美流体解包含三个任意函数，通过要求时空在$r\to\infty$时渐近为FLRW来约束这些函数。在保持反弹抛物线结构的适当初始条件下，积分常数$d_0$成为真正的微扰参数：当$d_0\to0$时所有微扰消失。最后，我们找到一个小的演化视界$r_h\sim d_0$，我们将其解释为中心不均匀性的视界。它通过反弹的持续性支持了黑洞在宇宙学转变中存活的解释，并且其演化关于$η=0$不对称。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文研究标量-张量引力理论中，黑洞在非奇异宇宙反弹过程中是否能够持续存在的问题。
+
+方法/框架：采用微扰方法，以辐射完美流体驱动的反弹FLRW时空为背景，通过广义McVittie几何引入中心不均匀性，并求解一阶微扰场方程。
+
+主要发现：构建了包含中心不均匀性的微扰标量-张量解，发现存在一个小演化视界$r_h\sim d_0$，该视界在反弹过程中持续存在，支持黑洞存活于宇宙学转变的结论。
+
+评价与展望：该工作为研究反弹宇宙学中的黑洞行为提供了重要理论框架，但解依赖于微扰展开和特定初始条件，未来需考虑非线性效应和更一般的初始条件以验证结果的普适性。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02409v1"
+        target="_blank" rel="noopener">2607.02409v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-12">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#12 [交叉: astro-ph.IM]  ·  2607.01596v1</div>
+        <div class="card-title">Efficient high-order explicit symplectic splitting methods for post-Newtonian Hamiltonian systems</div>
+        <div class="card-title-cn">后牛顿哈密顿系统的高阶显式辛分裂方法</div>
+        <div class="card-authors">Yujie Jiang, Lijie Mei</div>
+        <div class="card-oneline">速览：本文针对后牛顿哈密顿系统在数值模拟中，传统隐式积分器计算成本高，而现有显式辛方法在高阶时存在阶数降低的问题。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">后牛顿哈密顿系统的高阶显式辛分裂方法</div>
+    <h4>摘要</h4>
+    <p>后牛顿（PN）哈密顿系统的不可分性通常需要使用计算成本高昂的隐式积分器。最近的研究通过将动力学嵌入到双倍相空间中克服了这一限制，从而能够开发显式辛方法。然而，现有的专门设计的显式积分器在时间步长较小（即 $h < \varepsilon^3$）时，高阶方法会出现阶数降低。在本文中，我们提出了一种针对双倍哈密顿量的新颖扩展和分裂方法，在此基础上可以构建专门设计的显式辛积分器。结果表明，所提出的积分器实现了真正的高阶收敛，没有阶数降低，并利用了小的PN参数 $\varepsilon$ 的优势。来自2PN自旋双星模拟的数值结果证明了与隐式方法和现有显式分裂技术相比，在长期守恒不变量方面具有优越性，并且计算效率显著提高。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文针对后牛顿哈密顿系统在数值模拟中，传统隐式积分器计算成本高，而现有显式辛方法在高阶时存在阶数降低的问题。
+
+方法/框架：作者提出了一种新的扩展和分裂方法，将动力学嵌入双倍相空间，并利用后牛顿参数 $\varepsilon$ 的小量特性，构建了专门设计的显式辛积分器。
+
+主要发现：所提出的积分器实现了真正的高阶收敛，避免了阶数降低，并且在2PN自旋双星模拟中，相比隐式方法和现有显式分裂技术，表现出更好的长期不变量守恒性和更高的计算效率。
+
+评价与展望：这项工作为后牛顿系统的数值模拟提供了高效且精确的工具，有望在引力波天文学等领域得到应用，未来可进一步推广到更高阶后牛顿系统或更复杂的物理场景。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01596v1"
+        target="_blank" rel="noopener">2607.01596v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-13">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#13 [交叉: astro-ph.EP]  ·  2607.01758v1</div>
+        <div class="card-title">The influence of lunar tidal potential on clock frequencies at different positions on Earth</div>
+        <div class="card-title-cn">月球潮汐势对地球不同位置时钟频率的影响</div>
+        <div class="card-authors">Hongbin Zhang, Yanyue Gao, Baocheng Zhang</div>
+        <div class="card-oneline">速览：本文探讨了月球潮汐势对地球不同位置时钟频率偏移的影响，这是高精度时钟同步和校准中一个关键但尚未被系统研究的问题。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">月球潮汐势对地球不同位置时钟频率的影响</div>
+    <h4>摘要</h4>
+    <p>随着时钟计时技术的进步，越来越小的时间差异可以被区分。因此，研究地球上不同位置时钟的分数频率偏移至关重要。本文基于一种新方法，系统地研究了在微弱的月球潮汐势影响下的这一现象。我们在地心费米坐标系中的计算表明，当两个时钟位于同一纬度时，经度差会改变它们之间的分数频率偏移。当两个时钟在地面同一经度上存在纬度差时，也会出现类似现象。有趣的是，当月球经度变化时，具有相同经度差的两个时钟之间的月球潮汐分数频率偏移的相位和幅度会发生变化，而月球纬度的变化仅影响这两个时钟的分数频率偏移的幅度。我们的结果为地球上时钟的校准和同步提供了有用的信息。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了月球潮汐势对地球不同位置时钟频率偏移的影响，这是高精度时钟同步和校准中一个关键但尚未被系统研究的问题。
+
+方法/框架：作者采用了一种新方法，在地心费米坐标系中计算月球潮汐势引起的分数频率偏移，该框架结合了广义相对论和潮汐理论，能够精确处理时空度规的扰动。
+
+主要发现：研究发现，时钟间的经度差和纬度差均会导致分数频率偏移的变化，且月球经度变化同时影响偏移的相位和幅度，而月球纬度变化仅影响幅度。这些结果揭示了月球轨道运动对地面时钟频率的调制效应。
+
+评价与展望：该工作为高精度时间计量和相对论大地测量提供了理论依据，未来可结合多时钟网络和实际观测数据进一步验证，并可能应用于引力波探测或基础物理检验。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01758v1"
+        target="_blank" rel="noopener">2607.01758v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-14">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#14 [交叉: astro-ph.CO]  ·  2607.01818v1</div>
+        <div class="card-title">Gravitational Waves from Primordial Black Holes: Connecting Low-Frequency Scalar-Induced Signatures to High-Frequency Binary Mergers</div>
+        <div class="card-title-cn">来自原初黑洞的引力波：连接低频标量诱导信号与高频双星并合</div>
+        <div class="card-authors">Ashu Kushwaha</div>
+        <div class="card-oneline">速览：本文旨在解决如何通过原初黑洞（PBH）形成过程中产生的双重引力波信号，建立低频标量诱导引力波（SIGW）与高频PBH双星并合引力波之间的模型无关联系，从而统一探测原初曲率扰动。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">来自原初黑洞的引力波：连接低频标量诱导信号与高频双星并合</div>
+    <h4>摘要</h4>
+    <p>原初黑洞（PBHs）的形成需要曲率扰动的显著增强。这一机制留下了双重的引力波（GW）特征：一个来自标量诱导GW（SIGWs）的	extit{低频}随机背景，以及一个来自后续PBH双星并合的独特	extit{高频}信号。我们利用这一共同起源，为单色PBH质量函数建立了这两个可观测量之间一致的、	extit{模型无关}的联系。利用PBH丰度对原初曲率功率谱的约束，我们评估了球形和椭球形坍缩模型下的随机SIGW背景，证明椭球形情景产生显著更强的信号。此外，我们分析了PBH双星并合的GW信号，并发现SIGW频率与双星的最内稳定圆轨道（ISCO）频率之间存在直接对应关系。由于GW辐射在ISCO附近几乎最大，我们还进一步展示了完整并合GW谱的峰值与ISCO频率通过$f_{\text{peak}} = 1.79 \, f_{\text{ISCO}}$相关联，这一关系与双星质量无关。值得注意的是，这一统一框架连接了这些不同的GW通道，使得相同的原初涨落能够在广泛分离的频段上被探测。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文旨在解决如何通过原初黑洞（PBH）形成过程中产生的双重引力波信号，建立低频标量诱导引力波（SIGW）与高频PBH双星并合引力波之间的模型无关联系，从而统一探测原初曲率扰动。
+
+方法/框架：作者采用单色PBH质量函数，基于PBH丰度对原初曲率功率谱的约束，分别计算球形和椭球形坍缩模型下的SIGW背景，并分析PBH双星并合的引力波谱。通过对比SIGW频率与双星最内稳定圆轨道（ISCO）频率，推导出峰值频率关系$f_{\text{peak}} = 1.79 \, f_{\text{ISCO}}$。
+
+主要发现：椭球形坍缩模型产生的SIGW信号显著强于球形模型；SIGW频率与ISCO频率直接对应，且并合谱峰值与ISCO频率的比例关系独立于双星质量。这一框架成功将低频和高频引力波通道联系起来，使同一原初涨落能在不同频段被探测。
+
+评价与展望：该工作为利用多频段引力波观测约束PBH形成机制提供了统一理论框架，具有重要前瞻性。未来结合LISA、LIGO等探测器的数据，有望检验模型并揭示早期宇宙的物理过程。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01818v1"
+        target="_blank" rel="noopener">2607.01818v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-15">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#15 [交叉: astro-ph.HE]  ·  2607.01820v1</div>
+        <div class="card-title">Polarization Architecture of Steady GRMHD Jets from the Horizon to Infinity</div>
+        <div class="card-title-cn">从视界到无穷远的稳态GRMHD喷流的偏振结构</div>
+        <div class="card-authors">Zhenyu Zhang, Yehui Hou, Yu Song, Yosuke Mizuno et al. (5 authors)</div>
+        <div class="card-oneline">速览：本文旨在解决如何从近视界到远距离尺度上，利用偏振观测诊断稳态GRMHD喷流的动力学和黑洞自旋的问题。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">从视界到无穷远的稳态GRMHD喷流的偏振结构</div>
+    <h4>摘要</h4>
+    <p>我们发展了一个半解析框架，用于稳态、轴对称的GRMHD喷流，能够高效生成从近视界区域到$\sim 10^5\,r_g$的解析偏振图像，覆盖广泛的参数空间，从而快速探索引力和磁流体动力学流如何将尺度依赖的特征印记在喷流形态和偏振上。我们识别出偏振诊断中一种新的尺度依赖分离。在光子环之外，等离子体加载通过惯性驱动的磁场扭曲强烈改变集成喷流层发射的偏振角轮廓。在大像平面半径处，偏振角遵循半径的幂律，其指数由喷流准直轮廓决定。相反，在视界附近，喷流收敛到仅由黑洞自旋控制的普适偏振模式。这种收敛是分层的：速度和磁场结构的差异首先被抹平，而准直依赖的差异持续到更小的半径，从而允许这些效应被解耦。这些结果建立了一个基本消色的偏振诊断，将GRMHD喷流动力学与解析图像结构联系起来，对高分辨率偏振测量以及约束黑洞自旋和喷流形成具有直接意义。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文旨在解决如何从近视界到远距离尺度上，利用偏振观测诊断稳态GRMHD喷流的动力学和黑洞自旋的问题。
+
+方法/框架：作者发展了一个半解析框架，结合GRMHD模拟和辐射转移，高效生成从视界附近到$10^5\,r_g$的解析偏振图像，并探索了广泛的参数空间。
+
+主要发现：发现了一种新的尺度依赖的偏振诊断分离：在光子环外，等离子体加载通过磁场扭曲改变偏振角轮廓；在大半径处，偏振角遵循由喷流准直轮廓决定的幂律；而在视界附近，喷流收敛到仅由黑洞自旋控制的普适偏振模式，且这种收敛是分层的。
+
+评价与展望：该工作建立了一个消色的偏振诊断，将喷流动力学与图像结构直接联系，对高分辨率偏振观测（如EHT）约束黑洞自旋和喷流形成具有重要意义，未来可应用于更多参数空间和实际观测数据的对比。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01820v1"
+        target="_blank" rel="noopener">2607.01820v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-16">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#16 [交叉: hep-th]  ·  2607.01873v1</div>
+        <div class="card-title">Lubkin-Page typicality bounds for Type~II von~Neumann factors</div>
+        <div class="card-title-cn">Lubkin-Page典型性界对Type~II von~Neumann因子的适用性</div>
+        <div class="card-authors">Zhi-Wei Wang, Samuel L. Braunstein</div>
+        <div class="card-oneline">速览：本文探讨了Lubkin-Page典型性界是否适用于量子场论和量子引力中常见的Type~II von~Neumann因子，以验证涌现时空论证的鲁棒性。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">Lubkin-Page典型性界对Type~II von~Neumann因子的适用性</div>
+    <h4>摘要</h4>
+    <p>涌现时空的典型性论证依赖于Lubkin-Page界，该界表明一般量子态在子系统间具有消失的关联。这些界假设了张量积希尔伯特空间（Type~I von~Neumann代数），但量子场论和量子引力中的可观测代数通常是Type~II或Type~III，这引发了该界是否仍然成立的问题。我们证明，对于所有Type~II von~Neumann因子，该界仍然成立。对于超有限Type~II$_1$因子，若其三分分解为$R \cong A \otimes B \otimes E$，则在有限维近似下，子系统$A$和$B$之间的互信息以$O((d_A d_B / d_E)^2)$消失，前提是$d_A d_B \leq d_E$（定理1）。对于Type~II$_\infty$因子，包括由Witten以及Chandrasekaran、Longo、Penington和Witten通过交叉积方法构造的引力代数，该界获得了由Bekenstein-Hawking熵控制的额外指数抑制（定理2）。我们指出了将结果推广到Type~III因子的障碍，并讨论了可观测代数的交换子能否作为自然热浴以进一步收紧该界的开放问题。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了Lubkin-Page典型性界是否适用于量子场论和量子引力中常见的Type~II von~Neumann因子，以验证涌现时空论证的鲁棒性。
+
+方法/框架：作者采用von~Neumann代数框架，分别对超有限Type~II$_1$因子和Type~II$_\infty$因子（包括交叉积构造的引力代数）进行分析，通过有限维近似和熵界推导互信息的消失行为。
+
+主要发现：对于Type~II$_1$因子，互信息以$O((d_A d_B / d_E)^2)$消失；对于Type~II$_\infty$因子，额外获得Bekenstein-Hawking熵的指数抑制。同时指出Type~III因子存在推广障碍。
+
+评价与展望：该工作为量子引力中涌现时空的典型性提供了严格数学基础，特别是对引力代数的适用性。未来需解决Type~III因子的障碍，并探索交换子作为热浴的潜在作用。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.01873v1"
+        target="_blank" rel="noopener">2607.01873v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-17">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#17 [交叉: astro-ph.HE]  ·  2607.02064v1</div>
+        <div class="card-title">Testing Gravity with Binary Pulsars in the SKA Era</div>
+        <div class="card-title-cn">SKA时代利用双脉冲星检验引力理论</div>
+        <div class="card-authors">V. Venkatraman Krishnan, L. Shao, V. Balakrishnan, A. Carleo et al. (24 authors)</div>
+        <div class="card-oneline">速览：本文探讨在平方公里阵列（SKA）时代，如何利用双脉冲星系统对强场引力理论进行高精度检验，特别是寻找广义相对论（GR）的潜在偏离。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">SKA时代利用双脉冲星检验引力理论</div>
+    <h4>摘要</h4>
+    <p>双星（及三星）射电脉冲星是太空中研究强场引力的天然实验室，迄今已进行了许多独特而精确的检验，包括对强等效原理和引力辐射性质的最精确检验。平方公里阵列（SKA）望远镜凭借其在南半球的高灵敏度，将大幅提高再循环脉冲星的计时精度，从而能够在已知系统中更深入地寻找广义相对论（GR）的潜在偏离。此外，对银河系脉冲星的普查将发现数十个相对论性脉冲星系统，包括可能的脉冲星—黑洞双星，这些系统可用于检验宇宙监督假设和“无毛”定理。需要探索的引力方面包括强等效原理检验、引力偶极辐射、引力的额外场分量、引力磁性和时空对称性。在本章中，我们描述了利用双脉冲星进行引力检验的各类方法，并概述了SKA为最好地服务于这一科学目标所必须具备的特征和能力。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨在平方公里阵列（SKA）时代，如何利用双脉冲星系统对强场引力理论进行高精度检验，特别是寻找广义相对论（GR）的潜在偏离。
+
+方法/框架：采用脉冲星计时技术，通过SKA的高灵敏度观测提高计时精度，并结合银河系脉冲星普查发现新的相对论性双星系统（如脉冲星-黑洞双星），以检验强等效原理、引力偶极辐射等。
+
+主要发现：SKA将显著提升现有脉冲星系统的检验精度，并有望发现数十个新系统，包括可能用于检验宇宙监督假设和“无毛”定理的脉冲星-黑洞双星。
+
+评价与展望：该工作为SKA时代的引力检验提供了清晰路线图，具有重要科学意义。未来需关注SKA的实际性能是否达到预期，以及新发现系统能否提供突破性检验。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02064v1"
+        target="_blank" rel="noopener">2607.02064v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-18">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#18 [交叉: hep-th]  ·  2607.02068v1</div>
+        <div class="card-title">Towards graviton lasing from squeezed ultra-cold systems</div>
+        <div class="card-title-cn">从压缩超冷系统走向引力子激射</div>
+        <div class="card-authors">Soham Sen, Vlatko Vedral</div>
+        <div class="card-oneline">速览：本文探讨如何从超冷原子系统中产生相干引力子辐射，即引力子激光，以提供引力子存在的直接证据。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">从压缩超冷系统走向引力子激射</div>
+    <h4>摘要</h4>
+    <p>在我们最近的工作 arXiv:2604.11474 [hep-th] 中，我们展示了利用动态电磁场中的带电谐振子阵列可以有效探测引力子。使用相同模型的相互作用哈密顿量，我们发现超冷原子系统中可以实现引力子的系统性布居反转。我们发现指数增长严格依赖于系统中的玻色子数量以及物质波包的内在压缩。引力子的相干源可能直接导致引力子存在的不可避免的证据，基于这一分析，我们提出了一个产生真正引力子激光的实验方案。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨如何从超冷原子系统中产生相干引力子辐射，即引力子激光，以提供引力子存在的直接证据。
+
+方法/框架：基于带电谐振子在电磁场中的相互作用哈密顿量，利用量子光学中的布居反转和压缩态概念，分析引力子激射的动力学条件。
+
+主要发现：引力子激射的指数增长依赖于系统中的玻色子数目和物质波包的压缩程度，表明通过调控这些参数可实现引力子的相干放大。
+
+评价与展望：该工作为引力子探测提供了全新思路，但实验实现面临极低温度和高压缩度的挑战，未来需结合冷原子技术和量子光学手段验证理论预测。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02068v1"
+        target="_blank" rel="noopener">2607.02068v1</a>
+    </p>
+</div>
+</details>
+<details class="paper-card" id="paper-19">
+<summary>
+    <div class="card-body">
+        <div class="card-num">#19 [交叉: physics.hist-ph]  ·  2607.02110v1</div>
+        <div class="card-title">Black Boxes in Black Hole Imaging</div>
+        <div class="card-title-cn">黑洞成像中的黑箱</div>
+        <div class="card-authors">Juliusz Doboszewski, Jamee Elder</div>
+        <div class="card-oneline">速览：本文探讨了黑洞成像中计算机模拟和机器学习方法导致的认知不透明性，特别是这些不透明性如何影响科学推理的可靠性。</div>
+    </div>
+</summary>
+<div class="detail">
+    <div class="cn-title">黑洞成像中的黑箱</div>
+    <h4>摘要</h4>
+    <p>我们研究了计算机模拟和机器学习方法在黑洞成像背景下的认知不透明性。我们认为，存在一些不透明形式——包括使用机器学习导致的不透明性——当这些不透明性被视为更广泛推理框架的一部分时，并不需要影响推理的可靠性。我们提出了这些情况可能成立的条件，并讨论了不透明方法如何在（下一代）事件视界望远镜的背景下发挥作用。然而，我们也认为，目前黑洞成像中至少存在一种有问题的透明形式：Sagittarius A*的GRMHD模型是不透明的。这种不透明性表明了当前对该源模型理解的局限性，并限制了未来观测中ML模型的潜在用途。</p>
+    <h4>评价</h4>
+    <p>研究问题：本文探讨了黑洞成像中计算机模拟和机器学习方法导致的认知不透明性，特别是这些不透明性如何影响科学推理的可靠性。
+
+方法/框架：作者通过分析不透明性的不同形式，区分了可接受与有问题的透明度，并基于推理框架的整体性提出了评估条件。他们以GRMHD模型为例，结合事件视界望远镜的观测实践进行论证。
+
+主要发现：研究表明，某些不透明性（如ML方法）在适当的推理框架下不会损害可靠性，但Sgr A*的GRMHD模型存在有问题的透明度，这反映了当前对源物理理解的不足，并限制了ML的应用。
+
+评价与展望：该工作为评估黑洞成像中计算方法的可靠性提供了新视角，强调了模型透明度与科学理解之间的张力。未来需发展更透明的模型或结合多模态观测来克服当前局限。</p>
+    <p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">
+        arXiv: <a href="https://arxiv.org/abs/2607.02110v1"
+        target="_blank" rel="noopener">2607.02110v1</a>
+    </p>
+</div>
+</details>
+</div>
+
+<!-- ── Footer ── -->
+<div class="footer">
+    Generated by WorkBuddy · arXiv gr-qc Skill · 2026年07月02日
+    · Data from <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+</body>
+</html>
