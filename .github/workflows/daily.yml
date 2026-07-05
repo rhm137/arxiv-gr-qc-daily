@@ -36,14 +36,22 @@ jobs:
       - name: Calculate date
         id: date
         run: |
-          # Use override date if provided, otherwise yesterday
+          # Use override date if provided, otherwise find last weekday
           if [ -n "${{ github.event.inputs.date }}" ]; then
             OVERRIDE="${{ github.event.inputs.date }}"
             YESTERDAY=$(echo "$OVERRIDE" | sed 's/-//g')
             YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
           else
-            YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
-            YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
+            # Get yesterday, then adjust: Mon→Fri, Tue-Sat→yesterday
+            DOW=$(TZ='Asia/Shanghai' date '+%u')  # 1=Mon ... 7=Sun
+            if [ "$DOW" = "1" ]; then
+              # Monday: use last Friday
+              YESTERDAY=$(TZ='Asia/Shanghai' date -d '3 days ago' '+%Y%m%d')
+              YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d '3 days ago' '+%Y年%m月%d日')
+            else
+              YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
+              YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
+            fi
           fi
           echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
           echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
