@@ -2,9 +2,8 @@ name: arXiv gr-qc Daily Digest
 
 on:
   schedule:
-    # Runs at 01:00 UTC every weekday (Mon-Fri)
-    # which is 09:00 Beijing time (UTC+8)
-    - cron: '0 1 * * 1-5'
+    # Runs at 01:00 UTC every day (09:00 Beijing time)
+    - cron: '0 1 * * *'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
     inputs:
       date:
@@ -36,22 +35,13 @@ jobs:
       - name: Calculate date
         id: date
         run: |
-          # Use override date if provided, otherwise find last weekday
           if [ -n "${{ github.event.inputs.date }}" ]; then
             OVERRIDE="${{ github.event.inputs.date }}"
             YESTERDAY=$(echo "$OVERRIDE" | sed 's/-//g')
             YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
           else
-            # Get yesterday, then adjust: Mon→Fri, Tue-Sat→yesterday
-            DOW=$(TZ='Asia/Shanghai' date '+%u')  # 1=Mon ... 7=Sun
-            if [ "$DOW" = "1" ]; then
-              # Monday: use last Friday
-              YESTERDAY=$(TZ='Asia/Shanghai' date -d '3 days ago' '+%Y%m%d')
-              YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d '3 days ago' '+%Y年%m月%d日')
-            else
-              YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
-              YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
-            fi
+            YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
+            YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
           fi
           echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
           echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
@@ -199,17 +189,3 @@ jobs:
       - name: Deploy to GitHub Pages
         if: steps.check.outputs.paper_count != '0'
         uses: actions/deploy-pages@v4
-
-      - name: No papers notification
-        if: steps.check.outputs.paper_count == '0'
-        env:
-          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        run: |
-          DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
-          MSG="arXiv gr-qc ${DATE_DISPLAY}：无新论文（可能为周末或节假日）"
-          curl -s -X POST "https://www.pushplus.plus/send" \
-            -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\"}"
-          curl -s -X POST "https://www.pushplus.plus/send" \
-            -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"
