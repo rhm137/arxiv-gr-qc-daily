@@ -6,6 +6,11 @@ on:
     # which is 09:00 Beijing time (UTC+8)
     - cron: '0 1 * * 1-5'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
+    inputs:
+      date:
+        description: 'Override date (YYYY-MM-DD, e.g. 2026-07-02). Leave empty for yesterday.'
+        required: false
+        default: ''
 
 jobs:
   digest:
@@ -27,9 +32,15 @@ jobs:
       - name: Calculate date
         id: date
         run: |
-          # Get yesterday's date (UTC+8 = Beijing time)
-          YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
-          YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
+          # Use override date if provided, otherwise yesterday
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            OVERRIDE="${{ github.event.inputs.date }}"
+            YESTERDAY=$(echo "$OVERRIDE" | sed 's/-//g')
+            YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
+          else
+            YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
+            YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
+          fi
           echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
           echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
           echo "Date: $YESTERDAY ($YESTERDAY_DISPLAY)"
