@@ -107,6 +107,42 @@ jobs:
           echo "html_file=$HTML_FILE" >> $GITHUB_OUTPUT
         id: html
 
+      - name: Generate summary for push
+        if: steps.check.outputs.paper_count != '0'
+        run: |
+          python -c "
+          import json, re, os
+
+          with open('./outputs/all-papers.json', 'r', encoding='utf-8') as f:
+              papers = json.load(f)
+
+          primary = [p for p in papers if p.get('PrimaryCat') == 'gr-qc']
+          cross = [p for p in papers if p.get('PrimaryCat') != 'gr-qc']
+          ordered = primary + cross
+
+          def one_liner(s):
+              if not s: return ''
+              m = re.match(r'^(.*?[。；])', s)
+              return (m.group(1) if m else s[:60])[:80]
+
+          def esc(s):
+              return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
+
+          lines = [f'<h3>arXiv gr-qc 日报 | ${{ steps.date.outputs.display_date }}</h3>']
+          lines.append(f'<p>共 <b>{len(ordered)}</b> 篇（gr-qc主分类 {len(primary)} + 交叉 {len(cross)}）<br>')
+          lines.append(f'<a href=\"https://github.com/\${{ github.repository }}/actions/runs/\${{ github.run_id }}\">查看完整 HTML 报告</a></p>')
+          lines.append('<hr>')
+
+          for i, p in enumerate(ordered, 1):
+              cn_title = esc(p.get('CN_Title', p.get('Title', '')))
+              onel = esc(one_liner(p.get('CN_Eval', '')).replace('研究问题', '速览', 1))
+              cross_tag = ' ↻' if p.get('PrimaryCat') != 'gr-qc' else ''
+              lines.append(f'<p><b>{i}.{cross_tag} {cn_title}</b><br><span style=\"color:#666\">{onel}</span></p>')
+
+          with open('./outputs/summary.html', 'w', encoding='utf-8') as f:
+              f.write(''.join(lines))
+          "
+
       - name: Clean up intermediate files
         if: steps.check.outputs.paper_count != '0'
         run: |
@@ -117,16 +153,12 @@ jobs:
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
-          DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
-          COUNT="${{ steps.check.outputs.paper_count }}"
-          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-
-          TITLE="arXiv gr-qc 日报 | ${DATE_DISPLAY}"
-          CONTENT="<h3>arXiv gr-qc 日报</h3><p><b>日期</b>：${DATE_DISPLAY}</p><p><b>论文总数</b>：${COUNT} 篇</p><p>HTML 报告已生成，前往 <a href='${RUN_URL}'>GitHub Actions</a> 下载。</p>"
+          CONTENT=$(cat ./outputs/summary.html)
+          TITLE="arXiv gr-qc | ${{ steps.date.outputs.display_date }}"
 
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":\"${CONTENT}\",\"template\":\"html\"}"
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\"}"
 
       - name: Upload HTML artifact
         if: success() && steps.check.outputs.paper_count != '0'
