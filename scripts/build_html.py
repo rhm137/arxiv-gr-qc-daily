@@ -212,10 +212,15 @@ body {
     color: var(--text-secondary);
     margin-bottom: 4px;
 }
+.paper-card .card-title-cn {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+}
 .paper-card .card-oneline {
     font-size: 13px;
     color: var(--text-secondary);
-    font-style: italic;
 }
 
 .paper-card .detail {
@@ -287,9 +292,10 @@ def one_liner(eval_text: str) -> str:
     if not eval_text:
         return ""
     m = re.match(r"^(.*?[。；])", eval_text)
-    if m:
-        return m.group(1)
-    return eval_text[:80] + "…"
+    result = m.group(1) if m else eval_text[:80] + "…"
+    # Replace "研究问题" with "速览" for the collapsed view
+    result = result.replace("研究问题", "速览", 1)
+    return result
 
 
 def format_authors(paper: dict, max_authors: int = 4) -> str:
@@ -373,6 +379,7 @@ def build_html(json_path: str, output_path: str, date_display: str) -> None:
     <div class="card-body">
         <div class="card-num">#{i}{cross_badge}  ·  {html_escape_safe(paper_id)}</div>
         <div class="card-title">{title}</div>
+        <div class="card-title-cn">{cn_title}</div>
         <div class="card-authors">{authors}</div>
         <div class="card-oneline">{oneline}</div>
     </div>
