@@ -173,6 +173,11 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\"}"
 
+          # Also push to topic group
+          curl -s -X POST "https://www.pushplus.plus/send" \
+            -H "Content-Type: application/json" \
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\",\"topic\":\"arxiv-gr-qc\"}"
+
       - name: Setup Pages
         if: steps.check.outputs.paper_count != '0'
         uses: actions/configure-pages@v5
@@ -193,6 +198,10 @@ jobs:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
           DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
+          MSG="arXiv gr-qc ${DATE_DISPLAY}：无新论文（可能为周末或节假日）"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"arXiv gr-qc ${DATE_DISPLAY}：无新论文（可能为周末或节假日）\"}"
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\"}"
+          curl -s -X POST "https://www.pushplus.plus/send" \
+            -H "Content-Type: application/json" \
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"
