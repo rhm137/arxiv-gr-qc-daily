@@ -1,0 +1,136 @@
+name: arXiv gr-qc Daily Digest
+
+on:
+  schedule:
+    # Runs at 01:00 UTC every weekday (Mon-Fri)
+    # which is 09:00 Beijing time (UTC+8)
+    - cron: '0 1 * * 1-5'
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install openai
+
+      - name: Calculate date
+        id: date
+        run: |
+          # Get yesterday's date (UTC+8 = Beijing time)
+          YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
+          YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
+          echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
+          echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
+          echo "Date: $YESTERDAY ($YESTERDAY_DISPLAY)"
+
+      - name: Fetch papers from arXiv
+        run: |
+          python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/
+        continue-on-error: true
+
+      - name: Check if papers exist
+        id: check
+        run: |
+          if [ -f "./outputs/all-papers.json" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('./outputs/all-papers.json'))))")
+            echo "paper_count=$COUNT" >> $GITHUB_OUTPUT
+            echo "Found $COUNT papers"
+          else
+            echo "paper_count=0" >> $GITHUB_OUTPUT
+            echo "No papers found"
+          fi
+
+      - name: Translate and evaluate (batch 1)
+        if: steps.check.outputs.paper_count != '0'
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 0
+
+      - name: Translate and evaluate (batch 2)
+        if: steps.check.outputs.paper_count != '0'
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          COUNT=${{ steps.check.outputs.paper_count }}
+          if [ "$COUNT" -gt 5 ]; then
+            python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 5
+          fi
+
+      - name: Translate and evaluate (batch 3)
+        if: steps.check.outputs.paper_count != '0'
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          COUNT=${{ steps.check.outputs.paper_count }}
+          if [ "$COUNT" -gt 10 ]; then
+            python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 10
+          fi
+
+      - name: Translate and evaluate (batch 4)
+        if: steps.check.outputs.paper_count != '0'
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          COUNT=${{ steps.check.outputs.paper_count }}
+          if [ "$COUNT" -gt 15 ]; then
+            python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 15
+          fi
+
+      - name: Generate HTML report
+        if: steps.check.outputs.paper_count != '0'
+        run: |
+          HTML_FILE="./outputs/arxiv-gr-qc-${{ steps.date.outputs.api_date }}.html"
+          python scripts/build_html.py ./outputs/all-papers.json "$HTML_FILE" "${{ steps.date.outputs.display_date }}"
+          echo "html_file=$HTML_FILE" >> $GITHUB_OUTPUT
+        id: html
+
+      - name: Clean up intermediate files
+        if: steps.check.outputs.paper_count != '0'
+        run: |
+          rm -f ./outputs/all-papers.json ./outputs/raw-data.xml
+
+      - name: Send PushPlus notification
+        if: success() && steps.check.outputs.paper_count != '0'
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: |
+          DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
+          COUNT="${{ steps.check.outputs.paper_count }}"
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          TITLE="arXiv gr-qc 日报 | ${DATE_DISPLAY}"
+          CONTENT="<h3>arXiv gr-qc 日报</h3><p><b>日期</b>：${DATE_DISPLAY}</p><p><b>论文总数</b>：${COUNT} 篇</p><p>HTML 报告已生成，前往 <a href='${RUN_URL}'>GitHub Actions</a> 下载。</p>"
+
+          curl -s -X POST "https://www.pushplus.plus/send" \
+            -H "Content-Type: application/json" \
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":\"${CONTENT}\",\"template\":\"html\"}"
+
+      - name: Upload HTML artifact
+        if: success() && steps.check.outputs.paper_count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: arxiv-gr-qc-${{ steps.date.outputs.api_date }}
+          path: ${{ steps.html.outputs.html_file }}
+          retention-days: 90
+
+      - name: No papers notification
+        if: steps.check.outputs.paper_count == '0'
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: |
+          DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
+          curl -s -X POST "https://www.pushplus.plus/send" \
+            -H "Content-Type: application/json" \
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"arXiv gr-qc ${DATE_DISPLAY}：无新论文（可能为周末或节假日）\"}"

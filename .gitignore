@@ -1,0 +1,5 @@
+outputs/*.json
+outputs/*.xml
+__pycache__/
+*.pyc
+.env
