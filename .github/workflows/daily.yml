@@ -1,9 +1,12 @@
 name: arXiv gr-qc Daily Digest
 
 on:
+  push:
+    paths:
+      - '.github/workflows/daily.yml'
   schedule:
-    # Runs at 01:00 UTC every day (09:00 Beijing time)
-    - cron: '0 1 * * *'
+    # Runs at 00:00 UTC every day (08:00 Beijing time)
+    - cron: '0 0 * * *'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
     inputs:
       date:
