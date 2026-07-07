@@ -18,11 +18,17 @@ Each paper is sent to the LLM with a structured prompt asking for:
 2. Chinese abstract translation
 3. ~300-character four-paragraph Chinese evaluation
 
+Includes automatic quality validation: detects untranslated content,
+missing evaluation sections, and malformed output. Failed papers
+are auto-retried with adjusted parameters. Flagged papers get a ⚠️
+marker in the output.
+
 The enriched JSON is written back in place.
 """
 
 import json
 import os
+import re
 import sys
 import time
 from argparse import ArgumentParser
@@ -56,6 +62,82 @@ Example output format:
 {{"cn_title": "中文标题", "cn_abstract": "中文摘要...", "cn_eval": "研究问题：...\\n\\n方法/框架：...\\n\\n主要发现：...\\n\\n评价与展望：..."}}
 """
 
+RETRY_PROMPT = """The previous translation attempt for this paper had quality issues. Please re-translate MORE CAREFULLY.
+
+- cn_title MUST be fully in Chinese (no English words except approved abbreviations: LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA, EGB)
+- cn_abstract MUST be >70% Chinese characters
+- cn_eval MUST contain all four markers: 研究问题, 方法/框架, 主要发现, 评价与展望
+
+## Paper Information
+
+- arXiv ID: {paper_id}
+- Title: {title}
+- Authors: {authors}
+- Abstract (English): {abstract}
+
+Output ONLY valid JSON. No excuses."""
+
+
+def validate_translation(result: dict) -> list[str]:
+    """Validate a translation result. Returns list of issues (empty = clean)."""
+    issues = []
+
+    cn_title = result.get("cn_title", "")
+    cn_abstract = result.get("cn_abstract", "")
+    cn_eval = result.get("cn_eval", "")
+
+    # 1. Title must not be empty or purely English
+    if not cn_title.strip():
+        issues.append("cn_title is empty")
+    else:
+        chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', cn_title))
+        english_words = len(re.findall(r'[a-zA-Z]{3,}', cn_title))
+        if chinese_chars < 2 and english_words > 3:
+            issues.append("cn_title appears to be mostly English")
+
+    # 2. Abstract must have sufficient Chinese content
+    if not cn_abstract.strip():
+        issues.append("cn_abstract is empty")
+    else:
+        total_chars = len(cn_abstract)
+        chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', cn_abstract))
+        if total_chars > 20 and chinese_chars / max(total_chars, 1) < 0.3:
+            issues.append(f"cn_abstract has low Chinese ratio ({chinese_chars}/{total_chars})")
+        if total_chars < 30:
+            issues.append("cn_abstract is too short")
+
+    # 3. Evaluation must contain all four required markers
+    for marker in ["研究问题", "方法", "主要发现", "评价"]:
+        if marker not in cn_eval:
+            issues.append(f"cn_eval missing marker: {marker}")
+
+    # 4. Evaluation must be substantial
+    if len(cn_eval) < 80:
+        issues.append("cn_eval is too short")
+
+    return issues
+
+
+def call_deepseek(client, model: str, prompt: str, temperature: float = 0.3) -> dict:
+    """Call DeepSeek API and parse JSON response."""
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": "You are a Chinese physicist. Always respond with valid JSON only."},
+            {"role": "user", "content": prompt},
+        ],
+        temperature=temperature,
+        max_tokens=2048,
+    )
+    content = response.choices[0].message.content.strip()
+
+    # Strip markdown code fences if present
+    if content.startswith("```"):
+        lines = content.split("\n")
+        content = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])
+
+    return json.loads(content)
+
 
 def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_size=None):
     from openai import OpenAI
@@ -72,6 +154,8 @@ def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_s
     batch_end = min(batch_start + batch_size, total)
     batch = papers[batch_start:batch_end]
 
+    flagged_count = 0
+
     print(f"Processing papers {batch_start+1}-{batch_end} of {total}...")
 
     for i, paper in enumerate(batch):
@@ -81,57 +165,56 @@ def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_s
         abstract = paper.get("Summary", "")
 
         prompt = PROMPT_TEMPLATE.format(
-            paper_id=paper_id,
-            title=title,
-            authors=authors,
-            abstract=abstract,
+            paper_id=paper_id, title=title, authors=authors, abstract=abstract,
         )
 
         idx = batch_start + i
-        print(f"  [{idx+1}/{total}] Translating {paper_id}: {title[:60]}...")
+        print(f"  [{idx+1}/{total}] {paper_id}: {title[:60]}...")
 
+        success = False
         for attempt in range(3):
             try:
-                response = client.chat.completions.create(
-                    model=model,
-                    messages=[
-                        {"role": "system", "content": "You are a Chinese physicist. Always respond with valid JSON only."},
-                        {"role": "user", "content": prompt},
-                    ],
-                    temperature=0.3,
-                    max_tokens=2048,
-                )
-                content = response.choices[0].message.content.strip()
+                temp = 0.3 if attempt == 0 else 0.5
+                result = call_deepseek(client, model, prompt, temperature=temp)
 
-                # Strip markdown code fences if present
-                if content.startswith("```"):
-                    lines = content.split("\n")
-                    content = "\n".join(lines[1:-1] if lines[-1] == "```" else lines[1:])
+                issues = validate_translation(result)
 
-                result = json.loads(content)
-                paper["CN_Title"] = result.get("cn_title", "")
-                paper["CN_Abstract"] = result.get("cn_abstract", "")
-                paper["CN_Eval"] = result.get("cn_eval", "")
-                print(f"    ✓ Done")
-                break
+                if not issues:
+                    paper["CN_Title"] = result.get("cn_title", "")
+                    paper["CN_Abstract"] = result.get("cn_abstract", "")
+                    paper["CN_Eval"] = result.get("cn_eval", "")
+                    print(f"    ✓ OK")
+                    success = True
+                    break
+                else:
+                    print(f"    ⚠ Quality issues ({', '.join(issues[:2])})")
+                    if attempt < 2:
+                        print(f"    ↻ Retrying with stricter prompt...")
+                        prompt = RETRY_PROMPT.format(
+                            paper_id=paper_id, title=title, authors=authors, abstract=abstract,
+                        )
 
             except json.JSONDecodeError as e:
-                print(f"    ⚠ JSON parse error (attempt {attempt+1}): {e}")
-                if attempt == 2:
-                    paper["CN_Title"] = title
-                    paper["CN_Abstract"] = abstract
-                    paper["CN_Eval"] = "翻译失败，请稍后重试。"
+                print(f"    ⚠ JSON parse error (attempt {attempt+1})")
+                if attempt < 2:
+                    prompt = RETRY_PROMPT.format(
+                        paper_id=paper_id, title=title, authors=authors, abstract=abstract,
+                    )
                 time.sleep(2)
 
             except Exception as e:
-                print(f"    ✗ API error (attempt {attempt+1}): {e}")
-                if attempt == 2:
-                    paper["CN_Title"] = title
-                    paper["CN_Abstract"] = abstract
-                    paper["CN_Eval"] = "API 调用失败，请检查 API Key 和网络。"
+                print(f"    ✗ API error (attempt {attempt+1}): {type(e).__name__}")
                 time.sleep(5)
 
-        # Rate limiting between papers
+        if not success:
+            # Fallback: use raw English
+            flagged_count += 1
+            paper["CN_Title"] = "⚠️ " + title
+            paper["CN_Abstract"] = abstract
+            paper["CN_Eval"] = "⚠️ 翻译校验未通过，请查看原文摘要。"
+            print(f"    ✗ Marked as flagged")
+
+        # Rate limiting
         if i < len(batch) - 1:
             time.sleep(1)
 
@@ -139,7 +222,8 @@ def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_s
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(papers, f, ensure_ascii=False, indent=2)
 
-    print(f"\nDone! {batch_end - batch_start} papers translated. Saved to {json_path}")
+    status = "OK" if flagged_count == 0 else f"{flagged_count} flagged"
+    print(f"\nDone! {batch_end - batch_start} papers ({status}). Saved to {json_path}")
 
 
 def main():
