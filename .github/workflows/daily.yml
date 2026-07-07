@@ -2,7 +2,7 @@ name: arXiv gr-qc Daily Digest
 
 on:
   schedule:
-    - cron: '00 00 * * *'
+    - cron: '00 04 * * *'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
     inputs:
       date:
