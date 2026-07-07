@@ -36,8 +36,9 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.date }}" ]; then
             OVERRIDE="${{ github.event.inputs.date }}"
-            YESTERDAY=$(echo "$OVERRIDE" | sed 's/-//g')
             YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
+            # Override date = listing date, so query the day before
+            YESTERDAY=$(TZ='Asia/Shanghai' date -d "$OVERRIDE -1 day" '+%Y%m%d')
           else
             # API query: yesterday (arXiv submitted date)
             YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
