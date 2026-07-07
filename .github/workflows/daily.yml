@@ -195,7 +195,7 @@ jobs:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
           DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
-          MSG="arXiv gr-qc ${DATE_DISPLAY}：上一个工作日的论文尚未更新"
+          MSG="arXiv gr-qc ${DATE_DISPLAY}：昨天没更新"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\"}"
