@@ -39,12 +39,14 @@ jobs:
             YESTERDAY=$(echo "$OVERRIDE" | sed 's/-//g')
             YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
           else
+            # API query: yesterday (arXiv submitted date)
             YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
-            YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y年%m月%d日')
+            # Display: today (arXiv listing date)
+            YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date '+%Y年%m月%d日')
           fi
           echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
           echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
-          echo "Date: $YESTERDAY ($YESTERDAY_DISPLAY)"
+          echo "Query: $YESTERDAY, Display: $YESTERDAY_DISPLAY"
 
       - name: Fetch papers from arXiv
         run: |
