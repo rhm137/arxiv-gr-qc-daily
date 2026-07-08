@@ -1,9 +1,7 @@
 name: arXiv gr-qc Daily Digest
 
 on:
-  schedule:
-    - cron: '00 04 * * *'
-  workflow_dispatch:  # Allow manual trigger from GitHub UI
+  workflow_dispatch:  # Triggered by cron-job.org or manual trigger from GitHub UI
     inputs:
       date:
         description: 'Override date (YYYY-MM-DD, e.g. 2026-07-02). Leave empty for yesterday.'
