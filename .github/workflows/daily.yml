@@ -47,8 +47,10 @@ jobs:
       # ── Fetch all categories ──
       - name: Fetch papers from arXiv (all categories)
         run: |
-          python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/
-        continue-on-error: true
+          python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/ 2>&1 || {
+            echo "::warning::fetch_papers.py failed — continuing with partial results"
+          }
+
 
       - name: Check summary
         id: check
@@ -69,13 +71,16 @@ jobs:
         run: |
           JSON="./outputs/gr-qc.json"
           if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>/dev/null || echo "0")
+            echo "gr-qc papers: $COUNT"
             for START in 0 5 10 15; do
               if [ "$START" -lt "$COUNT" ]; then
                 echo "gr-qc batch: $START-$((START+5)) of $COUNT"
-                python scripts/translate_cloud.py "$JSON" --category gr-qc --batch-size 5 --batch-start $START
+                python scripts/translate_cloud.py "$JSON" --category gr-qc --batch-size 5 --batch-start $START || exit 1
               fi
             done
+          else
+            echo "gr-qc: no JSON file, skipping"
           fi
 
       # ── Translate: hep-th ──
@@ -86,13 +91,16 @@ jobs:
         run: |
           JSON="./outputs/hep-th.json"
           if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>/dev/null || echo "0")
+            echo "hep-th papers: $COUNT"
             for START in 0 5 10 15; do
               if [ "$START" -lt "$COUNT" ]; then
                 echo "hep-th batch: $START-$((START+5)) of $COUNT"
-                python scripts/translate_cloud.py "$JSON" --category hep-th --batch-size 5 --batch-start $START
+                python scripts/translate_cloud.py "$JSON" --category hep-th --batch-size 5 --batch-start $START || exit 1
               fi
             done
+          else
+            echo "hep-th: no JSON file, skipping"
           fi
 
       # ── Translate: astro-ph ──
@@ -103,13 +111,16 @@ jobs:
         run: |
           JSON="./outputs/astro-ph.json"
           if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>/dev/null || echo "0")
+            echo "astro-ph papers: $COUNT"
             for START in 0 5 10 15; do
               if [ "$START" -lt "$COUNT" ]; then
                 echo "astro-ph batch: $START-$((START+5)) of $COUNT"
-                python scripts/translate_cloud.py "$JSON" --category astro-ph --batch-size 5 --batch-start $START
+                python scripts/translate_cloud.py "$JSON" --category astro-ph --batch-size 5 --batch-start $START || exit 1
               fi
             done
+          else
+            echo "astro-ph: no JSON file, skipping"
           fi
 
       # ── Build HTML: Hub ──
