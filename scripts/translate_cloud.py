@@ -5,6 +5,7 @@ Translate and evaluate arXiv papers using a cloud LLM API (DeepSeek).
 Usage:
     python translate_cloud.py <json_path> [--api-key KEY] [--model MODEL]
                               [--base-url URL] [--batch-size N]
+                              [--category CAT]
 
 Requires:
     pip install openai
@@ -34,20 +35,39 @@ import time
 from argparse import ArgumentParser
 
 
-PROMPT_TEMPLATE = """You are a Chinese physicist specializing in general relativity and quantum cosmology. Review the following arXiv paper and provide your response in Chinese.
+CATEGORY_PROMPTS = {
+    "gr-qc": {
+        "role": "a Chinese physicist specializing in general relativity and quantum cosmology",
+        "abbr": "LIGO, GW, BH, GR, QPO, ISCO, FLRW",
+    },
+    "hep-th": {
+        "role": "a Chinese theoretical physicist specializing in high energy physics and quantum field theory",
+        "abbr": "QFT, SUSY, CFT, AdS/CFT, S-matrix, EFT, RG, SM, BSM, SUGRA, TQFT",
+    },
+    "astro-ph": {
+        "role": "a Chinese astrophysicist specializing in astrophysics and cosmology",
+        "abbr": "SNe, CMB, BAO, LSS, ISM, AGN, SMBH, GW, GRB, FRB, DM, DE",
+    },
+}
+
+
+def build_prompt(category: str) -> str:
+    """Build the translation prompt template for a given category."""
+    info = CATEGORY_PROMPTS.get(category, CATEGORY_PROMPTS["gr-qc"])
+    return f"""You are {info['role']}. Review the following arXiv paper and provide your response in Chinese.
 
 ## Paper Information
 
-- arXiv ID: {paper_id}
-- Title: {title}
-- Authors: {authors}
-- Abstract (English): {abstract}
+- arXiv ID: {{paper_id}}
+- Title: {{title}}
+- Authors: {{authors}}
+- Abstract (English): {{abstract}}
 
 ## Instructions
 
 Provide the following three items in Chinese. Output ONLY valid JSON, no other text.
 
-1. "cn_title": Translate the title into Chinese. Preserve all technical abbreviations in English (e.g., LIGO, GW, BH, GR, QPO, ISCO, FLRW).
+1. "cn_title": Translate the title into Chinese. Preserve all technical abbreviations in English (e.g., {info['abbr']}).
 2. "cn_abstract": Full Chinese translation of the abstract. Use $...$ for all LaTeX math symbols.
 3. "cn_eval": A four-paragraph Chinese evaluation (~300 characters total):
 
@@ -62,18 +82,20 @@ Example output format:
 {{"cn_title": "中文标题", "cn_abstract": "中文摘要...", "cn_eval": "研究问题：...\\n\\n方法/框架：...\\n\\n主要发现：...\\n\\n评价与展望：..."}}
 """
 
-RETRY_PROMPT = """The previous translation attempt for this paper had quality issues. Please re-translate MORE CAREFULLY.
+RETRY_ABBR = "LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA, EGB, QFT, SUSY, CFT, EFT, RG, SUGRA, SNe, CMB, BAO, LSS, AGN, SMBH, GRB, FRB, DM, DE"
 
-- cn_title MUST be fully in Chinese (no English words except approved abbreviations: LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA, EGB)
+RETRY_PROMPT = f"""The previous translation attempt for this paper had quality issues. Please re-translate MORE CAREFULLY.
+
+- cn_title MUST be fully in Chinese (no English words except approved abbreviations: {RETRY_ABBR})
 - cn_abstract MUST be >70% Chinese characters
 - cn_eval MUST contain all four markers: 研究问题, 方法/框架, 主要发现, 评价与展望
 
 ## Paper Information
 
-- arXiv ID: {paper_id}
-- Title: {title}
-- Authors: {authors}
-- Abstract (English): {abstract}
+- arXiv ID: {{paper_id}}
+- Title: {{title}}
+- Authors: {{authors}}
+- Abstract (English): {{abstract}}
 
 Output ONLY valid JSON. No excuses."""
 
@@ -139,10 +161,11 @@ def call_deepseek(client, model: str, prompt: str, temperature: float = 0.3) -> 
     return json.loads(content)
 
 
-def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_size=None):
+def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batch_start=0, batch_size=None):
     from openai import OpenAI
 
     client = OpenAI(api_key=api_key, base_url=base_url)
+    prompt_tmpl = build_prompt(category)
 
     with open(json_path, "r", encoding="utf-8") as f:
         papers = json.load(f)
@@ -164,7 +187,7 @@ def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_s
         authors = paper.get("Authors", "Unknown")
         abstract = paper.get("Summary", "")
 
-        prompt = PROMPT_TEMPLATE.format(
+        prompt = prompt_tmpl.format(
             paper_id=paper_id, title=title, authors=authors, abstract=abstract,
         )
 
@@ -228,10 +251,13 @@ def translate_papers(json_path, api_key, base_url, model, batch_start=0, batch_s
 
 def main():
     parser = ArgumentParser(description="Translate arXiv papers using cloud LLM")
-    parser.add_argument("json_path", help="Path to all-papers.json")
+    parser.add_argument("json_path", help="Path to papers JSON file")
     parser.add_argument("--api-key", default=os.environ.get("DEEPSEEK_API_KEY", ""))
     parser.add_argument("--base-url", default=os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
     parser.add_argument("--model", default=os.environ.get("LLM_MODEL", "deepseek-chat"))
+    parser.add_argument("--category", default="gr-qc",
+                        choices=["gr-qc", "hep-th", "astro-ph"],
+                        help="arXiv category (default: gr-qc)")
     parser.add_argument("--batch-start", type=int, default=0, help="Start index (0-based)")
     parser.add_argument("--batch-size", type=int, default=None, help="Number of papers per run")
 
@@ -243,7 +269,7 @@ def main():
         sys.exit(1)
 
     translate_papers(args.json_path, args.api_key, args.base_url, args.model,
-                    args.batch_start, args.batch_size)
+                    args.category, args.batch_start, args.batch_size)
 
 
 if __name__ == "__main__":

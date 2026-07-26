@@ -1,43 +1,46 @@
 #!/usr/bin/env python3
 """
-Fetch arXiv gr-qc papers for a given date and parse to JSON.
+Fetch arXiv papers for multiple categories on a given date and parse to JSON.
 
 Usage:
-    python fetch_papers.py YYYYMMDD [output_dir]
+    python fetch_papers.py YYYYMMDD [output_dir] [--cats cat1 cat2 ...]
 
-    output_dir defaults to ~/arxiv/
+    output_dir defaults to ./outputs/
+    --cats defaults to gr-qc hep-th astro-ph
 
 The script:
-1. Queries arXiv API for gr-qc papers submitted on the given date.
+1. Queries arXiv API for each category's papers submitted on the given date.
 2. Parses the Atom XML response.
-3. Saves parsed papers as all-papers.json.
-4. Prints summary statistics.
+3. Saves parsed papers per category as {cat}.json.
+4. Saves a summary.json with per-category paper counts.
+5. Prints summary statistics.
 """
 
 import json
 import os
 import sys
+import time
 import xml.etree.ElementTree as ET
+from argparse import ArgumentParser
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 
 
 ARXIV_API = "http://export.arxiv.org/api/query"
 MAX_RESULTS = 100
-USER_AGENT = "WorkBuddy-arxiv-gr-qc-skill/1.0"
+USER_AGENT = "WorkBuddy-arxiv-multi-skill/1.0"
+
+CATEGORY_INFO = {
+    "gr-qc":    {"name": "引力与量子宇宙学", "cn_name": "广义相对论与量子宇宙学"},
+    "hep-th":   {"name": "高能理论物理",     "cn_name": "高能物理-理论"},
+    "astro-ph": {"name": "天体物理",         "cn_name": "天体物理学"},
+}
 
 
-def fetch_papers(date_str: str) -> str:
-    """Fetch raw XML from arXiv API for gr-qc on the given date.
-
-    Args:
-        date_str: Date in YYYYMMDD format.
-
-    Returns:
-        Raw XML string from arXiv API.
-    """
+def fetch_raw_xml(category: str, date_str: str) -> str:
+    """Fetch raw XML from arXiv API for a category on the given date."""
     query = (
-        f"cat:gr-qc+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
+        f"cat:{category}+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
     )
     url = (
         f"{ARXIV_API}?search_query={query}"
@@ -50,19 +53,12 @@ def fetch_papers(date_str: str) -> str:
         with urlopen(req, timeout=30) as resp:
             return resp.read().decode("utf-8")
     except URLError as e:
-        print(f"[ERROR] Failed to fetch from arXiv API: {e}", file=sys.stderr)
-        sys.exit(1)
+        print(f"[ERROR] Failed to fetch {category} from arXiv API: {e}", file=sys.stderr)
+        return ""
 
 
 def parse_xml(xml_text: str) -> list[dict]:
-    """Parse arXiv Atom XML into a list of paper dicts.
-
-    Args:
-        xml_text: Raw XML string from arXiv API.
-
-    Returns:
-        List of paper dictionaries.
-    """
+    """Parse arXiv Atom XML into a list of paper dicts."""
     ns = {
         "a": "http://www.w3.org/2005/Atom",
         "arxiv": "http://arxiv.org/schemas/atom",
@@ -116,60 +112,83 @@ def parse_xml(xml_text: str) -> list[dict]:
 
 
 def main():
-    if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} YYYYMMDD [output_dir]")
-        sys.exit(1)
+    parser = ArgumentParser(description="Fetch arXiv papers for multiple categories")
+    parser.add_argument("date", help="Date in YYYYMMDD format")
+    parser.add_argument("output_dir", nargs="?", default="./outputs/",
+                        help="Output directory (default: ./outputs/)")
+    parser.add_argument("--cats", nargs="+",
+                        default=["gr-qc", "hep-th", "astro-ph"],
+                        help="Categories to fetch (default: gr-qc hep-th astro-ph)")
 
-    date_str = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else os.path.expanduser("~/arxiv/")
+    args = parser.parse_args()
+    date_str = args.date
 
     if not date_str.isdigit() or len(date_str) != 8:
         print(f"[ERROR] Invalid date format: {date_str}. Expected YYYYMMDD.",
               file=sys.stderr)
         sys.exit(1)
 
-    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(args.output_dir, exist_ok=True)
+    summary = {}
 
-    print(f"Fetching arXiv gr-qc papers for date: {date_str}...")
-    xml_text = fetch_papers(date_str)
+    for cat in args.cats:
+        info = CATEGORY_INFO.get(cat, {"name": cat, "cn_name": cat})
+        print(f"\n{'='*60}")
+        print(f"Fetching arXiv {cat} ({info['cn_name']}) papers for {date_str}...")
 
-    # Save raw XML
-    xml_path = os.path.join(output_dir, "raw-data.xml")
-    with open(xml_path, "w", encoding="utf-8") as f:
-        f.write(xml_text)
-    print(f"  Raw XML saved to: {xml_path}")
+        xml_text = fetch_raw_xml(cat, date_str)
+        if not xml_text:
+            print(f"  [SKIP] No response for {cat}")
+            summary[cat] = 0
+            continue
 
-    # Parse
-    papers = parse_xml(xml_text)
-    print(f"  Parsed {len(papers)} papers from XML.")
+        # Save raw XML
+        xml_path = os.path.join(args.output_dir, f"{cat}-raw.xml")
+        with open(xml_path, "w", encoding="utf-8") as f:
+            f.write(xml_text)
 
-    if not papers:
-        print("[WARN] No papers found for this date. The arXiv listing may not "
-              "be available yet (usually updates around 00:00 UTC).")
-        sys.exit(0)
+        papers = parse_xml(xml_text)
+        print(f"  Parsed {len(papers)} papers.")
 
-    # Statistics
-    primary = [p for p in papers if p["PrimaryCat"] == "gr-qc"]
-    cross = [p for p in papers if p["PrimaryCat"] != "gr-qc"]
+        # Statistics
+        primary = [p for p in papers if p["PrimaryCat"] == cat]
+        cross = [p for p in papers if p["PrimaryCat"] != cat]
 
-    cross_cats = {}
-    for p in cross:
-        c = p["PrimaryCat"]
-        cross_cats[c] = cross_cats.get(c, 0) + 1
+        cross_cats = {}
+        for p in cross:
+            c = p["PrimaryCat"]
+            cross_cats[c] = cross_cats.get(c, 0) + 1
 
-    print(f"\n  Summary:")
-    print(f"    Total papers: {len(papers)}")
-    print(f"    Primary (gr-qc): {len(primary)}")
-    print(f"    Cross-listed: {len(cross)}")
-    if cross_cats:
-        for cat, count in sorted(cross_cats.items(), key=lambda x: -x[1]):
-            print(f"      - {cat}: {count}")
+        print(f"  Primary ({cat}): {len(primary)}, Cross-listed: {len(cross)}")
+        if cross_cats:
+            for c, count in sorted(cross_cats.items(), key=lambda x: -x[1]):
+                print(f"    - {c}: {count}")
 
-    # Save JSON
-    json_path = os.path.join(output_dir, "all-papers.json")
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(papers, f, ensure_ascii=False, indent=2)
-    print(f"\n  JSON saved to: {json_path}")
+        # Save per-category JSON
+        json_path = os.path.join(args.output_dir, f"{cat}.json")
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(papers, f, ensure_ascii=False, indent=2)
+        print(f"  JSON saved to: {json_path}")
+
+        summary[cat] = len(papers)
+
+        # Be nice to arXiv API
+        if cat != args.cats[-1]:
+            time.sleep(5)
+
+    # Save summary
+    summary_path = os.path.join(args.output_dir, "summary.json")
+    with open(summary_path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, ensure_ascii=False, indent=2)
+
+    print(f"\n{'='*60}")
+    print(f"Summary ({date_str}):")
+    total = sum(summary.values())
+    for cat in args.cats:
+        cat_name = CATEGORY_INFO.get(cat, {}).get("cn_name", cat)
+        print(f"  {cat} ({cat_name}): {summary[cat]} 篇")
+    print(f"  总计: {total} 篇")
+    print(f"  Saved to: {summary_path}")
 
 
 if __name__ == "__main__":

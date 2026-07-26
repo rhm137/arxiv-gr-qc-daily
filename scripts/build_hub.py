@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+"""
+Build a Hub HTML page that links to per-category arXiv daily digests.
+
+Usage:
+    python build_hub.py <summary_json> <output_html> <date_display>
+
+    summary_json  - Path to outputs/summary.json: {"gr-qc": 18, "hep-th": 25, "astro-ph": 0}
+    output_html   - Path to write the hub HTML.
+    date_display  - Date string, e.g. "2026年07月26日".
+"""
+
+import json
+import os
+import sys
+from argparse import ArgumentParser
+
+
+CATEGORY_INFO = {
+    "gr-qc": {
+        "badge": "arXiv gr-qc",
+        "title": "引力与量子宇宙学",
+        "emoji": "🌀",
+        "color": "#2563eb",
+        "desc": "广义相对论、量子引力、黑洞、引力波",
+    },
+    "hep-th": {
+        "badge": "arXiv hep-th",
+        "title": "高能理论物理",
+        "emoji": "⚛️",
+        "color": "#7c3aed",
+        "desc": "量子场论、弦论、共形场论、超对称",
+    },
+    "astro-ph": {
+        "badge": "arXiv astro-ph",
+        "title": "天体物理学",
+        "emoji": "🌌",
+        "color": "#059669",
+        "desc": "宇宙学、恒星演化、星系形成、高能天体物理",
+    },
+}
+
+CSS = r"""
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg: #f8f9fa;
+    --text: #1a1a2e;
+    --text-secondary: #6b7280;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+.header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111;
+}
+.header .date {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.grid {
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    padding: 32px 28px;
+    flex: 1;
+    min-width: 260px;
+    max-width: 280px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.card .emoji {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+}
+.card .cat-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+.card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111;
+}
+.card .count {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.card .no-update {
+    font-size: 18px;
+    font-weight: 500;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+.card .desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.footer a { color: #2563eb; }
+"""
+
+
+def build_hub(summary_path: str, output_path: str, date_display: str) -> None:
+    with open(summary_path, "r", encoding="utf-8") as f:
+        summary = json.load(f)
+
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+
+    cards_html = []
+    today = date_display.replace("年", "").replace("月", "").replace("日", "")
+    # If display_date has Chinese format, keep the date for URL construction
+    date_iso = today  # e.g. "20260726"
+
+    categories = ["gr-qc", "hep-th", "astro-ph"]
+    for cat in categories:
+        info = CATEGORY_INFO.get(cat, CATEGORY_INFO["gr-qc"])
+        count = summary.get(cat, 0)
+
+        if count > 0:
+            count_html = f'<div class="count" style="color:{info["color"]}">{count} 篇</div>'
+            link = f'<a href="{cat}-latest.html" class="card">'
+        else:
+            count_html = '<div class="no-update">没更新</div>'
+            link = '<div class="card" style="cursor:default">'
+
+        cards_html.append(f"""{link}
+            <span class="emoji">{info['emoji']}</span>
+            <span class="cat-badge" style="background:{info['color']}">{info['badge']}</span>
+            <h2>{info['title']}</h2>
+            {count_html}
+            <p class="desc">{info['desc']}</p>
+        {'</a>' if count > 0 else '</div>'}
+        """)
+
+    html = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv Daily Hub — {date_display}</title>
+<style>{CSS}</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>&#x1f4f0; arXiv 今日论文速览</h1>
+    <p class="date">{date_display}</p>
+</div>
+
+<div class="grid">
+    {''.join(cards_html)}
+</div>
+
+<div class="footer">
+    Generated by WorkBuddy · {date_display}
+    · Data from <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+</body>
+</html>"""
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"Hub HTML saved to: {output_path}")
+
+
+if __name__ == "__main__":
+    parser = ArgumentParser(description="Build arXiv Daily Hub HTML")
+    parser.add_argument("summary_json", help="Path to summary.json")
+    parser.add_argument("output_html", help="Output HTML path")
+    parser.add_argument("date_display", help="Date display, e.g. '2026年07月26日'")
+
+    args = parser.parse_args()
+    build_hub(args.summary_json, args.output_html, args.date_display)

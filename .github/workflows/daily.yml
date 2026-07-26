@@ -1,4 +1,4 @@
-name: arXiv gr-qc Daily Digest
+name: arXiv Multi-Category Daily Digest
 
 on:
   workflow_dispatch:  # Triggered by cron-job.org or manual trigger from GitHub UI
@@ -11,7 +11,7 @@ on:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: read
       pages: write
@@ -35,171 +35,253 @@ jobs:
           if [ -n "${{ github.event.inputs.date }}" ]; then
             OVERRIDE="${{ github.event.inputs.date }}"
             YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
-            # Override date = listing date, so query the day before
             YESTERDAY=$(TZ='Asia/Shanghai' date -d "$OVERRIDE -1 day" '+%Y%m%d')
           else
-            # API query: yesterday (arXiv submitted date)
             YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
-            # Display: today (arXiv listing date)
             YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date '+%Y年%m月%d日')
           fi
           echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
           echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
           echo "Query: $YESTERDAY, Display: $YESTERDAY_DISPLAY"
 
-      - name: Fetch papers from arXiv
+      # ── Fetch all categories ──
+      - name: Fetch papers from arXiv (all categories)
         run: |
           python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/
         continue-on-error: true
 
-      - name: Check if papers exist
+      - name: Check summary
         id: check
         run: |
-          if [ -f "./outputs/all-papers.json" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('./outputs/all-papers.json'))))")
-            echo "paper_count=$COUNT" >> $GITHUB_OUTPUT
-            echo "Found $COUNT papers"
+          if [ -f "./outputs/summary.json" ]; then
+            echo "has_summary=true" >> $GITHUB_OUTPUT
+            cat ./outputs/summary.json
           else
-            echo "paper_count=0" >> $GITHUB_OUTPUT
-            echo "No papers found"
+            echo "has_summary=false" >> $GITHUB_OUTPUT
+            echo "No summary.json found"
           fi
 
-      - name: Translate and evaluate (batch 1)
-        if: steps.check.outputs.paper_count != '0'
+      # ── Translate: gr-qc ──
+      - name: Translate gr-qc
+        if: steps.check.outputs.has_summary == 'true'
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 0
+          JSON="./outputs/gr-qc.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            for START in 0 5 10 15; do
+              if [ "$START" -lt "$COUNT" ]; then
+                echo "gr-qc batch: $START-$((START+5)) of $COUNT"
+                python scripts/translate_cloud.py "$JSON" --category gr-qc --batch-size 5 --batch-start $START
+              fi
+            done
+          fi
 
-      - name: Translate and evaluate (batch 2)
-        if: steps.check.outputs.paper_count != '0'
+      # ── Translate: hep-th ──
+      - name: Translate hep-th
+        if: steps.check.outputs.has_summary == 'true'
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          COUNT=${{ steps.check.outputs.paper_count }}
-          if [ "$COUNT" -gt 5 ]; then
-            python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 5
+          JSON="./outputs/hep-th.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            for START in 0 5 10 15; do
+              if [ "$START" -lt "$COUNT" ]; then
+                echo "hep-th batch: $START-$((START+5)) of $COUNT"
+                python scripts/translate_cloud.py "$JSON" --category hep-th --batch-size 5 --batch-start $START
+              fi
+            done
           fi
 
-      - name: Translate and evaluate (batch 3)
-        if: steps.check.outputs.paper_count != '0'
+      # ── Translate: astro-ph ──
+      - name: Translate astro-ph
+        if: steps.check.outputs.has_summary == 'true'
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          COUNT=${{ steps.check.outputs.paper_count }}
-          if [ "$COUNT" -gt 10 ]; then
-            python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 10
+          JSON="./outputs/astro-ph.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            for START in 0 5 10 15; do
+              if [ "$START" -lt "$COUNT" ]; then
+                echo "astro-ph batch: $START-$((START+5)) of $COUNT"
+                python scripts/translate_cloud.py "$JSON" --category astro-ph --batch-size 5 --batch-start $START
+              fi
+            done
           fi
 
-      - name: Translate and evaluate (batch 4)
-        if: steps.check.outputs.paper_count != '0'
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      # ── Build HTML: Hub ──
+      - name: Build Hub HTML
+        if: steps.check.outputs.has_summary == 'true'
         run: |
-          COUNT=${{ steps.check.outputs.paper_count }}
-          if [ "$COUNT" -gt 15 ]; then
-            python scripts/translate_cloud.py ./outputs/all-papers.json --batch-size 5 --batch-start 15
-          fi
-
-      - name: Generate HTML report
-        if: steps.check.outputs.paper_count != '0'
-        run: |
-          HTML_FILE="./outputs-public/arxiv-gr-qc-${{ steps.date.outputs.api_date }}.html"
           mkdir -p ./outputs-public
-          python scripts/build_html.py ./outputs/all-papers.json "$HTML_FILE" "${{ steps.date.outputs.display_date }}"
-          # Always update latest.html
-          cp "$HTML_FILE" ./outputs-public/latest.html
-          echo "html_file=$HTML_FILE" >> $GITHUB_OUTPUT
-        id: html
+          python scripts/build_hub.py \
+            ./outputs/summary.json \
+            ./outputs-public/latest.html \
+            "${{ steps.date.outputs.display_date }}"
 
-      - name: Generate summary for push
-        if: steps.check.outputs.paper_count != '0'
-        env:
-          PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
-          DATE_DISPLAY: ${{ steps.date.outputs.display_date }}
+      # ── Build HTML: per category ──
+      - name: Build gr-qc HTML
+        if: steps.check.outputs.has_summary == 'true'
         run: |
-          python -c "
-          import json, re, os
+          JSON="./outputs/gr-qc.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            if [ "$COUNT" -gt 0 ]; then
+              HTML="./outputs-public/arxiv-gr-qc-${{ steps.date.outputs.api_date }}.html"
+              python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category gr-qc
+              cp "$HTML" "./outputs-public/gr-qc-latest.html"
+            else
+              echo "gr-qc: 0 papers, skipping HTML"
+            fi
+          fi
 
-          with open('./outputs/all-papers.json', 'r', encoding='utf-8') as f:
-              papers = json.load(f)
-
-          primary = [p for p in papers if p.get('PrimaryCat') == 'gr-qc']
-          cross = [p for p in papers if p.get('PrimaryCat') != 'gr-qc']
-          ordered = primary + cross
-
-          def one_liner(s):
-              if not s: return ''
-              m = re.match(r'^(.*?[。；])', s)
-              return (m.group(1) if m else s[:60])[:80]
-
-          def esc(s):
-              return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
-
-          page_url = os.environ.get('PAGE_URL', '#')
-          date_display = os.environ.get('DATE_DISPLAY', '')
-
-          lines = [f'<h3>arXiv gr-qc 日报 | {date_display}</h3>']
-          lines.append(f'<p>共 <b>{len(ordered)}</b> 篇（gr-qc主分类 {len(primary)} + 交叉 {len(cross)}）<br>')
-          lines.append(f'<a href=\"{page_url}\">查看完整 HTML 报告（含公式和详细评价）</a></p>')
-          lines.append('<hr>')
-
-          for i, p in enumerate(ordered, 1):
-              cn_title = esc(p.get('CN_Title', p.get('Title', '')))
-              onel = esc(one_liner(p.get('CN_Eval', '')).replace('研究问题', '速览', 1))
-              cross_tag = ' ↻' if p.get('PrimaryCat') != 'gr-qc' else ''
-              lines.append(f'<p><b>{i}.{cross_tag} {cn_title}</b><br><span style=\"color:#666\">{onel}</span></p>')
-
-          with open('./outputs/summary.html', 'w', encoding='utf-8') as f:
-              f.write(''.join(lines))
-          "
-
-      - name: Clean up intermediate files
-        if: steps.check.outputs.paper_count != '0'
+      - name: Build hep-th HTML
+        if: steps.check.outputs.has_summary == 'true'
         run: |
-          rm -f ./outputs/all-papers.json ./outputs/raw-data.xml
+          JSON="./outputs/hep-th.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            if [ "$COUNT" -gt 0 ]; then
+              HTML="./outputs-public/arxiv-hep-th-${{ steps.date.outputs.api_date }}.html"
+              python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category hep-th
+              cp "$HTML" "./outputs-public/hep-th-latest.html"
+            else
+              echo "hep-th: 0 papers, skipping HTML"
+            fi
+          fi
 
+      - name: Build astro-ph HTML
+        if: steps.check.outputs.has_summary == 'true'
+        run: |
+          JSON="./outputs/astro-ph.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
+            if [ "$COUNT" -gt 0 ]; then
+              HTML="./outputs-public/arxiv-astro-ph-${{ steps.date.outputs.api_date }}.html"
+              python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category astro-ph
+              cp "$HTML" "./outputs-public/astro-ph-latest.html"
+            else
+              echo "astro-ph: 0 papers, skipping HTML"
+            fi
+          fi
+
+      # ── PushPlus notification ──
       - name: Send PushPlus notification
-        if: success() && steps.check.outputs.paper_count != '0'
+        if: success() && steps.check.outputs.has_summary == 'true'
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          DATE_DISPLAY: ${{ steps.date.outputs.display_date }}
+          PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
         run: |
-          CONTENT=$(cat ./outputs/summary.html)
-          TITLE="arXiv gr-qc | ${{ steps.date.outputs.display_date }}"
+          python << 'PYEOF'
+          import json, os
 
-          curl -s -X POST "https://www.pushplus.plus/send" \
-            -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\"}"
+          with open('./outputs/summary.json', 'r') as f:
+              summary = json.load(f)
 
-          # Also push to topic group
-          curl -s -X POST "https://www.pushplus.plus/send" \
-            -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"${TITLE}\",\"content\":$(echo "$CONTENT" | python -c "import sys,json; print(json.dumps(sys.stdin.read()))"),\"template\":\"html\",\"topic\":\"arxiv-gr-qc\"}"
+          cat_config = [
+              ('gr-qc',    '\U0001f300', '#2563eb', 'gr-qc-latest.html', '\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66'),
+              ('hep-th',   '\u269b\ufe0f', '#7c3aed', 'hep-th-latest.html', '\u9ad8\u80fd\u7406\u8bba\u7269\u7406'),
+              ('astro-ph', '\U0001f52d', '#059669', 'astro-ph-latest.html', '\u5929\u4f53\u7269\u7406\u5b66'),
+          ]
 
+          base = os.environ.get('PAGE_URL', '#')
+          date_display = os.environ.get('DATE_DISPLAY', '')
+
+          lines = ['<h3>\U0001f4f0 arXiv \u4eca\u65e5\u8bba\u6587\u901f\u89c8 | %s</h3>' % date_display]
+          lines.append('<p><a href="%s">\U0001f517 \u67e5\u770b Hub \u5bfc\u822a\u9875</a></p>' % base)
+          lines.append('<hr>')
+
+          for cat, emoji, color, page, name in cat_config:
+              count = summary.get(cat, 0)
+              url = base.replace('latest.html', page)
+              if count > 0:
+                  lines.append(
+                      '<p style="font-size:16px;margin:8px 0">'
+                      '<a href="%s" style="color:%s;text-decoration:none;font-weight:600">'
+                      '%s %s\uff08%s\uff09\uff1a%d \u7bc7</a></p>'
+                      % (url, color, emoji, name, cat, count)
+                  )
+              else:
+                  lines.append(
+                      '<p style="font-size:16px;margin:8px 0;color:#9ca3af">'
+                      '%s %s\uff08%s\uff09\uff1a\u6ca1\u66f4\u65b0</p>'
+                      % (emoji, name, cat)
+                  )
+
+          lines.append('<hr>')
+          lines.append(
+              '<p style="color:#999;font-size:12px">'
+              '\u6bcf\u65e5 12:00 \u81ea\u52a8\u63a8\u9001 &middot; '
+              '<a href="%s">\u67e5\u770b\u5b8c\u6574\u62a5\u544a</a></p>' % base
+          )
+
+          content = ''.join(lines)
+          title = 'arXiv Daily | %s' % date_display
+
+          import subprocess
+
+          token = os.environ.get('PUSHPLUS_TOKEN', '')
+
+          # Personal push
+          subprocess.run([
+              'curl', '-s', '-X', 'POST',
+              'https://www.pushplus.plus/send',
+              '-H', 'Content-Type: application/json',
+              '-d', json.dumps({
+                  'token': token,
+                  'title': title,
+                  'content': content,
+                  'template': 'html'
+              })
+          ], check=False)
+
+          # Topic group push
+          subprocess.run([
+              'curl', '-s', '-X', 'POST',
+              'https://www.pushplus.plus/send',
+              '-H', 'Content-Type: application/json',
+              '-d', json.dumps({
+                  'token': token,
+                  'title': title,
+                  'content': content,
+                  'template': 'html',
+                  'topic': 'arxiv-gr-qc'
+              })
+          ], check=False)
+
+          print('PushPlus notifications sent.')
+          PYEOF
+
+      # ── GitHub Pages ──
       - name: Setup Pages
-        if: steps.check.outputs.paper_count != '0'
+        if: steps.check.outputs.has_summary == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
-        if: steps.check.outputs.paper_count != '0'
+        if: steps.check.outputs.has_summary == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./outputs-public
 
       - name: Deploy to GitHub Pages
-        if: steps.check.outputs.paper_count != '0'
+        if: steps.check.outputs.has_summary == 'true'
         uses: actions/deploy-pages@v4
 
+      # ── No papers (fallback) ──
       - name: No papers notification
-        if: steps.check.outputs.paper_count == '0'
+        if: steps.check.outputs.has_summary == 'false'
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
           DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
-          MSG="arXiv gr-qc ${DATE_DISPLAY}：没更新"
+          MSG="arXiv Daily ${DATE_DISPLAY}：所有分区均无更新"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\"}"
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily | ${DATE_DISPLAY}\",\"content\":\"${MSG}\"}"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv gr-qc | ${DATE_DISPLAY}\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily | ${DATE_DISPLAY}\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"

@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Build a self-contained HTML report from arXiv gr-qc paper data.
+Build a self-contained HTML report from arXiv paper data for a given category.
 
 Usage:
-    python build_html.py <json_path> <output_html> <date_display>
+    python build_html.py <json_path> <output_html> <date_display> [--category CAT]
 
-    json_path   - Path to all-papers.json (with CN_Title, CN_Abstract, CN_Eval).
-    output_html - Path to write the final HTML.
-    date_display - Date string for display, e.g. "2026年06月29日".
+    json_path     - Path to {cat}.json (with CN_Title, CN_Abstract, CN_Eval).
+    output_html   - Path to write the final HTML.
+    date_display  - Date string for display, e.g. "2026年06月29日".
+    --category    - arXiv category (gr-qc, hep-th, astro-ph). Default: gr-qc.
 
 The HTML includes:
 - Cover page with statistics
@@ -20,6 +21,34 @@ import json
 import os
 import re
 import sys
+from argparse import ArgumentParser
+
+
+# ── Category display info ─────────────────────────────────────────────────
+
+CATEGORY_META = {
+    "gr-qc": {
+        "badge": "arXiv gr-qc",
+        "title": "引力与量子宇宙学",
+        "subtitle": "General Relativity &amp; Quantum Cosmology",
+        "label_primary": "主分类 gr-qc",
+        "label_cross": "交叉列表",
+    },
+    "hep-th": {
+        "badge": "arXiv hep-th",
+        "title": "高能理论物理",
+        "subtitle": "High Energy Physics &ndash; Theory",
+        "label_primary": "主分类 hep-th",
+        "label_cross": "交叉列表",
+    },
+    "astro-ph": {
+        "badge": "arXiv astro-ph",
+        "title": "天体物理学",
+        "subtitle": "Astrophysics",
+        "label_primary": "主分类 astro-ph",
+        "label_cross": "交叉列表",
+    },
+}
 
 
 # ── CSS (inline, self-contained) ───────────────────────────────────────────
@@ -309,10 +338,11 @@ def format_authors(paper: dict, max_authors: int = 4) -> str:
 
 # ── Main ────────────────────────────────────────────────────────────────────
 
-def build_html(json_path: str, output_path: str, date_display: str) -> None:
+def build_html(json_path: str, output_path: str, date_display: str, category: str = "gr-qc") -> None:
     """Read JSON, build HTML, write to output_path."""
     json_path = os.path.expanduser(json_path)
     output_path = os.path.expanduser(output_path)
+    meta = CATEGORY_META.get(category, CATEGORY_META["gr-qc"])
 
     with open(json_path, "r", encoding="utf-8-sig") as f:
         papers = json.load(f)
@@ -321,9 +351,9 @@ def build_html(json_path: str, output_path: str, date_display: str) -> None:
         print("[ERROR] No papers in JSON file.", file=sys.stderr)
         sys.exit(1)
 
-    # Sort: primary (gr-qc) first, then cross-listed
-    primary = [p for p in papers if p.get("PrimaryCat") == "gr-qc"]
-    cross = [p for p in papers if p.get("PrimaryCat") != "gr-qc"]
+    # Sort: primary (this category) first, then cross-listed
+    primary = [p for p in papers if p.get("PrimaryCat") == category]
+    cross = [p for p in papers if p.get("PrimaryCat") != category]
     papers_ordered = primary + cross
     pc = len(primary)
 
@@ -345,7 +375,7 @@ def build_html(json_path: str, output_path: str, date_display: str) -> None:
     toc_items = []
     for i, p in enumerate(papers_ordered, 1):
         cn_title = p.get("CN_Title", p.get("Title", ""))
-        is_cross = p.get("PrimaryCat") != "gr-qc"
+        is_cross = p.get("PrimaryCat") != category
         cross_tag = ""
         if is_cross:
             cat = p.get("PrimaryCat", "")
@@ -367,7 +397,7 @@ def build_html(json_path: str, output_path: str, date_display: str) -> None:
         authors = html_escape_safe(format_authors(p))
         oneline = html_escape_safe(one_liner(p.get("CN_Eval", "")))
         paper_id = p.get("ID", "")
-        is_cross = p.get("PrimaryCat") != "gr-qc"
+        is_cross = p.get("PrimaryCat") != category
         cross_badge = (
             f' [交叉: {html_escape_safe(p.get("PrimaryCat", ""))}]'
             if is_cross else ""
@@ -404,7 +434,7 @@ def build_html(json_path: str, output_path: str, date_display: str) -> None:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arXiv gr-qc — {date_display}</title>
+<title>{meta['badge']} — {date_display}</title>
 <style>{CSS}</style>
 <script>
 window.MathJax = {{
@@ -437,8 +467,8 @@ window.MathJax = {{
 
 <!-- ── Cover ── -->
 <div class="cover">
-    <div class="badge">arXiv gr-qc</div>
-    <h1>引力与量子宇宙学</h1>
+    <div class="badge">{meta['badge']}</div>
+    <h1>{meta['title']}</h1>
     <p class="date">{date_display}</p>
     <div class="stats">
         <div class="stat-card">
@@ -447,11 +477,11 @@ window.MathJax = {{
         </div>
         <div class="stat-card">
             <div class="num">{pc}</div>
-            <div class="label">主分类 gr-qc</div>
+            <div class="label">{meta['label_primary']}</div>
         </div>
         <div class="stat-card">
             <div class="num">{len(cross)}</div>
-            <div class="label">交叉列表</div>
+            <div class="label">{meta['label_cross']}</div>
         </div>
     </div>
     {f'<p style="margin-top:20px;font-size:14px;color:var(--text-secondary);">交叉来源：{cross_list_str}</p>' if cross_list_str else ''}
@@ -472,7 +502,7 @@ window.MathJax = {{
 
 <!-- ── Footer ── -->
 <div class="footer">
-    Generated by WorkBuddy · arXiv gr-qc Skill · {date_display}
+    Generated by WorkBuddy · <a href="index.html">arXiv Daily Hub</a> · {date_display}
     · Data from <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
 </div>
 
@@ -487,10 +517,13 @@ window.MathJax = {{
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
-        print(f"Usage: {sys.argv[0]} <json_path> <output_html> <date_display>")
-        print(f"Example: {sys.argv[0]} ~/arxiv/all-papers.json "
-              f"~/arxiv/arxiv-gr-qc-2026-06-29.html '2026年06月29日'")
-        sys.exit(1)
+    parser = ArgumentParser(description="Build HTML report for arXiv papers")
+    parser.add_argument("json_path", help="Path to {cat}.json")
+    parser.add_argument("output_html", help="Output HTML path")
+    parser.add_argument("date_display", help="Date display string, e.g. '2026年07月26日'")
+    parser.add_argument("--category", default="gr-qc",
+                        choices=["gr-qc", "hep-th", "astro-ph"],
+                        help="arXiv category (default: gr-qc)")
 
-    build_html(sys.argv[1], sys.argv[2], sys.argv[3])
+    args = parser.parse_args()
+    build_html(args.json_path, args.output_html, args.date_display, args.category)
