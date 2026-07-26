@@ -78,8 +78,7 @@ Paragraph 4 — 评价与展望: Significance and outlook. (2-3 sentences)
 
 CRITICAL: All LaTeX math MUST be wrapped in $...$. Output ONLY the JSON, nothing else.
 
-Example output format:
-{{"cn_title": "中文标题", "cn_abstract": "中文摘要...", "cn_eval": "研究问题：...\\n\\n方法/框架：...\\n\\n主要发现：...\\n\\n评价与展望：..."}}
+The JSON object must contain three keys: cn_title, cn_abstract, cn_eval.
 """
 
 RETRY_ABBR = "LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA, EGB, QFT, SUSY, CFT, EFT, RG, SUGRA, SNe, CMB, BAO, LSS, AGN, SMBH, GRB, FRB, DM, DE"
