@@ -73,30 +73,55 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
+          set +e  # don't abort on failure, we handle errors manually
+          LOG="./outputs-public/translate-log.txt"
+          mkdir -p ./outputs-public
+          exec > >(tee -a "$LOG") 2>&1  # capture all output to log
+
           echo "=== Python version ==="
           python --version
-          echo "=== Script import check ==="
-          python -c "import sys; sys.path.insert(0,'scripts'); from translate_cloud import build_prompt; print('Import OK')" 2>&1
+
+          echo "=== Import check ==="
+          python -c "import sys; sys.path.insert(0,'scripts'); from translate_cloud import build_prompt; print('Import OK: gr-qc prompt length', len(build_prompt('gr-qc')))" 2>&1
+          IMPORT_OK=$?
+          echo "Import check exit code: $IMPORT_OK"
+
+          echo "=== Paper counts ==="
+          for CAT in gr-qc hep-th astro-ph; do
+            JSON="./outputs/${CAT}.json"
+            if [ -f "$JSON" ]; then
+              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
+              echo "$CAT: $COUNT papers"
+            else
+              echo "$CAT: no JSON file"
+            fi
+          done
+
           echo "=== Starting translations ==="
           for CAT in gr-qc hep-th astro-ph; do
             JSON="./outputs/${CAT}.json"
             echo "--- $CAT ---"
             if [ -f "$JSON" ]; then
-              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1 || echo "ERR")
-              echo "$CAT papers: $COUNT"
+              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
+              echo "$CAT papers count: $COUNT"
               if [ "$COUNT" -gt 0 ] 2>/dev/null; then
                 for START in 0 5 10 15; do
                   if [ "$START" -lt "$COUNT" ] 2>/dev/null; then
-                    echo "  batch $START-$((START+5)) of $COUNT"
-                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 5 --batch-start $START 2>&1 || {
-                      echo "::warning::translate $CAT batch $START failed, marking as skipped"
+                    echo "  translating batch $START-$((START+5)) of $COUNT"
+                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 5 --batch-start $START 2>&1
+                    T_EXIT=$?
+                    echo "  batch exit code: $T_EXIT"
+                    if [ $T_EXIT -ne 0 ]; then
+                      echo "::warning::translate $CAT batch $START failed (exit=$T_EXIT)"
                       break
-                    }
+                    fi
                   fi
                 done
+              else
+                echo "$CAT: 0 papers, skipping translation"
               fi
             else
-              echo "$CAT: no JSON file"
+              echo "$CAT: no JSON, skipping"
             fi
           done
           echo "=== Translations done ==="
