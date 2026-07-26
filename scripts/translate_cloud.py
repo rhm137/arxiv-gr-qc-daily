@@ -240,7 +240,7 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
 
         # Rate limiting
         if i < len(batch) - 1:
-            time.sleep(3)
+            time.sleep(5)
 
     # Save enriched JSON
     with open(json_path, "w", encoding="utf-8") as f:

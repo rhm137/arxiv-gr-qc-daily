@@ -11,7 +11,7 @@ on:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     permissions:
       contents: read
       pages: write
@@ -98,6 +98,7 @@ jobs:
           done
 
           echo "=== Starting translations ==="
+          CAT_INDEX=0
           for CAT in gr-qc hep-th astro-ph; do
             JSON="./outputs/${CAT}.json"
             echo "--- $CAT ---"
@@ -105,15 +106,14 @@ jobs:
               COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
               echo "$CAT papers count: $COUNT"
               if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-                for START in 0 5 10 15; do
+                for START in 0 3 6 9 12 15; do
                   if [ "$START" -lt "$COUNT" ] 2>/dev/null; then
-                    echo "  translating batch $START-$((START+5)) of $COUNT"
-                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 5 --batch-start $START 2>&1
+                    echo "  translating batch $START-$((START+3)) of $COUNT"
+                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 3 --batch-start $START 2>&1
                     T_EXIT=$?
                     echo "  batch exit code: $T_EXIT"
                     if [ $T_EXIT -ne 0 ]; then
                       echo "::warning::translate $CAT batch $START failed (exit=$T_EXIT)"
-                      break
                     fi
                   fi
                 done
@@ -123,6 +123,12 @@ jobs:
             else
               echo "$CAT: no JSON, skipping"
             fi
+            # Wait between categories to avoid rate limits
+            if [ $CAT_INDEX -lt 2 ]; then
+              echo "Waiting 60s before next category..."
+              sleep 60
+            fi
+            CAT_INDEX=$((CAT_INDEX + 1))
           done
           echo "=== Translations done ==="
 
