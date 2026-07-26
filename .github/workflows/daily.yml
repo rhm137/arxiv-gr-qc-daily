@@ -11,7 +11,7 @@ on:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     permissions:
       contents: read
       pages: write
@@ -65,62 +65,59 @@ jobs:
             echo "No summary.json found"
           fi
 
-      # ── Translate all categories (one unified step, never fails) ──
-      - name: Translate all categories
-        id: translate
+      # ── Translate one category at a time, patiently ──
+      - name: Translate gr-qc
         if: steps.check.outputs.has_summary == 'true'
         continue-on-error: true
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          set +e
-          LOG="./outputs-public/translate-log.txt"
-          mkdir -p ./outputs-public
-
-          log() { echo "[$(date '+%H:%M:%S')] $*"; }
-
-          log "=== Py version ==="
-          python --version 2>&1 | tee "$LOG"
-
-          log "=== Import check ==="
-          python -c "import sys; sys.path.insert(0,'scripts'); from translate_cloud import build_prompt; print('OK')" 2>&1 | tee -a "$LOG"
-
-          log "=== Paper counts ===" | tee -a "$LOG"
-          for CAT in gr-qc hep-th astro-ph; do
-            JSON="./outputs/${CAT}.json"
-            if [ -f "$JSON" ]; then
-              python -c "import json; print(len(json.load(open('${JSON}'))))" 2>&1 | tee -a "$LOG" | xargs -I{} echo "$CAT: {} papers"
+          JSON="./outputs/gr-qc.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
+            if [ "$COUNT" -gt 0 ] 2>/dev/null; then
+              echo "Translating gr-qc: $COUNT papers"
+              python scripts/translate_cloud.py "$JSON" --category gr-qc 2>&1
+            else
+              echo "gr-qc: 0 papers, skip"
             fi
-          done
+          fi
 
-          log "=== Translating ===" | tee -a "$LOG"
-          CI=0
-          for CAT in gr-qc hep-th astro-ph; do
-            JSON="./outputs/${CAT}.json"
-            if [ -f "$JSON" ]; then
-              COUNT=$(python -c "import json; print(len(json.load(open('${JSON}'))))" 2>&1)
-              if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-                log "Starting $CAT ($COUNT papers)" | tee -a "$LOG"
-                for START in 0 3 6 9 12 15 18 21 24 27 30; do
-                  if [ "$START" -lt "$COUNT" ] 2>/dev/null; then
-                    log "  $CAT batch $START" | tee -a "$LOG"
-                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 3 --batch-start $START 2>&1 | tee -a "$LOG"
-                  fi
-                done
-                log "Finished $CAT" | tee -a "$LOG"
-              else
-                log "$CAT: 0 papers, skip" | tee -a "$LOG"
-              fi
+      - name: Translate hep-th
+        if: steps.check.outputs.has_summary == 'true'
+        continue-on-error: true
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          JSON="./outputs/hep-th.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
+            if [ "$COUNT" -gt 0 ] 2>/dev/null; then
+              echo "Translating hep-th: $COUNT papers"
+              python scripts/translate_cloud.py "$JSON" --category hep-th 2>&1
+            else
+              echo "hep-th: 0 papers, skip"
             fi
-            if [ $CI -lt 2 ]; then
-              log "Sleep 90s between categories..." | tee -a "$LOG"
-              sleep 90
-            fi
-            CI=$((CI + 1))
-          done
-          log "=== Done ===" | tee -a "$LOG"
+          fi
 
-      # ── Build Hub HTML (always if have summary) ──
+      - name: Translate astro-ph
+        if: steps.check.outputs.has_summary == 'true'
+        continue-on-error: true
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          JSON="./outputs/astro-ph.json"
+          if [ -f "$JSON" ]; then
+            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
+            if [ "$COUNT" -gt 0 ] 2>/dev/null; then
+              echo "Translating astro-ph: $COUNT papers"
+              python scripts/translate_cloud.py "$JSON" --category astro-ph 2>&1
+            else
+              echo "astro-ph: 0 papers, skip"
+            fi
+          fi
+
+      # ── Build HTML ──
       - name: Build Hub HTML
         if: steps.check.outputs.has_summary == 'true'
         run: |
@@ -130,13 +127,11 @@ jobs:
             ./outputs-public/latest.html \
             "${{ steps.date.outputs.display_date }}"
 
-      # ── Build per-category HTML ──
       - name: Build category HTML pages
         if: steps.check.outputs.has_summary == 'true'
         run: |
           for CAT in gr-qc hep-th astro-ph; do
             JSON="./outputs/${CAT}.json"
-            echo "--- $CAT ---"
             if [ -f "$JSON" ]; then
               COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1 || echo "0")
               if [ "$COUNT" -gt 0 ] 2>/dev/null; then
@@ -148,12 +143,25 @@ jobs:
               else
                 echo "$CAT: 0 papers, skipping HTML"
               fi
-            else
-              echo "$CAT: no JSON, skipping HTML"
             fi
           done
 
-      # ── PushPlus notification ──
+      # ── GitHub Pages (deploy before push so pages are live when user clicks) ──
+      - name: Setup Pages
+        if: steps.check.outputs.has_summary == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: steps.check.outputs.has_summary == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./outputs-public
+
+      - name: Deploy to GitHub Pages
+        if: steps.check.outputs.has_summary == 'true'
+        uses: actions/deploy-pages@v4
+
+      # ── PushPlus notification (AFTER pages are live) ──
       - name: Send PushPlus notification
         if: steps.check.outputs.has_summary == 'true'
         env:
@@ -222,21 +230,6 @@ jobs:
 
           print('PushPlus notifications sent.')
           PYEOF
-
-      # ── GitHub Pages ──
-      - name: Setup Pages
-        if: steps.check.outputs.has_summary == 'true'
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        if: steps.check.outputs.has_summary == 'true'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./outputs-public
-
-      - name: Deploy to GitHub Pages
-        if: steps.check.outputs.has_summary == 'true'
-        uses: actions/deploy-pages@v4
 
       # ── No papers (fallback) ──
       - name: No papers notification
