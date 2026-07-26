@@ -73,64 +73,52 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          set +e  # don't abort on failure, we handle errors manually
+          set +e
           LOG="./outputs-public/translate-log.txt"
           mkdir -p ./outputs-public
-          exec > >(tee -a "$LOG") 2>&1  # capture all output to log
 
-          echo "=== Python version ==="
-          python --version
+          log() { echo "[$(date '+%H:%M:%S')] $*"; }
 
-          echo "=== Import check ==="
-          python -c "import sys; sys.path.insert(0,'scripts'); from translate_cloud import build_prompt; print('Import OK: gr-qc prompt length', len(build_prompt('gr-qc')))" 2>&1
-          IMPORT_OK=$?
-          echo "Import check exit code: $IMPORT_OK"
+          log "=== Py version ==="
+          python --version 2>&1 | tee "$LOG"
 
-          echo "=== Paper counts ==="
+          log "=== Import check ==="
+          python -c "import sys; sys.path.insert(0,'scripts'); from translate_cloud import build_prompt; print('OK')" 2>&1 | tee -a "$LOG"
+
+          log "=== Paper counts ===" | tee -a "$LOG"
           for CAT in gr-qc hep-th astro-ph; do
             JSON="./outputs/${CAT}.json"
             if [ -f "$JSON" ]; then
-              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
-              echo "$CAT: $COUNT papers"
-            else
-              echo "$CAT: no JSON file"
+              python -c "import json; print(len(json.load(open('${JSON}'))))" 2>&1 | tee -a "$LOG" | xargs -I{} echo "$CAT: {} papers"
             fi
           done
 
-          echo "=== Starting translations ==="
-          CAT_INDEX=0
+          log "=== Translating ===" | tee -a "$LOG"
+          CI=0
           for CAT in gr-qc hep-th astro-ph; do
             JSON="./outputs/${CAT}.json"
-            echo "--- $CAT ---"
             if [ -f "$JSON" ]; then
-              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
-              echo "$CAT papers count: $COUNT"
+              COUNT=$(python -c "import json; print(len(json.load(open('${JSON}'))))" 2>&1)
               if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-                for START in 0 3 6 9 12 15; do
+                log "Starting $CAT ($COUNT papers)" | tee -a "$LOG"
+                for START in 0 3 6 9 12 15 18 21 24 27 30; do
                   if [ "$START" -lt "$COUNT" ] 2>/dev/null; then
-                    echo "  translating batch $START-$((START+3)) of $COUNT"
-                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 3 --batch-start $START 2>&1
-                    T_EXIT=$?
-                    echo "  batch exit code: $T_EXIT"
-                    if [ $T_EXIT -ne 0 ]; then
-                      echo "::warning::translate $CAT batch $START failed (exit=$T_EXIT)"
-                    fi
+                    log "  $CAT batch $START" | tee -a "$LOG"
+                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 3 --batch-start $START 2>&1 | tee -a "$LOG"
                   fi
                 done
+                log "Finished $CAT" | tee -a "$LOG"
               else
-                echo "$CAT: 0 papers, skipping translation"
+                log "$CAT: 0 papers, skip" | tee -a "$LOG"
               fi
-            else
-              echo "$CAT: no JSON, skipping"
             fi
-            # Wait between categories to avoid rate limits
-            if [ $CAT_INDEX -lt 2 ]; then
-              echo "Waiting 60s before next category..."
-              sleep 60
+            if [ $CI -lt 2 ]; then
+              log "Sleep 90s between categories..." | tee -a "$LOG"
+              sleep 90
             fi
-            CAT_INDEX=$((CAT_INDEX + 1))
+            CI=$((CI + 1))
           done
-          echo "=== Translations done ==="
+          log "=== Done ===" | tee -a "$LOG"
 
       # ── Build Hub HTML (always if have summary) ──
       - name: Build Hub HTML
