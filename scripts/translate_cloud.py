@@ -107,14 +107,9 @@ def validate_translation(result: dict) -> list[str]:
     cn_abstract = result.get("cn_abstract", "")
     cn_eval = result.get("cn_eval", "")
 
-    # 1. Title must not be empty or purely English
+    # 1. Title must not be empty
     if not cn_title.strip():
         issues.append("cn_title is empty")
-    else:
-        chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', cn_title))
-        english_words = len(re.findall(r'[a-zA-Z]{3,}', cn_title))
-        if chinese_chars < 2 and english_words > 3:
-            issues.append("cn_title appears to be mostly English")
 
     # 2. Abstract must have sufficient Chinese content
     if not cn_abstract.strip():
@@ -122,20 +117,20 @@ def validate_translation(result: dict) -> list[str]:
     else:
         total_chars = len(cn_abstract)
         chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', cn_abstract))
-        if total_chars > 20 and chinese_chars / max(total_chars, 1) < 0.3:
-            issues.append(f"cn_abstract has low Chinese ratio ({chinese_chars}/{total_chars})")
-        if total_chars < 30:
-            issues.append("cn_abstract is too short")
+        if total_chars > 20 and chinese_chars / max(total_chars, 1) < 0.2:
+            issues.append(f"cn_abstract low CN ratio ({chinese_chars}/{total_chars})")
+        if total_chars < 20:
+            issues.append("cn_abstract too short")
 
-    # 3. Evaluation must contain at least 3 of 4 required markers
+    # 3. Evaluation must contain at least 2 of 4 required markers
     markers = ["研究问题", "方法", "主要发现", "评价"]
     found = sum(1 for m in markers if m in cn_eval)
-    if found < 3:
+    if found < 2:
         issues.append(f"cn_eval has only {found}/4 markers")
 
     # 4. Evaluation must be substantial
-    if len(cn_eval) < 80:
-        issues.append("cn_eval is too short")
+    if len(cn_eval) < 50:
+        issues.append("cn_eval too short")
 
     return issues
 

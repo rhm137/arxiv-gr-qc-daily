@@ -30,6 +30,13 @@ ARXIV_API = "http://export.arxiv.org/api/query"
 MAX_RESULTS = 100
 USER_AGENT = "WorkBuddy-arxiv-multi-skill/1.0"
 
+# astro-ph needs wildcard to match sub-categories (astro-ph.CO, astro-ph.HE, etc.)
+CAT_QUERY = {
+    "gr-qc": "cat:gr-qc",
+    "hep-th": "cat:hep-th",
+    "astro-ph": "cat:astro-ph*",
+}
+
 CATEGORY_INFO = {
     "gr-qc":    {"name": "引力与量子宇宙学", "cn_name": "广义相对论与量子宇宙学"},
     "hep-th":   {"name": "高能理论物理",     "cn_name": "高能物理-理论"},
@@ -39,8 +46,9 @@ CATEGORY_INFO = {
 
 def fetch_raw_xml(category: str, date_str: str) -> str:
     """Fetch raw XML from arXiv API for a category on the given date."""
+    cat_query = CAT_QUERY.get(category, f"cat:{category}")
     query = (
-        f"cat:{category}+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
+        f"{cat_query}+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
     )
     url = (
         f"{ARXIV_API}?search_query={query}"
