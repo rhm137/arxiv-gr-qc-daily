@@ -27,7 +27,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install openai
+        run: |
+          pip install openai
+          pip show openai | head -3
+          python -c "from openai import OpenAI; print('openai OK')"
 
       - name: Calculate date
         id: date
@@ -48,9 +51,8 @@ jobs:
       - name: Fetch papers from arXiv (all categories)
         run: |
           python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/ 2>&1 || {
-            echo "::warning::fetch_papers.py failed — continuing with partial results"
+            echo "::warning::fetch_papers.py failed — continuing"
           }
-
 
       - name: Check summary
         id: check
@@ -63,67 +65,43 @@ jobs:
             echo "No summary.json found"
           fi
 
-      # ── Translate: gr-qc ──
-      - name: Translate gr-qc
+      # ── Translate all categories (one unified step, never fails) ──
+      - name: Translate all categories
+        id: translate
         if: steps.check.outputs.has_summary == 'true'
+        continue-on-error: true
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
-          JSON="./outputs/gr-qc.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>/dev/null || echo "0")
-            echo "gr-qc papers: $COUNT"
-            for START in 0 5 10 15; do
-              if [ "$START" -lt "$COUNT" ]; then
-                echo "gr-qc batch: $START-$((START+5)) of $COUNT"
-                python scripts/translate_cloud.py "$JSON" --category gr-qc --batch-size 5 --batch-start $START || exit 1
+          echo "=== Python version ==="
+          python --version
+          echo "=== Script import check ==="
+          python -c "import sys; sys.path.insert(0,'scripts'); from translate_cloud import build_prompt; print('Import OK')" 2>&1
+          echo "=== Starting translations ==="
+          for CAT in gr-qc hep-th astro-ph; do
+            JSON="./outputs/${CAT}.json"
+            echo "--- $CAT ---"
+            if [ -f "$JSON" ]; then
+              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1 || echo "ERR")
+              echo "$CAT papers: $COUNT"
+              if [ "$COUNT" -gt 0 ] 2>/dev/null; then
+                for START in 0 5 10 15; do
+                  if [ "$START" -lt "$COUNT" ] 2>/dev/null; then
+                    echo "  batch $START-$((START+5)) of $COUNT"
+                    python scripts/translate_cloud.py "$JSON" --category "$CAT" --batch-size 5 --batch-start $START 2>&1 || {
+                      echo "::warning::translate $CAT batch $START failed, marking as skipped"
+                      break
+                    }
+                  fi
+                done
               fi
-            done
-          else
-            echo "gr-qc: no JSON file, skipping"
-          fi
+            else
+              echo "$CAT: no JSON file"
+            fi
+          done
+          echo "=== Translations done ==="
 
-      # ── Translate: hep-th ──
-      - name: Translate hep-th
-        if: steps.check.outputs.has_summary == 'true'
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: |
-          JSON="./outputs/hep-th.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>/dev/null || echo "0")
-            echo "hep-th papers: $COUNT"
-            for START in 0 5 10 15; do
-              if [ "$START" -lt "$COUNT" ]; then
-                echo "hep-th batch: $START-$((START+5)) of $COUNT"
-                python scripts/translate_cloud.py "$JSON" --category hep-th --batch-size 5 --batch-start $START || exit 1
-              fi
-            done
-          else
-            echo "hep-th: no JSON file, skipping"
-          fi
-
-      # ── Translate: astro-ph ──
-      - name: Translate astro-ph
-        if: steps.check.outputs.has_summary == 'true'
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: |
-          JSON="./outputs/astro-ph.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>/dev/null || echo "0")
-            echo "astro-ph papers: $COUNT"
-            for START in 0 5 10 15; do
-              if [ "$START" -lt "$COUNT" ]; then
-                echo "astro-ph batch: $START-$((START+5)) of $COUNT"
-                python scripts/translate_cloud.py "$JSON" --category astro-ph --batch-size 5 --batch-start $START || exit 1
-              fi
-            done
-          else
-            echo "astro-ph: no JSON file, skipping"
-          fi
-
-      # ── Build HTML: Hub ──
+      # ── Build Hub HTML (always if have summary) ──
       - name: Build Hub HTML
         if: steps.check.outputs.has_summary == 'true'
         run: |
@@ -133,62 +111,39 @@ jobs:
             ./outputs-public/latest.html \
             "${{ steps.date.outputs.display_date }}"
 
-      # ── Build HTML: per category ──
-      - name: Build gr-qc HTML
+      # ── Build per-category HTML ──
+      - name: Build category HTML pages
         if: steps.check.outputs.has_summary == 'true'
         run: |
-          JSON="./outputs/gr-qc.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
-            if [ "$COUNT" -gt 0 ]; then
-              HTML="./outputs-public/arxiv-gr-qc-${{ steps.date.outputs.api_date }}.html"
-              python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category gr-qc
-              cp "$HTML" "./outputs-public/gr-qc-latest.html"
+          for CAT in gr-qc hep-th astro-ph; do
+            JSON="./outputs/${CAT}.json"
+            echo "--- $CAT ---"
+            if [ -f "$JSON" ]; then
+              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1 || echo "0")
+              if [ "$COUNT" -gt 0 ] 2>/dev/null; then
+                HTML="./outputs-public/arxiv-${CAT}-${{ steps.date.outputs.api_date }}.html"
+                python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category "$CAT" 2>&1 || {
+                  echo "::warning::build_html $CAT failed"
+                }
+                cp "$HTML" "./outputs-public/${CAT}-latest.html" 2>/dev/null || true
+              else
+                echo "$CAT: 0 papers, skipping HTML"
+              fi
             else
-              echo "gr-qc: 0 papers, skipping HTML"
+              echo "$CAT: no JSON, skipping HTML"
             fi
-          fi
-
-      - name: Build hep-th HTML
-        if: steps.check.outputs.has_summary == 'true'
-        run: |
-          JSON="./outputs/hep-th.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
-            if [ "$COUNT" -gt 0 ]; then
-              HTML="./outputs-public/arxiv-hep-th-${{ steps.date.outputs.api_date }}.html"
-              python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category hep-th
-              cp "$HTML" "./outputs-public/hep-th-latest.html"
-            else
-              echo "hep-th: 0 papers, skipping HTML"
-            fi
-          fi
-
-      - name: Build astro-ph HTML
-        if: steps.check.outputs.has_summary == 'true'
-        run: |
-          JSON="./outputs/astro-ph.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))")
-            if [ "$COUNT" -gt 0 ]; then
-              HTML="./outputs-public/arxiv-astro-ph-${{ steps.date.outputs.api_date }}.html"
-              python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category astro-ph
-              cp "$HTML" "./outputs-public/astro-ph-latest.html"
-            else
-              echo "astro-ph: 0 papers, skipping HTML"
-            fi
-          fi
+          done
 
       # ── PushPlus notification ──
       - name: Send PushPlus notification
-        if: success() && steps.check.outputs.has_summary == 'true'
+        if: steps.check.outputs.has_summary == 'true'
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           DATE_DISPLAY: ${{ steps.date.outputs.display_date }}
           PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
         run: |
           python << 'PYEOF'
-          import json, os
+          import json, os, subprocess
 
           with open('./outputs/summary.json', 'r') as f:
               summary = json.load(f)
@@ -232,36 +187,18 @@ jobs:
 
           content = ''.join(lines)
           title = 'arXiv Daily | %s' % date_display
-
-          import subprocess
-
           token = os.environ.get('PUSHPLUS_TOKEN', '')
 
-          # Personal push
-          subprocess.run([
-              'curl', '-s', '-X', 'POST',
+          subprocess.run(['curl', '-s', '-X', 'POST',
               'https://www.pushplus.plus/send',
               '-H', 'Content-Type: application/json',
-              '-d', json.dumps({
-                  'token': token,
-                  'title': title,
-                  'content': content,
-                  'template': 'html'
-              })
+              '-d', json.dumps({'token': token, 'title': title, 'content': content, 'template': 'html'})
           ], check=False)
 
-          # Topic group push
-          subprocess.run([
-              'curl', '-s', '-X', 'POST',
+          subprocess.run(['curl', '-s', '-X', 'POST',
               'https://www.pushplus.plus/send',
               '-H', 'Content-Type: application/json',
-              '-d', json.dumps({
-                  'token': token,
-                  'title': title,
-                  'content': content,
-                  'template': 'html',
-                  'topic': 'arxiv-gr-qc'
-              })
+              '-d', json.dumps({'token': token, 'title': title, 'content': content, 'template': 'html', 'topic': 'arxiv-gr-qc'})
           ], check=False)
 
           print('PushPlus notifications sent.')
