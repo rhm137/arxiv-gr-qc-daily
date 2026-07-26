@@ -148,7 +148,7 @@ def call_deepseek(client, model: str, prompt: str, temperature: float = 0.3) -> 
             {"role": "user", "content": prompt},
         ],
         temperature=temperature,
-        max_tokens=2048,
+        max_tokens=4096,
     )
     content = response.choices[0].message.content.strip()
 
@@ -194,7 +194,7 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
         print(f"  [{idx+1}/{total}] {paper_id}: {title[:60]}...")
 
         success = False
-        for attempt in range(3):
+        for attempt in range(5):
             try:
                 temp = 0.3 if attempt == 0 else 0.5
                 result = call_deepseek(client, model, prompt, temperature=temp)
@@ -210,7 +210,7 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
                     break
                 else:
                     print(f"    ⚠ Quality issues ({', '.join(issues[:2])})")
-                    if attempt < 2:
+                    if attempt < 4:
                         print(f"    ↻ Retrying with stricter prompt...")
                         prompt = RETRY_PROMPT.format(
                             paper_id=paper_id, title=title, authors=authors, abstract=abstract,
@@ -218,7 +218,7 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
 
             except json.JSONDecodeError as e:
                 print(f"    ⚠ JSON parse error (attempt {attempt+1})")
-                if attempt < 2:
+                if attempt < 4:
                     prompt = RETRY_PROMPT.format(
                         paper_id=paper_id, title=title, authors=authors, abstract=abstract,
                     )
@@ -226,7 +226,9 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
 
             except Exception as e:
                 print(f"    ✗ API error (attempt {attempt+1}): {type(e).__name__}")
-                time.sleep(5)
+                wait = 5 * (attempt + 1)
+                print(f"    ↻ Waiting {wait}s before retry...")
+                time.sleep(wait)
 
         if not success:
             # Fallback: use raw English
@@ -238,7 +240,7 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
 
         # Rate limiting
         if i < len(batch) - 1:
-            time.sleep(1)
+            time.sleep(3)
 
     # Save enriched JSON
     with open(json_path, "w", encoding="utf-8") as f:
