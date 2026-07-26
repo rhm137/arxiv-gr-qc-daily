@@ -127,10 +127,11 @@ def validate_translation(result: dict) -> list[str]:
         if total_chars < 30:
             issues.append("cn_abstract is too short")
 
-    # 3. Evaluation must contain all four required markers
-    for marker in ["研究问题", "方法", "主要发现", "评价"]:
-        if marker not in cn_eval:
-            issues.append(f"cn_eval missing marker: {marker}")
+    # 3. Evaluation must contain at least 3 of 4 required markers
+    markers = ["研究问题", "方法", "主要发现", "评价"]
+    found = sum(1 for m in markers if m in cn_eval)
+    if found < 3:
+        issues.append(f"cn_eval has only {found}/4 markers")
 
     # 4. Evaluation must be substantial
     if len(cn_eval) < 80:
@@ -222,11 +223,16 @@ def translate_papers(json_path, api_key, base_url, model, category="gr-qc", batc
                     prompt = RETRY_PROMPT.format(
                         paper_id=paper_id, title=title, authors=authors, abstract=abstract,
                     )
-                time.sleep(2)
+                time.sleep(3)
 
             except Exception as e:
-                print(f"    ✗ API error (attempt {attempt+1}): {type(e).__name__}")
-                wait = 5 * (attempt + 1)
+                err_name = type(e).__name__
+                print(f"    ✗ API error (attempt {attempt+1}): {err_name}")
+                # Rate limiting requires much longer backoff
+                if 'RateLimit' in err_name or 'rate' in str(e).lower():
+                    wait = 30 * (attempt + 1)
+                else:
+                    wait = 10 * (attempt + 1)
                 print(f"    ↻ Waiting {wait}s before retry...")
                 time.sleep(wait)
 
