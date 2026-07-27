@@ -53,12 +53,18 @@ def fetch_raw_xml(cat_query: str, date_str: str, max_results: int = MAX_RESULTS)
 
     req = Request(url, headers={"User-Agent": USER_AGENT})
     print(f"  GET {url[:200]}...")
-    try:
-        with urlopen(req, timeout=30) as resp:
-            return resp.read().decode("utf-8")
-    except URLError as e:
-        print(f"[ERROR] Failed to fetch {cat_query} from arXiv API: {e}", file=sys.stderr)
-        return ""
+    for attempt in range(3):
+        try:
+            with urlopen(req, timeout=30) as resp:
+                return resp.read().decode("utf-8")
+        except Exception as e:
+            if attempt < 2:
+                wait = 5 * (attempt + 1)
+                print(f"  [RETRY] {e} — waiting {wait}s", file=sys.stderr)
+                time.sleep(wait)
+            else:
+                print(f"[ERROR] Failed after 3 attempts: {e}", file=sys.stderr)
+    return ""
 
 
 def parse_xml(xml_text: str) -> list[dict]:
