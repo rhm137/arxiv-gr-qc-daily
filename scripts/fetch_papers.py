@@ -52,11 +52,12 @@ def fetch_raw_xml(cat_query: str, date_str: str, max_results: int = MAX_RESULTS)
     )
 
     req = Request(url, headers={"User-Agent": USER_AGENT})
+    print(f"  GET {url[:200]}...")
     try:
         with urlopen(req, timeout=30) as resp:
             return resp.read().decode("utf-8")
     except URLError as e:
-        print(f"[ERROR] Failed to fetch {category} from arXiv API: {e}", file=sys.stderr)
+        print(f"[ERROR] Failed to fetch {cat_query} from arXiv API: {e}", file=sys.stderr)
         return ""
 
 
