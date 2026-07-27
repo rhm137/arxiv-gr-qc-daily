@@ -515,6 +515,8 @@ window.MathJax = {{
     print(f"HTML report saved to: {output_path}")
     print(f"  Papers: {total} (primary: {pc}, cross: {len(cross)})")
 
+    return output_path
+
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Build HTML report for arXiv papers")
@@ -524,6 +526,12 @@ if __name__ == "__main__":
     parser.add_argument("--category", default="gr-qc",
                         choices=["gr-qc", "hep-th", "astro-ph"],
                         help="arXiv category (default: gr-qc)")
+    parser.add_argument("--latest", type=str, default=None,
+                        help="If set, also copy to this path (e.g. gr-qc-latest.html)")
 
     args = parser.parse_args()
-    build_html(args.json_path, args.output_html, args.date_display, args.category)
+    path = build_html(args.json_path, args.output_html, args.date_display, args.category)
+    if args.latest:
+        import shutil
+        shutil.copy(path, args.latest)
+        print(f"  Also copied to: {args.latest}")
