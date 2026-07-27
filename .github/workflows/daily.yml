@@ -45,6 +45,7 @@ jobs:
           fi
           echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
           echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
+          echo "::notice::Override=$OVERRIDE Query=$YESTERDAY Display=$YESTERDAY_DISPLAY"
           echo "Query: $YESTERDAY, Display: $YESTERDAY_DISPLAY"
 
       # ── Fetch all categories ──
@@ -53,6 +54,8 @@ jobs:
           python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/ 2>&1 || {
             echo "::warning::fetch_papers.py failed — continuing"
           }
+          echo "::notice::Output files:"
+          ls -la ./outputs/ 2>&1 || echo "no outputs dir"
 
       - name: Check summary
         id: check
