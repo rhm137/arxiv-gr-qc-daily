@@ -135,19 +135,29 @@ jobs:
         run: |
           for CAT in gr-qc hep-th astro-ph; do
             JSON="./outputs/${CAT}.json"
+            echo "--- $CAT ---"
             if [ -f "$JSON" ]; then
               COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1 || echo "0")
+              echo "$CAT: $COUNT papers"
               if [ "$COUNT" -gt 0 ] 2>/dev/null; then
                 HTML="./outputs-public/arxiv-${CAT}-${{ steps.date.outputs.api_date }}.html"
-                python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category "$CAT" 2>&1 || {
-                  echo "::warning::build_html $CAT failed"
-                }
-                cp "$HTML" "./outputs-public/${CAT}-latest.html" 2>/dev/null || true
+                python scripts/build_html.py "$JSON" "$HTML" "${{ steps.date.outputs.display_date }}" --category "$CAT" 2>&1
+                BEXIT=$?
+                if [ $BEXIT -eq 0 ] && [ -f "$HTML" ]; then
+                  cp "$HTML" "./outputs-public/${CAT}-latest.html"
+                  echo "$CAT: HTML built and copied to ${CAT}-latest.html"
+                else
+                  echo "::warning::build_html $CAT failed (exit=$BEXIT, file exists=$(test -f "$HTML" && echo yes || echo no))"
+                fi
               else
                 echo "$CAT: 0 papers, skipping HTML"
               fi
+            else
+              echo "$CAT: no JSON, skipping HTML"
             fi
           done
+          echo "=== Files in outputs-public: ==="
+          ls -la ./outputs-public/
 
       # ── GitHub Pages (deploy before push so pages are live when user clicks) ──
       - name: Setup Pages
