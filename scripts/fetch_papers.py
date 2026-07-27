@@ -167,13 +167,10 @@ def main():
                 summary[cat] = 0
                 continue
             papers = parse_xml(xml_text)
-
-        if not papers or (cat != "astro-ph" and not xml_text):
-            if cat != "astro-ph":
-                continue
-        if cat == "astro-ph" and not papers:
-            summary[cat] = 0
-            continue
+            # Save raw XML
+            xml_path = os.path.join(args.output_dir, f"{cat}-raw.xml")
+            with open(xml_path, "w", encoding="utf-8") as f:
+                f.write(xml_text)
 
         print(f"  Parsed {len(papers)} papers.")
 
