@@ -27,15 +27,11 @@ from urllib.error import URLError
 
 
 ARXIV_API = "http://export.arxiv.org/api/query"
-MAX_RESULTS = 100
+MAX_RESULTS = 200
 USER_AGENT = "WorkBuddy-arxiv-multi-skill/1.0"
 
-# astro-ph needs wildcard to match sub-categories (astro-ph.CO, astro-ph.HE, etc.)
-CAT_QUERY = {
-    "gr-qc": "cat:gr-qc",
-    "hep-th": "cat:hep-th",
-    "astro-ph": "cat:astro-ph*",
-}
+# For astro-ph we query two most relevant sub-categories to keep volume manageable
+ASTRO_SUBCATS = ["astro-ph.CO", "astro-ph.HE"]
 
 CATEGORY_INFO = {
     "gr-qc":    {"name": "引力与量子宇宙学", "cn_name": "广义相对论与量子宇宙学"},
@@ -44,16 +40,15 @@ CATEGORY_INFO = {
 }
 
 
-def fetch_raw_xml(category: str, date_str: str) -> str:
-    """Fetch raw XML from arXiv API for a category on the given date."""
-    cat_query = CAT_QUERY.get(category, f"cat:{category}")
+def fetch_raw_xml(cat_query: str, date_str: str, max_results: int = MAX_RESULTS) -> str:
+    """Fetch raw XML from arXiv API for a query on the given date."""
     query = (
         f"{cat_query}+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
     )
     url = (
         f"{ARXIV_API}?search_query={query}"
         f"&sortBy=submittedDate&sortOrder=ascending"
-        f"&start=0&max_results={MAX_RESULTS}"
+        f"&start=0&max_results={max_results}"
     )
 
     req = Request(url, headers={"User-Agent": USER_AGENT})
@@ -144,23 +139,51 @@ def main():
         print(f"\n{'='*60}")
         print(f"Fetching arXiv {cat} ({info['cn_name']}) papers for {date_str}...")
 
-        xml_text = fetch_raw_xml(cat, date_str)
-        if not xml_text:
-            print(f"  [SKIP] No response for {cat}")
+        if cat == "astro-ph":
+            # astro-ph: query two sub-categories, merge, dedup
+            all_papers = []
+            seen_ids = set()
+            for sub in ASTRO_SUBCATS:
+                print(f"  Querying {sub}...")
+                xml_text = fetch_raw_xml(f"cat:{sub}", date_str, max_results=200)
+                if not xml_text:
+                    print(f"    [SKIP] No response for {sub}")
+                    continue
+                sub_papers = parse_xml(xml_text)
+                # Dedup by paper ID
+                new = 0
+                for p in sub_papers:
+                    if p["ID"] not in seen_ids:
+                        seen_ids.add(p["ID"])
+                        all_papers.append(p)
+                        new += 1
+                print(f"    {len(sub_papers)} from API, {new} new after dedup")
+                time.sleep(3)  # be nice to arXiv API between sub-queries
+            papers = all_papers
+        else:
+            xml_text = fetch_raw_xml(f"cat:{cat}", date_str)
+            if not xml_text:
+                print(f"  [SKIP] No response for {cat}")
+                summary[cat] = 0
+                continue
+            papers = parse_xml(xml_text)
+
+        if not papers or (cat != "astro-ph" and not xml_text):
+            if cat != "astro-ph":
+                continue
+        if cat == "astro-ph" and not papers:
             summary[cat] = 0
             continue
 
-        # Save raw XML
-        xml_path = os.path.join(args.output_dir, f"{cat}-raw.xml")
-        with open(xml_path, "w", encoding="utf-8") as f:
-            f.write(xml_text)
-
-        papers = parse_xml(xml_text)
         print(f"  Parsed {len(papers)} papers.")
 
         # Statistics
-        primary = [p for p in papers if p["PrimaryCat"] == cat]
-        cross = [p for p in papers if p["PrimaryCat"] != cat]
+        if cat == "astro-ph":
+            primary = [p for p in papers if p["PrimaryCat"].startswith("astro-ph")]
+            cross = [p for p in papers if not p["PrimaryCat"].startswith("astro-ph")]
+        else:
+            primary = [p for p in papers if p["PrimaryCat"] == cat]
+            cross = [p for p in papers if p["PrimaryCat"] != cat]
 
         cross_cats = {}
         for p in cross:
