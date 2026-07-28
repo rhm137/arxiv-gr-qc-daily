@@ -46,40 +46,45 @@ jobs:
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
+          GR_QC: ${{ steps.digest.outputs.gr_qc }}
+          HEP_TH: ${{ steps.digest.outputs.hep_th }}
+          ASTRO_PH: ${{ steps.digest.outputs.astro_ph }}
+          DISPLAY: ${{ steps.digest.outputs.display }}
         run: |
           python << 'PYEOF'
           import json, os, subprocess
 
-          with open('./outputs-public/summary.json', 'r') as f:
-              summary = json.load(f)
+          # Read from workflow outputs (reliable, no file dependency)
+          summary = {
+              'gr-qc': int(os.environ.get('GR_QC', '0')),
+              'hep-th': int(os.environ.get('HEP_TH', '0')),
+              'astro-ph': int(os.environ.get('ASTRO_PH', '0')),
+          }
+          date_display = os.environ.get('DISPLAY', '未知')
 
           cats = [
-              ('\U0001f300', '#2563eb', 'gr-qc-latest.html', '\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66'),
-              ('\u269b\ufe0f', '#7c3aed', 'hep-th-latest.html', '\u9ad8\u80fd\u7406\u8bba\u7269\u7406'),
-              ('\U0001f52d', '#059669', 'astro-ph-latest.html', '\u5929\u4f53\u7269\u7406\u5b66'),
+              ('\U0001f300', '#2563eb', 'gr-qc-latest.html'),
+              ('\u269b\ufe0f', '#7c3aed', 'hep-th-latest.html'),
+              ('\U0001f52d', '#059669', 'astro-ph-latest.html'),
           ]
+          cat_names = ['\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66',
+                       '\u9ad8\u80fd\u7406\u8bba\u7269\u7406',
+                       '\u5929\u4f53\u7269\u7406\u5b66']
+          cat_keys = ['gr-qc', 'hep-th', 'astro-ph']
 
           base = os.environ['PAGE_URL']
-          from datetime import datetime
-          date_display = (datetime.now()).strftime('%Y\u5e74%m\u6708%d\u65e5')
-
           lines = ['<h3>\U0001f4f0 arXiv Daily | %s</h3>' % date_display]
           lines.append('<p><a href="%s">\U0001f517 \u67e5\u770b Hub</a></p><hr>' % base)
 
-          cat_names = {'gr-qc': '\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66',
-                       'hep-th': '\u9ad8\u80fd\u7406\u8bba\u7269\u7406',
-                       'astro-ph': '\u5929\u4f53\u7269\u7406\u5b66'}
-          cat_keys = ['gr-qc', 'hep-th', 'astro-ph']
-
-          for i, (emoji, color, page, _) in enumerate(cats):
+          for i, (emoji, color, page) in enumerate(cats):
               cat = cat_keys[i]
               count = summary.get(cat, 0)
-              name = cat_names[cat]
+              name = cat_names[i]
               url = base.replace('latest.html', page)
               if count > 0:
                   lines.append('<p style="font-size:16px;margin:8px 0">'
                       '<a href="%s" style="color:%s;text-decoration:none;font-weight:600">'
-                      '%s %s(%s)%d \u7bc7</a></p>' % (url, color, emoji, name, cat, count))
+                      '%s %s(%s) %d \u7bc7</a></p>' % (url, color, emoji, name, cat, count))
               else:
                   lines.append('<p style="font-size:16px;margin:8px 0;color:#9ca3af">'
                       '%s %s(%s)\u6ca1\u66f4\u65b0</p>' % (emoji, name, cat))
@@ -95,8 +100,7 @@ jobs:
 
           for topic in [None, 'arxiv-gr-qc']:
               body = {'token': token, 'title': title, 'content': content, 'template': 'html'}
-              if topic:
-                  body['topic'] = topic
+              if topic: body['topic'] = topic
               subprocess.run(['curl', '-s', '-X', 'POST', 'https://www.pushplus.plus/send',
                   '-H', 'Content-Type: application/json', '-d', json.dumps(body)], check=False)
           print('PushPlus sent.')
