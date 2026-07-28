@@ -593,6 +593,15 @@ def main():
         print(f"  {cat}: {summary[cat]} 篇")
     print(f"  HTML: {args.out}/")
 
+    # Output summary for GitHub Actions workflow steps
+    if "GITHUB_OUTPUT" in os.environ:
+        with open(os.environ["GITHUB_OUTPUT"], "a") as gf:
+            for cat, count in summary.items():
+                safe_key = cat.replace("-", "_").replace(".", "_")
+                gf.write(f"{safe_key}={count}\n")
+            gf.write(f"display={display}\n")
+            gf.write(f"total={total}\n")
+
 
 if __name__ == "__main__":
     main()
