@@ -24,10 +24,10 @@ from urllib.error import URLError
 
 # ── Config ──
 ARXIV_API = "http://export.arxiv.org/api/query"
-ARXIV_MAX = 200
+ARXIV_MAX = 100
 ARXIV_UA  = "WorkBuddy-arxiv-digest/2.0"
-ARXIV_RETRY = 10
-ARXIV_DELAY = 10
+ARXIV_RETRY = 5
+ARXIV_DELAY = 15
 
 ASTRO_SUBS = ["astro-ph.CO", "astro-ph.HE"]
 
@@ -544,7 +544,11 @@ def main():
     # ── STEP 1: Fetch ──
     all_data = {}
     summary = {}
-    for cat in args.cats:
+    # Fetch gr-qc last — arXiv rate limits hit the first query hardest
+    fetch_order = [c for c in args.cats if c != "gr-qc"] + (["gr-qc"] if "gr-qc" in args.cats else [])
+    print(f"  Cooling {ARXIV_DELAY}s before first API call...")
+    time.sleep(ARXIV_DELAY)
+    for cat in fetch_order:
         print(f"\n--- Fetching {cat} ---")
         try:
             papers = fetch_category(cat, qd)
