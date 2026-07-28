@@ -231,9 +231,9 @@ def translate_all(papers: list[dict], cat: str, api_key: str) -> int:
 
                 issues = _validate(result)
                 if not issues:
-                    p["CN_Title"] = result.get("cn_title", "")
-                    p["CN_Abstract"] = result.get("cn_abstract", "")
-                    p["CN_Eval"] = result.get("cn_eval", "")
+                    p["CN_Title"] = str(result.get("cn_title", ""))
+                    p["CN_Abstract"] = str(result.get("cn_abstract", ""))
+                    p["CN_Eval"] = str(result.get("cn_eval", ""))
                     print("    OK")
                     success = True
                     break
@@ -374,9 +374,11 @@ HUB_INFO = {
 }
 
 
-def _escape(s: str) -> str:
+def _escape(s) -> str:
     """HTML-escape but preserve $...$ for MathJax."""
     if not s: return ""
+    if not isinstance(s, str):
+        s = json.dumps(s, ensure_ascii=False)
     parts = s.split("$")
     out = []
     for i, p in enumerate(parts):
