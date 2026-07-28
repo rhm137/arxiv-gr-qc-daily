@@ -26,7 +26,7 @@ from urllib.error import URLError
 ARXIV_API = "http://export.arxiv.org/api/query"
 ARXIV_MAX = 100
 ARXIV_UA  = "WorkBuddy-arxiv-digest/2.0"
-ARXIV_RETRY = 5
+ARXIV_RETRY = 8
 ARXIV_DELAY = 15
 
 ASTRO_SUBS = ["astro-ph.CO", "astro-ph.HE"]
@@ -562,6 +562,27 @@ def main():
             print(f"  [ERROR] {cat}: {e}", file=sys.stderr)
             all_data[cat] = []
             summary[cat] = 0
+
+    # ── Second pass: retry any failed categories with extra patience ──
+    failed = [c for c in fetch_order if summary.get(c, 0) == 0]
+    if failed:
+        print(f"\n--- Second pass for failed: {failed} ---")
+        time.sleep(30)
+        for cat in failed:
+            print(f"\n--- Retrying {cat} ---")
+            try:
+                papers = fetch_category(cat, qd)
+                if papers:
+                    all_data[cat] = papers
+                    summary[cat] = len(papers)
+                    primary = [p for p in papers if p["PrimaryCat"].startswith(cat if cat == "astro-ph" else cat)]
+                    cross = len(papers) - len(primary)
+                    print(f"  {cat}: RECOVERED {len(papers)} papers ({len(primary)} primary, {cross} cross)")
+                else:
+                    print(f"  {cat}: still 0 papers")
+            except Exception as e:
+                print(f"  [ERROR] retry {cat}: {e}", file=sys.stderr)
+            time.sleep(10)
 
     # ── STEP 2: Translate ──
     for cat in args.cats:
