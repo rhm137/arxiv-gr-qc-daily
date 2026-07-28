@@ -1,10 +1,10 @@
 name: arXiv Multi-Category Daily Digest
 
 on:
-  workflow_dispatch:  # Triggered by cron-job.org or manual trigger from GitHub UI
+  workflow_dispatch:
     inputs:
       date:
-        description: 'Override date (YYYY-MM-DD, e.g. 2026-07-02). Leave empty for yesterday.'
+        description: 'Override date (YYYY-MM-DD). Leave empty for yesterday.'
         required: false
         default: ''
 
@@ -18,239 +18,96 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - run: pip install openai
 
-      - name: Install dependencies
-        run: |
-          pip install openai
-          pip show openai | head -3
-          python -c "from openai import OpenAI; print('openai OK')"
-
-      - name: Calculate date
-        id: date
-        run: |
-          if [ -n "${{ github.event.inputs.date }}" ]; then
-            OVERRIDE="${{ github.event.inputs.date }}"
-            YESTERDAY_DISPLAY=$(echo "$OVERRIDE" | sed 's/-/年/;s/-/月/')日
-            YESTERDAY=$(TZ='Asia/Shanghai' date -d "$OVERRIDE -1 day" '+%Y%m%d')
-          else
-            YESTERDAY=$(TZ='Asia/Shanghai' date -d 'yesterday' '+%Y%m%d')
-            YESTERDAY_DISPLAY=$(TZ='Asia/Shanghai' date '+%Y年%m月%d日')
-          fi
-          echo "api_date=$YESTERDAY" >> $GITHUB_OUTPUT
-          echo "display_date=$YESTERDAY_DISPLAY" >> $GITHUB_OUTPUT
-          echo "::notice::Override=$OVERRIDE Query=$YESTERDAY Display=$YESTERDAY_DISPLAY"
-          echo "Query: $YESTERDAY, Display: $YESTERDAY_DISPLAY"
-
-      # ── Fetch all categories ──
-      - name: Fetch papers from arXiv (all categories)
-        run: |
-          python scripts/fetch_papers.py ${{ steps.date.outputs.api_date }} ./outputs/ 2>&1 || {
-            echo "::warning::fetch_papers.py failed — continuing"
-          }
-          echo "::notice::Output files:"
-          ls -la ./outputs/ 2>&1 || echo "no outputs dir"
-
-      - name: Check summary
-        id: check
-        run: |
-          if [ -f "./outputs/summary.json" ]; then
-            echo "has_summary=true" >> $GITHUB_OUTPUT
-            cat ./outputs/summary.json
-          else
-            echo "has_summary=false" >> $GITHUB_OUTPUT
-            echo "No summary.json found"
-          fi
-
-      # ── Translate one category at a time, patiently ──
-      - name: Translate gr-qc
-        if: steps.check.outputs.has_summary == 'true'
-        continue-on-error: true
+      # The unified pipeline: fetch → translate → build all in Python
+      - name: Run digest pipeline
+        id: digest
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: |
-          JSON="./outputs/gr-qc.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
-            if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-              echo "Translating gr-qc: $COUNT papers"
-              python scripts/translate_cloud.py "$JSON" --category gr-qc 2>&1
-            else
-              echo "gr-qc: 0 papers, skip"
-            fi
-          fi
+        run:
+          python scripts/run.py --date "${{ github.event.inputs.date }}" 2>&1
 
-      - name: Translate hep-th
-        if: steps.check.outputs.has_summary == 'true'
-        continue-on-error: true
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: |
-          JSON="./outputs/hep-th.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
-            if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-              echo "Translating hep-th: $COUNT papers"
-              python scripts/translate_cloud.py "$JSON" --category hep-th 2>&1
-            else
-              echo "hep-th: 0 papers, skip"
-            fi
-          fi
-
-      - name: Translate astro-ph
-        if: steps.check.outputs.has_summary == 'true'
-        continue-on-error: true
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: |
-          JSON="./outputs/astro-ph.json"
-          if [ -f "$JSON" ]; then
-            COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1)
-            if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-              echo "Translating astro-ph: $COUNT papers"
-              python scripts/translate_cloud.py "$JSON" --category astro-ph 2>&1
-            else
-              echo "astro-ph: 0 papers, skip"
-            fi
-          fi
-
-      # ── Build HTML ──
-      - name: Build Hub HTML
-        if: steps.check.outputs.has_summary == 'true'
-        run: |
-          mkdir -p ./outputs-public
-          python scripts/build_hub.py \
-            ./outputs/summary.json \
-            ./outputs-public/latest.html \
-            "${{ steps.date.outputs.display_date }}"
-
-      - name: Build category HTML pages
-        if: steps.check.outputs.has_summary == 'true'
-        run: |
-          for CAT in gr-qc hep-th astro-ph; do
-            JSON="./outputs/${CAT}.json"
-            if [ -f "$JSON" ]; then
-              COUNT=$(python -c "import json; print(len(json.load(open('$JSON'))))" 2>&1 || echo "0")
-              if [ "$COUNT" -gt 0 ] 2>/dev/null; then
-                DATE_FILE="./outputs-public/arxiv-${CAT}-${{ steps.date.outputs.api_date }}.html"
-                LATEST="./outputs-public/${CAT}-latest.html"
-                python scripts/build_html.py "$JSON" "$DATE_FILE" "${{ steps.date.outputs.display_date }}" --category "$CAT" --latest "$LATEST"
-              else
-                echo "$CAT: 0 papers, skip"
-              fi
-            fi
-          done
-          echo "=== Built files: ==="
-          ls -la ./outputs-public/
-
-      # ── GitHub Pages (deploy before push so pages are live when user clicks) ──
-      - name: Setup Pages
-        if: steps.check.outputs.has_summary == 'true'
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        if: steps.check.outputs.has_summary == 'true'
-        uses: actions/upload-pages-artifact@v3
+      # Deploy to GitHub Pages
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./outputs-public
+      - uses: actions/deploy-pages@v4
 
-      - name: Deploy to GitHub Pages
-        if: steps.check.outputs.has_summary == 'true'
-        uses: actions/deploy-pages@v4
-
-      # Give Pages time to propagate before sending push notification
-      - name: Wait for Pages propagation
-        if: steps.check.outputs.has_summary == 'true'
+      # Wait for Pages propagation then push notification
+      - name: Wait for Pages
         run: sleep 30
-
-      # ── PushPlus notification (AFTER pages are live) ──
       - name: Send PushPlus notification
-        if: steps.check.outputs.has_summary == 'true'
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-          DATE_DISPLAY: ${{ steps.date.outputs.display_date }}
           PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
         run: |
           python << 'PYEOF'
           import json, os, subprocess
 
-          with open('./outputs/summary.json', 'r') as f:
+          with open('./outputs-public/summary.json', 'r') as f:
               summary = json.load(f)
 
-          cat_config = [
-              ('gr-qc',    '\U0001f300', '#2563eb', 'gr-qc-latest.html', '\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66'),
-              ('hep-th',   '\u269b\ufe0f', '#7c3aed', 'hep-th-latest.html', '\u9ad8\u80fd\u7406\u8bba\u7269\u7406'),
-              ('astro-ph', '\U0001f52d', '#059669', 'astro-ph-latest.html', '\u5929\u4f53\u7269\u7406\u5b66'),
+          cats = [
+              ('\U0001f300', '#2563eb', 'gr-qc-latest.html', '\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66'),
+              ('\u269b\ufe0f', '#7c3aed', 'hep-th-latest.html', '\u9ad8\u80fd\u7406\u8bba\u7269\u7406'),
+              ('\U0001f52d', '#059669', 'astro-ph-latest.html', '\u5929\u4f53\u7269\u7406\u5b66'),
           ]
 
-          base = os.environ.get('PAGE_URL', '#')
-          date_display = os.environ.get('DATE_DISPLAY', '')
+          base = os.environ['PAGE_URL']
+          from datetime import datetime
+          date_display = (datetime.now()).strftime('%Y\u5e74%m\u6708%d\u65e5')
 
-          lines = ['<h3>\U0001f4f0 arXiv \u4eca\u65e5\u8bba\u6587\u901f\u89c8 | %s</h3>' % date_display]
-          lines.append('<p><a href="%s">\U0001f517 \u67e5\u770b Hub \u5bfc\u822a\u9875</a></p>' % base)
-          lines.append('<hr>')
+          lines = ['<h3>\U0001f4f0 arXiv Daily | %s</h3>' % date_display]
+          lines.append('<p><a href="%s">\U0001f517 \u67e5\u770b Hub</a></p><hr>' % base)
 
-          for cat, emoji, color, page, name in cat_config:
+          cat_names = {'gr-qc': '\u5f15\u529b\u4e0e\u91cf\u5b50\u5b87\u5b99\u5b66',
+                       'hep-th': '\u9ad8\u80fd\u7406\u8bba\u7269\u7406',
+                       'astro-ph': '\u5929\u4f53\u7269\u7406\u5b66'}
+          cat_keys = ['gr-qc', 'hep-th', 'astro-ph']
+
+          for i, (emoji, color, page, _) in enumerate(cats):
+              cat = cat_keys[i]
               count = summary.get(cat, 0)
+              name = cat_names[cat]
               url = base.replace('latest.html', page)
               if count > 0:
-                  lines.append(
-                      '<p style="font-size:16px;margin:8px 0">'
+                  lines.append('<p style="font-size:16px;margin:8px 0">'
                       '<a href="%s" style="color:%s;text-decoration:none;font-weight:600">'
-                      '%s %s\uff08%s\uff09\uff1a%d \u7bc7</a></p>'
-                      % (url, color, emoji, name, cat, count)
-                  )
+                      '%s %s(%s)%d \u7bc7</a></p>' % (url, color, emoji, name, cat, count))
               else:
-                  lines.append(
-                      '<p style="font-size:16px;margin:8px 0;color:#9ca3af">'
-                      '%s %s\uff08%s\uff09\uff1a\u6ca1\u66f4\u65b0</p>'
-                      % (emoji, name, cat)
-                  )
+                  lines.append('<p style="font-size:16px;margin:8px 0;color:#9ca3af">'
+                      '%s %s(%s)\u6ca1\u66f4\u65b0</p>' % (emoji, name, cat))
 
-          lines.append('<hr>')
-          lines.append(
-              '<p style="color:#999;font-size:12px">'
+          lines.append('<hr><p style="color:#999;font-size:12px">'
               '\u6bcf\u65e5 12:00 \u81ea\u52a8\u63a8\u9001 &middot; '
-              '<a href="%s">\u67e5\u770b\u5b8c\u6574\u62a5\u544a</a>'
-              '<br>\U0001f4a1 \u9875\u9762\u53ef\u80fd\u9700\u8981 1 \u5206\u949f\u5237\u65b0\u751f\u6548</p>' % base
-          )
+              '<a href="%s">\u67e5\u770b\u62a5\u544a</a><br>'
+              '\U0001f4a1 \u9875\u9762\u53ef\u80fd\u9700\u8981 1 \u5206\u949f\u5237\u65b0</p>' % base)
 
           content = ''.join(lines)
           title = 'arXiv Daily | %s' % date_display
-          token = os.environ.get('PUSHPLUS_TOKEN', '')
+          token = os.environ['PUSHPLUS_TOKEN']
 
-          subprocess.run(['curl', '-s', '-X', 'POST',
-              'https://www.pushplus.plus/send',
-              '-H', 'Content-Type: application/json',
-              '-d', json.dumps({'token': token, 'title': title, 'content': content, 'template': 'html'})
-          ], check=False)
-
-          subprocess.run(['curl', '-s', '-X', 'POST',
-              'https://www.pushplus.plus/send',
-              '-H', 'Content-Type: application/json',
-              '-d', json.dumps({'token': token, 'title': title, 'content': content, 'template': 'html', 'topic': 'arxiv-gr-qc'})
-          ], check=False)
-
-          print('PushPlus notifications sent.')
+          for topic in [None, 'arxiv-gr-qc']:
+              body = {'token': token, 'title': title, 'content': content, 'template': 'html'}
+              if topic:
+                  body['topic'] = topic
+              subprocess.run(['curl', '-s', '-X', 'POST', 'https://www.pushplus.plus/send',
+                  '-H', 'Content-Type: application/json', '-d', json.dumps(body)], check=False)
+          print('PushPlus sent.')
           PYEOF
 
-      # ── No papers (fallback) ──
       - name: No papers notification
-        if: steps.check.outputs.has_summary == 'false'
+        if: failure()
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
-          DATE_DISPLAY="${{ steps.date.outputs.display_date }}"
-          MSG="arXiv Daily ${DATE_DISPLAY}：所有分区均无更新"
+          MSG="arXiv Daily: pipeline failed"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily | ${DATE_DISPLAY}\",\"content\":\"${MSG}\"}"
-          curl -s -X POST "https://www.pushplus.plus/send" \
-            -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily | ${DATE_DISPLAY}\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily\",\"content\":\"${MSG}\"}"
