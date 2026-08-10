@@ -531,12 +531,12 @@ def main():
         qd = (d - timedelta(days=1)).strftime("%Y%m%d")
         display = d.strftime("%Y年%m月%d日")
     else:
-        # Yesterday (Beijing time)
+        # arXiv has already published today's papers by the time this runs (noon Beijing time)
         os.environ["TZ"] = "Asia/Shanghai"
-        from datetime import datetime, timedelta
-        d = datetime.now() - timedelta(days=1)
+        from datetime import datetime
+        d = datetime.now()
         qd = d.strftime("%Y%m%d")
-        display = (datetime.now() - timedelta(days=1)).strftime("%Y年%m月%d日")
+        display = d.strftime("%Y年%m月%d日")
 
     print(f"Query: {qd}  Display: {display}")
     os.makedirs(args.out, exist_ok=True)
