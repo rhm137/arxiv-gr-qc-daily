@@ -531,12 +531,20 @@ def main():
         qd = (d - timedelta(days=1)).strftime("%Y%m%d")
         display = d.strftime("%Y年%m月%d日")
     else:
-        # arXiv has already published today's papers by the time this runs (noon Beijing time)
+        # arXiv announces Mon-Fri at 20:00 ET (= next day ~08:00 Beijing).
+        # At noon Beijing, the latest available papers are from yesterday (weekdays)
+        # or last Friday (on Mon/Sat/Sun).
         os.environ["TZ"] = "Asia/Shanghai"
-        from datetime import datetime
-        d = datetime.now()
+        from datetime import datetime, timedelta
+        now = datetime.now()
+        d = now - timedelta(days=1)  # start from yesterday
+        # If yesterday was Sat/Sun, go back to Friday
+        if d.weekday() == 5:  # Saturday → Friday
+            d = d - timedelta(days=1)
+        elif d.weekday() == 6:  # Sunday → Friday
+            d = d - timedelta(days=2)
         qd = d.strftime("%Y%m%d")
-        display = d.strftime("%Y年%m月%d日")
+        display = now.strftime("%Y年%m月%d日")
 
     print(f"Query: {qd}  Display: {display}")
     os.makedirs(args.out, exist_ok=True)

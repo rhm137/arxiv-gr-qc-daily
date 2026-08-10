@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'Override date (YYYY-MM-DD). Leave empty for today (arXiv updates ~8 AM Beijing time).'
+        description: 'Override date (YYYY-MM-DD). Empty = auto (latest available, handles weekends).'
         required: false
         default: ''
 
