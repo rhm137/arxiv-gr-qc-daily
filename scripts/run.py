@@ -19,12 +19,14 @@ import sys
 import time
 import xml.etree.ElementTree as ET
 from argparse import ArgumentParser
+from datetime import datetime, timedelta
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 
 # ── Config ──
 ARXIV_API = "http://export.arxiv.org/api/query"
-ARXIV_MAX = 100
+ARXIV_MAX = 100          # per-page page size (pagination loops until all fetched)
+ARXIV_WINDOW = 3         # fetch submittedDate window: [announce_day - 3d, announce_day]
 ARXIV_UA  = "WorkBuddy-arxiv-digest/2.0"
 ARXIV_RETRY = 8
 ARXIV_DELAY = 15
@@ -63,6 +65,43 @@ RETRY_ABBR = ("LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA,
 
 
 # ═══════════════════════════════════════════════════════════════════════
+# ANNOUNCE DATE
+# ═══════════════════════════════════════════════════════════════════════
+
+def _announce_date(published_utc: str) -> str:
+    """
+    由论文的首次提交时间（published, UTC）推算 arXiv 公告日期（美东, YYYYMMDD）。
+
+    规则（arXiv 实际机制）：
+    - 论文在美东当天 14:00 之前提交 → 当晚 20:00 公告（美东当天）
+    - 14:00 之后提交 → 顺延到下一个工作日公告
+    - 周末/节假日不公告 → 顺延到周一
+
+    例：8/29（周六）提交 → 8/31（周一）公告；8/31 12:00 UTC（=美东 8:00）→ 8/31 公告。
+    """
+    if not published_utc:
+        return ""
+    try:
+        dt = datetime.strptime(published_utc[:19], "%Y-%m-%dT%H:%M:%S")
+    except ValueError:
+        return ""
+    # UTC → 美东时间（优先 zoneinfo；缺失 tzdata 时按夏令时近似）
+    try:
+        from zoneinfo import ZoneInfo
+        us = dt.astimezone(ZoneInfo("America/New_York"))
+    except Exception:
+        offset = 4 if 3 <= dt.month <= 11 else 5  # EDT=UTC-4 (3~11月), EST=UTC-5
+        us = dt - timedelta(hours=offset)
+    if us.hour >= 14:          # 美东 14:00 截止后提交 → 次日公告
+        us += timedelta(days=1)
+    if us.weekday() == 5:      # 周六 → 周一
+        us += timedelta(days=2)
+    elif us.weekday() == 6:    # 周日 → 周一
+        us += timedelta(days=1)
+    return us.strftime("%Y%m%d")
+
+
+# ═══════════════════════════════════════════════════════════════════════
 # FETCH
 # ═══════════════════════════════════════════════════════════════════════
 
@@ -83,31 +122,65 @@ def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
     raise RuntimeError(f"arXiv API unreachable after {retries} attempts: {last_err}")
 
 
-def fetch_category(cat: str, date_str: str) -> list[dict]:
-    """Fetch papers for a category (handles astro-ph sub-categories)."""
+def fetch_category(cat: str, announce_day: str) -> list[dict]:
+    """
+    Fetch papers announced on `announce_day` (YYYYMMDD, US Eastern date).
+
+    arXiv's listing groups papers by *announcement* date, but the API only
+    indexes *submission* time (submittedDate, UTC). A Monday announcement
+    contains everything submitted since Friday 18:00 UTC, so we query a wide
+    window [announce_day - ARXIV_WINDOW, announce_day] and then filter by the
+    computed announcement date. This fixes weekend/missing papers.
+    """
     papers = []
     seen = set()
 
+    qd = datetime.strptime(announce_day, "%Y%m%d")
+    start_day = (qd - timedelta(days=ARXIV_WINDOW)).strftime("%Y%m%d")
+
     if cat == "astro-ph":
         for sub in ASTRO_SUBS:
-            query = f"cat:{sub}+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
-            url = (f"{ARXIV_API}?search_query={query}&sortBy=submittedDate"
-                   f"&sortOrder=ascending&start=0&max_results={ARXIV_MAX}")
-            print(f"  GET {sub}...")
-            xml_text = fetch_url(url)
-            new = _parse_xml(xml_text, seen, papers)
-            print(f"    {sub}: {new} papers")
+            print(f"  Querying {sub} [{start_day}..{announce_day}]...")
+            _fetch_into(sub, start_day, announce_day, seen, papers)
             time.sleep(5)
     else:
-        query = f"cat:{cat}+AND+submittedDate:[{date_str}0000+TO+{date_str}2359]"
-        url = (f"{ARXIV_API}?search_query={query}&sortBy=submittedDate"
-               f"&sortOrder=ascending&start=0&max_results={ARXIV_MAX}")
-        print(f"  GET {cat}...")
-        xml_text = fetch_url(url)
-        n = _parse_xml(xml_text, seen, papers)
-        print(f"    {cat}: {n} papers")
+        print(f"  Querying {cat} [{start_day}..{announce_day}]...")
+        _fetch_into(cat, start_day, announce_day, seen, papers)
 
+    before = len(papers)
+    papers = [p for p in papers if _announce_date(p.get("Published", "")) == announce_day]
+    dropped = before - len(papers)
+    if dropped:
+        print(f"    dropped {dropped} papers outside announce date {announce_day}")
     return papers
+
+
+def _fetch_into(cat_query: str, start_day: str, end_day: str, seen: set, out: list) -> int:
+    """Fetch all pages of a submittedDate window, dedup, append to out. Returns new count."""
+    q = f"cat:{cat_query}+AND+submittedDate:[{start_day}0000+TO+{end_day}2359]"
+    ns_o = {"o": "http://a9.com/-/spec/opensearch/1.1/"}
+    start = 0
+    total_new = 0
+    while True:
+        url = (f"{ARXIV_API}?search_query={q}&sortBy=submittedDate&sortOrder=ascending"
+               f"&start={start}&max_results={ARXIV_MAX}")
+        xml_text = fetch_url(url)
+        before = len(out)
+        _parse_xml(xml_text, seen, out)
+        added = len(out) - before
+        total_new += added
+        try:
+            root = ET.fromstring(xml_text)
+            tel = root.find("o:totalResults", ns_o)
+            total = int(tel.text) if tel is not None and tel.text else (start + added)
+        except Exception:
+            total = start + added
+        start += ARXIV_MAX
+        print(f"    page start={start-ARXIV_MAX}: +{added} new (total={total})")
+        if added == 0 or start >= total:
+            break
+        time.sleep(4)
+    return total_new
 
 
 def _parse_xml(xml_text: str, seen: set, out: list) -> int:
@@ -137,6 +210,7 @@ def _parse_xml(xml_text: str, seen: set, out: list) -> int:
             "ID": pid, "Title": txt("a:title"),
             "Authors": "; ".join(authors), "Summary": txt("a:summary"),
             "PrimaryCat": primary, "AllCats": ", ".join(all_cats), "Comment": comment,
+            "Published": txt("a:published"),
         })
         new += 1
     return new
@@ -524,18 +598,16 @@ def main():
         print("ERROR: DEEPSEEK_API_KEY not set", file=sys.stderr)
         sys.exit(1)
 
-    # Date calculation
+    # Date calculation — qd = target *announcement* date (US Eastern), not submission date.
     if args.date:
-        from datetime import datetime, timedelta
         d = datetime.strptime(args.date, "%Y-%m-%d")
         qd = (d - timedelta(days=1)).strftime("%Y%m%d")
         display = d.strftime("%Y年%m月%d日")
     else:
         # arXiv announces Mon-Fri at 20:00 ET (= next day ~08:00 Beijing).
-        # At noon Beijing, the latest available papers are from yesterday (weekdays)
+        # At noon Beijing, the latest announcement is yesterday (weekdays)
         # or last Friday (on Mon/Sat/Sun).
         os.environ["TZ"] = "Asia/Shanghai"
-        from datetime import datetime, timedelta
         now = datetime.now()
         d = now - timedelta(days=1)  # start from yesterday
         # If yesterday was Sat/Sun, go back to Friday
