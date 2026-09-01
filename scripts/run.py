@@ -479,8 +479,11 @@ def _format_authors(paper: dict, max_n: int = 4) -> str:
 def build_category_html(papers: list[dict], cat: str, out_dir: str, date_display: str, api_date: str):
     """Build date-stamped + latest HTML for a category."""
     meta = CATEGORY_META[cat]
-    primary = [p for p in papers if p.get("PrimaryCat", "").startswith(cat if cat == "astro-ph" else cat)]
-    cross = [p for p in papers if p not in primary]
+    # 排序：主分类论文在前、交叉列表在后（各自保持 API 的提交时间顺序）
+    is_primary = lambda p: p.get("PrimaryCat", "").startswith(cat if cat == "astro-ph" else cat)
+    primary = [p for p in papers if is_primary(p)]
+    cross = [p for p in papers if not is_primary(p)]
+    papers = primary + cross
     total = len(papers)
 
     # TOC
