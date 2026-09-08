@@ -24,12 +24,14 @@ from urllib.request import urlopen, Request
 from urllib.error import URLError
 
 # ── Config ──
-ARXIV_API = "http://export.arxiv.org/api/query"
-ARXIV_MAX = 100          # per-page page size (pagination loops until all fetched)
-ARXIV_WINDOW = 3         # fetch submittedDate window: [announce_day - 3d, announce_day]
+ARXIV_API = "https://export.arxiv.org/api/query"
+LISTING_BASE = "https://arxiv.org/list"   # 权威批次页面 /list/{cat}/new
+LISTING_SHOW = 2000                       # listing 页大小（合法值 25..2000）
+META_CHUNK = 50                           # id_list 元数据分块大小
 ARXIV_UA  = "WorkBuddy-arxiv-digest/2.0"
 ARXIV_RETRY = 8
 ARXIV_DELAY = 15
+DEFAULT_SUMMARY_URL = "https://rhm137.github.io/arxiv-gr-qc-daily/summary.json"
 
 ASTRO_SUBS = ["astro-ph.CO", "astro-ph.HE"]
 
@@ -65,40 +67,89 @@ RETRY_ABBR = ("LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA,
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# ANNOUNCE DATE
+# BATCH DATE / LISTING
 # ═══════════════════════════════════════════════════════════════════════
+# arXiv 公告机制（2026-09 实测标定）：
+#   - 标签为工作日 D 的 listing 批次 = 美东 D 的前一个工作日 14:00 截止的提交
+#     （即 D-2 工作日 14:00 ET 之后 ~ D-1 工作日 14:00 ET 之前提交的论文）
+#   - 周五 14:00 ET 之后至周一 14:00 ET 的提交（含周末）落入下周二批次
+#   - 批次在标签日 D 当天约 02:00 ET（北京时间 ~14:00）发布到 /list/{cat}/new
+#   - 少量论文会因审核挂起延迟数日才进入批次（submittedDate 无法推算），
+#     因此批次成员以 listing 页面为唯一权威来源。
 
-def _announce_date(published_utc: str) -> str:
-    """
-    由论文的首次提交时间（published, UTC）推算 arXiv 公告日期（美东, YYYYMMDD）。
-
-    规则（arXiv 实际机制）：
-    - 论文在美东当天 14:00 之前提交 → 当晚 20:00 公告（美东当天）
-    - 14:00 之后提交 → 顺延到下一个工作日公告
-    - 周末/节假日不公告 → 顺延到周一
-
-    例：8/29（周六）提交 → 8/31（周一）公告；8/31 12:00 UTC（=美东 8:00）→ 8/31 公告。
-    """
-    if not published_utc:
-        return ""
-    try:
-        dt = datetime.strptime(published_utc[:19], "%Y-%m-%dT%H:%M:%S")
-    except ValueError:
-        return ""
-    # UTC → 美东时间（优先 zoneinfo；缺失 tzdata 时按夏令时近似）
+def _expected_label() -> str:
+    """当前时刻理应已发布的最新批次标签（YYYY-MM-DD，美东日期）。"""
     try:
         from zoneinfo import ZoneInfo
-        us = dt.astimezone(ZoneInfo("America/New_York"))
+        now = datetime.now(ZoneInfo("America/New_York"))
     except Exception:
-        offset = 4 if 3 <= dt.month <= 11 else 5  # EDT=UTC-4 (3~11月), EST=UTC-5
-        us = dt - timedelta(hours=offset)
-    if us.hour >= 14:          # 美东 14:00 截止后提交 → 次日公告
-        us += timedelta(days=1)
-    if us.weekday() == 5:      # 周六 → 周一
-        us += timedelta(days=2)
-    elif us.weekday() == 6:    # 周日 → 周一
-        us += timedelta(days=1)
-    return us.strftime("%Y%m%d")
+        now = datetime.utcnow() - timedelta(hours=4)
+    d = now.date()
+    if now.hour < 3:            # 当日公告 ~02:00 ET 尚未发布
+        d -= timedelta(days=1)
+    while d.weekday() >= 5:     # 周末 → 上一个工作日（周五）
+        d -= timedelta(days=1)
+    return d.strftime("%Y-%m-%d")
+
+
+def scrape_listing(cat_query: str) -> dict:
+    """
+    解析 https://arxiv.org/list/{cat}/new —— 当前已公告的权威批次。
+
+    Returns {"label": "YYYY-MM-DD", "new": [ids], "cross": [ids]}
+    listing 的 New/Cross submissions 与官网展示完全一致（含延迟发布论文）。
+    """
+    url = f"{LISTING_BASE}/{cat_query}/new?skip=0&show={LISTING_SHOW}"
+    html = fetch_url(url)
+
+    m = re.search(r"Showing new listings for \w+day, (\d{1,2}) (\w+) (\d{4})", html)
+    if not m:
+        raise RuntimeError(f"cannot parse listing label from /list/{cat_query}/new")
+    label = datetime.strptime(f"{m.group(1)} {m.group(2)} {m.group(3)}", "%d %B %Y").strftime("%Y-%m-%d")
+
+    new_ids, cross_ids = [], []
+    section, counts = None, {}
+    for chunk in re.split(r"(<h3[^>]*>.*?</h3>)", html):
+        hm = re.search(r"<h3[^>]*>(.*?)</h3>", chunk, re.S)
+        if hm:
+            head = re.sub(r"<[^>]+>", "", hm.group(1))
+            if "New submissions" in head:
+                section = "new"
+            elif "Cross submissions" in head:
+                section = "cross"
+            else:
+                section = None
+            cm = re.search(r"showing (?:first )?(\d+) of (\d+) entries", head)
+            if section and cm:
+                counts[section] = int(cm.group(2))
+            continue
+        if section:
+            # 论文 ID 只出现在 <dt> 条目内（区段附注中可能引用其他论文链接）
+            for dt in re.findall(r"<dt>(.*?)</dt>", chunk, re.S):
+                m2 = re.search(r"abs/(\d{4}\.\d+)", dt)
+                if not m2:
+                    continue
+                pid = m2.group(1)
+                lst = new_ids if section == "new" else cross_ids
+                if pid not in lst:
+                    lst.append(pid)
+
+    for name, ids in (("new", new_ids), ("cross", cross_ids)):
+        expect = counts.get(name)
+        if expect is not None and len(ids) != expect:
+            raise RuntimeError(
+                f"{cat_query} {name}: parsed {len(ids)} ids but listing says {expect} — page truncated or layout changed")
+    return {"label": label, "new": new_ids, "cross": cross_ids}
+
+
+def _live_summary_date() -> str:
+    """线上已推送批次的日期（读取 GitHub Pages 上的 summary.json）；失败返回 ''。"""
+    url = os.environ.get("PAGES_SUMMARY_URL", DEFAULT_SUMMARY_URL)
+    try:
+        text = fetch_url(url, retries=2)
+        return str(json.loads(text).get("date", ""))
+    except Exception:
+        return ""
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -119,68 +170,62 @@ def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
                 wait = ARXIV_DELAY * (attempt + 1)
                 print(f"  [RETRY {attempt+1}/{retries}] {e} — waiting {wait}s", file=sys.stderr)
                 time.sleep(wait)
-    raise RuntimeError(f"arXiv API unreachable after {retries} attempts: {last_err}")
+    raise RuntimeError(f"arXiv unreachable after {retries} attempts: {last_err}")
 
 
-def fetch_category(cat: str, announce_day: str) -> list[dict]:
+def fetch_category(cat: str) -> tuple[list[dict], str]:
     """
-    Fetch papers announced on `announce_day` (YYYYMMDD, US Eastern date).
+    抓取 `cat` 当前已公告的批次（与 arXiv 官网 /new 完全一致）。
 
-    arXiv's listing groups papers by *announcement* date, but the API only
-    indexes *submission* time (submittedDate, UTC). A Monday announcement
-    contains everything submitted since Friday 18:00 UTC, so we query a wide
-    window [announce_day - ARXIV_WINDOW, announce_day] and then filter by the
-    computed announcement date. This fixes weekend/missing papers.
+    Returns (papers, label_date)。paper dict 带 "Section": "new"|"cross"。
+    astro-ph = astro-ph.CO + astro-ph.HE 两个子分区合并。
     """
-    papers = []
-    seen = set()
+    queries = ASTRO_SUBS if cat == "astro-ph" else [cat]
+    label = None
+    sections: dict[str, str] = {}
+    order: list[str] = []
+    for q in queries:
+        print(f"  Scraping /list/{q}/new ...")
+        listing = scrape_listing(q)
+        if label is None:
+            label = listing["label"]
+        elif listing["label"] != label:
+            print(f"  [WARN] {q} label {listing['label']} != {label}")
+        for pid in listing["new"]:
+            if pid not in sections:
+                sections[pid] = "new"
+                order.append(pid)
+        for pid in listing["cross"]:
+            if pid not in sections:
+                sections[pid] = "cross"
+                order.append(pid)
+        print(f"    {q}: {len(listing['new'])} new + {len(listing['cross'])} cross ({listing['label']})")
+        if len(queries) > 1:
+            time.sleep(4)
 
-    qd = datetime.strptime(announce_day, "%Y%m%d")
-    start_day = (qd - timedelta(days=ARXIV_WINDOW)).strftime("%Y%m%d")
+    papers = _fetch_meta(order)
+    by_id = {p["ID"]: p for p in papers}
+    out = []
+    for pid in order:
+        p = by_id.get(pid)
+        if p is None:
+            print(f"  [WARN] {pid} on listing but missing from API metadata")
+            continue
+        p["Section"] = sections[pid]
+        out.append(p)
+    return out, label or ""
 
-    if cat == "astro-ph":
-        for sub in ASTRO_SUBS:
-            print(f"  Querying {sub} [{start_day}..{announce_day}]...")
-            _fetch_into(sub, start_day, announce_day, seen, papers)
-            time.sleep(5)
-    else:
-        print(f"  Querying {cat} [{start_day}..{announce_day}]...")
-        _fetch_into(cat, start_day, announce_day, seen, papers)
 
-    before = len(papers)
-    papers = [p for p in papers if _announce_date(p.get("Published", "")) == announce_day]
-    dropped = before - len(papers)
-    if dropped:
-        print(f"    dropped {dropped} papers outside announce date {announce_day}")
+def _fetch_meta(ids: list[str]) -> list[dict]:
+    """按 id_list 分块拉取论文元数据。"""
+    papers, seen = [], set()
+    for i in range(0, len(ids), META_CHUNK):
+        chunk = ids[i:i + META_CHUNK]
+        url = f"{ARXIV_API}?id_list={','.join(chunk)}&max_results={len(chunk)}"
+        _parse_xml(fetch_url(url), seen, papers)
+        if i + META_CHUNK < len(ids):
+            time.sleep(4)
     return papers
-
-
-def _fetch_into(cat_query: str, start_day: str, end_day: str, seen: set, out: list) -> int:
-    """Fetch all pages of a submittedDate window, dedup, append to out. Returns new count."""
-    q = f"cat:{cat_query}+AND+submittedDate:[{start_day}0000+TO+{end_day}2359]"
-    ns_o = {"o": "http://a9.com/-/spec/opensearch/1.1/"}
-    start = 0
-    total_new = 0
-    while True:
-        url = (f"{ARXIV_API}?search_query={q}&sortBy=submittedDate&sortOrder=ascending"
-               f"&start={start}&max_results={ARXIV_MAX}")
-        xml_text = fetch_url(url)
-        before = len(out)
-        _parse_xml(xml_text, seen, out)
-        added = len(out) - before
-        total_new += added
-        try:
-            root = ET.fromstring(xml_text)
-            tel = root.find("o:totalResults", ns_o)
-            total = int(tel.text) if tel is not None and tel.text else (start + added)
-        except Exception:
-            total = start + added
-        start += ARXIV_MAX
-        print(f"    page start={start-ARXIV_MAX}: +{added} new (total={total})")
-        if added == 0 or start >= total:
-            break
-        time.sleep(4)
-    return total_new
 
 
 def _parse_xml(xml_text: str, seen: set, out: list) -> int:
@@ -194,6 +239,7 @@ def _parse_xml(xml_text: str, seen: set, out: list) -> int:
             return el.text.strip() if el is not None and el.text else ""
 
         pid = txt("a:id").replace("http://arxiv.org/abs/", "")
+        pid = re.sub(r"v\d+$", "", pid)   # 去掉版本号，与 listing ID 对齐
         if pid in seen:
             continue
         seen.add(pid)
@@ -479,9 +525,11 @@ def _format_authors(paper: dict, max_n: int = 4) -> str:
 def build_category_html(papers: list[dict], cat: str, out_dir: str, date_display: str, api_date: str):
     """Build date-stamped + latest HTML for a category."""
     meta = CATEGORY_META[cat]
-    # 排序：主分类论文在前、交叉列表在后；交叉再按来源主分类分组（组内保持提交时间顺序，
+    # 排序：主分类论文在前、交叉列表在后；交叉再按来源主分类分组（组内保持 listing 顺序，
     # 组间按论文数量降序，数量相同按分类名），相同交叉分区的论文尽量排在一起
-    is_primary = lambda p: p.get("PrimaryCat", "").startswith(cat if cat == "astro-ph" else cat)
+    # （Section 来自 listing 页面的 New/Cross 分区，比 PrimaryCat 前缀更准确）
+    is_primary = lambda p: (p.get("Section") == "new") if p.get("Section") \
+        else p.get("PrimaryCat", "").startswith(cat if cat == "astro-ph" else cat)
     primary = [p for p in papers if is_primary(p)]
     cross = [p for p in papers if not is_primary(p)]
     cross_groups: dict[str, list] = {}
@@ -597,9 +645,11 @@ def build_hub_html(summary: dict, out_dir: str, date_display: str):
 
 def main():
     parser = ArgumentParser(description="arXiv unified daily digest")
-    parser.add_argument("--date", default=None, help="Override date YYYY-MM-DD")
+    parser.add_argument("--date", default=None, help="期望的批次日期 YYYY-MM-DD（仅校验用，实际抓取以官网 /new 当前批次为准）")
     parser.add_argument("--cats", nargs="+", default=["gr-qc", "hep-th", "astro-ph"])
     parser.add_argument("--out", default="./outputs-public", help="Output dir for HTML")
+    parser.add_argument("--wait-minutes", type=int, default=45,
+                        help="若当前批次尚未发布（标签早于预期），轮询等待的分钟数上限")
     args = parser.parse_args()
 
     api_key = os.environ.get("DEEPSEEK_API_KEY", "")
@@ -607,71 +657,89 @@ def main():
         print("ERROR: DEEPSEEK_API_KEY not set", file=sys.stderr)
         sys.exit(1)
 
-    # Date calculation — qd = target *announcement* date (US Eastern), not submission date.
-    if args.date:
-        d = datetime.strptime(args.date, "%Y-%m-%d")
-        qd = (d - timedelta(days=1)).strftime("%Y%m%d")
-        display = d.strftime("%Y年%m月%d日")
-    else:
-        # arXiv announces Mon-Fri at 20:00 ET (= next day ~08:00 Beijing).
-        # At noon Beijing, the latest announcement is yesterday (weekdays)
-        # or last Friday (on Mon/Sat/Sun).
-        os.environ["TZ"] = "Asia/Shanghai"
-        now = datetime.now()
-        d = now - timedelta(days=1)  # start from yesterday
-        # If yesterday was Sat/Sun, go back to Friday
-        if d.weekday() == 5:  # Saturday → Friday
-            d = d - timedelta(days=1)
-        elif d.weekday() == 6:  # Sunday → Friday
-            d = d - timedelta(days=2)
-        qd = d.strftime("%Y%m%d")
-        display = now.strftime("%Y年%m月%d日")
-
-    print(f"Query: {qd}  Display: {display}")
     os.makedirs(args.out, exist_ok=True)
 
-    # ── STEP 1: Fetch ──
+    # ── STEP 0: 等待当日批次发布 ──
+    # 批次在标签日 ~02:00 ET（北京 ~14:00）发布。若运行过早（listing 仍是
+    # 上一批），轮询等待最多 --wait-minutes，避免漏推/重复推。
+    probe_cat = args.cats[0] if args.cats else "gr-qc"
+    expected = _expected_label()
+    print(f"Expected batch label: {expected}")
+    waited = 0
+    while not args.date:
+        label = scrape_listing(probe_cat)["label"]
+        if label == expected:
+            break
+        if waited >= args.wait_minutes:
+            print(f"[WARN] listing still shows {label} (expected {expected}) after {waited}min — proceeding anyway")
+            break
+        print(f"  Batch {expected} not published yet (listing shows {label}), waiting 10min ...")
+        time.sleep(600)
+        waited += 10
+
+    # ── STEP 1: Fetch（listing 为权威来源，label 即批次日期）──
     all_data = {}
     summary = {}
-    # Fetch gr-qc last — arXiv rate limits hit the first query hardest
-    fetch_order = [c for c in args.cats if c != "gr-qc"] + (["gr-qc"] if "gr-qc" in args.cats else [])
-    print(f"  Cooling {ARXIV_DELAY}s before first API call...")
-    time.sleep(ARXIV_DELAY)
-    for cat in fetch_order:
+    label = ""
+    for cat in args.cats:
         print(f"\n--- Fetching {cat} ---")
         try:
-            papers = fetch_category(cat, qd)
+            papers, cat_label = fetch_category(cat)
+            if cat_label and not label:
+                label = cat_label
             all_data[cat] = papers
             summary[cat] = len(papers)
-            # Stats
-            primary = [p for p in papers if p["PrimaryCat"].startswith(cat if cat == "astro-ph" else cat)]
-            cross = len(papers) - len(primary)
-            print(f"  {cat}: {len(papers)} papers ({len(primary)} primary, {cross} cross)")
+            primary = [p for p in papers if p.get("Section") == "new"]
+            print(f"  {cat}: {len(papers)} papers ({len(primary)} primary, {len(papers)-len(primary)} cross)")
         except Exception as e:
             print(f"  [ERROR] {cat}: {e}", file=sys.stderr)
             all_data[cat] = []
             summary[cat] = 0
 
     # ── Second pass: retry any failed categories with extra patience ──
-    failed = [c for c in fetch_order if summary.get(c, 0) == 0]
+    failed = [c for c in args.cats if summary.get(c, 0) == 0]
     if failed:
         print(f"\n--- Second pass for failed: {failed} ---")
         time.sleep(30)
         for cat in failed:
             print(f"\n--- Retrying {cat} ---")
             try:
-                papers = fetch_category(cat, qd)
+                papers, cat_label = fetch_category(cat)
                 if papers:
+                    if cat_label and not label:
+                        label = cat_label
                     all_data[cat] = papers
                     summary[cat] = len(papers)
-                    primary = [p for p in papers if p["PrimaryCat"].startswith(cat if cat == "astro-ph" else cat)]
-                    cross = len(papers) - len(primary)
-                    print(f"  {cat}: RECOVERED {len(papers)} papers ({len(primary)} primary, {cross} cross)")
+                    primary = [p for p in papers if p.get("Section") == "new"]
+                    print(f"  {cat}: RECOVERED {len(papers)} papers ({len(primary)} primary, {len(papers)-len(primary)} cross)")
                 else:
                     print(f"  {cat}: still 0 papers")
             except Exception as e:
                 print(f"  [ERROR] retry {cat}: {e}", file=sys.stderr)
             time.sleep(10)
+
+    if not label:
+        print("ERROR: no batch label obtained — all categories failed", file=sys.stderr)
+        sys.exit(1)
+
+    # 与 --date 期望值核对（仅提示，不中断）
+    if args.date and args.date != label:
+        print(f"[WARN] --date {args.date} requested, but current listing batch is {label}")
+
+    qd = label.replace("-", "")
+    display = f"{label[0:4]}年{label[5:7]}月{label[8:10]}日"
+    print(f"\nBatch: {label}  Display: {display}")
+
+    # ── 重复推送防护：线上已推送同一批次则跳过 ──
+    pushed_date = _live_summary_date()
+    new_batch = label != pushed_date
+    print(f"Pushed batch on Pages: {pushed_date or '(unknown)'} → new_batch={new_batch}")
+    if "GITHUB_OUTPUT" in os.environ:
+        with open(os.environ["GITHUB_OUTPUT"], "a") as gf:
+            gf.write(f"new_batch={'true' if new_batch else 'false'}\n")
+    if not new_batch:
+        print("This batch was already pushed — skipping translate/build/push.")
+        return
 
     # ── STEP 2: Translate ──
     for cat in args.cats:
@@ -696,10 +764,10 @@ def main():
 
     build_hub_html(summary, args.out, display)
 
-    # ── STEP 4: Save summary ──
+    # ── STEP 4: Save summary（含批次日期，供重复推送防护比对）──
     spath = os.path.join(args.out, "summary.json")
     with open(spath, "w", encoding="utf-8") as f:
-        json.dump(summary, f, ensure_ascii=False, indent=2)
+        json.dump({"date": label, **summary}, f, ensure_ascii=False, indent=2)
 
     total = sum(summary.values())
     print(f"\n=== Done: {total} papers ===")

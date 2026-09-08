@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'Override date (YYYY-MM-DD). Empty = auto (latest available, handles weekends).'
+        description: '期望批次日期 (YYYY-MM-DD)，仅校验用；留空 = 抓取官网当前批次（约北京时间 14:00 后更新）'
         required: false
         default: ''
 
@@ -32,17 +32,23 @@ jobs:
         run:
           python scripts/run.py --date "${{ github.event.inputs.date }}" 2>&1
 
-      # Deploy to GitHub Pages
+      # Deploy to GitHub Pages (skipped when this batch was already pushed —
+      # run.py writes new_batch=false, e.g. for the stale noon trigger)
       - uses: actions/configure-pages@v5
+        if: steps.digest.outputs.new_batch != 'false'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.digest.outputs.new_batch != 'false'
         with:
           path: ./outputs-public
       - uses: actions/deploy-pages@v4
+        if: steps.digest.outputs.new_batch != 'false'
 
       # Wait for Pages propagation then push notification
       - name: Wait for Pages
+        if: steps.digest.outputs.new_batch != 'false'
         run: sleep 30
       - name: Send PushPlus notification
+        if: steps.digest.outputs.new_batch != 'false'
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
@@ -90,7 +96,7 @@ jobs:
                       '%s %s(%s)\u6ca1\u66f4\u65b0</p>' % (emoji, name, cat))
 
           lines.append('<hr><p style="color:#999;font-size:12px">'
-              '\u6bcf\u65e5 12:00 \u81ea\u52a8\u63a8\u9001 &middot; '
+              '\u6bcf\u65e5 15:30 \u81ea\u52a8\u63a8\u9001 &middot; '
               '<a href="%s">\u67e5\u770b\u62a5\u544a</a><br>'
               '\U0001f4a1 \u9875\u9762\u53ef\u80fd\u9700\u8981 1 \u5206\u949f\u5237\u65b0</p>' % base)
 
