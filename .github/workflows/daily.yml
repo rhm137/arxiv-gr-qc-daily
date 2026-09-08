@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: '期望批次日期 (YYYY-MM-DD)，仅校验用；留空 = 抓取官网当前批次（约北京时间 14:00 后更新）'
+        description: '期望批次日期 (YYYY-MM-DD)，仅校验用；留空 = 抓取官网当前批次（最新批次约北京时间早上 8:00 发布，美东 20:00）'
         required: false
         default: ''
 

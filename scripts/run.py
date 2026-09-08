@@ -69,25 +69,30 @@ RETRY_ABBR = ("LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA,
 # ═══════════════════════════════════════════════════════════════════════
 # BATCH DATE / LISTING
 # ═══════════════════════════════════════════════════════════════════════
-# arXiv 公告机制（2026-09 实测标定）：
-#   - 标签为工作日 D 的 listing 批次 = 美东 D 的前一个工作日 14:00 截止的提交
-#     （即 D-2 工作日 14:00 ET 之后 ~ D-1 工作日 14:00 ET 之前提交的论文）
-#   - 周五 14:00 ET 之后至周一 14:00 ET 的提交（含周末）落入下周二批次
-#   - 批次在标签日 D 当天约 02:00 ET（北京时间 ~14:00）发布到 /list/{cat}/new
+# arXiv 公告机制（官方时刻表 info.arxiv.org/help/availability.html）：
+#   - 提交截止：每个工作日美东 14:00；截止后提交进入下一个公告窗口。
+#   - 公告：美东 Sun/Mon/Tue/Wed/Thu 的 20:00 发布（Fri/Sat 无公告），
+#     批次标签 = 公告当日的美东日期。例：Fri 14:00 ~ Mon 14:00 提交 →
+#     Mon 20:00 公告（标签 Monday）= 北京时间周二早上 8:00 可见（EDT）。
 #   - 少量论文会因审核挂起延迟数日才进入批次（submittedDate 无法推算），
 #     因此批次成员以 listing 页面为唯一权威来源。
 
 def _expected_label() -> str:
-    """当前时刻理应已发布的最新批次标签（YYYY-MM-DD，美东日期）。"""
+    """当前时刻理应已发布的最新批次标签（YYYY-MM-DD，美东日期）。
+
+    依据官方公告表：公告发生在 ET 的 Sun/Mon/Tue/Wed/Thu 20:00（Fri/Sat 无），
+    标签 = 公告当日日期。因此“最新已发布批次” = 当前 ET 时刻回退到
+    最近一次 20:00 公告日（若当天 20:00 未到则回退一天，跳过 Fri/Sat）。
+    """
     try:
         from zoneinfo import ZoneInfo
         now = datetime.now(ZoneInfo("America/New_York"))
     except Exception:
         now = datetime.utcnow() - timedelta(hours=4)
     d = now.date()
-    if now.hour < 3:            # 当日公告 ~02:00 ET 尚未发布
+    if now.hour < 20:           # 当天 20:00 公告尚未发生 → 回退一天
         d -= timedelta(days=1)
-    while d.weekday() >= 5:     # 周末 → 上一个工作日（周五）
+    while d.weekday() in (4, 5):  # Fri/Sat 无公告 → 继续回退到 Thu
         d -= timedelta(days=1)
     return d.strftime("%Y-%m-%d")
 
@@ -659,9 +664,10 @@ def main():
 
     os.makedirs(args.out, exist_ok=True)
 
-    # ── STEP 0: 等待当日批次发布 ──
-    # 批次在标签日 ~02:00 ET（北京 ~14:00）发布。若运行过早（listing 仍是
-    # 上一批），轮询等待最多 --wait-minutes，避免漏推/重复推。
+    # ── STEP 0: 等待最新批次发布 ──
+    # 批次在美东 Sun~Thu 的 20:00 发布（= 北京次日早上 8:00 EDT / 9:00 EST）。
+    # 若运行过早（listing 仍是上一批），轮询等待最多 --wait-minutes，
+    # 避免漏推/重复推。
     probe_cat = args.cats[0] if args.cats else "gr-qc"
     expected = _expected_label()
     print(f"Expected batch label: {expected}")
