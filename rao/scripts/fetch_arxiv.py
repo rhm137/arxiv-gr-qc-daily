@@ -63,6 +63,40 @@ def fetch_feed(url: str) -> bytes:
     return r.content
 
 
+def feed_listing_date(content: bytes) -> str | None:
+    """从 RSS 频道 pubDate 解析该批次的 arXiv 官方日期（美东日期）。
+
+    arXiv 在北京时间 12:00（夏令时）发布当天批次；频道 pubDate 是批次的权威日期，
+    比"运行时刻推算"可靠——同一运行时刻可能拿到的是上一批次（清晨运行时）。
+    """
+    from email.utils import parsedate_to_datetime
+
+    try:
+        root = ET.fromstring(content)
+    except ET.ParseError:
+        return None
+    channel = next(iter(root), None)
+    if channel is not None:
+        for ch in channel:
+            if ch.tag.split("}")[-1] == "pubDate" and ch.text:
+                try:
+                    return parsedate_to_datetime(ch.text.strip()).date().isoformat()
+                except Exception:  # noqa: BLE001
+                    pass
+    dates = []
+    for item in root.iter():
+        if item.tag.split("}")[-1] != "item":
+            continue
+        for ch in item:
+            if ch.tag.split("}")[-1] in ("pubDate", "date", "published") and ch.text:
+                try:
+                    dates.append(parsedate_to_datetime(ch.text.strip()).date().isoformat())
+                    break
+                except Exception:  # noqa: BLE001
+                    pass
+    return max(dates) if dates else None
+
+
 def parse_items(content: bytes, source_cat: str) -> list[dict]:
     root = ET.fromstring(content)
     items = []
@@ -110,16 +144,20 @@ def keyword_score(paper: dict) -> tuple[int, list[str]]:
 
 
 def main() -> int:
-    date = listing_date()
     seen_path = DATA / "seen_ids.json"
     seen = set(json.loads(seen_path.read_text(encoding="utf-8"))) if seen_path.exists() else set()
 
     all_papers: dict[str, dict] = {}
     per_feed: dict[str, int] = {}
+    feed_dates: list[str] = []
     errors: list[str] = []
     for cat, url in FEEDS.items():
         try:
-            items = parse_items(fetch_feed(url), cat)
+            content = fetch_feed(url)
+            d = feed_listing_date(content)
+            if d:
+                feed_dates.append(d)
+            items = parse_items(content, cat)
         except Exception as e:  # noqa: BLE001
             errors.append(f"{cat}: {e}")
             continue
@@ -136,11 +174,15 @@ def main() -> int:
         print(json.dumps({"ok": False, "errors": errors}, ensure_ascii=False))
         return 1
 
+    # 批次日期以 RSS pubDate（美东日期）为准；解析失败才退回运行时刻推算
+    date = max(feed_dates) if feed_dates else listing_date()
+
     new_papers = [p for pid, p in all_papers.items() if pid not in seen]
     no_update = len(all_papers) == 0
 
     listing = {
         "listing_date": date,
+        "feed_dates": feed_dates,
         "fetched_at": datetime.now(BJ).isoformat(timespec="seconds"),
         "per_feed": per_feed,
         "total_deduped": len(all_papers),
