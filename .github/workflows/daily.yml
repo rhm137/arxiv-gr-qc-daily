@@ -108,7 +108,8 @@ jobs:
           title = 'arXiv Daily | %s' % date_display
           token = os.environ['PUSHPLUS_TOKEN']
 
-          for topic in [None, 'arxiv-gr-qc']:
+          # 只推群组（个人直推已取消，避免群成员重复收到两条）
+          for topic in ['arxiv-gr-qc']:
               body = {'token': token, 'title': title, 'content': content, 'template': 'html'}
               if topic: body['topic'] = topic
               subprocess.run(['curl', '-s', '-X', 'POST', 'https://www.pushplus.plus/send',
@@ -124,4 +125,4 @@ jobs:
           MSG="arXiv Daily: pipeline failed"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
-            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily\",\"content\":\"${MSG}\"}"
+            -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"
