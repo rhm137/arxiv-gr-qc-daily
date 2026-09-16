@@ -28,7 +28,7 @@ GitHub Actions（.github/workflows/daily.yml，job: digest）
         ├─ 3. DeepSeek 逐篇中文翻译 + 四段式评价
         ├─ 4. 生成 HTML → ./outputs-public/
         ├─ 5. 与线上 summary.json 比对，同批次跳过（防重复推送）
-        ├─ 6. PushPlus 双路推送（个人微信 + 群组 arxiv-gr-qc）
+        ├─ 6. PushPlus 群组推送（topic: arxiv-gr-qc，仅群组）
         └─ 7. 部署 GitHub Pages（永久链接 latest.html）
 ```
 
@@ -85,9 +85,12 @@ python scripts/run.py [--date YYYY-MM-DD] [--cats gr-qc hep-th astro-ph] [--out 
 
 ## 批次规则（改代码前必读）
 
-arXiv 每日批次在美东 **Sun/Mon/Tue/Wed/Thu 20:00** 发布（Fri/Sat 无公告），
-= 北京时间次日早上 8:00（夏令时）/ 9:00（冬令时）可见。
-因此北京时间 12:00 触发可拿到当天最新批次。批次成员以官网 `/list/{cat}/new`
-页面为唯一权威来源（部分论文因审核挂起会延迟数日，任何时间窗推算都不可靠）。
+arXiv 公告在美东 **Sun/Mon/Tue/Wed/Thu 20:00** 发布（Fri/Sat 无公告），
+公告产生的是**次日标签**的批次（官方："mailed Thursday night / Friday morning"），
+listing 页约在美东**午夜**（= 北京 12:00 夏令时 / 13:00 冬令时）翻页到新批次。
+批次标签只有 Mon–Fri。北京时间 12:00 触发正好在翻页边界，
+`_expected_label()` 已按此模型校准（等待循环兜底）。
+批次成员以官网 `/list/{cat}/new` 页面为唯一权威来源
+（部分论文因审核挂起会延迟数日，任何时间窗推算都不可靠）。
 
 详见迁移包文档 `03-arXiv批次规则与抓取机制.md`（不在本仓库内）。
