@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-DeepSeek 精读生成器（云端"AI 评分 + 精读"环节，v2 双层结构）
+DeepSeek 精读生成器（云端"AI 评分 + 精读"环节，v3 三层结构）
 
-输入：data/candidates_<date>.json、research_profile.md、config.json
-输出：data/digest_<date>.json（papers=核心精读 2-8 篇，radar=领域动态 0-10 篇）
+层结构：
+  papers  核心精读 2-8 篇（三块：做了什么与评价/学到什么/推荐课题）
+  radar   领域动态 0-10 篇（群格式：中文摘要+四段式评价，第四段为"对 Rao 的意义"；带关系标签）
+  keyword 名词推荐 0-5 篇（用户关键词命中，群格式；无命中不出现在 digest）
+
+输入：data/candidates_<date>.json、data/listing_<date>.json、research_profile.md、config.json
+输出：data/digest_<date>.json
 昨日无更新 / 无候选时不写 digest，输出 {"digested": 0} 并以 0 退出。
 
 环境：DEEPSEEK_API_KEY（或本地 config.local.json）
@@ -138,24 +143,79 @@ DIGEST_SYS = """你是理论物理研究助手，为做修正引力与引力热�
 {{"papers": [{{"id": "arXiv号", "cn_title": "...", "one_liner": "...", "did_and_eval": "...", "learn": "...", "topics": "..."}}]}}"""
 
 
-RADAR_SYS = """你是理论物理研究助手，为做修正引力宇宙学的用户（Rao）写每日"领域动态"简评。
+GROUP_SYS = """你是理论物理研究助手，为做修正引力与引力热力学研究的用户（Rao）按"群推送格式"处理 arXiv 论文。
 
 # 用户研究画像
 {profile}
 
 # 任务
-对给出的每篇论文（均为 Rao 所做领域的新进展），按画像 §6 输出紧凑简评，字段：
-- cn_title：中文译题
-- one_liner：一句话简介（≤60 字）
-- relation_note：与 Rao 的关系一句话，必须落到具体模型或 Rao 的某篇论文/课题卡，说不清写"同领域"，禁止编造
-- brief：80-120 字简评，诚实说明新意与局限；现象学拟合类须标注"现象学类，方法新意有限"
-- action：仅当该论文被标注为"撞车预警"时必填（如"核对该文与 P2 是否同条件，更新最近邻表"），其他填"暂无"
+对给出的每篇论文输出以下字段（全部中文，公式用 $...$ LaTeX 表示）：
+- cn_title：中文译题（英文技术缩写保留原样，如 LIGO, GW, QFT, CMB, BAO, DM, DE, EFT, FLRW, PPN）
+- one_liner：一句话简介（≤60 字，做了什么 + 为什么值得注意；公式用 Unicode 纯文本）
+- cn_abstract：摘要的中文翻译（忠实但可压缩，150-250 字；公式用 $...$）
+- eval_problem：【研究问题】这篇论文解决什么问题（1-2 句）
+- eval_method：【方法/框架】用了什么方法或框架（2-3 句）
+- eval_finding：【主要发现】关键结论（2-3 句）
+- eval_significance：【对 Rao 的意义】结合画像说明这篇对 Rao 有什么用——和他的哪条研究线/哪个课题卡相关、能借用什么、要注意什么局限；说不清就诚实写"同领域参考"，禁止编造（2-3 句）
+- action：仅当该论文在输入中被标注为"撞车预警"时必填（如"核对该文与 P2 是否同条件，更新最近邻表"），其他填"暂无"
 
 # 写作要求
-- 全部中文；公式用 Unicode 纯文本；不吹捧
+- 评价诚实，不吹捧；现象学拟合类要在 eval_significance 里点明"现象学类，方法新意有限"
 
 # 输出（严格 JSON）
-{{"radar": [{{"id": "arXiv号", "cn_title": "...", "one_liner": "...", "relation_note": "...", "brief": "...", "action": "暂无"}}]}}"""
+{{"items": [{{"id": "arXiv号", "cn_title": "...", "one_liner": "...", "cn_abstract": "...", "eval_problem": "...", "eval_method": "...", "eval_finding": "...", "eval_significance": "...", "action": "暂无"}}]}}"""
+
+
+def select_keywords(listing_papers: list[dict], cfg: dict, exclude_ids: set) -> list[dict]:
+    """从当日全部新上线论文中按用户关键词捞名词推荐（确定性匹配，不用模型）。"""
+    keywords = cfg.get("keywords", [])
+    kmax = int(cfg.get("keyword_max", 5))
+    if not keywords:
+        return []
+    hits = []
+    for p in listing_papers:
+        if p["id"] in exclude_ids:
+            continue
+        title_l = p["title"].lower()
+        abs_l = (p.get("abstract") or "").lower()
+        matched, in_title = [], False
+        for kw in keywords:
+            label = kw.get("label", "")
+            terms = [label] + [m for m in kw.get("match", []) if m != label]
+            for t in terms:
+                tl = t.lower()
+                if tl in title_l:
+                    matched.append(label)
+                    in_title = True
+                    break
+                if tl in abs_l:
+                    matched.append(label)
+                    break
+        if matched:
+            hits.append({**p, "matched_keywords": sorted(set(matched)), "_title_hit": in_title})
+    hits.sort(key=lambda p: (not p["_title_hit"], p["id"]))
+    return hits[:kmax]
+
+
+def chunks(lst: list, n: int):
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+
+
+def group_style_call(items: list[dict], profile: str, model: str) -> dict:
+    """分批调 DS 生成群格式内容（每批 ≤5 篇），返回 id -> 内容 的映射。"""
+    out = {}
+    for batch in chunks(items, 5):
+        lines = []
+        for c in batch:
+            label = REL_LABEL.get(c.get("relation", ""), "")
+            tag = f"（{label}，领域：{'/'.join(c.get('radar_fields', []))}）" if label else ""
+            lines.append(f"### {c['id']}{tag}\n标题: {c['title']}\n作者: {c.get('authors','')}\n摘要: {c['abstract'][:1100]}\n")
+        raw = ds_chat(GROUP_SYS.format(profile=profile), "请处理以下论文：\n\n" + "\n".join(lines),
+                      model, max_tokens=8000)
+        for it in parse_json_loose(raw).get("items", []):
+            out[it["id"]] = it
+    return out
 
 
 def main() -> int:
@@ -173,6 +233,7 @@ def main() -> int:
     if cand.get("no_update") or not candidates:
         print(json.dumps({"ok": True, "digested": 0, "note": "昨日无更新或无候选"}, ensure_ascii=False))
         return 0
+    listing = load_json(DATA / f"listing_{date}.json")
 
     cfg = load_json(ROOT / "config.json")
     core_min = int(cfg.get("core_min", 2))
@@ -203,7 +264,7 @@ def main() -> int:
             c["llm_score"] = min(10.0, c["llm_score"] + 1.0)
     candidates.sort(key=lambda c: (-c["llm_score"], -c["kscore"]))
 
-    # ---------- ② 双轨选择 ----------
+    # ---------- ② 三层选择 ----------
     core = [c for c in candidates if c["llm_score"] >= core_min_score][:core_max]
     if len(core) < core_min:
         core = candidates[: min(core_min, len(candidates))]
@@ -221,6 +282,9 @@ def main() -> int:
         n_eligible = sum(1 for c in candidates if c["id"] not in core_ids and c["radar_fields"])
         if n_eligible:
             radar_note = f"今日修正引力宇宙学类候选 {n_eligible} 篇均未入选雷达层（评分均低于 {radar_min_score:g}，多为现象学拟合类）。"
+
+    excluded = core_ids | {c["id"] for c in radar}
+    keyword_hits = select_keywords(listing["papers"], cfg, excluded)
 
     # ---------- ③ 核心层精读 ----------
     papers = []
@@ -247,32 +311,44 @@ def main() -> int:
                 "topics": d.get("topics", "暂无"),
             })
 
-    # ---------- ④ 雷达层简评 ----------
+    # ---------- ④ 雷达层 + 名词推荐（群格式） ----------
     radar_out = []
     if radar:
-        radar_md = []
+        gmap = group_style_call(radar, profile, model_digest)
         for c in radar:
-            label = REL_LABEL.get(c["relation"], "风向")
-            radar_md.append(
-                f"### {c['id']}（{label}，相关度 {c['llm_score']}，领域：{'/'.join(c['radar_fields'])}）\n"
-                f"标题: {c['title']}\n作者: {c.get('authors','')}\n摘要: {c['abstract'][:900]}\n"
-            )
-        raw3 = ds_chat(RADAR_SYS.format(profile=profile), "请为以下论文写领域动态简评：\n\n" + "\n".join(radar_md),
-                       model_digest, max_tokens=6000)
-        rmap = {r["id"]: r for r in parse_json_loose(raw3).get("radar", [])}
-        for c in radar:
-            r = rmap.get(c["id"], {})
+            g = gmap.get(c["id"], {})
             label = REL_LABEL.get(c["relation"], "风向")
             radar_out.append({
-                "id": c["id"], "title": c["title"], "cn_title": r.get("cn_title", ""),
+                "id": c["id"], "title": c["title"], "cn_title": g.get("cn_title", ""),
                 "authors": c.get("authors", ""), "link": c["link"], "source": c["source"],
                 "categories": c["categories"], "score": c["llm_score"],
                 "relation": c["relation"], "relation_label": label,
                 "radar_fields": c["radar_fields"],
-                "one_liner": r.get("one_liner", c.get("llm_reason", "")),
-                "relation_note": r.get("relation_note", "同领域"),
-                "brief": r.get("brief", "暂无"),
-                "action": r.get("action", "暂无"),
+                "one_liner": g.get("one_liner", c.get("llm_reason", "")),
+                "cn_abstract": g.get("cn_abstract", ""),
+                "eval_problem": g.get("eval_problem", ""),
+                "eval_method": g.get("eval_method", ""),
+                "eval_finding": g.get("eval_finding", ""),
+                "eval_significance": g.get("eval_significance", ""),
+                "action": g.get("action", "暂无"),
+            })
+
+    keyword_out = []
+    if keyword_hits:
+        gmap = group_style_call(keyword_hits, profile, model_digest)
+        for c in keyword_hits:
+            g = gmap.get(c["id"], {})
+            keyword_out.append({
+                "id": c["id"], "title": c["title"], "cn_title": g.get("cn_title", ""),
+                "authors": c.get("authors", ""), "link": c["link"], "source": c["source"],
+                "categories": c["categories"],
+                "matched_keywords": c["matched_keywords"],
+                "one_liner": g.get("one_liner", ""),
+                "cn_abstract": g.get("cn_abstract", ""),
+                "eval_problem": g.get("eval_problem", ""),
+                "eval_method": g.get("eval_method", ""),
+                "eval_finding": g.get("eval_finding", ""),
+                "eval_significance": g.get("eval_significance", ""),
             })
 
     digest = {
@@ -284,13 +360,15 @@ def main() -> int:
             "candidates": cand.get("passed_prefilter", 0),
             "core": len(papers),
             "radar": len(radar_out),
+            "keyword": len(keyword_out),
         },
         "papers": papers,
         "radar": radar_out,
         "radar_note": radar_note,
+        "keyword": keyword_out,
     }
     (DATA / f"digest_{date}.json").write_text(json.dumps(digest, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(json.dumps({"ok": True, "core": len(papers), "radar": len(radar_out), "date": date}, ensure_ascii=False))
+    print(json.dumps({"ok": True, "core": len(papers), "radar": len(radar_out), "keyword": len(keyword_out), "date": date}, ensure_ascii=False))
     return 0
 
 

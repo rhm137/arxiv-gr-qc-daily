@@ -7,6 +7,10 @@
   "core_min_score": 7,
   "radar_max": 10,
   "radar_min_score": 4,
+  "keyword_max": 5,
+  "keywords": [
+    { "label": "暗能量", "match": ["dark energy"] }
+  ],
   "ds_model_score": "deepseek-chat",
   "ds_model_digest": "deepseek-chat",
   "pushplus_max_chars": 19000,

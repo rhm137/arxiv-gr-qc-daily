@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-arXiv 日报投递器（v2：折叠卡片网页 + 简讯推送）
-输入：data/digest_<date>.json（AI 精读结果，含 cn_title）、data/listing_<date>.json（当日全量）
+arXiv 日报投递器（v3：学术期刊风 · 三层结构 · 群格式雷达/名词卡）
+输入：data/digest_<date>.json、data/listing_<date>.json
 输出：
-  output/digest_<date>.pushplus.html   pushplus 简讯（统计 + 清单 + 网页链接）
-  site/<date>.html                     折叠卡片日报页（群版风格：封面 + 两栏目录 + <details> 卡片）
+  output/digest_<date>.pushplus.html   pushplus 简讯（链接置顶 + 每篇深度链接）
+  site/<date>.html                     学术期刊风日报页
   site/index.html                      存档索引
   存档/<date>.md                       Markdown 存档
 行为：
@@ -93,243 +93,344 @@ def nl2p(s: str) -> str:
     return "".join(f"<p>{esc_keep_math(p)}</p>" for p in s.split("\n") if p.strip())
 
 
-def score_color(score: float) -> str:
-    if score >= 8:
-        return "#c0392b"
-    if score >= 7:
-        return "#d35400"
-    if score >= 6:
-        return "#b7950b"
-    return "#7f8c8d"
-
-
 def date_cn(date: str) -> str:
     y, m, d = date.split("-")
     return f"{y}年{m}月{d}日"
 
 
-# ---------------------------------------------------------------- 网页（群版风格）
+def score_cls(score: float) -> str:
+    if score >= 8:
+        return "s8"
+    if score >= 7:
+        return "s7"
+    if score >= 6:
+        return "s6"
+    return "s5"
+
+
+def score_color(score: float) -> str:
+    if score >= 8:
+        return "#9e2b25"
+    if score >= 7:
+        return "#b07c2a"
+    if score >= 6:
+        return "#6b7c5e"
+    return "#8a8b99"
+
+
+REL_CLS = {"撞车预警": "rel-collision", "近邻": "rel-neighbor", "风向": "rel-field"}
+
+# ---------------------------------------------------------------- 网页（学术期刊风 v3）
 
 SITE_CSS = r"""
 :root {
-    --bg: #fafaf8; --card-bg: #ffffff; --text: #2c2c2c; --text-secondary: #666;
-    --accent: #2563eb; --accent-light: #eff6ff; --border: #e5e7eb;
-    --tag-bg: #f3f4f6; --tag-text: #4b5563; --shadow: 0 1px 3px rgba(0,0,0,0.08);
-    --radius: 8px;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                 "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-    --font-mono: "SF Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); background: var(--bg); color: var(--text);
-       line-height: 1.7; -webkit-font-smoothing: antialiased; }
-.cover { max-width: 800px; margin: 64px auto 48px; text-align: center; padding: 0 24px; }
-.cover .badge { display: inline-block; background: var(--accent); color: #fff; font-size: 13px;
-    font-weight: 600; letter-spacing: 0.08em; padding: 6px 20px; border-radius: 100px; margin-bottom: 22px; }
-.cover h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #111; }
-.cover .date-sub { font-size: 15px; color: var(--text-secondary); margin-bottom: 32px; }
-.stats { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.stats .stat-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 16px 26px; min-width: 110px; box-shadow: var(--shadow); }
-.stats .stat-card .num { font-size: 28px; font-weight: 700; color: var(--accent); }
-.stats .stat-card .label { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
-.toc-section { max-width: 800px; margin: 0 auto 40px; padding: 0 24px; }
-.toc-section h2 { font-size: 19px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px;
-    border-bottom: 2px solid var(--border); }
-.toc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; list-style: none; }
-.toc-list li { font-size: 14px; line-height: 1.6; }
-.toc-list a { color: var(--accent); text-decoration: none; display: inline; }
-.toc-list a:hover { text-decoration: underline; }
-.toc-list .toc-num { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin-right: 4px; }
-.papers { max-width: 800px; margin: 0 auto 72px; padding: 0 24px; }
-.paper-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
-    margin-bottom: 16px; box-shadow: var(--shadow); overflow: hidden; }
-.paper-card summary { padding: 18px 22px; cursor: pointer; list-style: none; display: flex;
-    align-items: flex-start; gap: 12px; user-select: none; }
-.paper-card summary::-webkit-details-marker { display: none; }
-.paper-card summary::before { content: "▶"; font-size: 11px; color: var(--text-secondary);
-    flex-shrink: 0; margin-top: 3px; transition: transform 0.2s; display: inline-block; }
-.paper-card[open] summary::before { transform: rotate(90deg); }
-.paper-card .card-body { flex: 1; min-width: 0; }
-.paper-card .card-num { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
-.paper-card .card-title { font-size: 16px; font-weight: 600; color: #111; margin-bottom: 2px; }
-.paper-card .card-title-cn { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-.paper-card .card-authors { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
-.paper-card .card-oneline { font-size: 13px; color: var(--text-secondary); }
-.paper-card .detail { padding: 0 22px 22px; border-top: 1px solid var(--border); }
-.paper-card .detail h4 { font-size: 14px; font-weight: 600; color: var(--accent); margin: 16px 0 6px; }
-.paper-card .detail p { font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 10px; }
-.paper-card .detail .src-link { margin-top: 14px; font-size: 13px; color: var(--text-secondary); }
-.paper-card .detail .src-link a { color: var(--accent); text-decoration: none; }
-.abs-details { margin: 12px 0; border: 1px dashed var(--border); border-radius: 6px; padding: 8px 14px; }
-.abs-details summary { font-size: 13px; color: var(--text-secondary); cursor: pointer; }
-.abs-details p { font-size: 13px; color: var(--text-secondary); margin-top: 8px; }
-.score-pill { display: inline-block; border-radius: 4px; color: #fff; font-size: 11px;
-    font-weight: 700; padding: 0 6px; margin-left: 6px; vertical-align: 1px; }
-.sec-h2 { max-width: 800px; margin: 32px auto -8px; padding: 0 24px; font-size: 19px; font-weight: 700; }
-.rel-chip { display: inline-block; border-radius: 4px; color: #fff; font-size: 11px;
-    font-weight: 700; padding: 0 6px; margin-left: 6px; vertical-align: 1px; }
-.rel-collision { background: #c0392b; }
-.rel-neighbor { background: #d35400; }
-.rel-field { background: #5b7a9d; }
-.paper-card.radar-collision { border-left: 4px solid #c0392b; }
-.radar-note { max-width: 800px; margin: 0 auto 40px; padding: 0 24px; font-size: 13px; color: var(--text-secondary); }
-.rel-note { font-size: 13px; color: var(--accent); font-weight: 600; margin: 10px 0 2px; }
-.runner { max-width: 800px; margin: -48px auto 72px; padding: 0 24px; }
-.runner .box { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 16px 22px; font-size: 13px; }
-.runner h2 { font-size: 15px; margin-bottom: 8px; }
-.runner li { margin: 6px 0; }
-.runner a { color: var(--accent); text-decoration: none; }
-.footer { text-align: center; padding: 36px 24px; font-size: 13px; color: var(--text-secondary); }
-.footer a { color: var(--accent); }
-@media (max-width: 600px) {
-    .toc-list { grid-template-columns: 1fr; }
-    .cover h1 { font-size: 24px; }
-    .stats { gap: 8px; }
-    .stats .stat-card { padding: 12px 16px; min-width: 90px; }
-    .stats .stat-card .num { font-size: 22px; }
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
 }
 """
 
 MATHJAX_HEAD = r"""
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
 <script>
 window.MathJax = {
   tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
   options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
-  startup: {
-    ready() {
+  startup: { ready() {
       MathJax.startup.defaultReady();
-      document.querySelectorAll('details.paper-card').forEach(function(el) {
+      document.querySelectorAll('details.card').forEach(function(el) {
         el.addEventListener('toggle', function() {
           if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
         });
       });
-    }
-  }
+  } }
 };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 """
 
+THEME_JS = r"""
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+"""
 
-REL_CLASS = {"撞车预警": "rel-collision", "近邻": "rel-neighbor", "风向": "rel-field"}
+
+def _abs_block(abstracts: dict, pid: str) -> str:
+    if pid in abstracts and abstracts[pid]:
+        return (f'<details class="abs-details"><summary>英文摘要原文</summary>'
+                f'<p>{esc_keep_math(abstracts[pid])}</p></details>')
+    return ""
 
 
-def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
+def _group_detail(item: dict, abstracts: dict, show_action: bool) -> str:
+    """群格式详情区：中文摘要 + 四段式（末段为对 Rao 的意义）。"""
+    parts = []
+    if item.get("cn_abstract"):
+        parts.append(f"<h4>摘要</h4><p>{esc_keep_math(item['cn_abstract'])}</p>")
+    for field, label in [("eval_problem", "研究问题"), ("eval_method", "方法/框架"),
+                         ("eval_finding", "主要发现"), ("eval_significance", "对 Rao 的意义")]:
+        if item.get(field):
+            parts.append(f"<h4>{label}</h4><p>{esc_keep_math(item[field])}</p>")
+    if show_action and item.get("action") and item["action"] != "暂无":
+        parts.append(f'<div class="action-box">⚠️ <b>建议行动</b>　{esc(item["action"])}</div>')
+    parts.append(_abs_block(abstracts, item["id"]))
+    return "\n".join(parts)
+
+
+def render_site_page(digest: dict, counts: dict, abstracts: dict, site_url: str = "") -> str:
     date = digest["listing_date"]
     st = digest["stats"]
-    n_core = st.get("core", st.get("selected", len(digest["papers"])))
     radar = digest.get("radar", [])
+    keyword = digest.get("keyword", [])
+    n_core = st.get("core", len(digest["papers"]))
     n_must = sum(1 for p in digest["papers"] if p.get("must_read"))
 
-    toc_items = []
-    cards = []
+    # ---- 核心层 ----
+    toc_core, cards = [], []
     for i, p in enumerate(digest["papers"], 1):
-        star = "⭐" if p.get("must_read") else ""
-        col = score_color(p["score"])
         cn = p.get("cn_title", "")
-        toc_title = cn or p["title"]
-        toc_items.append(
-            f'<li><span class="toc-num">{i}.</span>{star}<a href="#paper-{i}">'
-            f'{esc(toc_title[:48])}{"…" if len(toc_title) > 48 else ""}</a>'
-            f'<span class="score-pill" style="background:{col}">{p["score"]}</span></li>'
+        toc_core.append(
+            f'<li><span class="n">{i:02d}</span><a href="#paper-{i}">{esc(cn or p["title"])}</a>'
+            f'<span class="toc-en">{esc(p["title"][:70])}{"…" if len(p["title"])>70 else ""}</span></li>'
         )
-        abs_block = ""
-        if p["id"] in abstracts:
-            abs_block = (
-                f'<details class="abs-details"><summary>英文摘要原文</summary>'
-                f'<p>{esc_keep_math(abstracts[p["id"]])}</p></details>'
-            )
+        must = '<span class="must">必读</span>' if p.get("must_read") else ""
         cards.append(f"""
-<details class="paper-card" id="paper-{i}">
+<details class="card" id="paper-{i}">
 <summary>
-    <div class="card-body">
-        <div class="card-num">#{i} · arXiv:{p['id']} · {' · '.join(p['categories'])}{' · ⭐必读' if p.get('must_read') else ''}<span class="score-pill" style="background:{col}">{p['score']}</span></div>
-        <div class="card-title">{esc(p['title'])}</div>
-        <div class="card-title-cn">{esc(cn)}</div>
-        <div class="card-authors">{esc(p['authors'])}</div>
-        <div class="card-oneline">💡 {esc(p['one_liner'])}</div>
-    </div>
+  <div>
+    <div class="c-kicker">#{i} · arXiv:{p['id']} · {' · '.join(p['categories'])}</div>
+    <div class="c-title-cn">{esc(cn)}</div>
+    <div class="c-title-en">{esc(p['title'])}</div>
+    <div class="c-authors">{esc(p['authors'])}</div>
+    <div class="c-oneline">💡 {esc(p['one_liner'])}</div>
+  </div>
+  <div class="c-side">
+    <span class="score {score_cls(p['score'])}">{p['score']}</span>
+    {must}
+    <span class="chev">▸</span>
+  </div>
 </summary>
 <div class="detail">
-    <h4>📌 做了什么与评价</h4>
-    {nl2p(p['did_and_eval'])}
-    <h4>🎓 Rao 可以学到什么</h4>
-    {nl2p(p['learn'])}
-    <h4>💡 推荐课题</h4>
-    {nl2p(p['topics'])}
-    {abs_block}
-    <p class="src-link">原文链接：<a href="{p['link']}" target="_blank" rel="noopener">arXiv:{p['id']}</a></p>
+  <h4>📌 做了什么与评价</h4>
+  {nl2p(p['did_and_eval'])}
+  <h4>🎓 Rao 可以学到什么</h4>
+  {nl2p(p['learn'])}
+  <h4>💡 推荐课题</h4>
+  {nl2p(p['topics'])}
+  {_abs_block(abstracts, p['id'])}
+  <p class="src-link">原文链接：<a href="{p['link']}" target="_blank" rel="noopener">arXiv:{p['id']}</a></p>
 </div>
 </details>""")
 
-    # ---------- 领域动态雷达区 ----------
-    radar_toc, radar_cards = [], []
+    # ---- 雷达层（群格式） ----
+    toc_radar, rcards = [], []
     for j, r in enumerate(radar, 1):
-        col = score_color(r["score"])
         label = r.get("relation_label", "风向")
-        rel_cls = REL_CLASS.get(label, "rel-field")
-        card_cls = "paper-card radar-collision" if label == "撞车预警" else "paper-card"
-        fields = "/".join(r.get("radar_fields", []))
-        toc_title = r.get("cn_title") or r["title"]
-        radar_toc.append(
-            f'<li><span class="toc-num">R{j}.</span><a href="#radar-{j}">'
-            f'{esc(toc_title[:46])}{"…" if len(toc_title) > 46 else ""}</a>'
-            f'<span class="rel-chip {rel_cls}">{label}</span></li>'
+        toc_radar.append(
+            f'<li><span class="n">R{j}</span><a href="#radar-{j}">{esc(r.get("cn_title") or r["title"])}</a>'
+            f'<span class="toc-en">{esc(r["title"][:70])}{"…" if len(r["title"])>70 else ""}</span></li>'
         )
-        action_block = ""
-        if r.get("action") and r["action"] != "暂无":
-            action_block = f'<p class="rel-note">⚠️ 建议行动</p><p>{esc(r["action"])}</p>'
-        abs_block = ""
-        if r["id"] in abstracts:
-            abs_block = (
-                f'<details class="abs-details"><summary>英文摘要原文</summary>'
-                f'<p>{esc_keep_math(abstracts[r["id"]])}</p></details>'
-            )
-        radar_cards.append(f"""
-<details class="{card_cls}" id="radar-{j}">
+        rcards.append(f"""
+<details class="card {'collision' if label=='撞车预警' else ''}" id="radar-{j}">
 <summary>
-    <div class="card-body">
-        <div class="card-num">R{j} · arXiv:{r['id']} · {esc(fields)}<span class="rel-chip {rel_cls}">{label}</span><span class="score-pill" style="background:{col}">{r['score']}</span></div>
-        <div class="card-title">{esc(r['title'])}</div>
-        <div class="card-title-cn">{esc(r.get('cn_title',''))}</div>
-        <div class="card-authors">{esc(r['authors'])}</div>
-        <div class="card-oneline">💡 {esc(r['one_liner'])}</div>
-    </div>
+  <div>
+    <div class="c-kicker">R{j} · arXiv:{r['id']} · {esc('/'.join(r.get('radar_fields', [])))}</div>
+    <div class="c-title-cn">{esc(r.get('cn_title',''))}</div>
+    <div class="c-title-en">{esc(r['title'])}</div>
+    <div class="c-authors">{esc(r['authors'])}</div>
+    <div class="c-oneline">💡 {esc(r['one_liner'])}</div>
+  </div>
+  <div class="c-side">
+    <span class="rel {REL_CLS.get(label,'rel-field')}">{label}</span>
+    <span class="score {score_cls(r['score'])}">{r['score']}</span>
+    <span class="chev">▸</span>
+  </div>
 </summary>
 <div class="detail">
-    <p class="rel-note">🔗 与 Rao 的关系</p>
-    <p>{esc(r.get('relation_note','同领域'))}</p>
-    <h4>简评</h4>
-    {nl2p(r.get('brief','暂无'))}
-    {action_block}
-    {abs_block}
-    <p class="src-link">原文链接：<a href="{r['link']}" target="_blank" rel="noopener">arXiv:{r['id']}</a></p>
+  {_group_detail(r, abstracts, show_action=True)}
+  <p class="src-link">原文链接：<a href="{r['link']}" target="_blank" rel="noopener">arXiv:{r['id']}</a></p>
 </div>
 </details>""")
 
-    radar_section = ""
-    if radar_cards:
-        radar_section = (
-            '<h2 class="sec-h2">📡 领域动态 · 修正引力宇宙学</h2>'
-            '<div class="papers">' + "".join(radar_cards) + "</div>"
-        )
+    radar_block = ""
+    if rcards:
+        radar_block = ('<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div>'
+                       '<div class="papers">' + "".join(rcards) + "</div>")
     elif digest.get("radar_note"):
-        radar_section = f'<div class="radar-note">📡 领域动态：{esc(digest["radar_note"])}</div>'
+        radar_block = f'<div class="radar-note">📡 领域动态：{esc(digest["radar_note"])}</div>'
 
-    runner = ""
-    if digest.get("runner_ups"):
-        lis = "".join(
-            f'<li>{i}. <a href="https://arxiv.org/abs/{r["id"]}" target="_blank" rel="noopener">'
-            f'{esc(r.get("cn_title") or r["title"])}</a> — {esc(r["one_liner"])}</li>'
-            for i, r in enumerate(digest["runner_ups"], len(digest["papers"]) + 1)
+    # ---- 名词推荐层（群格式） ----
+    toc_kw, kcards = [], []
+    for k, w in enumerate(keyword, 1):
+        kws = " · ".join(w.get("matched_keywords", []))
+        toc_kw.append(
+            f'<li><span class="n">K{k}</span><a href="#kw-{k}">{esc(w.get("cn_title") or w["title"])}</a>'
+            f'<span class="toc-en">{esc(w["title"][:70])}{"…" if len(w["title"])>70 else ""}</span></li>'
         )
-        runner = f'<div class="runner"><div class="box"><h2>📎 也值得关注</h2><ol style="padding-left:18px;margin:0;">{lis}</ol></div></div>'
+        kcards.append(f"""
+<details class="card" id="kw-{k}">
+<summary>
+  <div>
+    <div class="c-kicker">K{k} · arXiv:{w['id']} · {' · '.join(w['categories'])}</div>
+    <div class="c-title-cn">{esc(w.get('cn_title',''))}</div>
+    <div class="c-title-en">{esc(w['title'])}</div>
+    <div class="c-authors">{esc(w['authors'])}</div>
+    <div class="c-oneline">💡 {esc(w['one_liner'])}</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：{esc(kws)}</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  {_group_detail(w, abstracts, show_action=False)}
+  <p class="src-link">原文链接：<a href="{w['link']}" target="_blank" rel="noopener">arXiv:{w['id']}</a></p>
+</div>
+</details>""")
 
-    toc_radar = ""
-    if radar_toc:
-        toc_radar = '<h2 style="margin-top:20px;">📡 领域动态</h2><ol class="toc-list">' + "".join(radar_toc) + "</ol>"
+    kw_block = ""
+    if kcards:
+        kw_labels = "、".join(sorted({kw for w in keyword for kw in w.get("matched_keywords", [])}))
+        kw_block = (f'<div class="divider"><span>名词推荐 · {esc(kw_labels)}</span></div>'
+                    '<div class="papers">' + "".join(kcards) + "</div>")
+
+    # ---- 目录组装 ----
+    toc_radar_html = ""
+    if toc_radar:
+        toc_radar_html = ('<h2>领域动态<span class="en">FIELD RADAR</span></h2>'
+                          '<ol class="toc-list">' + "".join(toc_radar) + "</ol>")
+    toc_kw_html = ""
+    if toc_kw:
+        toc_kw_html = ('<h2>名词推荐<span class="en">KEYWORD PICKS</span></h2>'
+                       '<ol class="toc-list">' + "".join(toc_kw) + "</ol>")
+
+    stat_kw = ""
+    if keyword:
+        stat_kw = ('<div class="stat-sep"></div>'
+                   f'<div class="stat"><span class="num">{len(keyword)}</span><span class="label">名词推荐</span></div>')
 
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -342,135 +443,174 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
 </head>
 <body>
 
-<div class="cover">
-    <div class="badge">arXiv</div>
-    <h1>arXiv · {date_cn(date)}</h1>
-    <p class="date-sub">gr-qc · hep-th · astro-ph.CO 每日精选　|　按 Rao 的研究画像匹配</p>
-    <div class="stats">
-        <div class="stat-card"><div class="num">{st['total_new']}</div><div class="label">新上线</div></div>
-        <div class="stat-card"><div class="num">{st['candidates']}</div><div class="label">初筛入围</div></div>
-        <div class="stat-card"><div class="num">{n_core}</div><div class="label">核心精读（⭐{n_must}）</div></div>
-        <div class="stat-card"><div class="num">{len(radar)}</div><div class="label">领域动态</div></div>
-    </div>
-    <p style="margin-top:18px;font-size:13px;color:var(--text-secondary);">来源：gr-qc {counts.get('gr-qc',0)} · hep-th {counts.get('hep-th',0)} · astro-ph.CO {counts.get('astro-ph.CO',0)}</p>
-</div>
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
 
-<div class="toc-section">
-    <h2>📋 核心精读</h2>
-    <ol class="toc-list">
-        {''.join(toc_items)}
-    </ol>
-    {toc_radar}
-</div>
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · {date_cn(date)}</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">{n_core}</span><span class="label">核心精读 · ⭐{n_must}</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">{len(radar)}</span><span class="label">领域动态</span></div>
+    {stat_kw}
+  </div>
+  <p class="src">来源：gr-qc {counts.get('gr-qc',0)} · hep-th {counts.get('hep-th',0)} · astro-ph.CO {counts.get('astro-ph.CO',0)}</p>
+</header>
 
-<div class="papers">
-    {''.join(cards)}
-</div>
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list">{''.join(toc_core)}</ol>
+  {toc_radar_html}
+  {toc_kw_html}
+</section>
 
-{radar_section}
+<div class="papers">{''.join(cards)}</div>
 
-{runner}
+{radar_block}
+{kw_block}
 
 <div class="footer">
-    由 Kimi 生成 · <a href="index.html">存档索引</a> · {date_cn(date)} · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · {date_cn(date)} · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
 </div>
 
+<script>{THEME_JS}</script>
 </body>
 </html>"""
 
 
 def render_archive_index(days: list[dict]) -> str:
     rows = "".join(
-        f'<tr><td><a href="{d["date"]}.html">{d["date"]}</a></td><td>{d["stats"]["total_new"]}</td>'
-        f'<td>{d["stats"].get("core", d["stats"].get("selected", 0))}+{d["stats"].get("radar", 0)}</td><td>{esc("、".join(d.get("must_titles", []))[:100])}</td></tr>'
+        f'<tr><td><a href="{d["date"]}.html">{d["date"]}</a></td>'
+        f'<td>{d["stats"].get("core", d["stats"].get("selected", 0))} / {d["stats"].get("radar", 0)} / {d["stats"].get("keyword", 0)}</td>'
+        f'<td>{esc("、".join(d.get("must_titles", []))[:100])}</td></tr>'
         for d in days
     )
     return f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>arXiv · 存档索引</title>
 <style>{SITE_CSS}
-table{{width:100%;border-collapse:collapse;background:var(--card-bg);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}}
-td,th{{border:1px solid var(--border);padding:8px 12px;font-size:14px;text-align:left}}a{{color:var(--accent);text-decoration:none}}
-.idx{{max-width:800px;margin:48px auto;padding:0 24px}}</style></head>
+table{{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}}
+td,th{{border:1px solid var(--border);padding:9px 12px;font-size:14px;text-align:left}}
+a{{color:var(--accent);text-decoration:none}}
+.idx{{max-width:860px;margin:56px auto;padding:0 24px}}
+.idx h1{{font-family:var(--serif);font-size:26px;margin-bottom:18px}}</style></head>
 <body><div class="idx">
-<h1 style="font-size:24px;margin-bottom:16px;">📚 arXiv 日报存档</h1>
-<table><tr><th>日期</th><th>新上线</th><th>核心+动态</th><th>必读</th></tr>{rows}</table>
+<h1>📚 arXiv 日报存档</h1>
+<table><tr><th>日期</th><th>核心/动态/名词</th><th>必读</th></tr>{rows}</table>
 </div></body></html>"""
 
 
-# ---------------------------------------------------------------- pushplus 简讯
+# ---------------------------------------------------------------- pushplus 简讯（链接置顶 + 深度链接）
 
 def render_pushplus(digest: dict, counts: dict, site_url: str = "") -> str:
     date = digest["listing_date"]
     st = digest["stats"]
-    n_core = st.get("core", st.get("selected", len(digest["papers"])))
     radar = digest.get("radar", [])
+    keyword = digest.get("keyword", [])
+    n_core = st.get("core", len(digest["papers"]))
     n_must = sum(1 for p in digest["papers"] if p.get("must_read"))
+
+    stats_line = f'核心 {n_core}（⭐{n_must}）+ 动态 {len(radar)}' + (f' + 名词 {len(keyword)}' if keyword else '')
+    head = (
+        '<div style="font-family:-apple-system,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;color:#2c3e50;">'
+        f'<div style="background:#3b4a8c;color:#fff;padding:12px 16px;border-radius:10px;">'
+        f'<div style="font-size:17px;font-weight:700;">arXiv · {date}</div>'
+        f'<div style="font-size:12px;opacity:.9;margin-top:3px;">{stats_line}　·　gr-qc {counts.get("gr-qc",0)} · hep-th {counts.get("hep-th",0)} · astro-ph.CO {counts.get("astro-ph.CO",0)}</div></div>'
+    )
+    link_top = ""
+    if site_url:
+        link_top = (
+            f'<div style="text-align:center;margin:14px 0 6px;">'
+            f'<a href="{site_url}" style="display:inline-block;background:#3b4a8c;color:#fff;font-size:15px;'
+            f'font-weight:700;text-decoration:none;padding:10px 26px;border-radius:8px;">'
+            f'👉 打开今日完整页面（折叠卡片）</a></div>'
+        )
+
     items = []
     for i, p in enumerate(digest["papers"], 1):
         star = "⭐" if p.get("must_read") else ""
         col = score_color(p["score"])
+        anchor = f"{site_url}#paper-{i}" if site_url else p["link"]
         items.append(
             f'<div style="margin:10px 0;padding:8px 12px;border-left:4px solid {col};background:#fafafa;border-radius:6px;">'
-            f'<div style="font-size:14px;font-weight:700;">{star}{i}. {esc(p.get("cn_title") or latex_to_text(p["title"]))}'
+            f'<div style="font-size:14px;font-weight:700;">{star}{i}. '
+            f'<a href="{anchor}" style="color:#2c3e50;text-decoration:none;">{esc(p.get("cn_title") or latex_to_text(p["title"]))}</a>'
             f'<span style="color:{col};font-size:12px;">　[{p["score"]}]</span></div>'
             f'<div style="font-size:12px;color:#666;margin-top:2px;">{esc(latex_to_text(p["title"]))}</div>'
             f'<div style="font-size:12px;color:#666;">{esc(p["authors"])}</div>'
             f'<div style="font-size:13px;margin-top:3px;">💡 {esc(p["one_liner"])}</div>'
             f'</div>'
         )
-    radar_block = ""
-    if radar:
-        ris = []
-        for j, r in enumerate(radar, 1):
-            label = r.get("relation_label", "风向")
-            ris.append(
+
+    def compact_section(entries, label, anchor_prefix, badge_of):
+        if not entries:
+            return ""
+        rows = []
+        for j, e in enumerate(entries, 1):
+            anchor = f"{site_url}#{anchor_prefix}-{j}" if site_url else e["link"]
+            badge = badge_of(e)
+            rows.append(
                 f'<div style="margin:6px 0;font-size:12px;">'
-                f'<b>R{j}. {esc(r.get("cn_title") or latex_to_text(r["title"]))}</b>　'
-                f'<span style="color:#c0392b;">[{label}]</span><br>'
-                f'<span style="color:#666;">💡 {esc(r["one_liner"])}</span></div>'
+                f'<a href="{anchor}" style="color:#2c3e50;text-decoration:none;font-weight:700;">'
+                f'{esc(e.get("cn_title") or latex_to_text(e["title"]))}</a>　{badge}<br>'
+                f'<span style="color:#666;">💡 {esc(e["one_liner"])}</span></div>'
             )
-        radar_block = (
+        return (
             '<div style="margin:14px 0;padding:10px 12px;background:#f0f4fa;border-radius:8px;">'
-            '<div style="font-size:13px;font-weight:700;margin-bottom:6px;">📡 领域动态 · 修正引力宇宙学</div>'
-            + "".join(ris) + "</div>"
+            f'<div style="font-size:13px;font-weight:700;margin-bottom:6px;">{label}</div>'
+            + "".join(rows) + "</div>"
         )
-    elif digest.get("radar_note"):
-        radar_block = f'<div style="font-size:11px;color:#999;margin:10px 0;">📡 {esc(digest["radar_note"])}</div>'
-    link_block = ""
-    if site_url:
-        link_block = (
-            f'<div style="text-align:center;margin:16px 0;">'
-            f'<a href="{site_url}" style="display:inline-block;background:#2563eb;color:#fff;font-size:15px;'
-            f'font-weight:700;text-decoration:none;padding:10px 26px;border-radius:8px;">'
-            f'👉 打开今日完整页面（折叠卡片）</a></div>'
-            f'<div style="font-size:11px;color:#999;text-align:center;">核心层的「做了什么与评价 / Rao 可以学到什么 / 推荐课题」与雷达层简评都在网页里，点开卡片即读</div>'
-        )
+
+    radar_block = compact_section(
+        radar, "📡 领域动态 · 修正引力宇宙学", "radar",
+        lambda e: f'<span style="color:#9e2b25;font-size:11px;">[{e.get("relation_label","风向")}]</span>')
+    kw_block = compact_section(
+        keyword, "🔑 名词推荐", "kw",
+        lambda e: f'<span style="color:#3b4a8c;font-size:11px;">[关键词：{esc(" · ".join(e.get("matched_keywords", [])))}]</span>')
+    radar_note_html = ""
+    if not radar and digest.get("radar_note"):
+        radar_note_html = f'<div style="font-size:11px;color:#999;margin:10px 0;">📡 {esc(digest["radar_note"])}</div>'
+
     return (
-        '<div style="font-family:-apple-system,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;color:#2c3e50;">'
-        f'<div style="background:#2563eb;color:#fff;padding:12px 16px;border-radius:10px;">'
-        f'<div style="font-size:17px;font-weight:700;">arXiv · {date}</div>'
-        f'<div style="font-size:12px;opacity:.9;margin-top:3px;">gr-qc {counts.get("gr-qc",0)} · hep-th {counts.get("hep-th",0)} · astro-ph.CO {counts.get("astro-ph.CO",0)}'
-        f'　→ 新上线 {st["total_new"]} → 初筛 {st["candidates"]} → 核心 {n_core}（⭐{n_must}）+ 动态 {len(radar)}</div></div>'
-        + "".join(items)
-        + radar_block
-        + link_block
-        + '<div style="font-size:11px;color:#999;text-align:center;margin:12px 0;">由 Kimi 生成 · 按 Rao 的研究画像匹配</div></div>'
+        head + link_top + "".join(items) + radar_block + radar_note_html + kw_block
+        + '<div style="font-size:11px;color:#999;text-align:center;margin:12px 0;">'
+          '每篇标题可点进网页对应卡片 · 由 Kimi 生成 · 按 Rao 的研究画像匹配</div></div>'
     )
 
 
 # ---------------------------------------------------------------- Markdown 存档
 
+def _md_group(item: dict) -> list[str]:
+    lines = [f"💡 {item['one_liner']}", ""]
+    if item.get("cn_abstract"):
+        lines += ["**摘要**", "", item["cn_abstract"], ""]
+    for field, label in [("eval_problem", "研究问题"), ("eval_method", "方法/框架"),
+                         ("eval_finding", "主要发现"), ("eval_significance", "对 Rao 的意义")]:
+        if item.get(field):
+            lines += [f"**{label}**：{item[field]}", ""]
+    if item.get("action") and item["action"] != "暂无":
+        lines += [f"⚠️ 建议行动：{item['action']}", ""]
+    return lines
+
+
 def render_markdown(digest: dict, counts: dict) -> str:
     date = digest["listing_date"]
     st = digest["stats"]
-    n_core = st.get("core", st.get("selected", len(digest["papers"])))
     radar = digest.get("radar", [])
+    keyword = digest.get("keyword", [])
+    n_core = st.get("core", len(digest["papers"]))
     lines = [
         f"# arXiv · {date}",
         "",
-        f"> gr-qc {counts.get('gr-qc',0)} · hep-th {counts.get('hep-th',0)} · astro-ph.CO {counts.get('astro-ph.CO',0)}"
-        f"　→ 新上线 {st['total_new']} 篇 → 初筛 {st['candidates']} 篇 → 核心 {n_core} 篇 + 领域动态 {len(radar)} 篇",
+        f"> 核心 {n_core} 篇 + 领域动态 {len(radar)} 篇" + (f" + 名词推荐 {len(keyword)} 篇" if keyword else "")
+        + f"　|　来源 gr-qc {counts.get('gr-qc',0)} · hep-th {counts.get('hep-th',0)} · astro-ph.CO {counts.get('astro-ph.CO',0)}",
         "",
         "## 核心精读",
         "",
@@ -508,24 +648,18 @@ def render_markdown(digest: dict, counts: dict) -> str:
                 "",
                 f"**{r['authors']}**　|　{'/'.join(r.get('radar_fields', []))}　|　相关度 **{r['score']}**",
                 "",
-                f"💡 {r['one_liner']}",
-                "",
-                f"🔗 与 Rao 的关系：{r.get('relation_note','同领域')}",
-                "",
-                r.get("brief", "暂无"),
-                "",
-            ]
-            if r.get("action") and r["action"] != "暂无":
-                lines += [f"⚠️ 建议行动：{r['action']}", ""]
-            lines += ["---", ""]
+            ] + _md_group(r) + ["---", ""]
     elif digest.get("radar_note"):
         lines += [f"📡 领域动态：{digest['radar_note']}", ""]
-    if digest.get("runner_ups"):
-        lines.append("## 📎 也值得关注")
-        lines.append("")
-        for r in digest["runner_ups"]:
-            lines.append(f"- [{r.get('cn_title') or r['title']}](https://arxiv.org/abs/{r['id']})：{r['one_liner']}")
-        lines.append("")
+    if keyword:
+        lines += ["## 🔑 名词推荐", ""]
+        for k, w in enumerate(keyword, 1):
+            lines += [
+                f"### K{k}. [{w.get('cn_title') or w['title']}]({w['link']})　【关键词：{' · '.join(w.get('matched_keywords', []))}】",
+                "",
+                f"**{w['authors']}**",
+                "",
+            ] + _md_group(w) + ["---", ""]
     return "\n".join(lines)
 
 
@@ -578,12 +712,14 @@ def main() -> int:
     pp_html = render_pushplus(digest, counts, site_url)
     (OUT / f"digest_{date}.pushplus.html").write_text(pp_html, encoding="utf-8")
 
-    (SITE / f"{date}.html").write_text(render_site_page(digest, counts, abstracts), encoding="utf-8")
+    (SITE / f"{date}.html").write_text(render_site_page(digest, counts, abstracts, site_url), encoding="utf-8")
     (ARCHIVE / f"{date}.md").write_text(render_markdown(digest, counts), encoding="utf-8")
 
     days = []
     for f in sorted(SITE.glob("2*.html"), reverse=True):
         d = f.stem
+        if d.startswith("preview-"):
+            continue
         try:
             dg = load_json(DATA / f"digest_{d}.json")
             days.append({
@@ -608,8 +744,9 @@ def main() -> int:
         print(json.dumps({"ok": False, "error": "缺少 PUSHPLUS_TOKEN"}, ensure_ascii=False))
         return 1
     st = digest["stats"]
-    n_core = st.get("core", st.get("selected", len(digest["papers"])))
-    title = f"arXiv · {date}｜新{st['total_new']}篇→核心{n_core}+动态{st.get('radar', 0)}篇"
+    title = f"arXiv · {date}｜核心{st.get('core', len(digest['papers']))}+动态{st.get('radar', 0)}"
+    if st.get("keyword"):
+        title += f"+名词{st['keyword']}"
     resp = requests.post(PUSHPLUS_URL, json={
         "token": token, "title": title[:95], "content": pp_html, "template": "html",
     }, timeout=40)
