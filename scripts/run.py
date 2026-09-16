@@ -30,7 +30,8 @@ LISTING_SHOW = 2000                       # listing 页大小（合法值 25..20
 META_CHUNK = 50                           # id_list 元数据分块大小
 ARXIV_UA  = "WorkBuddy-arxiv-digest/2.0"
 ARXIV_RETRY = 8
-ARXIV_DELAY = 15
+ARXIV_DELAY = 30                          # 重试退避基数（秒）：30/60/.../递增，fetch_url 内封顶 300s
+ARXIV_GAP = 8                             # 相邻 arXiv 请求间隔（秒），防 429 限流
 DEFAULT_SUMMARY_URL = "https://rhm137.github.io/arxiv-gr-qc-daily/summary.json"
 
 ASTRO_SUBS = ["astro-ph.CO", "astro-ph.HE"]
@@ -69,20 +70,23 @@ RETRY_ABBR = ("LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA,
 # ═══════════════════════════════════════════════════════════════════════
 # BATCH DATE / LISTING
 # ═══════════════════════════════════════════════════════════════════════
-# arXiv 公告机制（官方时刻表 info.arxiv.org/help/availability.html）：
+# arXiv 公告机制（官方时刻表 info.arxiv.org/help/availability.html + 2026-09 实测修正）：
 #   - 提交截止：每个工作日美东 14:00；截止后提交进入下一个公告窗口。
-#   - 公告：美东 Sun/Mon/Tue/Wed/Thu 的 20:00 发布（Fri/Sat 无公告），
-#     批次标签 = 公告当日的美东日期。例：Fri 14:00 ~ Mon 14:00 提交 →
-#     Mon 20:00 公告（标签 Monday）= 北京时间周二早上 8:00 可见（EDT）。
+#   - 公告：美东 Sun/Mon/Tue/Wed/Thu 的 20:00 发布（Fri/Sat 无公告）。
+#   - ⚠️ 批次标签 = 公告的【次日】（官方原话 "Mailed Thursday night / Friday morning"）。
+#     例：Mon 20:00 ET 公告 → 批次标签 Tuesday；listing 页在当天夜里
+#     （约美东午夜前后）翻页到新批次。实测：每天 00:00–01:00 ET 时
+#     listing 已显示【当天】日期标签的批次（Mon–Fri 才有批次，Sat/Sun 无）。
 #   - 少量论文会因审核挂起延迟数日才进入批次（submittedDate 无法推算），
 #     因此批次成员以 listing 页面为唯一权威来源。
 
 def _expected_label() -> str:
-    """当前时刻理应已发布的最新批次标签（YYYY-MM-DD，美东日期）。
+    """当前时刻理应已发布的最新批次标签（YYYY-MM-DD，批次标签上的日期）。
 
-    依据官方公告表：公告发生在 ET 的 Sun/Mon/Tue/Wed/Thu 20:00（Fri/Sat 无），
-    标签 = 公告当日日期。因此“最新已发布批次” = 当前 ET 时刻回退到
-    最近一次 20:00 公告日（若当天 20:00 未到则回退一天，跳过 Fri/Sat）。
+    批次标签为 Mon–Fri 的日期；标签为 D 的批次在 D-1 的 20:00 ET 公告、
+    约 D 天午夜 ET 前完成 listing 翻页。因此：当前 ET 日期为工作日即期望
+    当天标签（午夜后 1 小时缓冲期内仍期望上一批，避免翻页竞态），
+    Sat/Sun 则回退到周五。
     """
     try:
         from zoneinfo import ZoneInfo
@@ -90,9 +94,9 @@ def _expected_label() -> str:
     except Exception:
         now = datetime.utcnow() - timedelta(hours=4)
     d = now.date()
-    if now.hour < 20:           # 当天 20:00 公告尚未发生 → 回退一天
+    if now.hour < 1:            # 午夜翻页缓冲：今天这批可能还没上线
         d -= timedelta(days=1)
-    while d.weekday() in (4, 5):  # Fri/Sat 无公告 → 继续回退到 Thu
+    while d.weekday() in (5, 6):  # Sat/Sun 无批次 → 回退到周五
         d -= timedelta(days=1)
     return d.strftime("%Y-%m-%d")
 
@@ -162,7 +166,11 @@ def _live_summary_date() -> str:
 # ═══════════════════════════════════════════════════════════════════════
 
 def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
-    """Fetch URL with robust retries."""
+    """Fetch URL with robust retries.
+
+    arXiv 对 GitHub Actions 共享 IP 限流（429）较常见，退避需要足够长：
+    30/60/90/... 秒递增，封顶 300s。
+    """
     last_err = None
     for attempt in range(retries):
         try:
@@ -172,7 +180,7 @@ def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
         except Exception as e:
             last_err = e
             if attempt < retries - 1:
-                wait = ARXIV_DELAY * (attempt + 1)
+                wait = min(ARXIV_DELAY * (attempt + 1), 300)
                 print(f"  [RETRY {attempt+1}/{retries}] {e} — waiting {wait}s", file=sys.stderr)
                 time.sleep(wait)
     raise RuntimeError(f"arXiv unreachable after {retries} attempts: {last_err}")
@@ -206,7 +214,7 @@ def fetch_category(cat: str) -> tuple[list[dict], str]:
                 order.append(pid)
         print(f"    {q}: {len(listing['new'])} new + {len(listing['cross'])} cross ({listing['label']})")
         if len(queries) > 1:
-            time.sleep(4)
+            time.sleep(ARXIV_GAP)
 
     papers = _fetch_meta(order)
     by_id = {p["ID"]: p for p in papers}
@@ -229,7 +237,7 @@ def _fetch_meta(ids: list[str]) -> list[dict]:
         url = f"{ARXIV_API}?id_list={','.join(chunk)}&max_results={len(chunk)}"
         _parse_xml(fetch_url(url), seen, papers)
         if i + META_CHUNK < len(ids):
-            time.sleep(4)
+            time.sleep(ARXIV_GAP)
     return papers
 
 
@@ -701,6 +709,7 @@ def main():
             print(f"  [ERROR] {cat}: {e}", file=sys.stderr)
             all_data[cat] = []
             summary[cat] = 0
+        time.sleep(ARXIV_GAP)   # 分区之间留间隔，防 arXiv 429 限流
 
     # ── Second pass: retry any failed categories with extra patience ──
     failed = [c for c in args.cats if summary.get(c, 0) == 0]
@@ -746,6 +755,14 @@ def main():
     if not new_batch:
         print("This batch was already pushed — skipping translate/build/push.")
         return
+
+    # ── 残缺保护：任何分区 0 篇则中止，绝不部署不完整报告 ──
+    # （放在 new_batch 检查之后：已推过的批次即使本次抓取受限流影响也干净跳过）
+    zero_cats = [c for c in args.cats if summary.get(c, 0) == 0]
+    if zero_cats:
+        print(f"ERROR: {zero_cats} fetched 0 papers — aborting WITHOUT deploy to avoid "
+              f"overwriting Pages with an incomplete report", file=sys.stderr)
+        sys.exit(1)
 
     # ── STEP 2: Translate ──
     for cat in args.cats:
