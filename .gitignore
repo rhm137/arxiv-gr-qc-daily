@@ -4,3 +4,8 @@ outputs-public/
 __pycache__/
 *.pyc
 .env
+
+# rao personal pipeline
+rao/site/
+rao/output/
+rao/config.local.json

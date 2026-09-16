@@ -1,0 +1,10 @@
+{
+  "timezone": "Asia/Shanghai",
+  "push_time": "07:53",
+  "feeds": ["gr-qc", "hep-th", "astro-ph.CO"],
+  "top_n_digest": 6,
+  "max_candidates_to_llm": 40,
+  "pushplus_max_chars": 19000,
+  "site_base_url": "https://arxiv-rao.pages.dev",
+  "digest_language": "zh-CN"
+}

@@ -1,0 +1,67 @@
+name: Rao arXiv Daily (gr-qc / hep-th / astro-ph.CO)
+
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC 23:53 = 北京时间次日 07:53，此时 arXiv 当日 listing 已发布约 24 小时，
+    # 脚本按"北京时间 - 8h"取 listing 日期，即推送"昨天"的批次
+    - cron: "53 23 * * *"
+
+concurrency:
+  group: rao-arxiv-daily
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests blake3
+
+      - name: Fetch arXiv (gr-qc / hep-th / astro-ph.CO)
+        working-directory: rao
+        run: python scripts/fetch_arxiv.py
+
+      - name: DeepSeek scoring & digest
+        working-directory: rao
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: python scripts/cloud_digest.py
+
+      - name: Render site (no push)
+        working-directory: rao
+        run: python scripts/deliver.py --no-push
+
+      - name: Deploy to Cloudflare Pages
+        working-directory: rao
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PROJECT: arxiv-rao
+        run: |
+          DATE=$(date -u +%F)
+          if [ -f "data/digest_${DATE}.json" ]; then
+            python scripts/deploy_cf.py
+          else
+            echo "昨日无更新或无候选，跳过部署"
+          fi
+
+      - name: Push WeChat via pushplus
+        working-directory: rao
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: python scripts/deliver.py
+
+      - name: Commit data archive
+        run: |
+          git config user.name "rhm137-bot"
+          git config user.email "rhm137@users.noreply.github.com"
+          git add rao/data "rao/存档" || true
+          git commit -m "rao daily $(date -u +%F) [skip ci]" || echo "nothing to commit"
+          git push
