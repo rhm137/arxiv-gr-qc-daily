@@ -166,6 +166,15 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--text);
 .abs-details p { font-size: 13px; color: var(--text-secondary); margin-top: 8px; }
 .score-pill { display: inline-block; border-radius: 4px; color: #fff; font-size: 11px;
     font-weight: 700; padding: 0 6px; margin-left: 6px; vertical-align: 1px; }
+.sec-h2 { max-width: 800px; margin: 32px auto -8px; padding: 0 24px; font-size: 19px; font-weight: 700; }
+.rel-chip { display: inline-block; border-radius: 4px; color: #fff; font-size: 11px;
+    font-weight: 700; padding: 0 6px; margin-left: 6px; vertical-align: 1px; }
+.rel-collision { background: #c0392b; }
+.rel-neighbor { background: #d35400; }
+.rel-field { background: #5b7a9d; }
+.paper-card.radar-collision { border-left: 4px solid #c0392b; }
+.radar-note { max-width: 800px; margin: 0 auto 40px; padding: 0 24px; font-size: 13px; color: var(--text-secondary); }
+.rel-note { font-size: 13px; color: var(--accent); font-weight: 600; margin: 10px 0 2px; }
 .runner { max-width: 800px; margin: -48px auto 72px; padding: 0 24px; }
 .runner .box { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
     box-shadow: var(--shadow); padding: 16px 22px; font-size: 13px; }
@@ -204,9 +213,14 @@ window.MathJax = {
 """
 
 
+REL_CLASS = {"撞车预警": "rel-collision", "近邻": "rel-neighbor", "风向": "rel-field"}
+
+
 def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
     date = digest["listing_date"]
     st = digest["stats"]
+    n_core = st.get("core", st.get("selected", len(digest["papers"])))
+    radar = digest.get("radar", [])
     n_must = sum(1 for p in digest["papers"] if p.get("must_read"))
 
     toc_items = []
@@ -250,6 +264,60 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
 </div>
 </details>""")
 
+    # ---------- 领域动态雷达区 ----------
+    radar_toc, radar_cards = [], []
+    for j, r in enumerate(radar, 1):
+        col = score_color(r["score"])
+        label = r.get("relation_label", "风向")
+        rel_cls = REL_CLASS.get(label, "rel-field")
+        card_cls = "paper-card radar-collision" if label == "撞车预警" else "paper-card"
+        fields = "/".join(r.get("radar_fields", []))
+        toc_title = r.get("cn_title") or r["title"]
+        radar_toc.append(
+            f'<li><span class="toc-num">R{j}.</span><a href="#radar-{j}">'
+            f'{esc(toc_title[:46])}{"…" if len(toc_title) > 46 else ""}</a>'
+            f'<span class="rel-chip {rel_cls}">{label}</span></li>'
+        )
+        action_block = ""
+        if r.get("action") and r["action"] != "暂无":
+            action_block = f'<p class="rel-note">⚠️ 建议行动</p><p>{esc(r["action"])}</p>'
+        abs_block = ""
+        if r["id"] in abstracts:
+            abs_block = (
+                f'<details class="abs-details"><summary>英文摘要原文</summary>'
+                f'<p>{esc_keep_math(abstracts[r["id"]])}</p></details>'
+            )
+        radar_cards.append(f"""
+<details class="{card_cls}" id="radar-{j}">
+<summary>
+    <div class="card-body">
+        <div class="card-num">R{j} · arXiv:{r['id']} · {esc(fields)}<span class="rel-chip {rel_cls}">{label}</span><span class="score-pill" style="background:{col}">{r['score']}</span></div>
+        <div class="card-title">{esc(r['title'])}</div>
+        <div class="card-title-cn">{esc(r.get('cn_title',''))}</div>
+        <div class="card-authors">{esc(r['authors'])}</div>
+        <div class="card-oneline">💡 {esc(r['one_liner'])}</div>
+    </div>
+</summary>
+<div class="detail">
+    <p class="rel-note">🔗 与 Rao 的关系</p>
+    <p>{esc(r.get('relation_note','同领域'))}</p>
+    <h4>简评</h4>
+    {nl2p(r.get('brief','暂无'))}
+    {action_block}
+    {abs_block}
+    <p class="src-link">原文链接：<a href="{r['link']}" target="_blank" rel="noopener">arXiv:{r['id']}</a></p>
+</div>
+</details>""")
+
+    radar_section = ""
+    if radar_cards:
+        radar_section = (
+            '<h2 class="sec-h2">📡 领域动态 · 修正引力宇宙学</h2>'
+            '<div class="papers">' + "".join(radar_cards) + "</div>"
+        )
+    elif digest.get("radar_note"):
+        radar_section = f'<div class="radar-note">📡 领域动态：{esc(digest["radar_note"])}</div>'
+
     runner = ""
     if digest.get("runner_ups"):
         lis = "".join(
@@ -258,6 +326,10 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
             for i, r in enumerate(digest["runner_ups"], len(digest["papers"]) + 1)
         )
         runner = f'<div class="runner"><div class="box"><h2>📎 也值得关注</h2><ol style="padding-left:18px;margin:0;">{lis}</ol></div></div>'
+
+    toc_radar = ""
+    if radar_toc:
+        toc_radar = '<h2 style="margin-top:20px;">📡 领域动态</h2><ol class="toc-list">' + "".join(radar_toc) + "</ol>"
 
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -277,22 +349,25 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
     <div class="stats">
         <div class="stat-card"><div class="num">{st['total_new']}</div><div class="label">新上线</div></div>
         <div class="stat-card"><div class="num">{st['candidates']}</div><div class="label">初筛入围</div></div>
-        <div class="stat-card"><div class="num">{st['selected']}</div><div class="label">精选</div></div>
-        <div class="stat-card"><div class="num">{n_must}</div><div class="label">必读</div></div>
+        <div class="stat-card"><div class="num">{n_core}</div><div class="label">核心精读（⭐{n_must}）</div></div>
+        <div class="stat-card"><div class="num">{len(radar)}</div><div class="label">领域动态</div></div>
     </div>
     <p style="margin-top:18px;font-size:13px;color:var(--text-secondary);">来源：gr-qc {counts.get('gr-qc',0)} · hep-th {counts.get('hep-th',0)} · astro-ph.CO {counts.get('astro-ph.CO',0)}</p>
 </div>
 
 <div class="toc-section">
-    <h2>📋 目录</h2>
+    <h2>📋 核心精读</h2>
     <ol class="toc-list">
         {''.join(toc_items)}
     </ol>
+    {toc_radar}
 </div>
 
 <div class="papers">
     {''.join(cards)}
 </div>
+
+{radar_section}
 
 {runner}
 
@@ -307,7 +382,7 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict) -> str:
 def render_archive_index(days: list[dict]) -> str:
     rows = "".join(
         f'<tr><td><a href="{d["date"]}.html">{d["date"]}</a></td><td>{d["stats"]["total_new"]}</td>'
-        f'<td>{d["stats"]["selected"]}</td><td>{esc("、".join(d.get("must_titles", []))[:100])}</td></tr>'
+        f'<td>{d["stats"].get("core", d["stats"].get("selected", 0))}+{d["stats"].get("radar", 0)}</td><td>{esc("、".join(d.get("must_titles", []))[:100])}</td></tr>'
         for d in days
     )
     return f"""<!DOCTYPE html>
@@ -319,7 +394,7 @@ td,th{{border:1px solid var(--border);padding:8px 12px;font-size:14px;text-align
 .idx{{max-width:800px;margin:48px auto;padding:0 24px}}</style></head>
 <body><div class="idx">
 <h1 style="font-size:24px;margin-bottom:16px;">📚 arXiv 日报存档</h1>
-<table><tr><th>日期</th><th>新上线</th><th>精选</th><th>必读</th></tr>{rows}</table>
+<table><tr><th>日期</th><th>新上线</th><th>核心+动态</th><th>必读</th></tr>{rows}</table>
 </div></body></html>"""
 
 
@@ -328,6 +403,8 @@ td,th{{border:1px solid var(--border);padding:8px 12px;font-size:14px;text-align
 def render_pushplus(digest: dict, counts: dict, site_url: str = "") -> str:
     date = digest["listing_date"]
     st = digest["stats"]
+    n_core = st.get("core", st.get("selected", len(digest["papers"])))
+    radar = digest.get("radar", [])
     n_must = sum(1 for p in digest["papers"] if p.get("must_read"))
     items = []
     for i, p in enumerate(digest["papers"], 1):
@@ -342,6 +419,24 @@ def render_pushplus(digest: dict, counts: dict, site_url: str = "") -> str:
             f'<div style="font-size:13px;margin-top:3px;">💡 {esc(p["one_liner"])}</div>'
             f'</div>'
         )
+    radar_block = ""
+    if radar:
+        ris = []
+        for j, r in enumerate(radar, 1):
+            label = r.get("relation_label", "风向")
+            ris.append(
+                f'<div style="margin:6px 0;font-size:12px;">'
+                f'<b>R{j}. {esc(r.get("cn_title") or latex_to_text(r["title"]))}</b>　'
+                f'<span style="color:#c0392b;">[{label}]</span><br>'
+                f'<span style="color:#666;">💡 {esc(r["one_liner"])}</span></div>'
+            )
+        radar_block = (
+            '<div style="margin:14px 0;padding:10px 12px;background:#f0f4fa;border-radius:8px;">'
+            '<div style="font-size:13px;font-weight:700;margin-bottom:6px;">📡 领域动态 · 修正引力宇宙学</div>'
+            + "".join(ris) + "</div>"
+        )
+    elif digest.get("radar_note"):
+        radar_block = f'<div style="font-size:11px;color:#999;margin:10px 0;">📡 {esc(digest["radar_note"])}</div>'
     link_block = ""
     if site_url:
         link_block = (
@@ -349,15 +444,16 @@ def render_pushplus(digest: dict, counts: dict, site_url: str = "") -> str:
             f'<a href="{site_url}" style="display:inline-block;background:#2563eb;color:#fff;font-size:15px;'
             f'font-weight:700;text-decoration:none;padding:10px 26px;border-radius:8px;">'
             f'👉 打开今日完整页面（折叠卡片）</a></div>'
-            f'<div style="font-size:11px;color:#999;text-align:center;">每篇的「做了什么与评价 / Rao 可以学到什么 / 推荐课题」都在网页里，点开卡片即读</div>'
+            f'<div style="font-size:11px;color:#999;text-align:center;">核心层的「做了什么与评价 / Rao 可以学到什么 / 推荐课题」与雷达层简评都在网页里，点开卡片即读</div>'
         )
     return (
         '<div style="font-family:-apple-system,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;color:#2c3e50;">'
         f'<div style="background:#2563eb;color:#fff;padding:12px 16px;border-radius:10px;">'
         f'<div style="font-size:17px;font-weight:700;">arXiv · {date}</div>'
         f'<div style="font-size:12px;opacity:.9;margin-top:3px;">gr-qc {counts.get("gr-qc",0)} · hep-th {counts.get("hep-th",0)} · astro-ph.CO {counts.get("astro-ph.CO",0)}'
-        f'　→ 新上线 {st["total_new"]} → 初筛 {st["candidates"]} → 精选 {st["selected"]}（⭐{n_must} 必读）</div></div>'
+        f'　→ 新上线 {st["total_new"]} → 初筛 {st["candidates"]} → 核心 {n_core}（⭐{n_must}）+ 动态 {len(radar)}</div></div>'
         + "".join(items)
+        + radar_block
         + link_block
         + '<div style="font-size:11px;color:#999;text-align:center;margin:12px 0;">由 Kimi 生成 · 按 Rao 的研究画像匹配</div></div>'
     )
@@ -368,18 +464,22 @@ def render_pushplus(digest: dict, counts: dict, site_url: str = "") -> str:
 def render_markdown(digest: dict, counts: dict) -> str:
     date = digest["listing_date"]
     st = digest["stats"]
+    n_core = st.get("core", st.get("selected", len(digest["papers"])))
+    radar = digest.get("radar", [])
     lines = [
         f"# arXiv · {date}",
         "",
         f"> gr-qc {counts.get('gr-qc',0)} · hep-th {counts.get('hep-th',0)} · astro-ph.CO {counts.get('astro-ph.CO',0)}"
-        f"　→ 新上线 {st['total_new']} 篇 → 初筛 {st['candidates']} 篇 → 精选 {st['selected']} 篇",
+        f"　→ 新上线 {st['total_new']} 篇 → 初筛 {st['candidates']} 篇 → 核心 {n_core} 篇 + 领域动态 {len(radar)} 篇",
+        "",
+        "## 核心精读",
         "",
     ]
     for i, p in enumerate(digest["papers"], 1):
         star = "⭐必读 " if p.get("must_read") else ""
         cn = p.get("cn_title", "")
         lines += [
-            f"## {star}{i}. [{p['title']}]({p['link']})",
+            f"### {star}{i}. [{p['title']}]({p['link']})",
             "",
             (f"**{cn}**　｜　" if cn else "") + f"**{p['authors']}**　|　{' · '.join(p['categories'])}　|　相关度 **{p['score']}**",
             "",
@@ -400,6 +500,26 @@ def render_markdown(digest: dict, counts: dict) -> str:
             "---",
             "",
         ]
+    if radar:
+        lines += ["## 📡 领域动态 · 修正引力宇宙学", ""]
+        for j, r in enumerate(radar, 1):
+            lines += [
+                f"### R{j}. [{r.get('cn_title') or r['title']}]({r['link']})　【{r.get('relation_label','风向')}】",
+                "",
+                f"**{r['authors']}**　|　{'/'.join(r.get('radar_fields', []))}　|　相关度 **{r['score']}**",
+                "",
+                f"💡 {r['one_liner']}",
+                "",
+                f"🔗 与 Rao 的关系：{r.get('relation_note','同领域')}",
+                "",
+                r.get("brief", "暂无"),
+                "",
+            ]
+            if r.get("action") and r["action"] != "暂无":
+                lines += [f"⚠️ 建议行动：{r['action']}", ""]
+            lines += ["---", ""]
+    elif digest.get("radar_note"):
+        lines += [f"📡 领域动态：{digest['radar_note']}", ""]
     if digest.get("runner_ups"):
         lines.append("## 📎 也值得关注")
         lines.append("")
@@ -487,7 +607,9 @@ def main() -> int:
     if not token:
         print(json.dumps({"ok": False, "error": "缺少 PUSHPLUS_TOKEN"}, ensure_ascii=False))
         return 1
-    title = f"arXiv · {date}｜新{digest['stats']['total_new']}篇→精选{digest['stats']['selected']}篇"
+    st = digest["stats"]
+    n_core = st.get("core", st.get("selected", len(digest["papers"])))
+    title = f"arXiv · {date}｜新{st['total_new']}篇→核心{n_core}+动态{st.get('radar', 0)}篇"
     resp = requests.post(PUSHPLUS_URL, json={
         "token": token, "title": title[:95], "content": pp_html, "template": "html",
     }, timeout=40)
