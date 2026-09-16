@@ -7,6 +7,11 @@ on:
         description: '期望批次日期 (YYYY-MM-DD)，仅校验用；留空 = 抓取官网当前批次（最新批次约北京时间早上 8:00 发布，美东 20:00）'
         required: false
         default: ''
+      force:
+        description: '强制重跑当前批次（即使已推过；调试用）'
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: arxiv-daily-digest
@@ -33,6 +38,7 @@ jobs:
         id: digest
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          FORCE_RERUN: ${{ github.event.inputs.force }}
         run:
           python scripts/run.py --date "${{ github.event.inputs.date }}" 2>&1
 

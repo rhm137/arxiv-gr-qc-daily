@@ -770,6 +770,10 @@ def main():
     # ── 重复推送防护：线上已推送同一批次则跳过 ──
     pushed_date = _live_summary_date()
     new_batch = label != pushed_date
+    force = os.environ.get("FORCE_RERUN", "").lower() in ("1", "true", "yes")
+    if force and not new_batch:
+        print("FORCE_RERUN: 强制重跑当前已推批次（调试用）")
+        new_batch = True
     print(f"Pushed batch on Pages: {pushed_date or '(unknown)'} → new_batch={new_batch}")
     if "GITHUB_OUTPUT" in os.environ:
         with open(os.environ["GITHUB_OUTPUT"], "a") as gf:
