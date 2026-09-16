@@ -290,25 +290,36 @@ def _build_prompt(cat: str) -> str:
 - Abstract (English): {{abstract}}
 
 ## Instructions
-Provide the following three items in Chinese. Output ONLY valid JSON, no other text.
+Provide the following four items in Chinese. Output ONLY valid JSON, no other text.
 
 1. "cn_title": Translate the title into Chinese. Preserve all technical abbreviations in English (e.g., {info['abbr']}).
-2. "cn_abstract": Full Chinese translation of the abstract. Use $...$ for all LaTeX math symbols.
-3. "cn_eval": A four-paragraph Chinese evaluation (~300 characters total):
+2. "cn_oneliner": 一句话简介（30–50 字），概括**这篇论文**做了什么、得到什么最重要的结果。
+   句式如"用 X 方法研究/证明了 Y，发现 Z"。以论文为主语，不写领域背景，
+   不简单重复标题。这张卡片折叠时只显示这句话，必须独立成立、一眼看懂。
+3. "cn_summary": 速览 — 中文 250–350 字，分两段：
+   第一段（2–3 句）背景与动机：这个领域已知什么、还缺什么、为什么这个问题值得做，
+   让没读过相关文献的读者也能进入语境。
+   第二段（3–4 句）内容总结：方法 → 关键结果，必须保留摘要中的具体数字、
+   置信度、样本量、对象名称等硬信息，不要泛泛而谈。
+   Use $...$ for all LaTeX math symbols.
+4. "cn_review": 评价 — 中文 200–250 字，务必精炼，分三段，每段以【创新点】【局限性】【意义与读者】开头：
 
-Paragraph 1 — 研究问题
-Paragraph 2 — 方法/框架
-Paragraph 3 — 主要发现
-Paragraph 4 — 评价与展望
+   【创新点】1–2 句：与已有工作相比新在哪（具体说明，引用论文中的关键结果）。
+   【局限性】1–2 句：方法或假设最主要的弱点/适用范围；摘要未体现就明说。
+   【意义与读者】1 句：什么样的读者值得读原文。
+
+   硬性要求：直接、具体、不重复速览已说过的内容；
+   禁止使用"具有重要意义""提供了新思路""有望推动"等空泛套话。
 
 CRITICAL: LaTeX math in $...$. Output ONLY valid JSON.
-The JSON object must contain three keys: cn_title, cn_abstract, cn_eval."""
+The JSON object must contain four keys: cn_title, cn_oneliner, cn_summary, cn_review."""
 
 
 RETRY_PROMPT_TMPL = f"""The previous translation had quality issues. Re-translate MORE CAREFULLY.
 - cn_title MUST be fully in Chinese (except: {RETRY_ABBR})
-- cn_abstract MUST be >70% Chinese characters
-- cn_eval MUST contain all four markers: 研究问题, 方法/框架, 主要发现, 评价与展望
+- cn_oneliner MUST be a single 30–50 character sentence stating what THIS paper did and its key result (no background, not a copy of the title)
+- cn_summary MUST be >70% Chinese characters, start with 2–3 sentences of background/motivation, then methods and concrete results (numbers required)
+- cn_review MUST contain all three markers: 【创新点】, 【局限性】, 【意义与读者】, be CONCISE (200–250 Chinese characters), and cite concrete results (no empty boilerplate)
 
 ## Paper Information
 - arXiv ID: {{paper_id}}
@@ -365,8 +376,9 @@ def translate_all(papers: list[dict], cat: str, api_key: str) -> int:
                 issues = _validate(result)
                 if not issues:
                     p["CN_Title"] = str(result.get("cn_title", ""))
-                    p["CN_Abstract"] = str(result.get("cn_abstract", ""))
-                    p["CN_Eval"] = str(result.get("cn_eval", ""))
+                    p["CN_Oneliner"] = str(result.get("cn_oneliner", ""))
+                    p["CN_Summary"] = str(result.get("cn_summary", ""))
+                    p["CN_Review"] = str(result.get("cn_review", ""))
                     print("    OK")
                     success = True
                     break
@@ -394,8 +406,9 @@ def translate_all(papers: list[dict], cat: str, api_key: str) -> int:
         if not success:
             flagged += 1
             p["CN_Title"] = f"⚠ {title}"
-            p["CN_Abstract"] = abstract
-            p["CN_Eval"] = "⚠ 翻译校验未通过，请查看原文摘要。"
+            p["CN_Oneliner"] = ""
+            p["CN_Summary"] = abstract
+            p["CN_Review"] = "⚠ 翻译校验未通过，请查看原文摘要。"
             print("    FLAGGED")
 
         time.sleep(6)  # pace between papers
@@ -407,21 +420,30 @@ def translate_all(papers: list[dict], cat: str, api_key: str) -> int:
 def _validate(result: dict) -> list[str]:
     issues = []
     cn_title = result.get("cn_title", "")
-    cn_abstract = result.get("cn_abstract", "")
-    cn_eval = result.get("cn_eval", "")
+    cn_oneliner = result.get("cn_oneliner", "")
+    cn_summary = result.get("cn_summary", "")
+    cn_review = result.get("cn_review", "")
 
     if not cn_title.strip():
         issues.append("title empty")
 
-    if not cn_abstract.strip():
-        issues.append("abstract empty")
+    ol = cn_oneliner.strip()
+    if not ol:
+        issues.append("oneliner empty")
+    elif len(ol) > 90:
+        issues.append("oneliner too long")
+
+    if not cn_summary.strip():
+        issues.append("summary empty")
     else:
-        cn_chars = len(re.findall(r'[\u4e00-\u9fff]', cn_abstract))
-        if len(cn_abstract) > 20 and cn_chars / max(len(cn_abstract), 1) < 0.15:
+        cn_chars = len(re.findall(r'[\u4e00-\u9fff]', cn_summary))
+        if len(cn_summary) > 20 and cn_chars / max(len(cn_summary), 1) < 0.15:
             issues.append("low CN ratio")
 
-    markers = ["研究问题", "方法", "主要发现", "评价"]
-    if sum(1 for m in markers if m in cn_eval) < 2:
+    if len(re.findall(r'[\u4e00-\u9fff]', cn_review)) < 120:
+        issues.append("review too short")
+    markers = ["创新点", "局限性", "意义与读者"]
+    if sum(1 for m in markers if m in cn_review) < 2:
         issues.append("missing markers")
 
     return issues
@@ -522,10 +544,10 @@ def _escape(s) -> str:
     return "".join(out)
 
 
-def _one_liner(eval_text: str) -> str:
-    if not eval_text: return ""
-    m = re.match(r"^(.*?[。；])", eval_text)
-    return (m.group(1) if m else eval_text[:80] + "…").replace("研究问题", "速览", 1)
+def _one_liner(summary_text: str) -> str:
+    if not summary_text: return ""
+    m = re.match(r"^(.*?[。；])", summary_text)
+    return m.group(1) if m else summary_text[:80] + "…"
 
 
 def _format_authors(paper: dict, max_n: int = 4) -> str:
@@ -568,10 +590,10 @@ def build_category_html(papers: list[dict], cat: str, out_dir: str, date_display
         pid = p.get("ID", "")
         ttl = _escape(p.get("Title", ""))
         cnt = _escape(p.get("CN_Title", ""))
-        cabs = _escape(p.get("CN_Abstract", ""))
-        ceval = _escape(p.get("CN_Eval", ""))
+        csum = _escape(p.get("CN_Summary", ""))
+        crev = _escape(p.get("CN_Review", ""))
         auth = _escape(_format_authors(p))
-        onel = _escape(_one_liner(p.get("CN_Eval", "")))
+        onel = _escape(p.get("CN_Oneliner") or _one_liner(p.get("CN_Summary", "")))
         is_x = p in cross
         xbadge = f" [交叉: {_escape(p.get('PrimaryCat',''))}]" if is_x else ""
 
@@ -579,7 +601,7 @@ def build_category_html(papers: list[dict], cat: str, out_dir: str, date_display
             f'<div class="card-body"><div class="card-num">#{i}{xbadge}  ·  {_escape(pid)}</div>'
             f'<div class="card-title">{ttl}</div><div class="card-title-cn">{cnt}</div>'
             f'<div class="card-authors">{auth}</div><div class="card-oneline">{onel}</div></div></summary>'
-            f'<div class="detail"><h4>摘要</h4><p>{cabs}</p><h4>评价</h4><p>{ceval}</p>'
+            f'<div class="detail"><h4>速览</h4><p>{csum}</p><h4>评价</h4><p>{crev}</p>'
             f'<p style="margin-top:12px;font-size:12px;color:var(--text-secondary);">'
             f'arXiv: <a href="https://arxiv.org/abs/{_escape(pid)}" target="_blank">{_escape(pid)}</a></p>'
             f'</div></details>')
