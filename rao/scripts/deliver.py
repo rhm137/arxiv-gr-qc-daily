@@ -310,8 +310,7 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict, site_url: str 
     for i, p in enumerate(digest["papers"], 1):
         cn = p.get("cn_title", "")
         toc_core.append(
-            f'<li><span class="n">{i:02d}</span><a href="#paper-{i}">{esc(cn or p["title"])}</a>'
-            f'<span class="toc-en">{esc(p["title"][:70])}{"…" if len(p["title"])>70 else ""}</span></li>'
+            f'<li><span class="n">{i:02d}</span><a href="#paper-{i}">{esc(cn or p["title"])}</a></li>'
         )
         must = '<span class="must">必读</span>' if p.get("must_read") else ""
         cards.append(f"""
@@ -347,8 +346,7 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict, site_url: str 
     for j, r in enumerate(radar, 1):
         label = r.get("relation_label", "风向")
         toc_radar.append(
-            f'<li><span class="n">R{j}</span><a href="#radar-{j}">{esc(r.get("cn_title") or r["title"])}</a>'
-            f'<span class="toc-en">{esc(r["title"][:70])}{"…" if len(r["title"])>70 else ""}</span></li>'
+            f'<li><span class="n">R{j}</span><a href="#radar-{j}">{esc(r.get("cn_title") or r["title"])}</a></li>'
         )
         rcards.append(f"""
 <details class="card {'collision' if label=='撞车预警' else ''}" id="radar-{j}">
@@ -384,8 +382,7 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict, site_url: str 
     for k, w in enumerate(keyword, 1):
         kws = " · ".join(w.get("matched_keywords", []))
         toc_kw.append(
-            f'<li><span class="n">K{k}</span><a href="#kw-{k}">{esc(w.get("cn_title") or w["title"])}</a>'
-            f'<span class="toc-en">{esc(w["title"][:70])}{"…" if len(w["title"])>70 else ""}</span></li>'
+            f'<li><span class="n">K{k}</span><a href="#kw-{k}">{esc(w.get("cn_title") or w["title"])}</a></li>'
         )
         kcards.append(f"""
 <details class="card" id="kw-{k}">
