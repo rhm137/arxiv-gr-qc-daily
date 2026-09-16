@@ -99,7 +99,12 @@ def parse_json_loose(text: str):
     t = text.strip()
     t = re.sub(r"^```(?:json)?\s*", "", t)
     t = re.sub(r"\s*```$", "", t)
-    return json.loads(t)
+    try:
+        return json.loads(t)
+    except json.JSONDecodeError:
+        # DS 输出 LaTeX 时常把 $\beta$ 写成非法转义 \b；把非合法转义的反斜杠加倍后再解析
+        fixed = re.sub(r'\\(?![\\/bfnrtu"])', r"\\\\", t)
+        return json.loads(fixed)
 
 
 SCORING_SYS = """你是理论物理研究助手，为一位做修正引力与引力热力学研究的用户（Rao）给 arXiv 论文打相关度分。
@@ -151,19 +156,21 @@ GROUP_SYS = """你是理论物理研究助手，为做修正引力与引力热�
 # 任务
 对给出的每篇论文输出以下字段（全部中文，公式用 $...$ LaTeX 表示）：
 - cn_title：中文译题（英文技术缩写保留原样，如 LIGO, GW, QFT, CMB, BAO, DM, DE, EFT, FLRW, PPN）
-- one_liner：一句话简介（≤60 字，做了什么 + 为什么值得注意；公式用 Unicode 纯文本）
-- cn_abstract：摘要的中文翻译（忠实但可压缩，150-250 字；公式用 $...$）
-- eval_problem：【研究问题】这篇论文解决什么问题（1-2 句）
-- eval_method：【方法/框架】用了什么方法或框架（2-3 句）
-- eval_finding：【主要发现】关键结论（2-3 句）
-- eval_significance：【对 Rao 的意义】结合画像说明这篇对 Rao 有什么用——和他的哪条研究线/哪个课题卡相关、能借用什么、要注意什么局限；说不清就诚实写"同领域参考"，禁止编造（2-3 句）
+- one_liner：一句话简介（30–50 字），概括这篇论文做了什么、得到什么最重要的结果。以论文为主语，不简单重复标题；卡片折叠时只显示这句话，必须独立成立、一眼看懂
+- cn_summary：速览，250–350 字，分两段：
+  第一段（2–3 句）背景与动机：这个领域已知什么、还缺什么、为什么这个问题值得做，让没读过相关文献的读者也能进入语境；
+  第二段（3–4 句）内容总结：方法 → 关键结果，必须保留摘要中的具体数字、置信度、样本量、对象名称等硬信息，不要泛泛而谈
+- cn_review：评价，200–250 字，分三段，分别以【创新点】【局限性】【对 Rao 的意义】开头：
+  【创新点】1–2 句：与已有工作相比新在哪（具体说明，引用论文中的关键结果）；
+  【局限性】1–2 句：方法或假设最主要的弱点/适用范围；摘要未体现就明说；
+  【对 Rao 的意义】1–2 句：结合画像说明这篇对 Rao 有什么用——和他的哪条研究线/哪个课题卡相关、能借用什么；属现象学拟合类的点明"现象学类，方法新意有限"；说不清就写"同领域参考"，禁止编造
 - action：仅当该论文在输入中被标注为"撞车预警"时必填（如"核对该文与 P2 是否同条件，更新最近邻表"），其他填"暂无"
 
-# 写作要求
-- 评价诚实，不吹捧；现象学拟合类要在 eval_significance 里点明"现象学类，方法新意有限"
+# 硬性要求
+直接、具体、不重复速览已说过的内容；禁止使用"具有重要意义""提供了新思路""有望推动"等空泛套话。
 
 # 输出（严格 JSON）
-{{"items": [{{"id": "arXiv号", "cn_title": "...", "one_liner": "...", "cn_abstract": "...", "eval_problem": "...", "eval_method": "...", "eval_finding": "...", "eval_significance": "...", "action": "暂无"}}]}}"""
+{{"items": [{{"id": "arXiv号", "cn_title": "...", "one_liner": "...", "cn_summary": "...", "cn_review": "...", "action": "暂无"}}]}}"""
 
 
 def select_keywords(listing_papers: list[dict], cfg: dict, exclude_ids: set) -> list[dict]:
@@ -203,7 +210,8 @@ def chunks(lst: list, n: int):
 
 
 def group_style_call(items: list[dict], profile: str, model: str) -> dict:
-    """分批调 DS 生成群格式内容（每批 ≤5 篇），返回 id -> 内容 的映射。"""
+    """分批调 DS 生成群格式内容（每批 ≤5 篇），返回 id -> 内容 的映射。
+    DS 偶发输出非法 JSON：每批失败重试一次，仍失败则跳过该批并告警（不中断整体）。"""
     out = {}
     for batch in chunks(items, 5):
         lines = []
@@ -211,9 +219,19 @@ def group_style_call(items: list[dict], profile: str, model: str) -> dict:
             label = REL_LABEL.get(c.get("relation", ""), "")
             tag = f"（{label}，领域：{'/'.join(c.get('radar_fields', []))}）" if label else ""
             lines.append(f"### {c['id']}{tag}\n标题: {c['title']}\n作者: {c.get('authors','')}\n摘要: {c['abstract'][:1100]}\n")
-        raw = ds_chat(GROUP_SYS.format(profile=profile), "请处理以下论文：\n\n" + "\n".join(lines),
-                      model, max_tokens=8000)
-        for it in parse_json_loose(raw).get("items", []):
+        user = "请处理以下论文：\n\n" + "\n".join(lines)
+        parsed = None
+        for attempt in range(2):
+            try:
+                raw = ds_chat(GROUP_SYS.format(profile=profile), user, model, max_tokens=8000)
+                parsed = parse_json_loose(raw)
+                break
+            except (json.JSONDecodeError, KeyError) as e:
+                print(f"  ⚠ 批次 JSON 解析失败（第 {attempt+1} 次）: {str(e)[:60]}", file=sys.stderr)
+        if parsed is None:
+            print(f"  ✗ 跳过一批 {len(batch)} 篇（DS 输出非法 JSON）", file=sys.stderr)
+            continue
+        for it in parsed.get("items", []):
             out[it["id"]] = it
     return out
 
@@ -325,11 +343,8 @@ def main() -> int:
                 "relation": c["relation"], "relation_label": label,
                 "radar_fields": c["radar_fields"],
                 "one_liner": g.get("one_liner", c.get("llm_reason", "")),
-                "cn_abstract": g.get("cn_abstract", ""),
-                "eval_problem": g.get("eval_problem", ""),
-                "eval_method": g.get("eval_method", ""),
-                "eval_finding": g.get("eval_finding", ""),
-                "eval_significance": g.get("eval_significance", ""),
+                "cn_summary": g.get("cn_summary", ""),
+                "cn_review": g.get("cn_review", ""),
                 "action": g.get("action", "暂无"),
             })
 
@@ -344,11 +359,8 @@ def main() -> int:
                 "categories": c["categories"],
                 "matched_keywords": c["matched_keywords"],
                 "one_liner": g.get("one_liner", ""),
-                "cn_abstract": g.get("cn_abstract", ""),
-                "eval_problem": g.get("eval_problem", ""),
-                "eval_method": g.get("eval_method", ""),
-                "eval_finding": g.get("eval_finding", ""),
-                "eval_significance": g.get("eval_significance", ""),
+                "cn_summary": g.get("cn_summary", ""),
+                "cn_review": g.get("cn_review", ""),
             })
 
     digest = {

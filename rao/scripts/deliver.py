@@ -286,17 +286,14 @@ def _abs_block(abstracts: dict, pid: str) -> str:
 
 
 def _group_detail(item: dict, abstracts: dict, show_action: bool) -> str:
-    """群格式详情区：中文摘要 + 四段式（末段为对 Rao 的意义）。"""
+    """群格式详情区：速览 + 评价（【创新点】【局限性】【对 Rao 的意义】）。"""
     parts = []
-    if item.get("cn_abstract"):
-        parts.append(f"<h4>摘要</h4><p>{esc_keep_math(item['cn_abstract'])}</p>")
-    for field, label in [("eval_problem", "研究问题"), ("eval_method", "方法/框架"),
-                         ("eval_finding", "主要发现"), ("eval_significance", "对 Rao 的意义")]:
-        if item.get(field):
-            parts.append(f"<h4>{label}</h4><p>{esc_keep_math(item[field])}</p>")
+    if item.get("cn_summary"):
+        parts.append(f"<h4>速览</h4><p>{esc_keep_math(item['cn_summary'])}</p>")
+    if item.get("cn_review"):
+        parts.append(f"<h4>评价</h4><p>{esc_keep_math(item['cn_review'])}</p>")
     if show_action and item.get("action") and item["action"] != "暂无":
         parts.append(f'<div class="action-box">⚠️ <b>建议行动</b>　{esc(item["action"])}</div>')
-    parts.append(_abs_block(abstracts, item["id"]))
     return "\n".join(parts)
 
 
@@ -589,12 +586,10 @@ def render_pushplus(digest: dict, counts: dict, site_url: str = "") -> str:
 
 def _md_group(item: dict) -> list[str]:
     lines = [f"💡 {item['one_liner']}", ""]
-    if item.get("cn_abstract"):
-        lines += ["**摘要**", "", item["cn_abstract"], ""]
-    for field, label in [("eval_problem", "研究问题"), ("eval_method", "方法/框架"),
-                         ("eval_finding", "主要发现"), ("eval_significance", "对 Rao 的意义")]:
-        if item.get(field):
-            lines += [f"**{label}**：{item[field]}", ""]
+    if item.get("cn_summary"):
+        lines += ["**速览**", "", item["cn_summary"], ""]
+    if item.get("cn_review"):
+        lines += ["**评价**", "", item["cn_review"], ""]
     if item.get("action") and item["action"] != "暂无":
         lines += [f"⚠️ 建议行动：{item['action']}", ""]
     return lines
