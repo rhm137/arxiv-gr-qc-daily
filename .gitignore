@@ -1,5 +1,6 @@
 outputs/*.json
 outputs/*.xml
+outputs-public/
 __pycache__/
 *.pyc
 .env
