@@ -706,59 +706,83 @@ def main():
     probe_cat = args.cats[0] if args.cats else "gr-qc"
     expected = _expected_label()
     print(f"Expected batch label: {expected}")
-    waited = 0
-    while not args.date:
-        label = scrape_listing(probe_cat)["label"]
-        if label == expected:
-            break
-        if waited >= args.wait_minutes:
-            print(f"[WARN] listing still shows {label} (expected {expected}) after {waited}min — proceeding anyway")
-            break
-        print(f"  Batch {expected} not published yet (listing shows {label}), waiting 10min ...")
-        time.sleep(600)
-        waited += 10
 
-    # ── STEP 1: Fetch（listing 为权威来源，label 即批次日期）──
-    all_data = {}
-    summary = {}
-    label = ""
-    for cat in args.cats:
-        print(f"\n--- Fetching {cat} ---")
+    # ── 抓取缓存通道（本地兜底）──
+    # FETCH_CACHE_FILE 指向预先抓好的 {"label","data"} JSON，且其 label ==
+    # 当天期望批次时，跳过全部 arXiv 网络请求。用于 arXiv 封锁 GitHub
+    # Actions IP（406/429）的日子：本地跑 fetch_today.py 后提交缓存文件，
+    # Actions 只做翻译/生成/部署/推送。label 不匹配时自动忽略缓存。
+    all_data, summary, label = {}, {}, ""
+    cache_file = os.environ.get("FETCH_CACHE_FILE", "")
+    if cache_file and os.path.exists(cache_file):
+        cached = None
         try:
-            papers, cat_label = fetch_category(cat)
-            if cat_label and not label:
-                label = cat_label
-            all_data[cat] = papers
-            summary[cat] = len(papers)
-            primary = [p for p in papers if p.get("Section") == "new"]
-            print(f"  {cat}: {len(papers)} papers ({len(primary)} primary, {len(papers)-len(primary)} cross)")
+            with open(cache_file, encoding="utf-8") as cf:
+                cached = json.load(cf)
         except Exception as e:
-            print(f"  [ERROR] {cat}: {e}", file=sys.stderr)
-            all_data[cat] = []
-            summary[cat] = 0
-        time.sleep(ARXIV_GAP)   # 分区之间留间隔，防 arXiv 429 限流
+            print(f"[WARN] fetch cache unreadable: {e}", file=sys.stderr)
+        if cached and cached.get("label") == expected:
+            all_data = {c: cached["data"].get(c, []) for c in args.cats}
+            summary = {c: len(all_data[c]) for c in args.cats}
+            label = cached["label"]
+            print(f"Using committed fetch cache: batch {label} — "
+                  + ", ".join(f"{c}={summary[c]}" for c in args.cats))
+        elif cached:
+            print(f"fetch cache is for batch {cached.get('label')} "
+                  f"(expected {expected}) — fetching live")
 
-    # ── Second pass: retry any failed categories with extra patience ──
-    failed = [c for c in args.cats if summary.get(c, 0) == 0]
-    if failed:
-        print(f"\n--- Second pass for failed: {failed} ---")
-        time.sleep(30)
-        for cat in failed:
-            print(f"\n--- Retrying {cat} ---")
+    if not label:
+        waited = 0
+        while not args.date:
+            label = scrape_listing(probe_cat)["label"]
+            if label == expected:
+                break
+            if waited >= args.wait_minutes:
+                print(f"[WARN] listing still shows {label} (expected {expected}) after {waited}min — proceeding anyway")
+                break
+            print(f"  Batch {expected} not published yet (listing shows {label}), waiting 10min ...")
+            time.sleep(600)
+            waited += 10
+
+        # ── STEP 1: Fetch（listing 为权威来源，label 即批次日期）──
+        label = ""
+        for cat in args.cats:
+            print(f"\n--- Fetching {cat} ---")
             try:
                 papers, cat_label = fetch_category(cat)
-                if papers:
-                    if cat_label and not label:
-                        label = cat_label
-                    all_data[cat] = papers
-                    summary[cat] = len(papers)
-                    primary = [p for p in papers if p.get("Section") == "new"]
-                    print(f"  {cat}: RECOVERED {len(papers)} papers ({len(primary)} primary, {len(papers)-len(primary)} cross)")
-                else:
-                    print(f"  {cat}: still 0 papers")
+                if cat_label and not label:
+                    label = cat_label
+                all_data[cat] = papers
+                summary[cat] = len(papers)
+                primary = [p for p in papers if p.get("Section") == "new"]
+                print(f"  {cat}: {len(papers)} papers ({len(primary)} primary, {len(papers)-len(primary)} cross)")
             except Exception as e:
-                print(f"  [ERROR] retry {cat}: {e}", file=sys.stderr)
-            time.sleep(10)
+                print(f"  [ERROR] {cat}: {e}", file=sys.stderr)
+                all_data[cat] = []
+                summary[cat] = 0
+            time.sleep(ARXIV_GAP)   # 分区之间留间隔，防 arXiv 429 限流
+
+        # ── Second pass: retry any failed categories with extra patience ──
+        failed = [c for c in args.cats if summary.get(c, 0) == 0]
+        if failed:
+            print(f"\n--- Second pass for failed: {failed} ---")
+            time.sleep(30)
+            for cat in failed:
+                print(f"\n--- Retrying {cat} ---")
+                try:
+                    papers, cat_label = fetch_category(cat)
+                    if papers:
+                        if cat_label and not label:
+                            label = cat_label
+                        all_data[cat] = papers
+                        summary[cat] = len(papers)
+                        primary = [p for p in papers if p.get("Section") == "new"]
+                        print(f"  {cat}: RECOVERED {len(papers)} papers ({len(primary)} primary, {len(papers)-len(primary)} cross)")
+                    else:
+                        print(f"  {cat}: still 0 papers")
+                except Exception as e:
+                    print(f"  [ERROR] retry {cat}: {e}", file=sys.stderr)
+                time.sleep(10)
 
     if not label:
         print("ERROR: no batch label obtained — all categories failed", file=sys.stderr)

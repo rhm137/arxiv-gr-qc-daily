@@ -39,6 +39,10 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           FORCE_RERUN: ${{ github.event.inputs.force }}
+          # 本地兜底缓存：该文件由 scripts/fetch_today.py 在本地生成并提交，
+          # label 与当天批次一致时 run.py 跳过 arXiv 抓取（应对 arXiv 封锁
+          # GitHub Actions IP 的 406/429）
+          FETCH_CACHE_FILE: fetch-cache.json
         run:
           python scripts/run.py --date "${{ github.event.inputs.date }}" 2>&1
 
