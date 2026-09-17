@@ -123,12 +123,12 @@ jobs:
           print('PushPlus sent.')
           PYEOF
 
-      - name: No papers notification
-        if: failure()
+      - name: Failure notification
+        if: failure() || cancelled()
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
-          MSG="arXiv Daily: pipeline failed"
+          MSG="arXiv Daily: pipeline failed or timed out — check Actions logs"
           curl -s -X POST "https://www.pushplus.plus/send" \
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${PUSHPLUS_TOKEN}\",\"title\":\"arXiv Daily\",\"content\":\"${MSG}\",\"topic\":\"arxiv-gr-qc\"}"

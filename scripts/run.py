@@ -83,10 +83,12 @@ RETRY_ABBR = ("LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA,
 def _expected_label() -> str:
     """当前时刻理应已发布的最新批次标签（YYYY-MM-DD，批次标签上的日期）。
 
-    批次标签为 Mon–Fri 的日期；标签为 D 的批次在 D-1 的 20:00 ET 公告、
-    约 D 天午夜 ET 前完成 listing 翻页。因此：当前 ET 日期为工作日即期望
-    当天标签（午夜后 1 小时缓冲期内仍期望上一批，避免翻页竞态），
-    Sat/Sun 则回退到周五。
+    批次标签为 Mon–Fri 的 ET 日期；标签为 D 的批次在 D-1 的 20:00 ET 公告，
+    实测在 D 天午夜 ET 之前 listing 已完成翻页（2026-09-14/15/17 三天的
+    00:00 ET 探测均已看到当天批次）。因此规则极简单：取当前 ET 日期，
+    Sat/Sun 回退到周五。若偶尔翻页延迟（listing 仍显示昨天），
+    main() 的等待循环会兜底，无需在此处留缓冲——2026-09-17 的教训：
+    缓冲导致期望=昨天、listing=今天，每次运行白等 50 分钟并诱发限流。
     """
     try:
         from zoneinfo import ZoneInfo
@@ -94,8 +96,6 @@ def _expected_label() -> str:
     except Exception:
         now = datetime.utcnow() - timedelta(hours=4)
     d = now.date()
-    if now.hour < 1:            # 午夜翻页缓冲：今天这批可能还没上线
-        d -= timedelta(days=1)
     while d.weekday() in (5, 6):  # Sat/Sun 无批次 → 回退到周五
         d -= timedelta(days=1)
     return d.strftime("%Y-%m-%d")
@@ -168,13 +168,18 @@ def _live_summary_date() -> str:
 def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
     """Fetch URL with robust retries.
 
-    arXiv 对 GitHub Actions 共享 IP 限流（429）较常见，退避需要足够长：
-    30/60/90/... 秒递增，封顶 300s。
+    arXiv 对 GitHub Actions 共享 IP 的限流/拦截较常见（429，或 WAF 式的 406），
+    退避需要足够长：30/60/90/... 秒递增，封顶 300s；并带上浏览器风格的
+    Accept 头（裸 urllib 默认不带 Accept，易触发 406）。
     """
     last_err = None
     for attempt in range(retries):
         try:
-            req = Request(url, headers={"User-Agent": ARXIV_UA})
+            req = Request(url, headers={
+                "User-Agent": ARXIV_UA,
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+            })
             with urlopen(req, timeout=30) as resp:
                 return resp.read().decode("utf-8")
         except Exception as e:
