@@ -29,10 +29,10 @@
     "gr-qc",
     "hep-th"
    ],
-   "title": "Horizon--orbit scale competition in chaos bound violation for spinning particles in the black-bounce--Kerr--Newman spacetime",
+   "title": "Horizon--orbit scale competition underlying chaos bound violation for spinning particles",
    "link": "https://arxiv.org/abs/2609.18143",
    "announce_type": "new",
-   "abstract": "arXiv:2609.18143v1 Announce Type: new Abstract: In this paper, we investigate the chaos bound through the local radial instability of charged spinning test particles on unstable circular orbits in the black-bounce--Kerr--Newman spacetime. Our results show that violation of the bound is governed by the competition between the local orbital-instability scale and the surface gravity scale, with variations of the black hole background and the particle dynamics providing two complementary routes to the same threshold crossing. Background variations affect both scales and can drive the system into the bound-violating regime when the surface gravity is suppressed more strongly than the orbital instability. At fixed background, by contrast, the surface gravity remains unchanged, and the transition across the threshold is driven by changes in the unstable orbit dynamics induced by the particle parameters. The background-controlled and probe-dynamics-controlled routes therefore represent two realizations of a unified horizon--orbit scale competition rather than independent mechanisms. Among the particle parameters considered, the total angular momentum plays the leading role in controlling the local radial instability, while the spin and charge further modify the instability strength and shift the threshold for chaos bound violation.",
+   "abstract": "arXiv:2609.18143v2 Announce Type: new Abstract: In this paper, we investigate the chaos bound through the local radial instability of charged spinning test particles on unstable circular orbits in the black-bounce--Kerr--Newman spacetime. Our results show that violation of the bound is governed by the competition between the local orbital-instability scale and the surface gravity scale, with variations of the black hole background and the particle dynamics providing two complementary routes to the same threshold crossing. Background variations affect both scales and can drive the system into the bound-violating regime when the surface gravity is suppressed more strongly than the orbital instability. At fixed background, by contrast, the surface gravity remains unchanged, and the transition across the threshold is driven by changes in the unstable orbit dynamics induced by the particle parameters. The background-controlled and probe-dynamics-controlled routes therefore represent two realizations of a unified horizon--orbit scale competition rather than independent mechanisms.",
    "authors": "Deyou Chen, Chuang Yang, Kangqiao Liu",
    "id": "2609.18143",
    "version": "2609.18143",
@@ -409,7 +409,8 @@
    "categories": [
     "astro-ph.CO",
     "gr-qc",
-    "hep-ph"
+    "hep-ph",
+    "hep-th"
    ],
    "title": "Cosmological anatomy of interacting dark energy",
    "link": "https://arxiv.org/abs/2609.18288",

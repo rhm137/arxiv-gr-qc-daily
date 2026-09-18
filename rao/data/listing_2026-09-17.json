@@ -5,7 +5,7 @@
   "2026-09-17",
   "2026-09-17"
  ],
- "fetched_at": "2026-09-18T10:00:23+08:00",
+ "fetched_at": "2026-09-18T11:41:38+08:00",
  "per_feed": {
   "gr-qc": 73,
   "hep-th": 69,
@@ -399,8 +399,8 @@
    "title": "On the cosmic previrialization",
    "link": "https://arxiv.org/abs/2609.17805",
    "announce_type": "new",
-   "abstract": "arXiv:2609.17805v1 Announce Type: new Abstract: Context: Non-linear gravitational evolution affects the growth of density and velocity fluctuations and leads to previrialization effects before virialized structures are formed. Therefore, understanding and quantifying the leading nonlinear corrections to the correspond- ing variances is crucial for describing the departure from linear structure formation. Aims: We calculate the first nonlinear correction to the variance of the cosmic density and velocity fields. Methods: We analyze the 1-loop contributions associated with the second and third order perturbative kernels of both the density and velocity-divergence fields. The relevant form of the third-order kernels F3 for density, and G3 for velocity divergence, are clearly non-symmetric under exchange of k with q. However, the calculation of the variance involves a symmetric double integral of these variables, so in this particular case the kernel can be additionally symmetrized. We therefore explicitly symmetrize these kernels F3 and G3, and express them as functions of the two scalar variables: the cosine of the angle between the two wavevectors and a symmetric function of their magnitudes. This representation enables us to identify and isolate the terms which are divergent before performing the angular integration, and to show their cancellation between the second- and third-order terms. Results: The divergent contribution from Pdelta22 to the one-loop power spectrum cancels exactly that arising from Pdelta13. Angularly averaged divergence-free part of F3 turns out to be remarkably close to a constant. Conclusions: The coefficient of the nonlinear correction to the linear variance of the density field is in a narrow range, from 1.817 to 1.843, for any form of the linear power spectrum.",
-   "authors": "Shubhadip Bera Michal J. Chodorowski",
+   "abstract": "arXiv:2609.17805v2 Announce Type: new Abstract: Non-linear gravitational evolution affects the growth of density and velocity fluctuations, and leads to previrialization effects before virialized structures are formed. Therefore, understanding and quantifying the leading nonlinear corrections to the corresponding variances is crucial for describing the departure from linear structure formation. We calculate the first nonlinear correction to the variance of the cosmic density and velocity fields. We analyze the 1-loop contributions associated with the second and third order perturbative kernels of both the density and velocity-divergence fields. The relevant forms of the third-order kernels $F_3(\\vec{k},\\vec{q},-\\vec{q})$ for density, and $G_3(\\vec{k},\\vec{q},-\\vec{q})$ for velocity divergence, are clearly non-symmetric under exchange of $\\vec{k}$ with $\\vec{q}$. However, the calculation of the variance involves a symmetric double integral of these variables, so in this particular case the kernels can be additionally symmetrized. We therefore explicitly symmetrize these kernels $F_3$ and $G_3$, and express them as functions of the two scalar variables: the cosine of the angle between the two wavevectors and a symmetric function of their magnitudes. This representation enables us to identify and isolate the terms which are divergent before performing the angular integration, and to show their cancellation between the second- and third-order terms. The divergent contribution from $P_{\\delta 22}\\,$ to the one-loop power spectrum cancels exactly that arising from $P_{\\delta 13}$ . Angularly averaged divergence-free part of $F_3$ turns out to be remarkably close to a constant. We found that the corresponding coefficient of the leading-order correction is confined to a remarkably narrow interval of 4007/2205 to 4063/2205 $(\\simeq 1.817 \\leq C \\leq 1.843)$, for any form of the linear power spectrum.",
+   "authors": "Shubhadip Bera, Micha{\\l} J. Chodorowski",
    "id": "2609.17805",
    "version": "2609.17805"
   },
@@ -537,10 +537,10 @@
     "gr-qc",
     "hep-th"
    ],
-   "title": "Horizon--orbit scale competition in chaos bound violation for spinning particles in the black-bounce--Kerr--Newman spacetime",
+   "title": "Horizon--orbit scale competition underlying chaos bound violation for spinning particles",
    "link": "https://arxiv.org/abs/2609.18143",
    "announce_type": "new",
-   "abstract": "arXiv:2609.18143v1 Announce Type: new Abstract: In this paper, we investigate the chaos bound through the local radial instability of charged spinning test particles on unstable circular orbits in the black-bounce--Kerr--Newman spacetime. Our results show that violation of the bound is governed by the competition between the local orbital-instability scale and the surface gravity scale, with variations of the black hole background and the particle dynamics providing two complementary routes to the same threshold crossing. Background variations affect both scales and can drive the system into the bound-violating regime when the surface gravity is suppressed more strongly than the orbital instability. At fixed background, by contrast, the surface gravity remains unchanged, and the transition across the threshold is driven by changes in the unstable orbit dynamics induced by the particle parameters. The background-controlled and probe-dynamics-controlled routes therefore represent two realizations of a unified horizon--orbit scale competition rather than independent mechanisms. Among the particle parameters considered, the total angular momentum plays the leading role in controlling the local radial instability, while the spin and charge further modify the instability strength and shift the threshold for chaos bound violation.",
+   "abstract": "arXiv:2609.18143v2 Announce Type: new Abstract: In this paper, we investigate the chaos bound through the local radial instability of charged spinning test particles on unstable circular orbits in the black-bounce--Kerr--Newman spacetime. Our results show that violation of the bound is governed by the competition between the local orbital-instability scale and the surface gravity scale, with variations of the black hole background and the particle dynamics providing two complementary routes to the same threshold crossing. Background variations affect both scales and can drive the system into the bound-violating regime when the surface gravity is suppressed more strongly than the orbital instability. At fixed background, by contrast, the surface gravity remains unchanged, and the transition across the threshold is driven by changes in the unstable orbit dynamics induced by the particle parameters. The background-controlled and probe-dynamics-controlled routes therefore represent two realizations of a unified horizon--orbit scale competition rather than independent mechanisms.",
    "authors": "Deyou Chen, Chuang Yang, Kangqiao Liu",
    "id": "2609.18143",
    "version": "2609.18143"
@@ -610,7 +610,8 @@
    "categories": [
     "astro-ph.CO",
     "gr-qc",
-    "hep-ph"
+    "hep-ph",
+    "hep-th"
    ],
    "title": "Cosmological anatomy of interacting dark energy",
    "link": "https://arxiv.org/abs/2609.18288",
@@ -625,10 +626,10 @@
    "categories": [
     "hep-th"
    ],
-   "title": "Turbulent gravitational waves",
+   "title": "Turbulent gravitational wakes",
    "link": "https://arxiv.org/abs/2609.18295",
    "announce_type": "new",
-   "abstract": "arXiv:2609.18295v1 Announce Type: new Abstract: We construct turbulent gravitational wakes in asymptotically AdS$_4$ spacetimes by solving the full non-linear Einstein equations in the characteristic formulation. Specifically, we show that a localized boundary deformation acting on a boosted black brane generates a wake whose boundary dynamics exhibit the formation of coherent vortical structures that are advected downstream by the background flow. Analysing a wake propagating along the x direction, we show that it displays the characteristic self-similar scaling of classical turbulent wakes. We then identify the geometric imprint of the wake on the horizon area density, the traceless horizon extrinsic curvature, and bulk metric perturbations, finding coherent structures that extend from the asymptotic boundary to the horizon. These results provide the first study of turbulent gravitational wakes in four-dimensional asymptotically AdS spacetimes.",
+   "abstract": "arXiv:2609.18295v2 Announce Type: new Abstract: We construct turbulent gravitational wakes in asymptotically AdS$_4$ spacetimes by solving the full non-linear Einstein equations in the characteristic formulation. Specifically, we show that a localized boundary deformation acting on a boosted black brane generates a wake whose boundary dynamics exhibit the formation of coherent vortical structures that are advected downstream by the background flow. Analysing a wake propagating along the x direction, we show that it displays the characteristic self-similar scaling of classical turbulent wakes. We then identify the geometric imprint of the wake on the horizon area density, the traceless horizon extrinsic curvature, and bulk metric perturbations, finding coherent structures that extend from the asymptotic boundary to the horizon. These results provide the first study of turbulent gravitational wakes in four-dimensional asymptotically AdS spacetimes.",
    "authors": "Giulio Taiocchi, Christiana Pantelidou, Miguel Zilh\\~ao",
    "id": "2609.18295",
    "version": "2609.18295"
