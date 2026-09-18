@@ -743,6 +743,15 @@ def main() -> int:
     if not token:
         print(json.dumps({"ok": False, "error": "缺少 PUSHPLUS_TOKEN"}, ensure_ascii=False))
         return 1
+
+    # 幂等闸门：该批次全部 ID 已在 seen_ids 中 => 今天已推过，跳过（重跑/补部署不产生重复消息）
+    seen_path = DATA / "seen_ids.json"
+    seen = set(json.loads(seen_path.read_text(encoding="utf-8"))) if seen_path.exists() else set()
+    ids = [p["id"] for p in listing["papers"]]
+    if ids and all(i in seen for i in ids):
+        print(json.dumps({"ok": True, "pushed": False, "note": "该批次已全部推送过，幂等跳过"}, ensure_ascii=False))
+        return 0
+
     st = digest["stats"]
     title = f"arXiv · {date}｜核心{st.get('core', len(digest['papers']))}+动态{st.get('radar', 0)}"
     if st.get("keyword"):

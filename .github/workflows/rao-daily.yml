@@ -45,11 +45,11 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_PROJECT: arxiv-rao
         run: |
-          DATE=$(date -u +%F)
-          if [ -f "data/digest_${DATE}.json" ]; then
+          # 以 latest.json 指针的批次日期为准（不要用 UTC 日期猜）
+          if python -c "import json,pathlib,sys; d=json.load(open('data/latest.json'))['listing_date']; sys.exit(0 if pathlib.Path(f'data/digest_{d}.json').exists() else 1)" 2>/dev/null; then
             python scripts/deploy_cf.py
           else
-            echo "昨日无更新或无候选，跳过部署"
+            echo "无 digest，跳过部署"
           fi
 
       - name: Push WeChat via pushplus
