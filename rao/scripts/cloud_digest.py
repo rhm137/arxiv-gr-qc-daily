@@ -102,9 +102,15 @@ def parse_json_loose(text: str):
     try:
         return json.loads(t)
     except json.JSONDecodeError:
-        # DS 输出 LaTeX 时常把 $\beta$ 写成非法转义 \b；把非合法转义的反斜杠加倍后再解析
-        fixed = re.sub(r'\\(?![\\/bfnrtu"])', r"\\\\", t)
+        pass
+    # DS 输出 LaTeX 时常把 $\beta$ 写成非法转义 \b：先把非合法转义的反斜杠加倍
+    fixed = re.sub(r'\\(?![\\/bfnrtu"])', r"\\\\", t)
+    try:
         return json.loads(fixed)
+    except json.JSONDecodeError:
+        pass
+    # 再容忍字符串中的原始控制字符（如未转义的换行/制表符）
+    return json.loads(fixed, strict=False)
 
 
 SCORING_SYS = """你是理论物理研究助手，为一位做修正引力与引力热力学研究的用户（Rao）给 arXiv 论文打相关度分。
@@ -229,7 +235,18 @@ def group_style_call(items: list[dict], profile: str, model: str) -> dict:
             except (json.JSONDecodeError, KeyError) as e:
                 print(f"  ⚠ 批次 JSON 解析失败（第 {attempt+1} 次）: {str(e)[:60]}", file=sys.stderr)
         if parsed is None:
-            print(f"  ✗ 跳过一批 {len(batch)} 篇（DS 输出非法 JSON）", file=sys.stderr)
+            print(f"  ✗ 批次 {len(batch)} 篇解析失败，降级为逐篇重试", file=sys.stderr)
+            for c in batch:  # 逐篇重试兜底
+                single = [c]
+                label = REL_LABEL.get(c.get("relation", ""), "")
+                tag = f"（{label}，领域：{'/'.join(c.get('radar_fields', []))}）" if label else ""
+                u = f"### {c['id']}{tag}\n标题: {c['title']}\n作者: {c.get('authors','')}\n摘要: {c['abstract'][:1100]}\n"
+                try:
+                    raw1 = ds_chat(GROUP_SYS.format(profile=profile), "请处理以下论文：\n\n" + u, model, max_tokens=3000)
+                    for it in parse_json_loose(raw1).get("items", []):
+                        out[it["id"]] = it
+                except Exception as e:  # noqa: BLE001
+                    print(f"  ✗ 单篇 {c['id']} 仍失败: {str(e)[:60]}", file=sys.stderr)
             continue
         for it in parsed.get("items", []):
             out[it["id"]] = it
@@ -240,6 +257,10 @@ def main() -> int:
     date = None
     if "--date" in sys.argv:
         date = sys.argv[sys.argv.index("--date") + 1]
+    if not date:
+        latest = DATA / "latest.json"
+        if latest.exists():
+            date = json.loads(latest.read_text(encoding="utf-8")).get("listing_date")
     date = date or (datetime.now(BJ) - timedelta(hours=8)).date().isoformat()
 
     cand_path = DATA / f"candidates_{date}.json"
@@ -362,6 +383,13 @@ def main() -> int:
                 "cn_summary": g.get("cn_summary", ""),
                 "cn_review": g.get("cn_review", ""),
             })
+
+    # 群格式内容彻底失败的论文不产出空卡
+    n_radar_before = len(radar_out)
+    radar_out = [r for r in radar_out if r.get("cn_summary") or r.get("cn_review")]
+    if n_radar_before > len(radar_out):
+        print(f"  ⚠ {n_radar_before - len(radar_out)} 张雷达卡因 DS 反复失败被弃", file=sys.stderr)
+    keyword_out = [w for w in keyword_out if w.get("cn_summary") or w.get("cn_review")]
 
     digest = {
         "listing_date": date,

@@ -209,6 +209,8 @@ def main() -> int:
         "errors": errors,
     }
     (DATA / f"candidates_{date}.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    # 批次日期指针：后续环节（精读/渲染/推送）一律以它为准，避免运行时刻与 RSS 批次日期错位
+    (DATA / "latest.json").write_text(json.dumps({"listing_date": date}, ensure_ascii=False), encoding="utf-8")
     print(json.dumps({k: v for k, v in out.items() if k != "candidates"}, ensure_ascii=False))
     print(f"candidates: {len(candidates)} -> data/candidates_{date}.json")
     return 0

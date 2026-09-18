@@ -680,7 +680,15 @@ def main() -> int:
     ap.add_argument("--date", default=None)
     ap.add_argument("--no-push", action="store_true")
     args = ap.parse_args()
-    date = args.date or (datetime.now(BJ) - timedelta(hours=8)).date().isoformat()
+    date = args.date
+    if not date:
+        latest = DATA / "latest.json"
+        if latest.exists():
+            try:
+                date = json.loads(latest.read_text(encoding="utf-8")).get("listing_date")
+            except Exception:  # noqa: BLE001
+                date = None
+    date = date or (datetime.now(BJ) - timedelta(hours=8)).date().isoformat()
 
     digest_path = DATA / f"digest_{date}.json"
     if not digest_path.exists():
