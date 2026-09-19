@@ -1,0 +1,220 @@
+{
+ "listing_date": "2026-09-18",
+ "no_update": false,
+ "total_new_unseen": 58,
+ "passed_prefilter": 11,
+ "candidates": [
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "Cosmological Correlators from Scattering Amplitudes: A Review",
+   "link": "https://arxiv.org/abs/2609.19252",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.19252v1 Announce Type: new Abstract: The primordial statistics underlying the CMB and large-scale structure are encoded in late-time cosmological correlation functions (constructed from the coefficients of the wavefunction of the universe). They are the closest analogue cosmology has to an $S$-matrix, yet the standard $S$-matrix toolkit does not directly apply. This review explains how the modern scattering-amplitudes program (spinor helicity, on-shell recursion, the double copy, positive geometry, and generalized unitarity) has nevertheless been extended to cosmology and, through a single analytic continuation, to Euclidean anti-de Sitter space, where the same objects appear as holographic boundary correlators and are often cleanest to compute. The organizing framework is momentum space on the late-time boundary, where the primordial statistics are simplest and where the total energy of the external legs, the sum of their momentum magnitudes, controls the analytic structure. At the total-energy singularity, the flat-space scattering amplitude emerges. We develop this toolkit starting from the wave equation and use it to compute tree-level scalar, gauge-field, and graviton correlators, exposing relations across spins and dimensions. We then show how bulk integrals can be bypassed using cosmological polytopes, on-shell recursion, and curved-space versions of the double copy, before extending the discussion to loops, soft limits, transition amplitudes, and (A)dS cutting rules. Finally, we connect these structures to inflationary observables and to three allied programs: the cosmological optical theorem, the cosmological bootstrap, and the cosmological collider. We conclude with a map of the current frontier and a set of open and interesting problems.",
+   "authors": "Soner Albayrak, Savan Kharel",
+   "id": "2609.19252",
+   "version": "2609.19252",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "Distinguishing Coupled Dark Matter Dark Energy from Kinematic Phantom Crossing",
+   "link": "https://arxiv.org/abs/2609.19602",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.19602v1 Announce Type: new Abstract: Recent measurements of cosmic expansion have renewed interest in dark-energy scenarios in which the effective equation of state exhibits phantom-like evolution and may cross $w=-1$. Such behavior, however, does not require a fundamental phantom field: in coupled dark-energy-dark-matter~(CDEDM) models, energy exchange between a canonical scalar field and cold dark matter, happens Lagrangian labels, can reproduce the same effective equation of state evolution as that of phenomenological $w_0w_a$CDM model. We show that this microscopic interaction leaves distinctive, testable signatures in structure growth by forming a two-fluid system in which only cold dark matter feels the scalar-mediated fifth force (and an associated drag term), while baryons remain uncoupled. When combined with neutrino-free streaming, this setup generates a characteristic coupling, neutrino-mass degeneracy, whose leading scaling $\\sum m_\\nu \\propto f_c^2 \\alpha^2$ follows analytically from the two-fluid growth equations. Using DESI DR2 BAO, CMB distance information, ACT DR6 lensing, redshift-space distortions, and three supernova compilations, we find that this scaling is recovered for both exponential and inverse-power-law potentials. We further show that the dominant contribution to the growth response arises from the coupling-induced modification of the background evolution, with the fifth force enhancing growth and the drag partially counteracting it. Finally, the interaction induces a running dark-matter mass, changing it at recombination by $4.3\\%$--$5.5\\%$, so CMB distance calculations must account for the evolving dark-matter density. These correlated growth and recombination effects provide a route to distinguish interaction-driven phantom crossing from purely kinematic dark-energy parametrizations.",
+   "authors": "Samit Ganguly, Koushik Dutta, Goutam Manna",
+   "id": "2609.19602",
+   "version": "2609.19602",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-lat",
+    "hep-th"
+   ],
+   "title": "Entropy, area, and the choice of regulator during gravitational collapse",
+   "link": "https://arxiv.org/abs/2609.20663",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.20663v1 Announce Type: new Abstract: We present a real time formalism to numerically describe the gravitational collapse of a scalar quantum field in the spherically symmetric case. We employ a Pauli-Villars regulator that is specifically designed to cancel the ultraviolet divergences in the energy-momentum tensor identified by covariant point splitting, including the logarithmic ones. Using this regulator, we find that the leading term of the entanglement entropy, which is proportional to the surface area, vanishes for a spherical region of flat spacetime. First numerical results for the dynamical case indicate that for a collapsing shell of a massless scalar field, the area normalized entropy is concentrated on the shell and has an approximately constant maximum value during time evolution. This maximum value appears to be finite in the continuum limit and only mildly dependent on the regulator mass.",
+   "authors": "Jana N. Guenther, Christian Hoelbling, Sophie Mutzel, Lukas Varnhorst",
+   "id": "2609.20663",
+   "version": "2609.20663",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Topological entanglement entropy in 3D gravity",
+   "link": "https://arxiv.org/abs/2609.19247",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.19247v1 Announce Type: new Abstract: We derive an entropy formula for a recently proposed tensor network model of states in 3D gravity which satisfy the constraint equations of diffeomorphism invariance, and including the effects of matter. After accounting for the invertibility of the spacetime metric, we argue that this formula matches the quantum extremal surface formula (for small but finite $G_N$), and is not restricted to time symmetric spacetimes. We derive the result via canonical quantization without relying on path integrals, and discuss an extension to compact bulk subregions.",
+   "authors": "Vijay Balasubramanian, Charlie Cummings",
+   "id": "2609.19247",
+   "version": "2609.19247",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Algebraic Complexity and Black Hole Complementarity",
+   "link": "https://arxiv.org/abs/2609.19267",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.19267v1 Announce Type: new Abstract: We develop an operator algebraic generalization of the Yoshida-Kitaev information recovery protocol that applies to von Neumann algebras of arbitrary type. The construction is based on finite-index inclusions, with the Jones basic construction and canonical endomorphisms providing the central algebraic tools. Unlike the finite-dimensional qubit description, the infinite-dimensional theory exhibits new structural phenomena that play an essential role in information recovery. In particular, the diary information is represented non-locally by a choice of Pimsner-Popa basis associated with the inclusion. Exploiting the Temperley-Lieb relations satisfied by the Jones projections, we introduce an algebraic notion of computational complexity and show that it is naturally measured by the Jones-Kosaki index. For irreducible depth-two inclusions, we demonstrate that the information transfer is implemented by an algebraic Fourier transform. Finally, we discuss a potential spacetime interpretation of the construction, including the emergence of an island algebra in terms of (non-)isometric embeddings and an operator algebraic realization of black hole complementarity.",
+   "authors": "Aude Corbeel, Jingxin Tu, Pim van den Heuvel, Jeremy van der Heijden, Erik Verlinde",
+   "id": "2609.19267",
+   "version": "2609.19267",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "The Page Transition in the Multi-Time Correlations of Hawking Radiation",
+   "link": "https://arxiv.org/abs/2609.20456",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.20456v1 Announce Type: new Abstract: The Page curve and the island formula describe a reorganization of quantum information in Hawking radiation across the Page time. We study how this reorganization appears in correlations among emissions collected at several retarded times. The late radiation is treated as a covariant multi-time process, or process tensor, and $\\chi_{\\mathrm{island}}=\\mathcal{N}_{\\varnothing}-\\mathcal{N}_{R}$ measures the temporal memory removed when the early radiation register $R$ is supplied. Operationally, this quantity is the corresponding change in the optimal distinguishability of the radiation process from a Markovian reference. We exhibit evaporation processes whose single-bin states and all process marginals below a finite order $k_\\ast\\geq 3$ remain fixed and coincide with a CP-divisible reference, while $\\chi_{\\mathrm{island}}$ changes by order one at order $k_\\ast$. The Page transition can therefore appear as a transition in the Markov order of the radiation process. When the interior mediates the late-time memory, entanglement-wedge reconstruction of the predictive interior from $R$ Markovianizes the late process; conversely, when the late process has a minimal predictive memory and its future-affecting information is mediated by that memory, Markovianization by $R$ supplies a simulator of its influence. A Hayden--Preskill evaporation comb and an evaporating-JT calculation realize this mechanism. The late radiation retains temporal memory across the transition, while the early radiation becomes sufficient for predicting its future multi-time statistics.",
+   "authors": "Tushar Waghmare",
+   "id": "2609.20456",
+   "version": "2609.20456",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "The return of Palatini inflationary attractors: Universal mapping of observables",
+   "link": "https://arxiv.org/abs/2609.20622",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.20622v1 Announce Type: new Abstract: We study single-field slow-roll inflation in the context of Palatini gravity for the class of non-minimally coupled $\\xi$-attractors, i.e.,\\ models where the same function $f(\\phi)$ fixes both the non-minimal coupling, $1+\\xi f(\\phi)$, and the inflationary potential, $V(\\phi) = V_0 f(\\phi)^2$. As is well-known, for an arbitrary $f(\\phi)$, the number of $e$-folds is, at leading order, independent of $\\xi$. Thanks to this, we provide an immediate mapping between the observables of the non-minimally coupled setup and those of the minimally coupled one. In the strong coupling limit, the tensor-to-scalar ratio is, as usual, suppressed, while the scalar spectral index is shifted towards larger values, with the magnitude of the shift depending only on the tensor-to-scalar ratio associated with the original potential $V(\\phi)$.",
+   "authors": "Christian Dioguardi, Francesco Gianesello, Antonio Racioppi",
+   "id": "2609.20622",
+   "version": "2609.20622",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Supersymmetric boundary algebras in AdS$_3$ gravity: constraints, Dirac brackets and non-locality",
+   "link": "https://arxiv.org/abs/2609.20112",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.20112v1 Announce Type: new Abstract: We study supersymmetric boundary dynamics in AdS$_3$ gravity by treating boundary conditions as constrained reductions of a generic Chern-Simons boundary phase space. We focus on how the constraint structure controls the locality and physical field content of the reduced asymptotic symmetry algebra. For supersymmetric Kac--Moody boundary conditions, the surviving bosonic currents remain local, whereas the fermion--fermion Dirac bracket contains the inverse of a field-dependent first-order differential operator and is therefore intrinsically non-local. Imposing an additional fermionic constraint reveals a further structure: after the bosonic second-class reduction, it becomes first class and generates a fermionic gauge redundancy. Generically the remaining fermionic field can be gauged away, while special backgrounds with periodic zero modes support non-trivial physical fermionic sectors. We further employ the Batalin--Fradkin--Tyutin formalism to eliminate the non-locality of the reduced symmetry algebra by converting the second-class constraints into an equivalent local first-class system on an enlarged phase space.",
+   "authors": "Nabamita Banerjee, Vedant Bhutra, Suvankar Dutta, Soumava Kundu",
+   "id": "2609.20112",
+   "version": "2609.20112",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Four-Point Yang-Mills Correlators in AdS$_4$ from All-Line Recursion: All-Plus, Single-Minus and MHV",
+   "link": "https://arxiv.org/abs/2609.20493",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.20493v1 Announce Type: new Abstract: We review Raju's all-line recursion relations for Yang-Mills theory in AdS${}_4$ and evaluate four-point correlators for the All-plus, Single-minus, and MHV helicity configurations. We point out the relevant deformation for the legs needed to obtain the correlators. In particular, we explicitly derive the expressions for all the residues contributing to all three correlators. We also perform an explicit numerical check with the results computed by Witten diagram computations and find perfect agreement with our results. Finally, we conclude by discussing some applications of these recursions for obtaining higher-point functions.",
+   "authors": "Dhruv Pathak",
+   "id": "2609.20493",
+   "version": "2609.20493",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "title": "A Global Overview of Starobinsky Inflation beyond slow-roll with CMB-BAO data",
+   "link": "https://arxiv.org/abs/2609.19296",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.19296v1 Announce Type: new Abstract: We perform a global analysis of the Starobinsky inflation using most recent CMB data from ACT and SPT together with DESI BAO measurements. By directly solving the equations of motion, we find relatively stronger constraints on the model parameters than those obtained under the slow-roll approximation from the baseline $\\Lambda$CDM parameters $A_s$ and $n_s$. We translate these constraints into limits on the reheating temperature. We also discuss the dependence of the prior choices of the model parameters. Further, the correlation of the model parameters with the BAO parameter $r_d h$ is also studied. We further investigate the impact of the global analysis on the dimension-six $R^3$ modified Starobinsky model, deriving constraints on its additional parameters. Finally, we also provide parameter limits on the effective inflationary Hubble slow-roll (HSR) and potential slow-roll (PSR) parametrization.",
+   "authors": "Tarun, Tanmoy Modak, Bj\\\"orn Malte Sch\\\"afer",
+   "id": "2609.19296",
+   "version": "2609.19296",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Predictions on the abundance of primordial black holes: results from the SMILE VLBI milli-lensing sample",
+   "link": "https://arxiv.org/abs/2609.20329",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.20329v1 Announce Type: new Abstract: Primordial black holes (PBHs) formed in the early universe represent a well-motivated dark matter candidate. However, their abundance in the intermediate-to-high mass range ($10^6$-$10^9\\,M_\\odot$) remains relatively less constrained. In this mass regime, the corresponding Einstein radii on the milliarcsecond scale make Very Long Baseline Interferometry (VLBI) the most direct observational probe via milli-lensing of compact radio sources. In this paper, we present predictions for the abundance of PBH dark matter ($f_{\\rm PBH}$) using the large SMILE sample of $\\sim 5000$ flat-spectrum compact radio sources. Under the optimistic observational conditions (with an angular resolution of $1.5\\,\\mathrm{mas}$, a maximum image separation of $100\\,\\mathrm{mas}$, and a maximum detectable flux ratio of $40$), assuming that no milli-lensing events are confirmed, we obtain the projected 95% upper limit of $f_{\\rm PBH}\\lesssim0.12%$ in the intermediate-to-high mass range, which would be approximately an order of magnitude tighter than previous VLBI milli-lensing limits. Broader lognormal mass functions yield correspondingly weaker projected limits. Generalising the optical depth to account for magnification bias and finite-core resolvability changes these projected limits by only about $5$%. Moreover, we show that the predicted limits are highly sensitive to a small number of confirmed events, i.e., even one confirmed milli-lensing event would relax the projected upper limit to $0.20$%, highlighting the critical importance of robust candidate confirmation in the SMILE sample. Finally, under the optimistic baryonic accretion scenario, the PBH mass growth changes the projected limits by $\\lesssim 1$% within the VLBI-sensitive mass range, confirming the robustness of our results.",
+   "authors": "Xinyue Jiang, Shuo Cao, Marek Biesiada, Xuanni Chen, Yalong Nan, Xinyang Jin, Xuchen Tai",
+   "id": "2609.20329",
+   "version": "2609.20329",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
