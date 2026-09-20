@@ -26,6 +26,7 @@ from urllib.error import URLError
 # ── Config ──
 ARXIV_API = "https://export.arxiv.org/api/query"
 LISTING_BASE = "https://arxiv.org/list"   # 权威批次页面 /list/{cat}/new
+RSS_BASE = "https://rss.arxiv.org/rss"    # 官方 RSS 兜底（独立基础设施，主站 406 时用）
 LISTING_SHOW = 2000                       # listing 页大小（合法值 25..2000）
 META_CHUNK = 50                           # id_list 元数据分块大小
 ARXIV_UA  = "WorkBuddy-arxiv-digest/2.0"
@@ -102,10 +103,23 @@ def _expected_label() -> str:
 
 
 def scrape_listing(cat_query: str) -> dict:
+    """获取当前已公告的权威批次。主用官网 listing 页，被封（406/429 等）
+    时自动回退到官方 RSS（rss.arxiv.org，独立基础设施）。
+
+    Returns {"label": "YYYY-MM-DD", "new": [ids], "cross": [ids]}
+    """
+    try:
+        return _scrape_listing_html(cat_query)
+    except Exception as e:
+        print(f"  [WARN] /list page failed for {cat_query}: {e} — falling back to RSS feed",
+              file=sys.stderr)
+        return _scrape_listing_rss(cat_query)
+
+
+def _scrape_listing_html(cat_query: str) -> dict:
     """
     解析 https://arxiv.org/list/{cat}/new —— 当前已公告的权威批次。
 
-    Returns {"label": "YYYY-MM-DD", "new": [ids], "cross": [ids]}
     listing 的 New/Cross submissions 与官网展示完全一致（含延迟发布论文）。
     """
     url = f"{LISTING_BASE}/{cat_query}/new?skip=0&show={LISTING_SHOW}"
@@ -151,6 +165,56 @@ def scrape_listing(cat_query: str) -> dict:
     return {"label": label, "new": new_ids, "cross": cross_ids}
 
 
+def _scrape_listing_rss(cat_query: str) -> dict:
+    """RSS 兜底：解析 https://rss.arxiv.org/rss/{cat} —— 与 listing 同批次。
+
+    频道 pubDate = 批次标签日期（官方权威）；每条的 description 含
+    "Announce Type: new|cross|replace"。replace（v2+ 替换）与 listing 页
+    的 Replacements 区一样不收入。周末/节假日 feed 为空 → 抛错。
+    元数据（作者等）仍由后续的 export API 补齐，RSS 只提供批次成员与分区。
+    """
+    from email.utils import parsedate_to_datetime
+    xml_text = fetch_url(f"{RSS_BASE}/{cat_query}")
+    root = ET.fromstring(xml_text)
+
+    label = ""
+    channel = next(iter(root), None)
+    if channel is not None:
+        for ch in channel:
+            if ch.tag.split("}")[-1] == "pubDate" and ch.text:
+                label = parsedate_to_datetime(ch.text.strip()).strftime("%Y-%m-%d")
+                break
+    if not label:
+        raise RuntimeError(f"RSS {cat_query}: cannot parse channel pubDate")
+
+    new_ids, cross_ids = [], []
+    n_items = 0
+    for item in root.iter():
+        if item.tag.split("}")[-1] != "item":
+            continue
+        n_items += 1
+        link, atype = "", "new"
+        for ch in item:
+            name = ch.tag.split("}")[-1]
+            if name == "link":
+                link = (ch.text or "").strip()
+            elif name == "description":
+                am = re.search(r"Announce Type:\s*([\w-]+)", ch.text or "")
+                if am:
+                    atype = am.group(1)
+        m2 = re.search(r"abs/(\d{4}\.\d+)", link)
+        if not m2 or atype == "replace":
+            continue
+        pid = m2.group(1)
+        lst = new_ids if atype == "new" else cross_ids
+        if pid not in lst:
+            lst.append(pid)
+
+    if n_items == 0:
+        raise RuntimeError(f"RSS {cat_query}: 0 items (weekend/holiday or feed issue)")
+    return {"label": label, "new": new_ids, "cross": cross_ids}
+
+
 def _live_summary_date() -> str:
     """线上已推送批次的日期（读取 GitHub Pages 上的 summary.json）；失败返回 ''。"""
     url = os.environ.get("PAGES_SUMMARY_URL", DEFAULT_SUMMARY_URL)
@@ -171,6 +235,7 @@ def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
     arXiv 对 GitHub Actions 共享 IP 的限流/拦截较常见（429，或 WAF 式的 406），
     退避需要足够长：30/60/90/... 秒递增，封顶 300s；并带上浏览器风格的
     Accept 头（裸 urllib 默认不带 Accept，易触发 406）。
+    406 是确定性 WAF 拦截，重试 3 次即放弃（让给 scrape_listing 的 RSS 兜底）。
     """
     last_err = None
     for attempt in range(retries):
@@ -184,10 +249,13 @@ def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
                 return resp.read().decode("utf-8")
         except Exception as e:
             last_err = e
-            if attempt < retries - 1:
+            max_attempts = 3 if "406" in str(e) else retries
+            if attempt < max_attempts - 1:
                 wait = min(ARXIV_DELAY * (attempt + 1), 300)
-                print(f"  [RETRY {attempt+1}/{retries}] {e} — waiting {wait}s", file=sys.stderr)
+                print(f"  [RETRY {attempt+1}/{max_attempts}] {e} — waiting {wait}s", file=sys.stderr)
                 time.sleep(wait)
+            else:
+                break
     raise RuntimeError(f"arXiv unreachable after {retries} attempts: {last_err}")
 
 
