@@ -1,7 +1,11 @@
 {
   "timezone": "Asia/Shanghai",
   "push_time": "07:53",
-  "feeds": ["gr-qc", "hep-th", "astro-ph.CO"],
+  "feeds": [
+    "gr-qc",
+    "hep-th",
+    "astro-ph.CO"
+  ],
   "core_min": 2,
   "core_max": 8,
   "core_min_score": 7,
@@ -9,11 +13,16 @@
   "radar_min_score": 4,
   "keyword_max": 5,
   "keywords": [
-    { "label": "暗能量", "match": ["dark energy"] }
+    {
+      "label": "暗能量",
+      "match": [
+        "dark energy"
+      ]
+    }
   ],
   "ds_model_score": "deepseek-chat",
   "ds_model_digest": "deepseek-chat",
   "pushplus_max_chars": 19000,
-  "site_base_url": "https://arxiv-rao.pages.dev",
+  "site_base_url": "https://rhm137.github.io/arxiv-rao-daily",
   "digest_language": "zh-CN"
 }

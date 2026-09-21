@@ -38,16 +38,14 @@ jobs:
         working-directory: rao
         run: python scripts/deliver.py --no-push
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to GitHub Pages (github.io 微信可直接打开)
         working-directory: rao
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_PROJECT: arxiv-rao
+          GH_PAGES_PAT: ${{ secrets.GH_PAGES_PAT }}
         run: |
           # 以 latest.json 指针的批次日期为准（不要用 UTC 日期猜）
           if python -c "import json,pathlib,sys; d=json.load(open('data/latest.json'))['listing_date']; sys.exit(0 if pathlib.Path(f'data/digest_{d}.json').exists() else 1)" 2>/dev/null; then
-            python scripts/deploy_cf.py
+            python scripts/deploy_ghpages.py
           else
             echo "无 digest，跳过部署"
           fi
