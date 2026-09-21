@@ -330,8 +330,10 @@ def render_site_page(digest: dict, counts: dict, abstracts: dict, site_url: str 
   </div>
 </summary>
 <div class="detail">
-  <h4>📌 做了什么与评价</h4>
-  {nl2p(p['did_and_eval'])}
+  <h4>速览</h4>
+  <p>{esc_keep_math(p.get('cn_summary',''))}</p>
+  <h4>评价</h4>
+  <p>{esc_keep_math(p.get('cn_review',''))}</p>
   <h4>🎓 Rao 可以学到什么</h4>
   {nl2p(p['learn'])}
   <h4>💡 推荐课题</h4>
@@ -617,9 +619,13 @@ def render_markdown(digest: dict, counts: dict) -> str:
             "",
             f"💡 {p['one_liner']}",
             "",
-            "**做了什么与评价**",
+            "**速览**",
             "",
-            p["did_and_eval"],
+            p.get("cn_summary", ""),
+            "",
+            "**评价**",
+            "",
+            p.get("cn_review", ""),
             "",
             "**Rao 可以学到什么**",
             "",
