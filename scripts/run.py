@@ -193,17 +193,22 @@ def _scrape_listing_rss(cat_query: str) -> dict:
         if item.tag.split("}")[-1] != "item":
             continue
         n_items += 1
-        link, atype = "", "new"
+        link, atype = "", ""
         for ch in item:
             name = ch.tag.split("}")[-1]
             if name == "link":
                 link = (ch.text or "").strip()
-            elif name == "description":
+            elif name == "announce_type":
+                atype = (ch.text or "").strip()
+            elif name == "description" and not atype:
+                # replace-cross 条目没有 announce_type 元素，只能看 description
                 am = re.search(r"Announce Type:\s*([\w-]+)", ch.text or "")
                 if am:
                     atype = am.group(1)
         m2 = re.search(r"abs/(\d{4}\.\d+)", link)
-        if not m2 or atype == "replace":
+        if not m2 or atype not in ("new", "cross"):
+            # 只收明确的 new/cross；replace 与 replace-cross（跨类替换稿）同
+            # listing 页 Replacements 区一样不收；类型缺失也跳过（保守）
             continue
         pid = m2.group(1)
         lst = new_ids if atype == "new" else cross_ids
@@ -260,10 +265,23 @@ def fetch_url(url: str, retries: int = ARXIV_RETRY) -> str:
 
 
 def fetch_category(cat: str) -> tuple[list[dict], str]:
+    """抓取 `cat` 当前已公告的批次。主通道：listing 页 + export API 补元数据；
+    任一环节被封（406/429）时整体回退到 RSS 单请求通道（无需 export API）。
+
+    Returns (papers, label_date)。paper dict 带 "Section": "new"|"cross"。
+    """
+    try:
+        return _fetch_category_listing(cat)
+    except Exception as e:
+        print(f"  [WARN] listing+API path failed for {cat}: {e} — falling back to RSS-only",
+              file=sys.stderr)
+        return _fetch_category_rss(cat)
+
+
+def _fetch_category_listing(cat: str) -> tuple[list[dict], str]:
     """
     抓取 `cat` 当前已公告的批次（与 arXiv 官网 /new 完全一致）。
 
-    Returns (papers, label_date)。paper dict 带 "Section": "new"|"cross"。
     astro-ph = astro-ph.CO + astro-ph.HE 两个子分区合并。
     """
     queries = ASTRO_SUBS if cat == "astro-ph" else [cat]
@@ -299,6 +317,110 @@ def fetch_category(cat: str) -> tuple[list[dict], str]:
             continue
         p["Section"] = sections[pid]
         out.append(p)
+    return out, label or ""
+
+
+def _clean_latex_name(s: str) -> str:
+    """RSS dc:creator 里的 LaTeX 转义名字转可读 ASCII（近似）。
+    如 'Bart{\\l}omiej B\\k{a}k' → 'Bartlomiej Bak'。"""
+    s = re.sub(r"\{\\([lLoO])\}", r"\1", s)
+    s = re.sub(r"\\[kuvHra]\{(\w)\}", r"\1", s)
+    s = re.sub(r"\\['\"`^~=.c]\{?(\w)\}?", r"\1", s)
+    return s.replace("{", "").replace("}", "").strip()
+
+
+def _parse_rss(xml_text: str) -> dict:
+    """解析 arXiv 官方 RSS feed → {"label": 批次日期, "papers": [...]}。
+
+    与 listing 页同批次（实测 new+cross 数目完全一致；replace 替换稿不收）。
+    字段来源：title/link(→ID)/dc:creator(作者, LaTeX 转义)/description(含摘要)/
+    category(全部分类, 首个为主分类)/arxiv:announce_type(new|cross|replace)。
+    """
+    from email.utils import parsedate_to_datetime
+    root = ET.fromstring(xml_text)
+    label = ""
+    channel = next(iter(root), None)
+    if channel is not None:
+        for ch in channel:
+            if ch.tag.split("}")[-1] == "pubDate" and ch.text:
+                label = parsedate_to_datetime(ch.text.strip()).strftime("%Y-%m-%d")
+                break
+    if not label:
+        raise RuntimeError("RSS feed: cannot parse channel pubDate")
+
+    papers = []
+    for item in root.iter():
+        if item.tag.split("}")[-1] != "item":
+            continue
+        rec: dict = {}
+        desc, cats = "", []
+        for ch in item:
+            name = ch.tag.split("}")[-1]
+            text = (ch.text or "").strip()
+            if name == "title":
+                rec["Title"] = re.sub(r"\s*\(arXiv:[^)]+\)\s*$", "",
+                                      re.sub(r"\s+", " ", text))
+            elif name == "link":
+                m = re.search(r"abs/(\d{4}\.\d+)", text)
+                if m:
+                    rec["ID"] = m.group(1)
+            elif name == "description":
+                desc = text
+            elif name == "category":
+                if text:
+                    cats.append(text)
+            elif name == "creator":
+                rec["Authors"] = _clean_latex_name(text)
+            elif name == "announce_type":
+                rec["Section"] = text
+            elif name == "pubDate":
+                rec["Published"] = text
+        if "Section" not in rec:
+            # replace-cross 条目没有 announce_type 元素，从 description 兜底
+            am0 = re.search(r"Announce Type:\s*([\w-]+)", desc)
+            rec["Section"] = am0.group(1) if am0 else ""
+        if rec["Section"] not in ("new", "cross"):
+            continue   # replace / replace-cross / 类型缺失一律不收
+        if not rec.get("ID"):
+            continue
+        # description 形如 "arXiv:2609.22354v1 Announce Type: new \nAbstract: ..."
+        am = re.search(r"Abstract:\s*(.*)", desc, re.S)
+        rec["Summary"] = re.sub(r"\s+", " ", am.group(1)).strip() if am else ""
+        rec["PrimaryCat"] = cats[0] if cats else "unknown"
+        rec["AllCats"] = ", ".join(cats)
+        rec["Comment"] = ""
+        rec.setdefault("Authors", "")
+        papers.append(rec)
+    if not papers:
+        raise RuntimeError("RSS feed: 0 usable items (weekend/holiday or feed issue)")
+    return {"label": label, "papers": papers}
+
+
+def _fetch_category_rss(cat: str) -> tuple[list[dict], str]:
+    """RSS 兜底通道：每个（子）分区一次请求拿到整批次的
+    ID/标题/作者/摘要/分类/new-cross 标记，完全不依赖 export API。"""
+    queries = ASTRO_SUBS if cat == "astro-ph" else [cat]
+    label = None
+    order: list[str] = []
+    papers: dict[str, dict] = {}
+    for q in queries:
+        print(f"  Fetching RSS {q} ...")
+        feed = _parse_rss(fetch_url(f"{RSS_BASE}/{q}"))
+        if label is None:
+            label = feed["label"]
+        elif feed["label"] != label:
+            print(f"  [WARN] {q} RSS label {feed['label']} != {label}")
+        for p in feed["papers"]:
+            pid = p["ID"]
+            if pid not in papers:
+                papers[pid] = p
+                order.append(pid)
+            elif papers[pid].get("Section") != "new" and p["Section"] == "new":
+                papers[pid]["Section"] = "new"   # New 优先于 Cross
+        print(f"    {q}: RSS {len(feed['papers'])} papers ({feed['label']})")
+        if len(queries) > 1:
+            time.sleep(ARXIV_GAP)
+    out = [papers[pid] for pid in order]
     return out, label or ""
 
 
