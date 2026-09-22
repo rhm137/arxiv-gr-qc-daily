@@ -1,0 +1,205 @@
+{
+ "listing_date": "2026-09-21",
+ "generated_at": "2026-09-22T09:56:33+08:00",
+ "generator": "deepseek-chat/deepseek-chat",
+ "stats": {
+  "total_new": 43,
+  "candidates": 13,
+  "core": 2,
+  "radar": 6,
+  "keyword": 1
+ },
+ "papers": [
+  {
+   "id": "2609.21398",
+   "title": "A Differential Form Description of Partial Entanglement Entropy: Testing a Killing Vector Construction in Covariant Phase Space",
+   "cn_title": "部分纠缠熵的微分形式描述：在协变相空间中检验 Killing 矢量构造",
+   "authors": "Chuanjia Zhu, Dong-Hui Du, Wen-Cong Gan, Fu-Wen Shu",
+   "link": "https://arxiv.org/abs/2609.21398",
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "作者用微分形式刻画 PEE 线程流，并在 Rindler-AdS₃ 中检验 Iyer-Wald 面荷能否重构中心 PEE 流，结果是否定的。",
+   "cn_summary": "全息纠缠熵的 bit thread 图像把熵写成边界区域间的流线，而部分纠缠熵（PEE）与 PEE 线程进一步把这一结构分解到每个边界点。已知 PEE 线程流可以叠加重构出常规 bit thread 流，但 PEE 流本身缺少一个协变、几何化的场论描述，尤其是它与协变相空间（CPS）荷构造之间是否存在联系尚不清楚，这正是本文的动机。\n作者为 PEE 线程流引入微分形式描述：在真空 AdS₃/CFT₂ 的单个区间上，证明该形式的通量复现已知的纠缠轮廓，作为自洽性检验。随后检验该 PEE 形式能否（至多相差恰当形式改进）与 CPS 形式构造的流对应：以 Rindler-AdS₃ 中的精确 Killing 矢量作为首个测试，Rindler 参数 a 标记一族背景，把每个 a 对应的 Killing 矢量代入 Iyer-Wald 面荷形式并保留完整的 a 依赖，再对 a 积分定义有限候选流。对中心边界点 r₀=0 发出的反射对称 PEE 流，变换到 Poincaré-AdS₃ 后，没有任何 Killing 参数选择能同时复现已知 PEE 流的两个分量，说明该直接 Killing 矢量 CPS 构造不足以重构中心 PEE 流。",
+   "cn_review": "【创新点】首次把 PEE 线程流写成微分形式并验证其通量给出纠缠轮廓，同时给出一个明确的否定性结果：在 Rindler-AdS₃ 中直接代入 Iyer-Wald 面荷并对 Rindler 参数积分，无法同时匹配中心 PEE 流的两个分量，这为“PEE 流是否来自协变相空间荷”划出了反例边界。\n【局限性】检验只限于真空 AdS₃/CFT₂ 单区间、Rindler-AdS₃ 的精确 Killing 矢量与中心点 r₀=0 的反射对称流；作者自己也承认结论只针对“直接 Killing 矢量 CPS 构造”，恰当形式改进、其他 CPS 流或更一般的生成元都未排除，因此是必要条件式的否定而非普遍不可能性证明。\n【对 Rao 的意义】与 Rao 引力热力学主线中的 Wald 熵、Iyer-Wald Noether 荷、辛势与边界歧义直接相关：文中“面荷形式对参数积分得到有限流”的做法，与协变荷的有限性/可积性讨论同源，可作为检验协变相空间荷定义歧义的一个具体玩具模型。",
+   "learn": "可学到 Iyer-Wald 面荷形式在具体背景（Rindler-AdS₃）中的显式代入与对参数 a 积分获得有限量的操作；注意其“至多相差恰当形式改进”的表述，正对应协变相空间中辛势的边界项歧义——Rao 在整理 Wald 熵与 Noether 荷时需区分“面荷形式本身”与“其积分/改进后的有限荷”，避免把坐标依赖的流误当作物理量。",
+   "topics": "暂无"
+  },
+  {
+   "id": "2609.20898",
+   "title": "Thermodynamic topology of magnetic GMGHS black holes: the $\\overline {W}^{1-}$ subclass",
+   "cn_title": "磁性 GMGHS 黑洞的热力学拓扑：W̄^{1-} 子类",
+   "authors": "Dejiang Yin, Qi-Qi Liang, Yu-Die Wan, Li-Yun Zhang",
+   "link": "https://arxiv.org/abs/2609.20898",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 6.0,
+   "must_read": false,
+   "one_liner": "作者对四维 Einstein-Maxwell-dilaton 磁性 GMGHS 黑洞做解析热力学拓扑分类，发现 a=1 时实现 W̄^{1-} 子类，表明全局拓扑数 W 不足以完全刻画热力学拓扑。",
+   "cn_summary": "热力学拓扑把黑洞状态及其在热力学参数空间中的分支结构做拓扑分类，通常用绕度（winding）给出的全局拓扑数 W 来标记。此前提出的 W̄^{1-} 子类是否能在渐近平直、有明确弦论来源的解中实现，以及 W 是否足以区分所有子类，仍缺少具体例子。\n本文研究四维渐近平直 Einstein-Maxwell-dilaton 引力中带电非极端磁性 Gibbons-Maeda 族，重点是 dilaton 耦合 a=1 的弦论成员 GMGHS 黑洞。作者在正则外视界的完整定义域上做解析分类，发现 dilaton 耦合把该族分成三类逆 Hawking 温度极限结构：在 a=1 时，GMGHS 缺陷曲线趋近一个非零的下限逆温度端点，并只包含一个不稳定分支。由此，磁性 GMGHS 黑洞成为此前提出的 W̄^{1-} 热力学拓扑子类在渐近平直 Einstein-Maxwell-dilaton 解中的一个显式实现，说明仅靠全局拓扑数 W 不能完全刻画黑洞热力学拓扑，还需要逆 Hawking 温度在物理视界域边界附近的渐近行为作为附加判据。",
+   "cn_review": "【创新点】把 W̄^{1-} 子类从抽象分类落到一个有弦论背景的渐近平直解（a=1 的磁性 GMGHS），并给出完整视界域上的解析分类，明确指出 W 相同但逆温度边界行为不同可区分不同子类，这是对“W 是否完备”这一问题的具体反例。\n【局限性】工作限于四维渐近平直 Einstein-Maxwell-dilaton 的磁性非极端分支，未涉及转动、宇宙学常数或非渐近平直背景；分类基于逆 Hawking 温度与缺陷曲线的解析行为，未讨论热力学稳定性与相变的动力学含义，也未与观测或具体物理过程挂钩。\n【对 Rao 的意义】属于黑洞热力学分支结构/相变分类的现象学式推广，与 Rao 黑洞热力学模块（P-V 临界、系综与稳定性）相邻但方法迁移性有限；可作为“热力学拓扑分类不完备”的一个具体案例，提醒在讨论黑洞化学与临界点时，全局拓扑数之外还需检查温度边界行为。",
+   "learn": "可了解 dilaton 耦合 a 如何把逆 Hawking 温度曲线分成不同极限结构，以及“缺陷曲线端点是否为零”这一判据；对 Rao 在 f(Q)/修正引力中做 P-V 临界与分支分析时，可借鉴其“在完整视界域上解析分类 + 边界渐近行为”的检查清单，避免只报告临界点而忽略分支端点结构。",
+   "topics": "暂无"
+  }
+ ],
+ "radar": [
+  {
+   "id": "2609.21006",
+   "title": "The logotropic dark fluid as an energy diffusion in unimodular gravity",
+   "cn_title": "对数暗流体作为幺模引力中的能量扩散",
+   "authors": "Miguel Cruz, Samuel Lepe",
+   "link": "https://arxiv.org/abs/2609.21006",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文证明对数暗流体精确等价于含无压物质与对数扩散函数 $Q(a)=3A\\ln a+Q_c$ 的耗散幺模引力，并把对数温度 $A$ 解释为能量由物质向几何扇区的扩散率。",
+   "cn_summary": "对数暗流体（logotropic dark fluid）原被提出为用单一流体统一暗物质与暗能量，其状态方程含对数项，但其中的\"对数温度\"参数 $A$ 的物理起源一直悬空，且该模型在某个尺度因子处会进入 phantom 区，机制缺乏动力学解释。幺模引力（unimodular gravity）因固定行列式而只保留无迹场方程，天然允许能量在物质与几何扇区之间非守恒地流动，是给这类现象学模型寻找动力学基础的合适框架。本文在均匀背景层面建立精确对应：对数暗流体等价于含无压物质、扩散函数 $Q(a)=3A\\ln a+Q_c$ 的耗散幺模引力，对应是精确的而非渐近的，且不引入任何超出两套描述已有参数的新参数。由此 $A$ 获得动力学含义——除膨胀率外，$A$ 就是能量从物质扩散到几何扇区的速率，$\\dot Q=3AH$；有效流体的绝热声速为 $c_s^2=A/\\rho$（$\\rho$ 为幺模物质能量密度），在 $a_s=a_M/2^{1/3}$ 处达到光速，物质能量密度在 $a_M$ 处为零并变号，而 $a_M$ 正是该模型已知进入 phantom 行为的尺度因子。",
+   "cn_review": "【创新点】把对数暗流体从\"唯象拟合的单一流体\"重写为耗散幺模引力的精确背景解，且对应关系不引入新参数，使原本自由的对数温度 $A$ 变成可解释的能量扩散率 $\\dot Q=3AH$；同时给出 $c_s^2=A/\\rho$ 与 $a_s=a_M/2^{1/3}$ 的解析关系，把 phantom 转变点 $a_M$ 与声速发散、密度变号联系起来，比原提案多了一层动力学自洽性。\n【局限性】对应只在均匀背景层面成立，摘要未给出扰动层面的映射，因此 $c_s^2$ 是有效流体的绝热声速而非由完整微扰作用量导出的传播速度，$c_s^2>1$ 的区间是否意味着因果性问题也未讨论；此外幺模引力中能量非守恒的具体微观机制仍属假设。\n【对 Rao 的意义】现象学类，方法新意有限，但\"能量在物质与几何扇区之间扩散\"的表述与 Rao 的 P5（动态热流与协变荷通量的关系）在概念上同构，可作为非守恒引力中扩散函数 $Q$ 与视界热力学第一定律非平衡项如何对应的一个具体玩具模型参考。",
+   "action": "暂无"
+  },
+  {
+   "id": "2609.21578",
+   "title": "A note on oscillons: non-negligible metric fluctuations during preheating",
+   "cn_title": "关于 oscillon 的一点注记：预加热期间不可忽略的度规涨落",
+   "authors": "Daniel del-Corral, Paolo Gondolo, K. Sravan Kumar, Jo\\~ao Marto",
+   "link": "https://arxiv.org/abs/2609.21578",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文指出预加热 lattice 模拟惯用的固定 FLRW 背景加体积平均能量密度做法在 GR 下不自洽：慢滚结束后 Bardeen 势不再被压低，度规涨落与暴胀子涨落同阶，且体积平均后的 ADM 哈密顿约束并不约化为模拟所用的 Friedmann 方程。",
+   "cn_summary": "后暴胀预加热与 oscillon 形成的主流 lattice 做法，是在空间均匀的 FLRW 背景上演化非均匀暴胀子场，背景膨胀由体积平均能量密度驱动，而度规扰动被整体忽略。这一近似在慢滚暴胀期间有正当理由——Bardeen 势被慢滚参数压低——但预加热阶段暴胀子剧烈振荡、密度对比度可达 $O(1)$，该压低机制是否仍然成立此前未被系统检验。本文用线性化 Einstein 约束方程做一致性分析：一旦第一慢滚参数变为 $O(1)$，度规涨落与暴胀子涨落进入同一微扰阶，Bardeen 势的压低消失；固定 FLRW 处方下演化的标量场方程遗漏了由度规涨落产生的领头阶贡献。作者进一步推导 ADM 哈密顿约束的固有体积平均，发现它并不约化为 lattice 模拟使用的 Friedmann 方程，精确的平均约束含有额外的修正项，因此现有 lattice 结果在预加热阶段的定量可靠性需要重新评估。",
+   "cn_review": "【创新点】把\"lattice 模拟忽略度规扰动\"这一长期默认做法当作可检验的近似来审计，明确指出压低 Bardeen 势的慢滚条件在预加热阶段失效，并给出体积平均 ADM 哈密顿约束与模拟所用 Friedmann 方程之间的显式差异，属于对既有数值范式的基础性修正。\n【局限性】分析限于线性化 Einstein 约束与均匀背景上的平均，未给出非线性 lattice 中修正项的量级估计或数值实现，因此\"现有结果偏差多大\"仍无定量答案；也未讨论该修正对具体 oscillon 寿命、引力波谱的影响。\n【对 Rao 的意义】同领域参考。Rao 的 P3（非绝热扰动对视界熵的有限波长响应）同样关心\"背景平均 + 微扰\"处方在何种条件下失效，本文关于慢滚参数变为 $O(1)$ 时度规与物质涨落同阶的判据，可作为判断何时不能把扰动当作背景上的小修正的一个具体反例。",
+   "action": "暂无"
+  },
+  {
+   "id": "2609.21912",
+   "title": "Modified Gravity from growth data: goodness-of-fit and gravitational coupling",
+   "cn_title": "从增长数据看修正引力：拟合优度与引力耦合",
+   "authors": "Manoel V. S. Filho, Fernanda Oliveira, Wiliam S. Hip\\'olito-Ricaldi, Felipe Avila, Armando Bernui",
+   "link": "https://arxiv.org/abs/2609.21912",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文用 $f(z)$ 与 $\\sigma_8(z)$ 增长数据约束 Starobinsky、Hu-Sawicki 与 $R^2$ 修正 Appleby-Battye 三个 $F(R)$ 模型，发现 AIC/BIC 无法区分它们，转而从 MCMC 后验重构有效引力耦合 $\\mu(z)$ 作为判别诊断。",
+   "cn_summary": "背景膨胀数据（SNe、BAO、CMB 距离）对众多宇宙学模型高度退化，无法区分 GR 与修正引力；大尺度结构增长率 $f(z)$ 与物质涨落幅度 $\\sigma_8(z)$ 直接探测引力理论本身，原则上提供了打破退化的途径，但不同 $F(R)$ 模型在增长数据上的可分辨性此前缺乏系统比较。本文选取三个代表性 $F(R)$ 模型——Starobinsky、Hu-Sawicki 与带 $R^2$ 修正的 Appleby-Battye——用 $f(z)$ 和 $\\sigma_8(z)$ 测量做约束，方法上结合 MCMC 参数估计、Gaussian Process 重建以及 AIC/BIC 拟合优度统计。结果显示三个模型对当前增长数据的拟合在统计上可比，信息判据之差小到无法确立对任一情景的偏好。为突破这一退化，作者从 MCMC 后验样本重构有效引力耦合 $\\mu(z)$，把它作为物理动机明确的判别诊断量，用以区分各模型在增长数据上无法分辨的差异。",
+   "cn_review": "【创新点】不满足于\"AIC/BIC 分不开\"的结论，而是把后验样本转成 $\\mu(z)$ 这一物理量做模型判别，使统计上退化的模型在有效引力耦合的红移演化上显出结构差异，方法上比单纯比较信息判据更有针对性。\n【局限性】现象学类，方法新意有限：结论完全依赖现有 $f\\sigma_8$ 数据的精度与协方差假设，$\\mu(z)$ 的重构也继承 MCMC 先验与 GP 核选择的影响；三个模型均属 $F(R)$ 子类，未涉及 teleparallel、f(Q) 或一般 Horndeski 的 $\\mu$、$\\Sigma$ 结构。\n【对 Rao 的意义】同领域参考。Rao 的 P2 涉及 f(Q) 宇宙学参数允许性，本文\"用 $\\mu(z)$ 重构替代信息判据做模型判别\"的思路可迁移到 f(Q) 与 $F(R)$ 的对比上，但需注意 $F(R)$ 中 $\\mu$ 的构造依赖准静态与次视界近似，不能直接照搬到非度规几何。",
+   "action": "暂无"
+  },
+  {
+   "id": "2609.20960",
+   "title": "Vector Superradiance without Separability: Instability Rates from the Worldline Effective Theory",
+   "cn_title": "无需可分离性的矢量超辐射：来自世界线有效理论的失稳率",
+   "authors": "Keegan Cove, Jingping Li, Riccardo Penco",
+   "link": "https://arxiv.org/abs/2609.20960",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文用点粒子有效场论重算缓慢转动黑洞周围超轻矢量场的超辐射失稳率，指出此前报告的 $O(1)$ 偏差源于简并 $\\{\\ell=0,\\ell=2\\}$ 子空间中领头阶态识别错误，正确识别后与 Proca 方程结果完全一致且不依赖 FKKS 拟设。",
+   "cn_summary": "超辐射失稳率的计算长期依赖在固定黑洞背景上求解 Proca 方程，而这类计算通常需要 FKKS 可分离拟设，该拟设只在具有隐藏对称性的 Kerr 类背景上成立，限制了方法向一般转动背景或无隐藏对称性天体的推广。此前的有效理论处理（把黑洞当作点粒子、把矢量场当作世界线上的自由度）在 $j=1$、$\\ell=2$ 模式上报告了与全理论求解约 $O(1)$ 的偏差，令人怀疑有效理论框架本身是否可靠。本文指出该偏差并不存在：问题出在简并的 $\\{\\ell=0,\\ell=2\\}$ 子空间中领头阶态的识别，正确识别后，把引力子精确积掉、之后再按 $\\alpha$ 展开的有效理论精确重现了全部 $j=1$ 的 Proca 失稳率，且全程不调用 FKKS 拟设。由于不依赖可分离性，该方法原则上可推广到缺乏隐藏对称性的转动背景与天体；除远区外唯一额外输入是一个守恒的世界线量。",
+   "cn_review": "【创新点】把有效理论与全理论之间所谓的 $O(1)$ 矛盾归因于简并子空间中态的错误识别，而非有效理论失效，并给出一个不依赖 FKKS 可分离性的计算路径，使超辐射失稳率计算原则上可脱离 Kerr 的隐藏对称性。\n【局限性】分析限于缓慢转动黑洞与 $j=1$ 矢量模式，未给出快速转动或高 $j$ 情形的收敛性证据；\"引力子精确积掉后再展开 $\\alpha$\"的操作在更高阶是否仍能系统组织，摘要未说明。\n【对 Rao 的意义】同领域参考。Rao 的 P4（Elko 在 FLRW 的粒子产生与约化态）与本文同属\"在弯曲背景上处理场自由度\"的技术族，其中\"先精确积掉度规自由度、再按小参数展开\"的顺序问题，与 Rao 在 SVT 分解中处理约束消元时需警惕的展开次序问题相通。",
+   "action": "暂无"
+  },
+  {
+   "id": "2609.21421",
+   "title": "Complex scalar field thick branes: stability of linear perturbation and evolution of scalar Kaluza-Klein modes coupled with gravity",
+   "cn_title": "复标量场厚膜：线性微扰稳定性与耦合引力的标量 Kaluza-Klein 模演化",
+   "authors": "Wang-Long Dong, Heng Guo, Qun Wei, Yong-Tao Lu",
+   "link": "https://arxiv.org/abs/2609.21421",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "高维统一",
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文研究复标量场生成的 Minkowski、dS、AdS 厚膜，发现标量与矢量扇区无失稳、张量扇区无快子模，引力子零模在 Minkowski 与 dS 膜上局域化而在 AdS 膜上不可归一，标量零模在 Minkowski 与 dS 膜上总可局域化且 KK 谱连续无隙。",
+   "cn_summary": "厚膜模型用标量场的 kink 解把我们的四维世界实现为五维时空中的一个畴壁，其吸引力在于能自然给出引力局域化并解释额外维为何不可见；但多数工作只用实标量场，复标量场因含额外相位自由度，其微扰稳定性与 KK 模局域化性质尚不清楚，尤其是自相互作用势中温度参数接近临界值时膜结构如何变化。本文研究由复标量场 $\\Phi$ 生成的 Minkowski、dS 与 AdS 厚膜，其自相互作用势含温度参数 $a$；当 $a$ 趋近临界值时，$\\Phi$ 的虚部变成双 kink 结构、能量密度分裂为双峰，形成两个子膜。作者对线性标量、矢量、张量微扰做完整分析：标量与矢量扇区无失稳迹象，张量微扰方程可因式分解从而排除快子张量模；引力子零模在 Minkowski 与 dS 膜上局域化，在 AdS 膜上不可归一。随后引入与曲率耦合的实检验标量场 $\\Psi$（动能项与 $F(R)$ 耦合），发现标量零模在 Minkowski 与 dS 膜上总能局域化，标量 KK 谱连续且无隙。",
+   "cn_review": "【创新点】把厚膜稳定性分析从实标量场推广到复标量场，并给出温度参数临界值处虚部双 kink、能量密度双峰形成子膜的具体图像；同时用张量微扰方程的因式分解排除快子模，比逐模数值检验更干净。\n【局限性】分析限于线性微扰与三种最大对称膜背景，未涉及非线性稳定性或子膜形成后的动力学演化；$F(R)$ 耦合只作为检验场的动能耦合引入，未讨论该耦合对背景解本身的反作用。\n【对 Rao 的意义】同领域参考。Rao 的 Q1 涉及静态球对称分支与无毛条件审计，本文\"对每个扇区分别做微扰分解、用因式分解排除快子模\"的流程，可作为审计高维或标量-张量解稳定性时的模板；其 AdS 膜上引力子零模不可归一的结论也提醒局域化并非自动成立。",
+   "action": "暂无"
+  },
+  {
+   "id": "2609.21814",
+   "title": "Quantum Tunneling and the Emergence of Classical Spacetime in Einstein-{\\AE}ther Quantum Cosmology",
+   "cn_title": "Einstein-Æther 量子宇宙学中的量子隧穿与经典时空的涌现",
+   "authors": "Germano A. Monerat, Alessandro O. Castro Junior, Eduardo V. Corr\\^ea Silva, Gil O. Neto",
+   "link": "https://arxiv.org/abs/2609.21814",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "在正曲率 FLRW + 尘埃 + Λ 的 Einstein-Æther 量子宇宙学中求解 Wheeler-DeWitt 方程，用 WKB 隧穿概率与多世界期望值刻画经典时空涌现。",
+   "cn_summary": "量子宇宙学试图用宇宙波函数替代奇点处的经典演化，标准做法是在 Schutz 变分形式下把尘埃作为时间变量、对尺度因子量子化并解 Wheeler-DeWitt 方程。此前这类分析多集中在 GR 或标量-张量框架，而 Einstein-Æther 理论（含单位类时矢量场、显式破坏洛伦兹对称）的量子宇宙学版本尚少，其量子隧穿与经典化过程是否与 GR 定性一致并不清楚，这正是本文的动机。作者先做经典哈密顿分析，构造相空间并导出尺度因子动力学，发现存在能给出暴胀式膨胀的特定初始条件，且这些条件可直接从量子动力学中读出；随后按 Dirac 形式量子化，得到宇宙波函数的 Wheeler-DeWitt 方程并数值求解，再用 WKB 近似计算隧穿概率 $TP_{WKB}$ 与积分隧穿概率 $TP_{int}$，并给出多世界诠释下尺度因子的期望值。摘要未给出具体数值结果，仅说明上述量随 Æther 参数的变化趋势被考察。",
+   "cn_review": "【创新点】把 Schutz 尘埃时间 + Dirac 量子化 + WKB 隧穿这一套标准量子宇宙学流程搬到 Einstein-Æther 引力中，并指出暴胀初始条件可由量子解直接提取，这在 Æther 框架下此前少见。【局限性】模型限制在正曲率 FLRW 与单一尘埃加 Λ 的高度对称背景，未做矢量场扰动的自由度与稳定性分析；摘要未给出隧穿概率的具体数值或与 GR 极限的定量对比，结论的判别力有限。【对 Rao 的意义】现象学类，方法新意有限，但 Schutz 变分把尘埃作为内禀时间、以及 WKB 隧穿概率的算法，可作为 Rao 在 FRW 视界热力学与量子宇宙学交叉处的工具参考；Æther 矢量场与 Rao 关注的联络/挠率类修正引力属不同几何表述，仅作同领域参考。",
+   "action": "暂无"
+  }
+ ],
+ "radar_note": null,
+ "keyword": [
+  {
+   "id": "2609.21891",
+   "title": "Structure and astrophysical properties of dark energy admixed neutron stars",
+   "cn_title": "暗能量混合中子星的结构与天体物理性质",
+   "authors": "Juan M. Z. Pretel, Sergio B. Duarte, Mariana Dutra, Odilon Louren\\c{c}o",
+   "link": "https://arxiv.org/abs/2609.21891",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE",
+    "nucl-th"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "构建核物质与 Chaplygin 暗能量流体的混合状态方程，发现暗能量占比 f 增大使 EoS 变软并改善因果性，可解释 HESS J1731-347 中心致密天体。",
+   "cn_summary": "中子星内部是否存在暗能量（DE）成分是近年致密星物理的一个开放问题。此前工作多考虑纯 DE 核心（Chaplygin 暗流体）对中子星可观测量的影响，但核物质与 DE 均匀混合的情形研究较少，而这类混合会直接改变状态方程（EoS）的软硬程度，从而影响质量—半径关系、因果性条件以及引力红移等观测量，因此值得系统考察。本文提出一个同时包含普通核物质与 DE 的 EoS，引入自由参数 $f$ 表示 DE 密度占总能量密度的比例，$f\\to 0$ 时回到纯核物质结果。计算表明：增大 $f$ 使 EoS 变软，并显著有利于满足因果性条件；在质量—半径结果上，HESS J1731-347 的中心致密天体可被满意地描述为 DE 混合中子星；对足够高的恒星质量，引力红移与基本非径向振荡频率都随 $f$ 显著增大。",
+   "cn_review": "【创新点】与以往把 DE 作为独立核心（core）处理的做法不同，本文用单一参数 $f$ 把 DE 密度按比例混入核物质 EoS，并给出 $f\\to0$ 的连续退化极限，同时把因果性条件的满足程度与 $f$ 直接挂钩，并首次将该混合模型用于拟合 HESS J1731-347 的低质量致密天体。\n【局限性】DE 与核物质按固定比例均匀混合的假设缺乏微观物理动机，$f$ 是纯现象学参数；摘要未说明是否检验了潮汐形变、转动或双星并合约束，也未讨论混合界面的稳定性与相变问题。\n【对 Rao 的意义】属修正引力宇宙学之外的致密星现象学，与 Rao 的引力热力学、f(Q)/teleparallel 主线无直接接口；仅可作为“暗能量与致密天体耦合”这一邻域动态了解，现象学类，方法新意有限。"
+  }
+ ]
+}
