@@ -1,0 +1,473 @@
+{
+ "listing_date": "2026-09-22",
+ "no_update": false,
+ "total_new_unseen": 82,
+ "passed_prefilter": 24,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-th"
+   ],
+   "title": "ACT-compatible Inflation in Scalar Field Coupled $f\\left(Q, \\tilde R\\right)$ Gravity",
+   "link": "https://arxiv.org/abs/2609.23511",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.23511v1 Announce Type: new Abstract: In this work, we construct models compatible with ACT constraints on inflation in the framework of $f\\left(Q, \\tilde R\\right)$ gravity, with $f(R)$ gravity coupled to a scalar field. The $f\\left(Q, \\tilde R\\right)$ theory is equivalent to $f(Q, B)$ gravity models or $f(Q, C)$ gravity where $B$ or $C$ is the difference between $Q$ and the scalar curvature $\\tilde R$ in Einstein's gravity, so, $B=Q-\\tilde R$ or $C=\\tilde R - Q$. Using appropriate reconstruction techniques compatible with $f\\left(Q, \\tilde R\\right)$ theory, we propose two functional behaviors of the Hubble rate $H$ that satisfy the constraints, and we construct models that realize these behaviors of the Hubble rate $H$ using $f\\left(Q, \\tilde R\\right)$ gravity and $f(R)$ gravity coupled with a scalar field. We also discuss the reheating stage after inflation. Although the scenario of $f(R)$ gravity coupled with a scalar field is well-known, since the model can be rewritten in the form of Einstein's gravity coupled with two scalar fields, the non-trivial problem occurs in the $f\\left(Q, \\tilde R\\right)$ gravity case, because the number of dynamical degrees of freedom in $f(Q)$ gravity is not settled.",
+   "authors": "Shin'ichi Nojiri, S. D. Odintsov, V. K. Oikonomou",
+   "id": "2609.23511",
+   "version": "2609.23511",
+   "kscore": 15,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "自由度/稳定性",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Formalizing a unified dynamical system framework for $f(R)$ and $f(Q)$ gravity",
+   "link": "https://arxiv.org/abs/2609.24733",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24733v1 Announce Type: new Abstract: Going beyond the traditional Hubble-normalized framework, we formalize a unified dynamical system formulation for $f(R)$ and coincident gauge $f(Q)$ gravity using three distinct sets of dimensionless variables: (1) kinematical cosmographic parameters, (2) the dark energy equation of state parameter $w$ (with its $N=\\ln a$ derivatives) and matter density abundance $\\Omega_m$, and (3) theory space parameters $\\{m_i\\}$ characterizing the shape of the theory function. Our formulation is free of auxiliary variables, closing via three equivalent ways: (1) specifying a theory, (2) requiring a specific cosmological evolution, or (3) requiring a specific dark energy equation of state evolution. Each closure strategy is illustrated with explicit examples. The theory closure approach studies a case of Hu-Sawicki $f(R)$ and $f(Q)=-2\\Lambda+Q+\\beta\\sqrt{-Q}$ models, where traditional formalisms fail. A heteroclinic trajectory from a GR-matter-dominated epoch to a late-time de-Sitter epoch is general for $f(Q)$, but sensitive to initial conditions for $f(R)$. The cosmographic and equation-of-state closure approaches compare $f(R)$ and $f(Q)$ gravities kinematically equivalent to $\\Lambda$CDM ($j(z)=1$) and dynamically equivalent to $\\Lambda$CDM ($w(z)=-1$). In both, GR acts as a cosmological past attractor for $f(Q)$ gravity, but not for $f(R)$.",
+   "authors": "Saikat Chakraborty",
+   "id": "2609.24733",
+   "version": "2609.24733",
+   "kscore": 12,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "How Universal Is the Black Hole Zeroth Law?",
+   "link": "https://arxiv.org/abs/2609.24648",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24648v1 Announce Type: new Abstract: The black hole zeroth law asserts the thermal equilibrium of a stationary Killing horizon, yet its status beyond general relativity remains limited. We demonstrate that its validity is not governed by a universal mechanism: distinct gravitational theories enforce constancy of the surface gravity through different horizon-projections of their field equations. In general relativity, $f(R)$-gravity, and Lovelock theories, the zeroth law is known to follow from the mixed (null-transverse) horizon equations. By contrast, we show that in non-Lovelock theories the zeroth law is enforced by qualitatively different mechanisms. In generalized quadratic gravity, for instance, the null-null component of the field equations dictates its validity. Exploiting this novel diagnostic, we obtain the first exact proof of the zeroth law in the broader landscape of higher-curvature gravity, without relying on a perturbative expansion around general relativity. Our result establishes the zeroth law as a sharp probe of the underlying thermodynamic structure of gravity, and points toward a classification of modified theories according to the mechanism responsible for its validity.",
+   "authors": "Rajes Ghosh, Sudipta Sarkar",
+   "id": "2609.24648",
+   "version": "2609.24648",
+   "kscore": 10,
+   "ktags": [
+    "修正引力",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "On the (In)equivalence of de Sitter and Holographic Entanglement Entropies in Lovelock Gravity",
+   "link": "https://arxiv.org/abs/2609.24557",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24557v1 Announce Type: new Abstract: We investigate the relation between de Sitter entropy and holographic entanglement entropy in higher-curvature gravity and its braneworld realization. Using the canonical formulation of the gravitational action and the Euclidean gravitational path integral, we derive the de Sitter entropy, including contributions from higher-curvature surface terms, and compare it with the holographic entanglement entropy obtained from the corresponding entropy functional. We first consider Gauss-Bonnet gravity and show that the two entropies coincide for static asymptotically de Sitter braneworld spacetimes on the RS II model, while they generally differ for stationary spacetimes. The mismatch in the stationary case arises from an extrinsic-curvature contribution associated with the constant-time surface, which vanishes for static configurations but is generally nonzero for stationary geometries. We then extend the analysis to general Lovelock gravity and show that the agreement between the de Sitter entropy and holographic entanglement entropy persists for static asymptotically de Sitter braneworld spacetimes in the RS II model beyond the Gauss-Bonnet case. We also comment that the same distinction between static and stationary configurations applies to braneworld black holes: the black hole entropy agrees with the holographic entanglement entropy in the static case, while the two generally differ for stationary braneworld black holes. Our results clarify the relation between gravitational and holographic entropies in higher-curvature gravity and provide a broader perspective on holographic correspondence in Lovelock theories and their braneworld realizations.",
+   "authors": "Takamasa Kanai",
+   "id": "2609.24557",
+   "version": "2609.24557",
+   "kscore": 10,
+   "ktags": [
+    "修正引力",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "cond-mat.stat-mech",
+    "gr-qc",
+    "hep-ph",
+    "hep-th"
+   ],
+   "title": "Statistical Fluctuations as Primordial Correlators in the CMB: Finite Chemical Potential Thermodynamics",
+   "link": "https://arxiv.org/abs/2609.24998",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24998v1 Announce Type: new Abstract: Can primordial cosmological correlations originate from statistical fluctuations of an early-universe thermal system? We connect grand-canonical thermodynamics, stochastic transport, and gauge-invariant cosmological perturbations for a charged fluid at finite chemical potential. Energy-charge susceptibilities determine curvature, charge-isocurvature, and cross-correlation amplitudes, while transport sets when each mode leaves equilibrium. For an isolated, adiabatic conformal plasma with conserved charge-to-entropy ratio and power-law diffusion, diffusive freeze-out yields the universal spectrum $\\mathcal P_S(k)\\propto k^3$, with $n_{\\rm iso}=4$, while equal-time local-equilibrium curvature-isocurvature covariance vanishes in the conformal source basis. Thus neither finite chemical potential nor replacing Hubble crossing by diffusion crossing alone yields approximate scale invariance. We evade this obstruction with an open subsystem of massless Dirac fermions during a sourced quasi-de Sitter phase. There, grand-canonical energy cumulants generate a nearly scale-invariant red curvature spectrum. A benchmark gives $\\mathcal P_{\\zeta_X}(k_\\star)=2.10\\times10^{-9}$ and $n_s(k_\\star)=0.9649$, stays within $0.30%$ of the fitted power law over $0.002\\leq k/k_\\star\\leq4$, and predicts weak negative running and small positive intrinsic non-Gaussianity from higher-order cumulants, $f_{\\rm NL}(k_\\star)\\simeq0.106$ and $g_{\\rm NL}(k_\\star)\\simeq0.0158$. With a two-helicity vacuum tensor spectrum, the tensor-to-scalar ratio is $r_{t/s}(k_\\star)=1.82\\times10^{-4}$. This isolates the limitation of isolated conformal thermal seeding and the open-system ingredient needed to overcome it. Thermal energy-charge fluctuations thus provide a calculable source of realistic scalar correlations, while reservoir dynamics, equilibration, and later curvature-isocurvature transfer must come from a microscopic model.",
+   "authors": "Anish Ghoshal, Anupam Mazumdar, Bart{\\l}omiej Sikorski",
+   "id": "2609.24998",
+   "version": "2609.24998",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Sourced Gravitational Radiation in Parity-Violating Tetrad Gravity",
+   "link": "https://arxiv.org/abs/2609.22396",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.22396v1 Announce Type: new Abstract: We study linear gravitational modes, sourced far-zone fields, and quadratic energy balance in a four-parameter tetrad theory of gravity. The theory contains three parity-even torsion invariants and a parity-odd coupling $v^\\mu a_\\mu$, where $v_\\mu$ and $a_\\mu$ are the vector and axial torsion components. Linearizing around Minkowski spacetime and applying a scalar--vector--tensor decomposition, we find two tensor, two scalar, and four vector degrees of freedom in the generic nondegenerate parity-violating region. The tensor and scalar modes propagate at the speed of light, while the two vector branches have coupling-dependent propagation speeds. We derive their kinetic eigenvalues, characteristic speeds, and flux normalizations. An exact trace identity shows that the vector Hamiltonian is not positive definite in the generic branch, even when the kinetic eigenvalues are positive and the propagation speeds are real. We also derive the response to a general compact canonical source and obtain explicit source-to-amplitude relations for all eight linear polarizations. The field $V_\\mu=\\partial^\\nu B_{\\nu\\mu}$ is used to illustrate intrinsic-spin multipoles. {We further prove that the quadratic Noether current equals the second-order M{\\o}ller current for the chosen first-derivative tetrad Lagrangian and derive the corresponding mode-resolved energy and momentum fluxes.} The vector contribution remains a formal signed response because of the unbounded Hamiltonian. The stationary limit reproduces the results of Ref.~\\cite{ShirafujiNashed1997}, and a representative parameter scan illustrates vector-mode splitting and kinetic degeneracy.",
+   "authors": "G. G. L. Nashed",
+   "id": "2609.22396",
+   "version": "2609.22396",
+   "kscore": 9,
+   "ktags": [
+    "自由度/稳定性",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Modified Gravity Framework for the Woods-Saxon Inflation: Theoretical Foundations and Observational Constraints",
+   "link": "https://arxiv.org/abs/2609.22933",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.22933v1 Announce Type: new Abstract: We investigate an inflationary scenario within a modified gravity theory that extends the Einstein-Hilbert action through a non-minimal coupling between the inflaton $\\phi$ and the trace of the energy-momentum tensor $T$. This $f(\\phi)T$ framework is designed to naturally recover the standard general relativity in the post-inflationary universe. Within this theory, we apply the Woods-Saxon potential. The slow-roll dynamics yields a luminal sound speed $c_s^2=1$ for our specific choice of the coupling function. For the model parameters $a \\lesssim 1$ and the modest coupling $\\beta=0.1$, we obtain a scalar spectral index $n_s\\approx0.959$--$0.966$ and a tensor-to-scalar ratio $r<0.01$, which reveal a good agreement with the latest Planck and BICEP/Keck data on the $(n_s, r)$ constraints. Crucially, we shall demonstrate that the $f(\\phi)T$ coupling is essential for the observational viability of the model with respect to the CMB two-point statistics. This work establishes a viable inflationary scenario within the scope of the inflationary observables which are considered here.",
+   "authors": "Feyzollah Younesizadeh, Davoud Kamani, Younes Younesizadeh",
+   "id": "2609.22933",
+   "version": "2609.22933",
+   "kscore": 8,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Observational Features of Nonsingular Rotating Black Holes in the Dark-Energy Dominated Universe",
+   "link": "https://arxiv.org/abs/2609.24926",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24926v1 Announce Type: new Abstract: Recent DESI baryon acoustic oscillation measurements, combined with cosmic microwave background and type-Ia supernova data, suggest that dark energy may evolve with cosmic time. Along a cosmological background, an evolving dark-energy density can be expressed locally as a function of a monotonic curvature invariant, motivating an effective curvature-dependent cosmological term. Moreover, quantum field theory in curved spacetime and approaches to quantum gravity with running gravitational couplings provide complementary motivations for exploring such a term. Here we study how the phenomenology of nonsingular rotating black holes embedded in a Universe dominated by dark energy can differ substantially from that of the Kerr and Kerr--de Sitter geometries. The problem is directly formulated in phase space using a null geodesic super-Hamiltonian and a Mino-type parameter. The shadows of the black holes are calculated by backward ray tracing from a zero-angular-momentum observer. We define and analyze a comprehensive set of standard shadow observables, characterizing the size, shape, and displacement of the shadow. We show that the area of the shadow and its vertical diameter provide particularly clear signatures of a running cosmological term. In this way, joint analyses of multiple strong-field observables and of several black holes with different masses and spins could provide a realistic route to tightly constraining, or potentially measuring, the effective regularization scale behind the running of the cosmological term and statistically distinguishing the non-singular black hole geometry from Kerr/Kerr-dS solutions.",
+   "authors": "Ramon Torres",
+   "id": "2609.24926",
+   "version": "2609.24926",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Spin-curvature effects in slowly rotating black hole spacetime",
+   "link": "https://arxiv.org/abs/2609.24364",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24364v1 Announce Type: new Abstract: We investigate the spin-curvature interaction for a massive spin-1/2 quantum particle in a slowly rotating black hole spacetime. In contrast to the flat Minkowski space, the curved spacetime introduces non-trivial spin connections into the Dirac equation due to the direct curvature-spin interaction. The force arising from this non-trivial spin-curvature coupling makes the particle deviate from its geodesics. We first calculate the tetrads in the co-moving frame of the particle in the slowly rotating black hole background. We then compute the components of the relativistic quantum force, arising from the spin-curvature interaction, using these co-moving tetrads up to linear order in the rotation parameter ($a$) of the black hole. The procedure of computing the force is based on the WKB approximation and the Gordon decomposition method for the Dirac probability four current. Our results show that the rotation parameter modifies the magnitude of the force by introducing a term that decays more rapidly with radial distance than the force magnitude in a static spherically symmetric Schwarzschild black hole spacetime.",
+   "authors": "Arpita Jana, Subhajit Mazumdar, Sunandan Gangopadhyay",
+   "id": "2609.24364",
+   "version": "2609.24364",
+   "kscore": 8,
+   "ktags": [
+    "背景相关",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Do gravitational waves assist the genuine tripartite entanglement harvesting?",
+   "link": "https://arxiv.org/abs/2609.24428",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24428v1 Announce Type: new Abstract: We investigate the harvesting of genuine tripartite entanglement by three linearly arranged Unruh-DeWitt detectors locally coupled to a massless scalar field in a gravitational wave background. We show that gravitational waves play a dual role in entanglement harvesting, either enhancing or suppressing the harvested entanglement depending on the system parameters. In particular, genuine tripartite entanglement exhibits a pronounced nonmonotonic response to the gravitational wave frequency, characterized by successive suppression, enhancement resembling resonance, and renewed suppression, while approaching its corresponding value in Minkowski spacetime in the regime of high frequencies. Its dependence on the detector separation is also nonmonotonic, displaying local enhancement peaks that are absent in the corresponding bipartite entanglement behavior. Compared with bipartite entanglement, genuine tripartite entanglement therefore exhibits a higher sensitivity to gravitational wave perturbations in both the frequency and spatial domains. These results suggest that genuine tripartite entanglement may provide a sensitive quantum probe of spacetime perturbations induced by gravitational waves.",
+   "authors": "Xiang-Yue Yu, Xiao-Li Huang, Shu-Min Wu",
+   "id": "2609.24428",
+   "version": "2609.24428",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Toroidal Charged AdS Branes and Deformed Toda Equations",
+   "link": "https://arxiv.org/abs/2609.23079",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.23079v1 Announce Type: new Abstract: We show that the equations of motion for magnetically charged $p$-branes in $(n+p+2)$-dimensional AdS reduce to coupled one-dimensional Toda-type equations, and use this structure to construct static toroidal black branes with $T^n$ symmetry and $p$ translation-invariant directions. In the pure-Maxwell case we obtain an exact $\\sinh$ solution--a $(p+2)$-dimensional black brane times an $n$-torus, asymptotically $\\mathrm{AdS}_{p+2}\\times T^n$--whose dilatonic analogue, with a scalar coupled through $e^{a\\phi}$, has a running torus modulus and a non-trivial dilaton. A perturbative expansion reduces the linearized system to a pair of P\\\"oschl-Teller equations, one elementary and one solved by associated Legendre functions of non-integer degree, so that the general solution is non-elementary; at weak coupling $\\epsilon=a^2$ we construct the $O(a^2)$ backreaction explicitly. From the surface gravity, horizon area, and holographic renormalization we obtain the Hawking temperature, entropy density, and mass density, verifying the first law $d\\mathcal{M}=T_H\\,ds$ and the traceless conformal stress tensor of the dual $(p+1)$-dimensional theory. At $O(a^2)$ the first law persists, but the dilaton source shifts the Stefan-Boltzmann exponent to $p_{\\rm eff}=p+a^2/2$, breaking the clean power law $s\\propto T_H^p$ while the normalizable dilaton hair decouples from the entropy.",
+   "authors": "Sangheon Yun",
+   "id": "2609.23079",
+   "version": "2609.23079",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Theory of Gravity as Theory of Local Inertial Frames",
+   "link": "https://arxiv.org/abs/2609.22354",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.22354v1 Announce Type: new Abstract: It is proved that the affine theory of the full Riemann tensor constitutes the extended theory of gravity. The fundamental object here is a spacetime symmetric connection. Its physical interpretation is that of a field of local inertial frames. In this approach, gravity arises, in a natural way, as a local version of Newton's First Law. A variational formulation of the theory is presented, based on the results introduced in the article co-authored by the present author and one of the supervisors. The general framework is supported by several examples. A central result of the dissertation is the transition from the affine picture to the metric picture. A simplified version of this procedure -- valid for a specific class of Lagrangians. It was proved there that the non-metricity in the affine picture can be interpreted as a matter field in the metric picture. This is precisely Hermann Weyl's interpretation of electromagnetism. Here, the transformation from the full Riemann tensor theory to the conventional metric theory is examined in full generality for the first time and illustrated using the previously introduced examples.",
+   "authors": "Bart{\\l}omiej B\\k{a}k",
+   "id": "2609.22354",
+   "version": "2609.22354",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Bi-scalar-tensor theory: a spatially covariant gravity approach",
+   "link": "https://arxiv.org/abs/2609.23704",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.23704v1 Announce Type: new Abstract: We propose a novel method for constructing ghost-free multi-field higher-derivative scalar-tensor theories. The idea is to start from spatially covariant gravity and couple it to an additional scalar field. The resulting spatially covariant scalar field theory can be understood as a bi-scalar-tensor theory in the unitary gauge of one scalar. Within a broad class in which metric velocities enter through the extrinsic curvature and the additional scalar enters through temporal derivatives up to second order, we perform a Hamiltonian constraint analysis. We show that the theory generally propagates five physical degrees of freedom (DOFs), i.e., two tensor modes and three scalar modes. One of the scalar modes is the unwanted mode associated with the additional scalar. We then derive a degeneracy condition and an additional consistency condition. When both conditions hold, the unwanted mode is eliminated and the theory propagates four degrees of freedom. The resulting theories fall into two cases, depending on whether the preservation of the tertiary constraint closes without a new constraint or generates a quaternary constraint. We also study the two-field disformal transformation, derive its invertibility condition, and express it in the unitary gauge. Our construction provides a systematic approach to constructing bi- and multi-scalar-tensor theories with higher derivatives.",
+   "authors": "Jia-Jun Chen, Xian Gao, Tsutomu Kobayashi",
+   "id": "2609.23704",
+   "version": "2609.23704",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Equivalence of the wave function of the universe in the Einstein and Jordan frames",
+   "link": "https://arxiv.org/abs/2609.23785",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.23785v1 Announce Type: new Abstract: We investigate the question of equivalence between the Einstein and Jordan frames for generic scalar-tensor and $f(R)$ gravity theories in the context of minisuperspace quantum cosmology. We consider, particularly, the minisuperspace of a homogeneous and isotropic universe with the Friedmann-Lema\\^itre-Robertson-Walker metric. We show that the equivalence between the frames depends on the operator ordering scheme of the quantum Hamiltonian: if the quantum theory is covariant under point canonical transformations in the minisuperspace, then the equivalence between the two frames holds. We find that for a large class of operator orderings, including the Laplace-Beltrami operator in the minisuperspace, the wave functions of the universe obtained in the two frames are related by the same transformations that connect the two frames, \\textit{i.e.}, the frames are quantum mechanically equivalent. Further, we show that adding a fluid clock with an arbitrary equation of state parameter $w$ to the system breaks the equivalence, except for the case of a radiation fluid ($w=1/3$). All our arguments are presented at a formal level in both canonical and path integral approaches, and for any scalar-tensor, $f(R)$ theories without assuming any particular model.",
+   "authors": "Vikramaditya Mondal, Sumanta Chakraborty, Soumitra SenGupta",
+   "id": "2609.23785",
+   "version": "2609.23785",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph",
+    "hep-th"
+   ],
+   "title": "Axio-Dilaton Dark Energy: A Dynamical Systems and Bayesian Inference Analysis",
+   "link": "https://arxiv.org/abs/2609.22539",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.22539v1 Announce Type: new Abstract: We initiate a systematic cosmological investigation of an axio-dilaton system governed by a curved field-space metric as generically motivated by supergravity and string compactifications. The scalar sector consists of a light scalar dilaton field evolving along an asymptotically exponential potential and a pseudoscalar field spanning an essentially flat direction, kinetically coupled through an exponential field-space metric. Deviations from the asymptotic regime are incorporated by introducing a generalised Albrecht-Skordis potential containing a polynomial factor. Utilising a dynamical systems approach alongside numerical evolution and Bayesian inference, we constrain the model using Type Ia Supernovae (SNe Ia), Baryon Acoustic Oscillations (BAO) and Planck 2018 distance-prior data. We identify a parameter degeneracy indicating that steeper potentials demand stronger field-space kinetic couplings to sustain late-time cosmic acceleration. Finally, a joint likelihood analysis reveals that while the model successfully accounts for dark energy dynamics, it is only slightly statistically favoured over $\\Lambda$CDM by current observations.",
+   "authors": "Mario Ramos-Hamud, Gabriela Garc\\'ia-Arroyo, Fernando Quevedo, J. Alberto V\\'azquez",
+   "id": "2609.22539",
+   "version": "2609.22539",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Thermal-acoustic fermionic dynamics and primordial perturbations in warm Yukawa inflation",
+   "link": "https://arxiv.org/abs/2609.23029",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.23029v1 Announce Type: new Abstract: We investigate fermion production and its cosmological consequences in a warm inflationary scenario with a Yukawa interaction between the inflaton field and Dirac fermions. Treating the produced fermions as a thermalized relativistic fluid, we derive the coupled perturbation equations incorporating dissipative effects and thermal fluctuations. By solving the resulting system through Green's function methods, we identify distinct contributions from thermal noise, thermal-acoustic propagation, and higher-order scattering processes to the scalar perturbations. We show that acoustic propagation of fermionic fluctuations becomes significant in the relativistic regime, where the competition between gravitational attraction and Pauli degeneracy pressure allows collective fermionic modes to influence the primordial spectrum. Furthermore, we calculate the fermion number density and acoustic velocity, revealing that strong Yukawa interactions enhance non-adiabatic fermion production and modify the thermodynamic properties of the fermion bath. The sourced scalar and tensor perturbations are calculated, indicating that fermion production can substantially amplify primordial fluctuations, particularly in the strong-coupling regime. Since scalar perturbations receive more efficient enhancement than tensor modes, the tensor-to-scalar ratio is suppressed relative to the standard single-field warm inflation prediction. Our results show that thermalized fermions provide an additional mechanism for modifying primordial perturbations and offer new insights into the role of particle production in warm inflationary cosmology.",
+   "authors": "Xi-Bin Li, Ke Fu, Ya-Ting Wang, De-Tian Zhao, Xiao-Min Zhang",
+   "id": "2609.23029",
+   "version": "2609.23029",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "astro-ph.HE",
+    "hep-ph",
+    "hep-th"
+   ],
+   "title": "Black Holes as Frequency-Dependent Filters of Stochastic Gravitational Waves",
+   "link": "https://arxiv.org/abs/2609.22644",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.22644v1 Announce Type: new Abstract: Black holes ring when perturbed, whereas their response to a stationary gravitational-wave background is a real-frequency scattering problem, not a source of additional quasi-normal-mode lines. We make this standard distinction quantitative by treating a black hole as a frequency-, angle-, and polarization-dependent filter. For an isotropic stationary background around Schwarzschild holes, elastic scattering produces no net monopole signal, so horizon absorption is the only population-level spectral distortion. We calculate this transfer function for Schwarzschild holes in detail, identify its absorptive and phase-delay signatures, and connect the stationary response to the causal ringdown excited by a finite wave packet. We then promote the single-hole result to an angular and polarization transport kernel for a cosmological population. The resulting optical depth is negligible for realistic black-hole populations, including asteroid-mass primordial black holes comprising all dark matter. We then extend the analysis to Kerr holes, for which superradiance allows genuine amplification in selected co-rotating modes, but isotropic incidence and random spin orientations strongly dilute the diffuse signal. Observable effects are therefore more likely in rare, nearby, aligned, rapidly spinning, or transiently illuminated systems than through cumulative cosmological propagation.",
+   "authors": "Sefi Katznelson, Aidan Minger, Stefano Profumo",
+   "id": "2609.22644",
+   "version": "2609.22644",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Probing black holes surrounded by Dust field in Quantum Fluctuation Modified Gravity with twin-peak QPOs",
+   "link": "https://arxiv.org/abs/2609.22874",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.22874v1 Announce Type: new Abstract: We study a static, spherically symmetric black hole solution surrounded by a dust field within quantum fluctuation modified gravity, in which the quantum-fluctuation parameter $\\alpha$ and the dust-field strength parameter $K$. The horizon structure reveals the two parameters acting in opposite directions: strengthening $K$ draws the inner and outer horizons together until they merge into a single extremal horizon, while a larger $\\alpha$ restores the Schwarzschild limit; the same opposing trend extends to the effective potential and the characteristic circular-orbit radii -- the innermost stable circular orbit, the marginally bound orbit, and the marginal circular orbit -- which shift inward with $K$ and outward with $\\alpha$, and to the Keplerian and radial epicyclic frequencies of massive test particles. From these frequencies we build three twin-peak quasi-periodic oscillation models -- relativistic precession, warped-disk, and epicyclic-resonance -- along with their $3{:}2$, $4{:}3$, and $5{:}4$ resonance radii, all following the same $K$-$\\alpha$ trend. Testing all three models against twin-peak QPO data from two stellar-mass (GRO~J1655$-$40, XTE~J1550$-$564) and two intermediate-mass (M82~X$-$1, NGC~1313~X$-$1) sources through a Markov Chain Monte Carlo analysis places best-fit constraints, at the $2\\sigma$ level, of $K\\in(0,0.5)$ and $\\alpha\\in(0.3,0.6)$ across all sources and models.",
+   "authors": "Kamola Shermatova, Qodir Badalov, Abubakir Shermatov, Javlon Rayimbaev, Bekzod Rahmatov, Shokhzod Jumaniyozov, Dilafruz Xujanova, Farhod Nuraliev",
+   "id": "2609.22874",
+   "version": "2609.22874",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "physics.ins-det"
+   ],
+   "title": "Analytical estimates of core optics stray light noise and design requirements for ground based gravitational wave detectors",
+   "link": "https://arxiv.org/abs/2609.25003",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.25003v1 Announce Type: new Abstract: We present an analytical framework to translate detector sensitivity into stray light requirements for the core optics region of ground based gravitational wave interferometers. We derive analytical estimates for several relevant scattering regimes, extend the treatment to collections of planar baffles, and obtain an analogous requirement for deterministic ghost beams intercepted by beam dumps. The framework is intended to provide conservative design requirements before a complete optical layout is available. We apply it to Cosmic Explorer to show how these estimates can be used to derive requirements for next generation detectors. The resulting expressions provide a compact set of tools for stray light budgeting and early design studies in current and future gravitational wave detectors.",
+   "authors": "M. Andr\\'es-Carcasona, M. Evans",
+   "id": "2609.25003",
+   "version": "2609.25003",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "nucl-th"
+   ],
+   "title": "Spin density from second order transport in fluids",
+   "link": "https://arxiv.org/abs/2609.23399",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.23399v1 Announce Type: new Abstract: We study the hydrodynamics of a charged fluid with spin degrees of freedom. We argue that, in a conformal field theory in 3+1 dimensions, the spin density is related to a linear combination of standard second-order transport coefficients, and an additional term quadratic in the gauge- and mixed gauge-gravitational anomaly coefficients. We compute the spin density in several free and holographic theories and compare the results.",
+   "authors": "Domingo Gallegos, Roi Klein, Amos Yarom",
+   "id": "2609.23399",
+   "version": "2609.23399",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Saddle-Order Universality in Ensemble-Averaged Black Hole Thermodynamics",
+   "link": "https://arxiv.org/abs/2609.24344",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24344v1 Announce Type: new Abstract: We establish a saddle-order proposition for the ensemble-averaged generalized free energy in reduced Euclidean black hole ensembles. Under regularity and stability assumptions, the leading fluctuation contribution is determined by the order of the first stabilizing term around the dominant saddle. An ordinary critical point is governed by a quartic soft mode, giving a quarter-temperature contribution instead of the familiar half-temperature Gaussian result. We verify this analytically for four-dimensional RN-AdS and Kerr-AdS black holes and map their thermodynamic controls to a common quartic normal form, whose scaling function connects the critical and Gaussian regimes along the zero-field one-well direction. The proposition also extends to coupled collective modes with weighted-homogeneous leading potentials. These results provide a unified description of reduced-ensemble fluctuations through black hole criticality.",
+   "authors": "Ankit Anand, Peng Cheng",
+   "id": "2609.24344",
+   "version": "2609.24344",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "The Gaiotto-Kim Trace Formula and Line Defects",
+   "link": "https://arxiv.org/abs/2609.24582",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24582v1 Announce Type: new Abstract: We study the insertion of 4d half-BPS line defects into the trace formula proposed by Gaiotto and Kim, which computes the ellipsoid partition function of the 3d topological quantum field theory (TQFT) arising from a 4d $\\mathcal{N}=2$ superconformal field theory. This yields a homomorphism to 3d Wilson loops, preserving the fusion algebra of the 4d defects. We also present a systematic algorithm for determining the simple objects of a 3d TQFT in terms of Wilson loops in the UV 3d $\\mathcal{N}=2$ abelian Chern-Simons-matter theory. Utilizing supersymmetric localization, we characterize the modular $S$- and $T$-matrices of the TQFT. We apply our algorithm to various 3d TQFTs arising from the trace formula with higher-power monodromy of the $(A_1,G)$ Argyres-Douglas theories.",
+   "authors": "Sungjoon Kim, Spencer Stubbs",
+   "id": "2609.24582",
+   "version": "2609.24582",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "Gauss--Bonnet running and the de Sitter saddle of quadratic gravity inflation",
+   "link": "https://arxiv.org/abs/2609.24912",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24912v1 Announce Type: new Abstract: Inflation driven purely by the quantum running of the curvature-squared couplings of quadratic gravity was shown to accommodate the high scalar tilt favored by recent cosmic microwave background observations, starting from a Euclidean four-sphere at a maximum of the running $R^2$ coupling. That maximum exists only in one renormalization scheme, and is not stationary once the Euler trace anomaly is included. We show that the standard one-loop running, with the usually neglected Gauss--Bonnet coefficient retained, recovers the missing de Sitter state: the Euler running balances the scale dependence of the $R^2$ term at a unique coupling ratio, giving a de Sitter solution that is stationary for the gravitational constraint and for the compact Euclidean action alike, and whose scalaron potential is an extremely flat hilltop ($m^2/H^2\\simeq-5\\times10^{-10}$) joined to an inverse-linear inflationary plateau. The last $N_*\\simeq50$--$60$ $e$-folds are scheme independent, with scalar tilt $n_s\\simeq1-4/(3N_*)$, while the tensor-to-scalar ratio, $r$, is set by the number of matter fields that enhance the running. The current tensor bound excludes pure gravity and sets a minimum matter content, some $4\\times10^6$ conformally coupled scalars or $3\\times10^5$ vectors---$2.6$ times fewer than the momentum-induced scheme requires---while one-loop control to the end of inflation sets a maximum about ten times higher. Across that window the model predicts $r\\gtrsim0.008$ with $0.973\\lesssim n_s\\lesssim0.978$, within reach of upcoming CMB polarization surveys.",
+   "authors": "Ruolin Liu, Niayesh Afshordi",
+   "id": "2609.24912",
+   "version": "2609.24912",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Probing modified gravity with galaxy-cluster-lensed gravitational-wave time delays: impact of systematic effects",
+   "link": "https://arxiv.org/abs/2609.24351",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.24351v1 Announce Type: new Abstract: Strongly lensed gravitational waves provide exceptionally precise measurements of relative macroimage arrival times, making their time delays a promising time-domain probe of gravity on galaxy-cluster scales. This precision places stringent demands on the control of lensing systematic effects. We present a proof-of-concept pipeline for constraining a phenomenological modification, $D$, of the galaxy cluster Weyl potential using the macroimage time-delay span of a simulated sample of binary neutron star (BNS) sources and cluster lenses described by a Navarro--Frenk--White cluster halo and a singular isothermal sphere for the brightest cluster galaxy (BCG). Closure tests recover the injected general-relativistic (GR) limit. Adopting a fiducial 5 per cent precision on the reconstructed time-delay span, we assess controlled mis-specifications of the halo mass and concentration, BCG contribution, source and lens positions, redshifts, line-of-sight environment, projected ellipticity and secondary cluster-scale structure. Within the adopted gravity model, neglecting halo ellipticity, secondary cluster-scale structure, cluster mis-centring and line-of-sight perturbations can induce significant, strongly configuration-dependent biases in the inferred parameter $D$. Biased estimates of the cluster halo mass and concentration, as well as systematic BNS source-position errors at the level considered here, produce significant coherent shifts. By contrast, uncertainties in the BCG contribution and in the lens and source redshifts are comparatively subdominant. These results highlight the need for explicit treatment of the above uncertainties before cluster-lensed gravitational wave time delays can be used as precision tests of gravity.",
+   "authors": "Eleni Tsaprazi, Ettore Delpogetto, Federico Marulli, Amandine M. C. Le Brun",
+   "id": "2609.24351",
+   "version": "2609.24351",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
