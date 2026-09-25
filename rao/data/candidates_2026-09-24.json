@@ -1,0 +1,223 @@
+{
+ "listing_date": "2026-09-24",
+ "no_update": false,
+ "total_new_unseen": 33,
+ "passed_prefilter": 11,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Pulsar magnetospheres in dynamical Chern-Simons gravity: deathline conditions and polar-cap particle acceleration",
+   "link": "https://arxiv.org/abs/2609.28428",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.28428v1 Announce Type: new Abstract: The role of surface gravity in neutron stars (NSs) is considerable in the radiation mechanisms of the surrounding plasma magnetosphere near the star surface, as they are highly magnetized, compact gravitating objects with compactness $M/R \\simeq 0.2$. In this context, they serve as a celestial laboratory for testing gravity theories that dominate the stars' exteriors through plasma magnetospheric radiation. In this paper, we examine how dynamical Chern-Simons (dCS) gravity modifies pulsar electrodynamics in the slow-rotation, weak-coupling regime; the leading-order correction affects only the off-diagonal metric component $g_{t\\phi}$, while the diagonal components remain as in General Relativity (GR). We first solve the Maxwell equations in the dCS framework for the electromagnetic field components and obtain analytical solutions for the electric and magnetic fields. We show that the magnetic field components are the same as in GR, while the electric field components are modified in dCS. We then derive analytic expressions for the induced electric charge density, known as the Goldreich-Julian (GJ) charge density, which sources the induced electric field arising from the magnetic field and the star's rotation. In dCS, it is larger than in the GR case, whereas the accelerating electric field parallel to the magnetic field lines is weaker. Next, we consider the deathline condition for switching off electron and positron radiation via inverse Compton scattering in the star's polar cap zone and show that the line shifts upward in the $P-\\dot{P}$ diagram, explaining the physics of shorter-lived pulsars. Lastly, we study charged-particle acceleration in the polar cap region and show that electrons reach higher energies over shorter distances than in the GR case.",
+   "authors": "Sherzod Sayfiyev, Bobomurat Ahmedov, Chengxun Yuan, Javlon Rayimbaev, Bahodir Ahmedov, Asadbek Shermanov",
+   "id": "2609.28428",
+   "version": "2609.28428",
+   "kscore": 10,
+   "ktags": [
+    "宇称破缺/双折射",
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "math.QA"
+   ],
+   "title": "Maximal Total Quantum Dimension at Bounded Rank in Dijkgraaf-Witten Theories",
+   "link": "https://arxiv.org/abs/2609.26914",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.26914v1 Announce Type: new Abstract: We investigate the maximal total quantum dimension at a bounded categorical rank cutoff $R$ in three-dimensional Dijkgraaf--Witten theories. This optimization problem physically governs the maximal state-optimized torus topological entanglement entropy at a fixed torus ground-state degeneracy, while providing a quantitative constraint on the search space required to classify these topological order phases. We analyze how topological twists (3-cocycles) and gauge-group structures independently govern this trade-off. For elementary-Abelian gauge groups at a fixed prime $p$, we prove that introducing cocycle twists elevates the maximum total quantum dimension from square-root growth $\\Theta_p(R^{1/2})$ to linear growth $\\Theta_p(R)$ in the rank cutoff, driven by the geometric protection of cyclic holonomies. For untwisted theories, we establish sharp envelopes for symmetric and alternating gauge groups, and derive group-theoretic bounds across almost-simple, solvable, and radical-free families. In particular, almost-simple groups and their direct products obey a quadratic-logarithmic upper envelope: $\\log\\mathcal{D} = O((\\log R)^2)$. Finally, we compare these scales against WZW models and discuss the status of the general quadratic-logarithmic envelope conjecture.",
+   "authors": "Ce Shen",
+   "id": "2609.26914",
+   "version": "2609.26914",
+   "kscore": 10,
+   "ktags": [
+    "引力热力学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Entropy applications in cosmology: spacetime thermodynamics, holographic dark energy, entropic gravity and beyond - a review",
+   "link": "https://arxiv.org/abs/2609.28331",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.28331v1 Announce Type: new Abstract: Entropy has emerged as a key concept at the intersection of gravity, quantum theory, and cosmology, revealing deep connections between geometry, information, and thermodynamics. The realization that black holes are thermodynamic systems, characterized by an entropy proportional to their horizon area, has provided evidence that spacetime itself may possess a microscopic structure. Since then, entropy has acquired a central role across quantum field theory, holography, quantum gravity, and cosmology. In this review, we present a unified account of entropy in gravitational and cosmological contexts. We first survey entropy in gravitational systems, focusing on black-hole thermodynamics, entropy bounds, the holographic principle, entanglement entropy, and the area law, together with the main corrections and generalizations arising from quantum field theory, generalized uncertainty principles, modified statistics, and extended theories of gravity. We then discuss three conceptually distinct ways in which entropy is employed in cosmology. The first is through the spacetime-thermodynamics conjecture, in which gravitational dynamics emerge from thermodynamic relations applied to cosmological horizons, and generalized entropy forms consequently lead to modified cosmological evolution. The second is the holographic approach, in which entropy bounds constrain the vacuum energy of the Universe, giving rise to the holographic dark energy scenario and its various extensions. The third is entropic gravity, where gravity is interpreted as an emergent phenomenon of entropic origin, leading to interesting cosmological phenomenology. By reviewing the theoretical foundations and cosmological implications of these entropic frameworks, we aim to clarify the role of entropy, discuss open issues and outline directions toward a deeper thermodynamic and informational understanding of gravity and cosmology.",
+   "authors": "Emmanuel N. Saridakis, Giuseppe Gaetano Luciano, Andreas Lymperis, Eirini C. Telali",
+   "id": "2609.28331",
+   "version": "2609.28331",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Mass inflation or scalaron rigidity: Cauchy horizons in metric f(R)",
+   "link": "https://arxiv.org/abs/2609.27889",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.27889v1 Announce Type: new Abstract: We develop a double-null framework for Cauchy-horizon dynamics in metric $f(R)$ gravity that separates ordinary mass inflation from scalaron cancellation and genuine escape from the blueshift instability. Starting from the exact spherical Hawking-mass transport equation, we show that a regular nondegenerate Cauchy horizon undergoes mass inflation whenever the effective longitudinal source is eventually nonnegative, uniformly dominates the mixed channel, and has a divergent blueshift-weighted integral. Hence bounded mass requires sufficiently strong blueshift-integrable suppression of this source or an independent competing channel. We then analyze the weaker branch in which the scalaron cancels only the leading Price-tail contribution. Under non-cancelling transverse and trace asymptotics, this forces $|R|\\to\\infty$ and an asymptotically linear high-curvature theory, $f(R)/R\\to F_->0$, where $F_-\\equiv\\lim_{v\\to\\infty}f_R$. The curvature coefficient is fixed explicitly by the transverse asymptotics. For regular model classes with a finite high-curvature $f_{RR}$ limit one obtains $f_{RR}\\to0$. More sharply, every eventually viable branch with $f_{RR}>0$ is forced to $R\\to-\\infty$ and $\\Lambda_\\infty>-1$; the standard scalaron mass parameter then diverges, while an additional differentiable rate condition yields $m_{\\rm sc}^2\\sim F/(3f_{RR})\\to+\\infty$. In the Einstein frame the scalaron null kinetic contribution is nonnegative, so the Jordan-frame cancellation cannot be interpreted as negative scalaron null energy. The result is a local rigidity classification rather than a global theorem of strong cosmic censorship.",
+   "authors": "Francisco S. N. Lobo, Maickol Mu\\~noz-Palma, Francisco Tello-Ortiz",
+   "id": "2609.27889",
+   "version": "2609.27889",
+   "kscore": 9,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Conserved charges and the first law of black holes for field dependent symmetry generators in the covariant phase space formalism",
+   "link": "https://arxiv.org/abs/2609.27454",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.27454v1 Announce Type: new Abstract: In this paper, we generalize the covariant phase space formalism conjugate to field dependent vectors to include internal gauge transformations when gauge fields are present. In our formalism, the symmetry generators are combination of diffeomorphisms plus internal gauge transformations and depend on the field configuration. When the field dependence of the symmetry generators is considered in the covariant phase space formalism, the first law of black hole thermodynamics is a direct result for generally invariant gravitational theories. To check the validity of our formalism, we investigate the conserved charges and the first laws of thermodynamics for a torus-like black hole in Einstein-Maxwell theory and a charged Einstein-Euler-Heisenberg AdS black hole in Einstein-Euler-Heisenberg nonlinear electrodynamics.",
+   "authors": "Hai-Feng Ding",
+   "id": "2609.27454",
+   "version": "2609.27454",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-ph",
+    "hep-th"
+   ],
+   "title": "On the Modes at the Schwarzschild Black Hole Horizon",
+   "link": "https://arxiv.org/abs/2609.27920",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.27920v1 Announce Type: new Abstract: We discuss the origin of the modes appearing at the Schwarzschild black hole horizon and decaying at integer multiples of the surface gravity. We argue that no excitations generated at the horizon by the plunging of a particle into a black hole can leave it. Our argument is based on the fact that, when the particle approaches the horizon, its speed is necessarily boosted to ultra-relativistic values and its near-horizon gravitational field becomes a Dray-'t Hooft shockwave, which is an exact, nonanalytic, and nonperturbative solution of Einstein's equations. The corresponding metric perturbations are localized at the horizon and can never reach a distant observer.",
+   "authors": "Dimitrios Giataganas, Alex Kehagias, Antonio Riotto",
+   "id": "2609.27920",
+   "version": "2609.27920",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Evolution dynamics of spinning binaries in effective-one-body theory to fifth Post-Minkowskian order",
+   "link": "https://arxiv.org/abs/2609.27251",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.27251v1 Announce Type: new Abstract: This paper investigates a self-consistent effective-one-body (EOB) theory developed to describe the dynamics of spinning binary systems. We systematically derive, using field-theoretic principles, all expressions and quantities entering Hamilton's equations, which govern the dynamical evolution of the system. Based on the effective rotating metric up to fifth post-Minkowskian (PM) order recently obtained by us, we construct the Hamiltonian and the stress-energy tensor. We then derive a decoupled, separable Teukolsky-like equation with a source term for the Newman--Penrose Weyl scalar $\\psi_4^B$ and present its formal solution. Finally, using this solution, we obtain the energy flux, radiation-reaction force, and gravitational waveforms for the ``plus'' and ``cross'' polarizations generated by spinning binaries. The EOB theory applies to systems with arbitrary mass ratio, which filling the gap between comparable mass ratios and extreme mass ratios.",
+   "authors": "Jiliang Jing, Sheng Long, Weike Deng, Jieci Wang",
+   "id": "2609.27251",
+   "version": "2609.27251",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Evolution and disruption of circular orbits during dynamic black hole scalarization",
+   "link": "https://arxiv.org/abs/2609.27539",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.27539v1 Announce Type: new Abstract: Dynamical black hole scalarization describes the process by which a ``no-hair\" black hole transitions to a scalarized hairy state. This transition significantly alters the spacetime geometry, including the structure of stable circular orbits of the test particles, which are critical for astrophysical observations and tests of gravity. In this work, we employ numerical relativity simulations to model the time-dependent evolution of a vacuum black hole undergoing scalarization. By evolving timelike geodesic equations within the dynamically changing spacetime background, we investigate how the scalarization process impacts initially stable circular orbits. Our results reveal that the growth of the scalar hair destroys the circular nature of these orbits, forcing them to either become eccentric or plunge into the black hole. This orbital destabilization arises from the rapid change of spacetime curvature induced by the scalar field. Our findings provide novel insights into the interplay between scalar fields and black hole dynamics, with significant implications for gravitational-wave signatures, accretion disk stability, and observational tests of extended theories of gravity.",
+   "authors": "Yu-Peng Zhang, Shao-Wen Wei, Yu-Xiao Liu",
+   "id": "2609.27539",
+   "version": "2609.27539",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "math-ph",
+    "math.GT",
+    "math.MP",
+    "math.QA"
+   ],
+   "title": "Geometries of Quantum Field Theories",
+   "link": "https://arxiv.org/abs/2609.28210",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.28210v1 Announce Type: new Abstract: This is an English translation of a book originally published in Japanese by Saiensu-sha in 2015. The book is an introduction to the 3d-3d correspondence, the relation between 3d $\\mathcal{N}=2$ supersymmetric gauge theories and the geometry of 3-manifolds, which arises from the compactification of the 6d $\\mathcal{N}=(2,0)$ theory. The presentation is bottom-up rather than top-down: instead of starting from the 6d theory, we begin by asking what a quantum field theory is, and let the geometry emerge on its own. Along the way we discuss renormalization and low-energy effective theories, gauging as an operation which glues field theories together, the resulting $Sp(2n, \\mathbb{Z})$-action on 3d theories, 3d $\\mathcal{N}=2$ supersymmetric theories and their dualities, the squashed three-sphere partition function and supersymmetric localization, duality domain walls of 4d $\\mathcal{N}=2$ theories, quantum Teichmuller theory, complex Chern-Simons theory and the quantization of the moduli space of flat $SL(2, \\mathbb{C})$-connections on 3-manifolds, with quantum dilogarithm functions as a recurring thread. The emphasis throughout is on geometric and algebraic structures which are invisible in a single field theory, and appear only in the theory space of quantum field theories. Appendices summarize supersymmetry in various dimensions, classical and quantum dilogarithm functions, and cluster algebras. Exercises with difficulty ratings are included in each chapter.",
+   "authors": "Masahito Yamazaki",
+   "id": "2609.28210",
+   "version": "2609.28210",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "title": "Fermionic cosmic strings in dynamical Chern-Simons gravity",
+   "link": "https://arxiv.org/abs/2609.28421",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.28421v1 Announce Type: new Abstract: We investigate topological defects produced by a chiral phase transition in a fermionic ultraviolet completion of dynamical Chern-Simons (dCS) gravity. The model contains a complex scalar field with a chiral Yukawa coupling to fermions. Below the chiral symmetry breaking scale, integrating out the gapped bulk modes produces a gravitational Chern-Simons coupling which, we argue, modifies cosmic string solutions from the phase transition. The resulting corrected string metric is supported by a generalization of the Callan-Harvey fermionic zero mode solution, in which the null current generated by these zero modes provides a mechanism for parity violation. In the weak-coupling and weak-gravity regime, we derive the leading order-reduced dCS correction to this exterior metric. We also discuss the effective action description for generic string configurations in dCS gravity. The gravitational Pontryagin term provides the anomaly inflow required to cancel the gravitational anomaly of the chiral worldsheet theory.",
+   "authors": "Stephon Alexander, Heliudson Bernardo, Shengyuan Zhang",
+   "id": "2609.28421",
+   "version": "2609.28421",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "astro-ph.GA"
+   ],
+   "title": "The Lumina Project: Morphology of Ionized Bubbles and Neutral Islands",
+   "link": "https://arxiv.org/abs/2609.28390",
+   "announce_type": "new",
+   "abstract": "arXiv:2609.28390v1 Announce Type: new Abstract: The Epoch of Reionization is characterized by the nucleation, expansion, and percolation of ionized bubbles in the intergalactic medium. Interpreting emerging multi-wavelength observations from facilities such as JWST and next-generation 21 cm interferometers requires a detailed theoretical understanding of the 3D morphology of these HII regions and of the residual neutral structures that survive near the end of reionization. We analyze the geometry and physical properties of ionized bubbles and late-time neutral islands in the large-volume 500 Mpc$^3$ radiation-hydrodynamics simulation Lumina. We identify discrete structures with a 3D watershed method and measure their volumes, shape tensors, and internal gas properties. The volume-weighted bubble size distributions evolve substantially across the EoR: characteristic radii shift from Reff~1 cMpc at z>10 to Reff>100 cMpc by z< 6, while watershed-derived sizes exceed line-of-sight mean-free-path measurements by roughly a factor of 3 at intermediate redshifts. The bulk bubble population is predominantly prolate through most of the EoR. By z~6, however, the volume-weighted distribution of the triaxiality parameter T, which distinguishes flattened from elongated structures, becomes bimodal in the fiducial segmentation, with a sharp oblate peak near T~0.25 associated with a small number of very large bubbles during late percolation. The properties of bubble interiors are consistent with inside-out reionization, with median gas overdensities within bubbles decreasing from $\\delta$~1 at z=15 toward the cosmic mean by z=6. Beyond a minimum near the resolution scale, the median internal UV radiation energy density increases with bubble size. The residual neutral islands at z< 6 peak in volume-weighted size near Reff~10 cMpc and remain predominantly prolate, consistent with anisotropic residual neutral structure near the end of reionization.",
+   "authors": "Meredith Neyer, Aaron Smith, Ali Sadain, Oliver Zier, Mark Vogelsberger, Teodora-Elena Bulichi, Xuejian Shen, Sonja M. Koehler, Volker Springel, Rahul Kannan, Rongrong Liu, Lars Hernquist, Changhyun Cho",
+   "id": "2609.28390",
+   "version": "2609.28390",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  }
+ ],
+ "errors": []
+}
