@@ -1,0 +1,217 @@
+{
+ "listing_date": "2026-10-02",
+ "generated_at": "2026-10-03T10:24:04+08:00",
+ "generator": "deepseek-chat/deepseek-chat",
+ "stats": {
+  "total_new": 60,
+  "candidates": 16,
+  "core": 2,
+  "radar": 6,
+  "keyword": 2
+ },
+ "papers": [
+  {
+   "id": "2610.01254",
+   "title": "Reconstruction of $f(Q)$ Gravity from Geodesic Congruence Dynamics: Raychaudhuri Equation",
+   "cn_title": "从测地线汇动力学重构 f(Q) 引力：Raychaudhuri 方程",
+   "authors": "Tuhina Ghorui, Prabir Rudra, Farook Rahaman",
+   "link": "https://arxiv.org/abs/2610.01254",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 8.0,
+   "must_read": true,
+   "one_liner": "以 Raychaudhuri 方程为核心工具反解 f(Q) 函数形式，在常减速参数与常 jerk 假设下得到无需暗能量即可解释加速膨胀的模型。",
+   "cn_summary": "f(Q) 引力（对称远平行引力）的宇宙学重构通常依赖 Friedmann 方程加状态方程假设，而 Raychaudhuri 方程作为测地线汇聚焦/散焦的运动学方程，此前很少被当作重构的主方程。本文的动机是把膨胀标量 θ 与汇的演化直接与标量 Q 挂钩，从而把重构问题从\"能量条件\"层面转到\"运动学\"层面，这在 f(Q) 文献中是一个尚未被系统利用的入口。\n\n方法上，作者在 FLRW 背景中把 Raychaudhuri 方程写成 Q 与运动学量（θ、剪切、加速）的关系，并分别假设常减速参数 q 与常 jerk 参数 j 来封闭方程，反解出显式的 f(Q) 形式。结果显示这些 f(Q) 模型无需额外暗能量分量即可给出观测到的加速膨胀，且在某些参数场景下可延拓到无穷过去以描述早期宇宙。作者进一步检验了广义相对论极限（f(Q)=Q 的恢复条件）、Friedmann 方程一致性以及背景物理可行性（如能量密度正定、有效状态参数范围）。",
+   "cn_review": "【创新点】把 Raychaudhuri 方程而非 Friedmann 方程作为 f(Q) 重构的中心方程，用膨胀标量与汇动力学直接联系 Q，得到可延拓至无穷过去的显式 f(Q) 解，这在 f(Q) 重构文献中属于新路径。\n【局限性】重构完全依赖常减速参数与常 jerk 两个强假设，且只在均匀各向同性 FLRW 背景、纯背景层面进行；摘要未给出扰动稳定性、P-V 临界或联络分支（规则/非规则）的分析，因此所得模型是否物理允许仍只是必要条件。\n【对 Rao 的意义】直接对应 P2（f(Q) 宇宙学 P-V 临界点的物理允许性）与 Q1 的联络分支审计：该文给出的 f(Q) 形式可作为 P2 的候选模型，检验其热力学临界点与稳定性；同时其\"运动学重构\"思路可与 Rao 的视界热力学第一定律重构对照。",
+   "learn": "可借用 Raychaudhuri 方程在 f(Q) 中的具体形式：θ̇ = -θ²/3 - σ² + ω² - R_{μν}u^μu^ν，以及 Q 如何进入聚焦项；注意 f(Q) 中 Raychaudhuri 方程与 Friedmann 方程并非独立，需警惕作者在常 q、常 j 假设下是否隐含了额外约束；另外要核对 f(Q) 的符号约定（Q 的定义与 f_Q 的符号）与 Rao 自己论文中的约定是否一致，避免重构出的 f(Q) 形式在换约定后失效。",
+   "topics": "切入点一：取该文重构出的 f(Q) 形式，代入 Rao 的 P-V 临界点框架，计算其热力学临界温度、临界压力与等温曲线，判断是否满足物理允许性（与 P2 直接衔接），第一步是写出该 f(Q) 对应的 Friedmann 方程并求 H(z)。切入点二：把 Raychaudhuri 重构推广到非规则联络分支，检验常 jerk 假设在非零联络偏移下是否仍能封闭方程（与 Q1 衔接），第一步是写出非规则分支的 Q 表达式并重算 θ̇。"
+  },
+  {
+   "id": "2610.01976",
+   "title": "Trinity of Carrollian Gravity: Dynamically Equivalent Formulations of Magnetic Carrollian Gravity",
+   "cn_title": "Carroll 引力的三位一体：磁 Carroll 引力的动力学等价表述",
+   "authors": "Mehdi Ahmadi-Jahmani, Aliasghar Parvizi",
+   "link": "https://arxiv.org/abs/2610.01976",
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "将几何三位一体推广到 Carroll 几何，证明磁 Carroll 引力的曲率可换成挠率与非度规的动能项，并映射到 fracton 规范理论、Maxwell 电场与 dilaton 理论。",
+   "cn_summary": "Lorentz 几何下的\"几何三位一体\"（曲率、挠率、非度规三种等价描述）已被广泛研究，但 Carroll 极限（c→0）下的退化几何是否也存在类似等价网络尚不清楚。Carroll 引力近年因与 fracton、平坦全息和超局域场论的关联而受关注，磁 Carroll 扇区作为其中约束结构最刚性的一支，其等价表述的缺失是一个明确的空白。\n\n作者利用退化度规上仿射联络的固有自由度，系统放松磁 Carroll 扇区的度规兼容性与零挠率约束，并对修改后的联络施加全局平坦条件，证明磁 Carroll 宇宙的曲率可被动力学地换成挠率与非度规的孤立动能密度。具体地：内禀挠率恢复出电 Carroll 引力作为磁 Carroll 引力的远平行等价；纯空间挠率给出与标量荷 fracton 规范理论磁 Hamiltonian 结构相似的动能项；时间挠率扇区分别独立映射到 U(1) Maxwell 电场与 Carroll-Weyl 共形 dilaton 理论。最后，构造最小非度规的对称远平行 Carroll 联络，证明磁 Carroll 拉氏量在利用联络自由度后动力学等价于超局域各向同性电 Carroll 引力。",
+   "cn_review": "【创新点】首次把几何三位一体范式搬到 Carroll 几何，并给出一个\"几何字典\"：磁 Carroll 引力可映射到非引力理论（fracton 规范理论、Maxwell、dilaton），这与 Lorentz 三位一体只映射到其他引力框架形成本质区别。\n【局限性】分析限于磁 Carroll 扇区与全局平坦联络，未涉及一般 Carroll 联络或含物质耦合的情形；等价性在拉氏量层面建立，未讨论量子层面或边界项对等价性的破坏，也未给出可观测后果。\n【对 Rao 的意义】与 Rao 的 teleparallel/f(Q) 与联络分支研究线相关：该文展示了在退化度规下放松度规兼容性与零挠率如何产生新的等价类，这一\"联络自由度→动力学重分配\"的逻辑可迁移到 Rao 对非规则联络分支的处理；但 Carroll 几何与 Rao 当前 FRW 视界热力学无直接接口，属方法借鉴。",
+   "learn": "可学到退化度规上仿射联络自由度的系统分类方法：度规兼容性、挠率、非度规三个约束的放松如何对应不同的等价理论；注意 Carroll 极限下时间与空间角色互换导致\"时间挠率→Maxwell 电场\"这类映射，与 Lorentz 情形直觉相反；需警惕 Carroll 几何中\"全局平坦\"条件的含义与 Lorentz 情形不同，以及超局域性对热力学量定义的潜在影响。",
+   "topics": "暂无（Carroll 几何与 Rao 当前 P1-P5/Q1 课题卡无直接接口，若日后拓展到退化几何的视界热力学可再考虑）。"
+  }
+ ],
+ "radar": [
+  {
+   "id": "2610.02004",
+   "title": "Analytic Metric for Rotating Black Holes in Higher-Derivative Gravity",
+   "cn_title": "高阶导数引力中旋转黑洞的解析度规",
+   "authors": "Jierui Hu, Dongjun Li, Nicol\\'{a}s Yunes",
+   "link": "https://arxiv.org/abs/2610.02004",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 6.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "作者把度规重构技术变成解析求解器，在宇称偶立方引力中首次给出耦合线性阶、无需自旋或弱场展开的旋转黑洞解析度规。",
+   "cn_summary": "旋转黑洞是检验引力的关键对象，但在修正引力中直接求解耦合场方程极其困难：即使只加一个高阶曲率项，旋转解也往往只能靠慢转展开或弱场近似得到，无法覆盖近极端自旋与强场区域。因此，能否在不做自旋/弱场展开的前提下构造解析旋转黑洞度规，直接决定了强场检验（如阴影、QNM、吸积）能否在修正引力中可靠进行。\n\n本文把度规重构（metric reconstruction）从数值工具改造为解析求解器：先以已知的 Kerr 背景为种子，将待求度规按耦合常数展开，利用重构方程逐阶反解出度规修正，从而绕开直接求解耦合场方程。作者以宇称偶立方引力（parity-even cubic gravity）为例，构造出耦合线性阶的第一个解析旋转黑洞度规，全程不做自旋展开也不做弱场展开。他们严格验证了该度规满足场方程，并复现了此前独立解析工作给出的视界性质预言，从而确认了方法的自洽性。",
+   "cn_review": "【创新点】此前修正引力中的旋转黑洞解几乎都依赖慢转或弱场展开，本文首次在宇称偶立方引力中给出耦合线性阶、对任意自旋成立的解析旋转度规，并复现了独立的视界性质解析预言，说明重构路线在旋转情形下确实可行。\n\n【局限性】结果只到耦合线性阶，且以 Kerr 为种子，无法捕捉高阶耦合或非微扰效应；方法依赖背景度规可重构这一前提，对一般高阶导数理论（含宇称奇项、多算符混合）的适用性未在摘要中说明。\n\n【对 Rao 的意义】属修正引力黑洞解构造方向，与 Rao 的引力热力学主线（Wald 熵、视界热力学量）有潜在接口：有了解析旋转度规才可能计算修正引力下的视界熵与温度修正。但本文本身不涉及热力学，属现象学/解构造类，方法新意集中在重构技术，与 P1–P5 课题卡无直接竞争。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.00640",
+   "title": "Naked Singularities and Black Hole Thermodynamics from Shadows and Photon Rings in the Quantum Oppenheimer-Snyder Model",
+   "cn_title": "量子 Oppenheimer-Snyder 模型中裸奇点与黑洞热力学的阴影和光子环研究",
+   "authors": "Jose Miguel Ladino, Anuar Idrissov, Carlos E. Romero-Figueroa, Hernando Quevedo",
+   "link": "https://arxiv.org/abs/2610.00640",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "对量子 Oppenheimer-Snyder 时空做薄盘光线追踪与几何热力学分析，发现裸奇点产生中心亮环且其光子环间隙参数偏离 Schwarzschild，可作为观测判据。",
+   "cn_summary": "量子 Oppenheimer-Snyder（qOS）模型是圈量子引力启发下对坍缩星体内部的有效描述，其外部分支可给出带量子修正的黑洞解，也可能出现裸奇点。此前对该模型的研究多集中于度规与奇点结构，其光学外观（阴影、光子环）与热力学性质（相变、比热发散）的对应关系尚不清楚，而这两者恰好是当前黑洞成像观测（EHT）与黑洞热力学交叉的核心议题，因此值得系统刻画。本文通过分析测试粒子运动并对薄吸积盘模型做数值光线追踪，得到 qOS 在黑洞与裸奇点两种情形下的光学特征：量子修正参数增大使表观阴影尺寸减小；qOS 黑洞呈现暗的内阴影，而裸奇点因存在无限排斥性核心势垒产生中心亮环，但仍保留光子环等关键光学特征。作者进一步用半解析方法得到高阶光子环的碰撞参数与间隙参数，与数值结果吻合良好；裸奇点的间隙参数区间偏离 Schwarzschild 情形，给出可操作的观测判据。在黑洞扇区，作者用几何热力学（GTD）方法定位了比热发散点。",
+   "cn_review": "【创新点】把 qOS 时空的光学外观（阴影、光子环、间隙参数）与几何热力学（GTD 比热发散）放在同一框架下讨论，并明确指出裸奇点的间隙参数区间偏离 Schwarzschild，这是相对此前仅讨论 qOS 度规或单一阴影半径工作的实质推进。【局限性】分析基于薄盘吸积模型与测试粒子近似，未考虑吸积物理、等离子体效应与旋转（qOS 为球对称），且 GTD 的比热发散点与光学特征之间的对应关系只是并列陈述，未建立因果联系；摘要中该句在“at the”处截断，热力学结论的完整表述无法核实。【对 Rao 的意义】属修正引力/量子引力启发黑洞的现象学类工作，方法新意有限，但“光子环间隙参数作为偏离 Schwarzschild 的判据”这一思路可迁移到 Rao 关注的修正引力黑洞阴影计算；GTD 与黑洞热力学比热发散的结合与 Rao 引力热力学学习模块中的黑洞化学、P-V 临界有间接关联，可作为几何热力学方法的参考案例。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.00131",
+   "title": "Symmetric Thin-Shell Wormholes from a Regularized String-Cloud Black Hole: Energy Conditions, Multi-Fluid Stability, and Optical Signatures",
+   "cn_title": "正则化弦云黑洞生成的对称薄壳虫洞：能量条件、多流体稳定性与光学特征",
+   "authors": "Zijun Zhong, Jonathan A. Reboucas, Edson Otoniel, Minyong Guo",
+   "link": "https://arxiv.org/abs/2610.00131",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "用Darmois-Israel形式从正则化弦云黑洞构造对称薄壳虫洞，发现所有静态喉部表面能密度为负、违反WEC/DEC，且barotropic壳层普遍不稳定。",
+   "cn_summary": "薄壳虫洞是检验能量条件与稳定性最干净的玩具模型：把两个时空沿时间类超曲面粘合，用Darmois-Israel形式读出表面应力，再判断是否需要奇异物质。此前大量工作基于Schwarzschild或带电/AdS黑洞，但很少考虑带有限曲率核心与弦云渐近的正则化解——这类解本身来自Letelier-Alencar弦云与有理正则化，其径向真空关系会改变壳层上的动量通量，从而影响稳定性判据。\n本文取有理正则化Letelier-Alencar弦云黑洞正失效（positive-lapse）外部的两份拷贝，构造对称薄壳虫洞。用Darmois-Israel形式导出表面应力、能量条件组合、守恒律与有效势；结果显示每个可容许静态喉部的表面能密度均为负，故WEC与DEC被违反，而切向零能量条件及内禀强能量条件仅在内侧采样外部成立。体源的径向真空关系消除了外部动量通量。作者给出密度与半径相关状态方程的通用局部稳定性判据，并应用于五种表面流体模型，在每个静态喉部标定一个参数；在所采样族中barotropic壳层始终不稳定，其他闭合形式可存在参数区间稳定。",
+   "cn_review": "【创新点】把薄壳虫洞的构造从Schwarzschild/RN类背景推广到带有限曲率AdS核心与弦云渐近的有理正则化黑洞，并利用体源径向真空关系消去外部动量通量，给出适用于密度-半径相关EOS的通用局部稳定性判据，对五种表面流体做了系统标定。\n【局限性】结论依赖特定正则化弦云解与对称薄壳假设，未做完整微扰谱或全局稳定性分析；稳定性判据是局部的，且每种EOS只标定一个参数，参数空间覆盖有限；摘要未给出光学特征（阴影、偏折）的定量结果，标题中的光学部分在摘要中未体现。\n【对 Rao 的意义】属修正引力/奇异物质现象学类，方法新意有限，但Darmois-Israel形式与表面能量条件组合的推导方式可作为引力热力学中边界项与表面应力处理的对照参考，与P5（动态热流与协变荷通量）在边界/壳层语言上有间接联系。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.00393",
+   "title": "Quasinormal Modes of Reissner-Nordstr\\\"om Black Holes in Modified Gravity",
+   "cn_title": "修正引力中 Reissner-Nordström 黑洞的准正规模",
+   "authors": "Xia-Tong Tan, Yu Zhang, Zhi-Hong Nie",
+   "link": "https://arxiv.org/abs/2610.00393",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "mimetic/标量-张量",
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "在 STVG 框架下用 6 阶 WKB 加 13 阶 Padé 计算 MOG 黑洞的准正规模，发现 MOG 参数 α 与电荷 Q 均降低衰减率。",
+   "cn_summary": "准正规模（QNM）是黑洞铃宕阶段的可观测指纹，也是检验引力理论偏离 GR 的常用探针。在 GR 中 RN 黑洞的 QNM 谱已被高精度计算，但在标量-张量-矢量引力（STVG/MOG）这类带额外矢量场与标量场的修正理论中，MOG 黑洞的 QNM 谱与波形演化仍缺乏系统结果，尤其是标量、电磁、引力三种扰动在同一背景下的对比。\n\n本文在 STVG 框架下研究 Reissner-Nordström Modified Gravity（MOG）黑洞的 QNM 与时域演化。方法上把 WKB 法从 3 阶推广到 6 阶，并配合 13 阶 Padé 近似提高收敛性，同时用基于光锥坐标的有限差分法得到完整时域波形。结果：增大 MOG 参数 $\\alpha$ 会提高黑洞有效质量，使阻尼率 $|\\omega_I|$ 下降、铃宕衰减变慢；增大电荷 $Q$ 效果类似，在近极端极限下阻尼趋于零。三类扰动中引力场衰减时间最长，电磁场居中，标量场最短。",
+   "cn_review": "【创新点】把高阶 WKB（6 阶）与高阶 Padé（13 阶）组合用于 MOG 黑洞，并同时给出标量、电磁、引力三类扰动的频域频率与时域波形，比此前只做单一扰动或低阶 WKB 的工作更完整，且明确指出 $\\alpha$ 与 $Q$ 对阻尼率的作用方向一致。\n\n【局限性】WKB-Padé 本质是近似方法，未做与数值精确解或连分数法的交叉验证；只处理质量标量、电磁与引力扰动，未涉及有质量场或非最小耦合；背景为静态球对称 RN-MOG，未讨论旋转与吸积环境，因此结论的适用范围限于该特定解。\n\n【对 Rao 的意义】现象学类，方法新意有限，但 QNM 计算流程（高阶 WKB + Padé + 光锥有限差分）可作为工具模板；与 Rao 的 Q1（NYTG 静态球对称分支与无毛条件审计）在“静态球对称修正黑洞解”这一层有交集，可对照其扰动方程与有效势的推导方式。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.01416",
+   "title": "Identifying Exceptional Points in Black Hole Ringdowns",
+   "cn_title": "识别黑洞铃宕中的例外点",
+   "authors": "Zhen-Xiao Zhang, Chen Lan, Yi Wang",
+   "link": "https://arxiv.org/abs/2610.01416",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "提出用时间加权 Jordan 项与劈裂上界识别铃宕波形中的例外点，并指出忽略普通响应会虚假增强 EP 证据。",
+   "cn_summary": "铃宕谱学通过拟合黑洞铃宕阶段的准正规模来探测黑洞动力学，而例外点（EP）作为非厄米系统中本征值与本征矢同时简并的特殊点，被认为能揭示潜在的额外自由度，因此成为近年黑洞铃宕分析的一个新方向。问题在于：实际拟合中 EP 信号与普通共振响应混在一起，如何从有限精度的波形中可靠地判定 EP 是否存在，此前缺乏系统判据。\n\n本文发展了一套识别铃宕中 EP 的流程，核心是引入时间加权的 Jordan 项和一个劈裂上界。当相对 Jordan 激发正比于劈裂时，作者推导出拟合共振中心后劈裂波形与 EP 波形之间距离的六阶表达式；若对相关量施加独立约束，则可恢复到四阶。完整波形分析显示，忽略普通响应项会人为增强 EP 证据，并虚假地收紧劈裂上界。",
+   "cn_review": "【创新点】把 EP 识别从定性讨论推进到带误差阶数的定量判据：给出六阶平方距离公式，并明确“独立约束可恢复四阶”的条件，同时首次指出忽略普通响应会系统性偏置 EP 证据与劈裂上界，这是对已有 EP 拟合文献的一个方法性纠正。\n\n【局限性】分析建立在“相对 Jordan 激发正比于劈裂”这一特定假设上，未讨论该假设失效时的行为；摘要未给出与真实数值相对论波形或 LIGO/Virgo 实际数据的对比，判据在噪声与模型误差下的稳健性未知。\n\n【对 Rao 的意义】同领域参考。EP 与 Jordan 块的形式结构属于非厄米线性系统的一般工具，若 Rao 在 P3（非绝热扰动对视界熵的有限波长响应）中处理模式劈裂与简并，可借鉴其“劈裂—距离阶数”的判据思路，但本文不涉及引力热力学。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.01476",
+   "title": "Closed timelike curves in modified theories of gravity",
+   "cn_title": "修正引力理论中的闭合类时曲线",
+   "authors": "Agnik Sen Roy, Sashideep Gutti, Shailesh Kulkarni",
+   "link": "https://arxiv.org/abs/2610.01476",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "用赤道面 $g_{\\phi\\phi}$ 符号分析三类修正引力旋转时空的 CTC 区域，并解析给出使 CTC 消失的临界参数窗口。",
+   "cn_summary": "闭合类时曲线（CTC）意味着时间旅行式的因果性破坏，在 GR 的 Kerr 解中出现在内视界以内的环状区域。修正引力常引入额外参数（潮汐电荷、Rastall 耦合、变形参数），这些参数如何改变 CTC 区域的范围与存在性，是判断新解物理允许性的一个直接指标，但此前对这三类具体时空缺少统一的解析比较。\n\n本文研究三个修正引力旋转时空中的 CTC：膜世界潮汐荷黑洞、Rastall 引力中的 Kerr-Newman 黑洞、带电 Johannsen-Psaltis 时空。方法是用赤道面上 $g_{\\phi\\phi}$ 的符号判定因果性破坏区域，并解析求出临界参数值。结果：膜世界情形下正 $r$ 的 CTC 区域只存在于潮汐荷为正时，$q\\leq 0$ 时完全消失；Rastall 引力中 CTC 范围同时依赖 Rastall 耦合与周围物质类型，对每种物质都存在一段使 CTC 区域不存在的有限耦合区间；带电 Johannsen-Psaltis 时空中变形参数依径向位置可增大或减小 $g_{\\phi\\phi}$，作者给出使 CTC 区域从所考虑径向域中移除的参数窗口。",
+   "cn_review": "【创新点】把三类不同修正引力旋转解的 CTC 判据放在同一 $g_{\\phi\\phi}$ 符号框架下处理，并给出解析临界值而非仅数值扫描，特别是对 Rastall 引力按物质类型给出 CTC 消失的有限耦合区间，这比笼统说“修正参数可消除 CTC”更具体。\n\n【局限性】判据仅基于赤道面 $g_{\\phi\\phi}$ 的符号，未做完整测地线或全局因果结构分析，也未检查这些参数窗口是否与观测约束（如阴影、ISCO、PPN）相容；CTC 区域多位于内视界附近，物理可达性存疑。\n\n【对 Rao 的意义】同领域参考。与 Rao 的 Q1（静态球对称分支与无毛条件审计）同属“修正引力解的物理允许性审计”思路，可借鉴其用度规分量符号直接给出参数排除窗口的做法；但本文限于旋转时空的因果性，与引力热力学主线无直接接口。",
+   "action": "暂无"
+  }
+ ],
+ "radar_note": null,
+ "keyword": [
+  {
+   "id": "2610.00999",
+   "title": "Weak-Lensing Shear Response for Photometric Redshift-Based Tomographic Binning",
+   "cn_title": "基于测光红移层析分箱的弱透镜剪切响应",
+   "authors": "Xiangchong Li, Tianqing Zhang, Rachel Mandelbaum, the LSST Dark Energy Science Collaboration",
+   "link": "https://arxiv.org/abs/2610.00999",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "将 AnaCal 自标定框架推广到测光红移选择过程，用剪切响应解析修正层析弱透镜中的红移依赖选择偏差，无需外部图像模拟。",
+   "cn_summary": "弱引力透镜层析分析依赖把源星系按测光红移分箱，从而测量宇宙结构增长和暗能量性质。但测光红移估计与剪切测量之间存在相关性，会在剪切信号中引入随红移变化的选择偏差；若不修正，会扭曲透镜信号振幅及其红移演化，进而偏置结构增长的历史。现有做法通常依赖外部图像模拟来标定这类修正，成本高且难以覆盖真实选择过程。\n\n本文把剪切测量自标定框架 AnaCal 推广到测光红移分箱的选择偏差问题：将剪切响应（shear response）通过选择过程进行传播，从而解析地给出修正项，避免使用外部图像模拟。作为真实数据上的初步检验，作者验证了测光红移相关的修正行为。该工作由 LSST 暗能量科学合作组参与，目标是为 LSST 等巡天的层析弱透镜测量提供可自洽标定的剪切响应修正方案。",
+   "cn_review": "【创新点】把原本用于剪切测量标定的 AnaCal 解析框架扩展到测光红移选择环节，使红移依赖的选择偏差修正不再依赖外部图像模拟，这是相对传统模拟标定路线的实质简化。\n【局限性】摘要只给出\"初步检验\"，未给出偏差量级、修正后残差或对宇宙学参数的定量影响；方法依赖测光红移估计与剪切响应的具体模型假设，在测光红移误差分布非高斯或选择函数复杂时适用性未验证。\n【对 Rao 的意义】属纯观测/数据处理类，与 Rao 的引力热力学、修正引力理论主线无直接关联，仅可作为弱透镜系统误差背景了解，不涉及理论结构或热力学定义问题。"
+  },
+  {
+   "id": "2610.01836",
+   "title": "Cosmological inference from a joint DESI DR1 full-shape power spectrum and bispectrum analysis",
+   "cn_title": "DESI DR1 全形状功率谱与双谱联合分析的宇宙学推断",
+   "authors": "Caroline Guandalin (Shengbo), Prakhar Bansal (Shengbo), Pedro Carrilho (Shengbo), Alejandro Aviles (Shengbo),  Mike (Shengbo),  Wang, Marcos Pellejero-Iba\\~nez, Aaditya Sarma, Jaide Swanson, Marco Bonici, Florian Beutler, Arnaud de Mattia, Hee-Jong Seo",
+   "link": "https://arxiv.org/abs/2610.01836",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "用 EFT of LSS 联合建模 DESI DR1 三个 LRG 红移箱与 QSO 样本的功率谱和双谱，发现单极子显著改善冷暗物质密度与物质涨落振幅的约束。",
+   "cn_summary": "星系双谱直接探测大尺度结构的非线性引力演化，能够打破功率谱分析中残留的参数简并，因此成为当前巡天宇宙学推断的重要补充。DESI DR1 已给出官方全形状功率谱约束，但双谱在其中的增益尚未被系统量化，尤其是窗口函数卷积与多极展开的技术处理仍待明确。\n\n本文对 DESI DR1 的三个 LRG 红移箱和 QSO 样本做联合全形状分析：功率谱建模到单圈，双谱取树阶级，均在 EFT of LSS 框架内完成；双谱在 Tripolar Spherical Harmonics 基下分解，使巡天窗口函数卷积可写成理论多极的直接线性变换。功率谱约束与 DESI DR1 官方全建模结果一致；加入双谱后，单极子显著改善冷暗物质密度和物质涨落振幅的约束。",
+   "cn_review": "【创新点】把 Tripolar Spherical Harmonics 分解用于双谱窗口卷积，将其化为理论多极的线性变换，从而在 DESI DR1 真实数据上实现功率谱+双谱的联合全形状推断，并量化了双谱单极子对 $\\Omega_c$ 与 $\\sigma_8$ 的增益。\n【局限性】双谱仅取树阶级，未含单圈修正；分析限于 LRG 与 QSO 样本，未涉及其他示踪物；摘要未给出具体参数改进倍数与系统误差预算，模型适用范围受 EFT 截断尺度限制。\n【对 Rao 的意义】属纯观测/巡天数据分析类，与 Rao 的引力热力学、修正引力理论主线无直接关联；若日后需要修正引力模型的 EFT of LSS 现象学约束，可参考其双谱窗口卷积技术，但当前不涉及理论结构分析。"
+  }
+ ]
+}

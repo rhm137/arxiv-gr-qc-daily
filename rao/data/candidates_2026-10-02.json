@@ -1,0 +1,301 @@
+{
+ "listing_date": "2026-10-02",
+ "no_update": false,
+ "total_new_unseen": 60,
+ "passed_prefilter": 16,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Reconstruction of $f(Q)$ Gravity from Geodesic Congruence Dynamics: Raychaudhuri Equation",
+   "link": "https://arxiv.org/abs/2610.01254",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01254v1 Announce Type: new Abstract: In this study, we use the Raychaudhuri equation as the essential geometrical tool to reconstruct the functional form of $f(Q)$ gravity within the context of symmetric teleparallel gravity. The expansion scalar and the congruence dynamics recorded in the Raychaudhuri equation are used to relate the non-metricity scalar $Q$ with the kinematical evolution of the Universe in order to establish the reconstruction method. We obtain explicit forms of $f(Q)$ that can explain the observed accelerated expansion of the Universe without the need for an additional dark energy component by taking into account appropriate cosmological assumptions. Moreover, the reconstructed model can also be extended to the infinite past to model the early universe for certain scenarios. In an FLRW spacetime we have considered a constant deceleration parameter and a constant jerk parameter to facilitate our reconstruction analysis. We further discuss the, general relativity limit, Friedmann consistency and background physical viability of the reconstructed models. The analysis indicates that Raychaudhuri equation, interpreted as an equation governing the focusing/defocusing of cosmological geodesic congruences, can be used as the central equation in an inverse reconstruction of $f(Q)$ gravity.",
+   "authors": "Tuhina Ghorui, Prabir Rudra, Farook Rahaman",
+   "id": "2610.01254",
+   "version": "2610.01254",
+   "kscore": 9,
+   "ktags": [
+    "宇宙学",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Trinity of Carrollian Gravity: Dynamically Equivalent Formulations of Magnetic Carrollian Gravity",
+   "link": "https://arxiv.org/abs/2610.01976",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01976v1 Announce Type: new Abstract: In this paper, we extend the paradigm of the Geometrical Trinity of Gravity to the Carrollian geometry to construct a comprehensive framework of dynamically equivalent theories for Magnetic Carrollian gravity. Utilizing the inherent ambiguities and freedoms of affine connections on degenerate metrics, we systematically relax the metric-compatibility and zero-torsion constraints of the rigid magnetic sector. By imposing global flatness on these modified connections, we prove that the curvature of a Magnetic Carrollian universe can be dynamically traded for isolated kinetic energy densities of torsion and non-metricity. Unlike the Lorentzian Trinity which maps gravity to alternative gravitational frameworks, the Carrollian equivalences can also map spacetime geometry to non-gravitational theories. Specifically, we demonstrate that intrinsic torsion recovers Electric Carrollian gravity as the Teleparallel equivalent of Magnetic Carroll gravity; purely spatial torsion reproduces kinetic terms stracturally similar to the magnetic Hamiltonian of scalar-charge Fracton gauge theory; and temporal torsion sectors map independently to $U(1)$ Maxwell electric fields and Carroll-Weyl conformal dilaton theories. Finally, by formulating a Symmetric Teleparallel Carroll connection with minimal non-metricity, we show that the Magnetic Carrollian Lagrangian is dynamically equivalent to an ultralocal, isotropic Electric Carrollian gravity upon exploiting the present freedoms in connection. These results establish a geometric dictionary translating Carrollian gravitational dynamics into the language of tensor gauge theories, electromagnetism, and dilaton theory.",
+   "authors": "Mehdi Ahmadi-Jahmani, Aliasghar Parvizi",
+   "id": "2610.01976",
+   "version": "2610.01976",
+   "kscore": 9,
+   "ktags": [
+    "自由度/稳定性",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "hep-ph"
+   ],
+   "title": "A celestial viewpoint on infrared divergences in QCD",
+   "link": "https://arxiv.org/abs/2610.01366",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01366v1 Announce Type: new Abstract: Non-abelian infrared radiation can be seen as both a practical ingredient for QCD phenomenology and a window on the long-distance structure of gauge theories. During the last decade, a novel viewpoint was developed on infrared phenomena: soft currents are seen as arising from asymptotic symmetries realised on the celestial sphere, and soft colour correlations similarly emerge from a two-dimensional conformal field theory on the sphere. In this contribution, we briefly review the status of this approach. We begin with the standard bulk picture, presenting the infrared factorisation of massless scattering amplitudes, and then we show how universal infrared information gets mapped to marked points on the celestial sphere. In particular, soft colour-dipole singularities are reproduced to all orders by a correlator of vertex operators in a free-boson theory on the sphere. We then proceed to study soft-gluon currents, and show how bulk results constrain the structure of the celestial theory beyond the free-field limit. For single emission, we note that all logarithms in dipole-like loop contributions can be absorbed into the choice of scale for the strong coupling. For multiple emission, we show how the emerging mixed-helicity celestial operator product expansion must be weighted by energy fractions, breaking holomorphic factorisation and obstructing associativity under successive collinear limits. These results illustrate a remarkable connection between the familiar physics of infrared QCD and the dynamics of a two-dimensional theory on the celestial sphere.",
+   "authors": "Lorenzo Magnea, Enrico Zunino",
+   "id": "2610.01366",
+   "version": "2610.01366",
+   "kscore": 8,
+   "ktags": [
+    "宇称破缺/双折射",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Algebraic structure in holographic tensor networks",
+   "link": "https://arxiv.org/abs/2610.00478",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00478v1 Announce Type: new Abstract: In a previous work 2511.21852, we explored the hypothesis that in general theories of quantum gravity, spacetime regions known as generalized entanglement wedges (introduced by Bousso and Penington) have an associated subalgebra of observables in a semiclassical limit. We defined an entropy associated with these subalgebras that obeys the same monotonicity and strong subadditivity properties as the generalized gravitational entropy of generalized entanglement wedges. Here, we test aspects of these ideas making use of tensor network toy models for holography. In this context, the analog of a generalized entanglement wedge is a region for which no region containing it has a smaller number of boundary legs. In the limit of large bond dimension (analogous to the semiclassical limit), we argue that each such region has a canonically associated subalgebra of the full algebra of observables on the boundary Hilbert space, as well as a family of unitarily related von Neumann factor subalgebras. We investigate in detail how various algebraic operations on these subalgebras (e.g. their intersections, joins, and commutants) are related to corresponding geometrical operations on the tensor network regions. We study to what extent the monotonicity and strong subadditivity properties of generalized entropy for generalized entanglement wedges follow from properties of our algebraic entropy. We also introduce an alternative entropic quantity $S(\\omega || \\omega \\circ E_{\\mathcal{A}'})$ associated with a subalgebra $\\mathcal{A}$ that also obeys monotonicity and strong subadditivity properties with suitable conditions. Finally, we explain how to define a type $II_1$ von Neumann algebra based on an infinite family of random tensor networks with increasing bond dimension such that the regions corresponding to generalized entanglement wedges can be associated with exact subalgebras of this full algebra.",
+   "authors": "Abhisek Sahu, Jeremy van der Heijden, Mark Van Raamsdonk, Rana Zibakhsh",
+   "id": "2610.00478",
+   "version": "2610.00478",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Dynamics of Regge calculus with torsion",
+   "link": "https://arxiv.org/abs/2610.00593",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00593v1 Announce Type: new Abstract: The discrete geometry on an $n$-dimensional simplicial manifold are studied, in order to incorporate torsion into Regge calculus. In each simplex, the edge vectors are assigned to the edges to encode the information of their lengths and directions. In addition, the holonomies along the curves across the interfaces of two adjacent simplices are represented by the internal gauge group elements. The torsion manifests itself as the difference between an edge vector on an interface belonging to one simplex and the parallel transported edge vector, via the holonomy, of the same edge but belonging to the adjacent simplex. The simplicial Einstein--Cartan actions are then constructed as functions of the edge vectors and holonomies in three and four dimensions with Euclidean and Lorentzian signatures, respectively. It is shown that they return to the corresponding Regge actions for the torsion-free cases. The variations of the 4-dimensional discrete action with respect to the edge vectors and holonomies, respectively, give two equations of motion. It is shown that the former is consistent with the corresponding equation in the continuum theory, and the torsion-free holonomies satisfy the latter equation as in the continuous case. Thus, the resulting theory on the simplicial manifold can be regarded as a discrete analogue of Einstein--Cartan theory.",
+   "authors": "Ruijue Yan, You Ding, Yongge Ma, Cong Zhang",
+   "id": "2610.00593",
+   "version": "2610.00593",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "math.DG"
+   ],
+   "title": "Gravity and generalised geometry from a Lie 2-algebroid perspective",
+   "link": "https://arxiv.org/abs/2610.01292",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01292v1 Announce Type: new Abstract: We revisit the problem of defining natural torsion and curvature tensors for generalised connections and of using them to reconstruct the effective action for the massless modes of the closed string from generalised geometry. The starting point is the description of a Courant algebroid as a differential graded (dg) symplectic manifold. A systematic procedure for split dg manifolds singles out a generalised Lie bracket as part of a larger Lie 2-algebroid structure, with the right properties to unambiguously define torsion and Riemann curvature tensors together with their corresponding Bianchi identities. This framework eliminates the structural circularity and ambiguity problems of previous approaches in the literature. We show that a unique generalised metric compatible generalised connection with fixed (con)torsion exists for any choice of ordinary connection that splits the dg manifold, while at the same time all Lie 2-algebroids obtained in this way are equivalent up to $L_{\\infty}$ quasi-isomorphisms. For a given Lie 2-algebroid we demonstrate that the unique compatible generalised connection reproduces the effective closed string action from a geometric action based on the new generalised Ricci tensor upon making a canonical choice of torsion.",
+   "authors": "Athanasios Chatzistavrakidis, Chris Hull, Larisa Jonke, Sylvain Lavau, Peter Schupp",
+   "id": "2610.01292",
+   "version": "2610.01292",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Einstein-Gauss-Bonnet quintessential inflation: From super-inflation to emergent warm inflation",
+   "link": "https://arxiv.org/abs/2610.01665",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01665v1 Announce Type: new Abstract: This work presents a unified inflationary and late-time cosmology, developed within Einstein-Gauss-Bonnet gravity coupled to three scalar fields, governed by a single potential and coupling function throughout cosmic history. Permitting the Gauss-Bonnet coupling to depend on the field content, rather than assigning it arbitrarily, produces a two-phase inflationary scenario: the higher-curvature term initially drives expansion and later becomes a subdominant. The initial super-inflationary stage ends dynamically when the geometrically induced stabilization of the waterfall field fails, at a field value determined by the combination $(n-1)Q$. Coherent oscillations of the waterfall condensate serve as the initial radiation source, replacing conventional reheating and establishing the thermal bath necessary for the subsequent warm phase. Utilizing a two-stage dissipation mechanism with $\\Gamma_\\phi\\propto T^3$, the scalar and tensor spectra are derived while retaining Gauss-Bonnet contributions, demonstrating that the growth of inflaton fluctuations is regulated by the shear viscosity of the bath, which is essential for model viability. A quartic potential, previously excluded in the cold scenario, becomes viable, with $n_s$ within the Planck $1\\sigma$ band and $r$ suppressed. Agreement with the spectral index is generic, while internal consistency confines the model to a narrow band in $(n-1)Q$. Finally, the release of the third scalar near matter-radiation equality transforms a very small mass scale into a very large coupling by a logic inverse to the seesaw mechanism. At late times, the inflaton persists as dark energy.",
+   "authors": "Omar Chahboun, Rachid Ahl Laamara, El Hassan Saidi",
+   "id": "2610.01665",
+   "version": "2610.01665",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "宇宙学"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Constraining Primordial Magnetic Fields with Weak Lensing",
+   "link": "https://arxiv.org/abs/2610.00485",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00485v1 Announce Type: new Abstract: Introducing primordial magnetic fields (PMFs) into the standard cosmological model, $\\Lambda$CDM, has an impact on the matter power spectrum at the linear level, resulting in an increase of power on small scales. In this work, we use the enhanced spectrum as the initial condition for dark-matter-only N-body simulations and study its non-linear evolution. From the resulting non-linear matter power spectrum, we calculate the convergence power spectrum of weak lensing ($C_{\\kappa}$) and show how the presence of PMFs causes an enhancement at high multipoles. We then construct an emulator for $C_{\\kappa}$ that also includes intrinsic alignment and baryon feedback. We perform MCMC analyses using mock data generated for different PMF models and for three values of the maximum multipole, $\\ell_{\\rm max}=5000$, $10000$, and $20000$. The PMFs models are characterized by the two parameters that define the power-law power spectrum of the magnetic field $P_B(k)\\propto B_{\\rm 1Mpc}^2 k^{n_B}$, where $B_{\\rm 1Mpc}$ is the amplitude at a scale of $1$ Mpc and $n_B$ is the power spectral index. For $\\Lambda$CDM mocks, corresponding to $B_{\\rm 1Mpc}=0$, we obtain approximate upper limits of $B_{\\rm 1Mpc}<1.6$, $1.0$, and $0.8\\,{\\rm nG}$ at the $95\\%$ confidence level for the three values of $\\ell_{\\rm max}$ respectively. For non-zero input magnetic fields, the recovery of $B_{\\rm 1Mpc}$ and $n_B$ depends strongly on the PMFs model and on the maximum multipole considered. Models with $n_B=-2.1$ are more easily constrained than models with $n_B=-2.7$, since they produce a stronger enhancement of the convergence power spectrum. We find no clear degeneracy between the PMFs parameters and the intrinsic alignment or baryon feedback parameters, while $B_{\\rm 1Mpc}$ and $n_B$ can be degenerate. We characterize this degeneracy through linear fits to selected $2$D posterior distributions.",
+   "authors": "Anna D'Ambrosio, Matteo Viel",
+   "id": "2610.00485",
+   "version": "2610.00485",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Symmetric Thin-Shell Wormholes from a Regularized String-Cloud Black Hole: Energy Conditions, Multi-Fluid Stability, and Optical Signatures",
+   "link": "https://arxiv.org/abs/2610.00131",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00131v1 Announce Type: new Abstract: We construct a symmetric thin-shell wormhole from two copies of the positive-lapse exterior of a rationally regularized Letelier--Alencar string-cloud black hole with a finite-curvature anti--de Sitter core and string-cloud asymptotics. Using the Darmois--Israel formalism, we derive the surface stresses, energy-condition combinations, conservation law, and effective potential. Every admissible static throat has negative surface energy density, so the weak and dominant energy conditions are violated, whereas the null condition restricted to directions tangent to the shell, and consequently the intrinsic strong condition, holds only in the inner sampled exterior. The radial-vacuum relation of the bulk source removes the external momentum flux. We derive a general local-stability criterion for density- and radius-dependent equations of state and apply it to five surface-fluid models, calibrating one parameter at each static throat. Across the sampled families, barotropic shells remain unstable, whereas the other closures can admit parameter-dependent stable branches. An exact unregularized control shows that the energy-condition structure and the radial-stability signs of the first three closures persist without the rational regulator, whereas the cosmic-Chaplygin stability sign can change while the selected calibration branch remains real and simple. Backward ray tracing shows that throat location primarily reorganizes higher-order and through-throat images, while string-cloud strength and inclination control annular structure and Doppler asymmetry. Comparisons of one- and two-sided source configurations isolate genuine far-side images and show that the central dark region depends on the source distribution.",
+   "authors": "Zijun Zhong, Jonathan A. Reboucas, Edson Otoniel, Minyong Guo",
+   "id": "2610.00131",
+   "version": "2610.00131",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Quasinormal Modes of Reissner-Nordstr\\\"om Black Holes in Modified Gravity",
+   "link": "https://arxiv.org/abs/2610.00393",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00393v1 Announce Type: new Abstract: In the framework of Scalar-Tensor-Vector Gravity (STVG), this paper investigates the quasinormal modes and time-domain evolution of Reissner-Nordstr\\\"om Modified Gravity (MOG) black holes under massless scalar, electromagnetic, and gravitational perturbations. Quasinormal frequencies are calculated by extending the 3rd- to 6th-order WKB method and combining it with Pad\\'e approximation to the 13th order, while complete time-domain waveforms are obtained using a finite-difference method based on light-cone coordinates. The results indicate that increasing the MOG parameter $\\alpha$ raises the effective mass of the black holes, leading to a decrease in the damping rate $|\\omega_I|$ and a slower ringdown decay. An increase in charge $Q$ produces a similar effect, with the damping approaching zero in the near-extremal limit. Regarding the ringdown decay times for the three types of perturbations, the gravitational field has the longest duration, the electromagnetic field is intermediate, and the scalar field is the shortest. The oscillations and decay observed in the time-domain waveforms are qualitatively consistent with the frequency-domain results, and the power-law exponent governing the late-time tail aligns with that of asymptotically flat spacetimes. This study provides a systematic theoretical reference for testing modified gravity theories using black hole spectroscopy.",
+   "authors": "Xia-Tong Tan, Yu Zhang, Zhi-Hong Nie",
+   "id": "2610.00393",
+   "version": "2610.00393",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Naked Singularities and Black Hole Thermodynamics from Shadows and Photon Rings in the Quantum Oppenheimer-Snyder Model",
+   "link": "https://arxiv.org/abs/2610.00640",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00640v1 Announce Type: new Abstract: We investigate the optical and thermodynamic properties of quantum Oppenheimer-Snyder (qOS) spacetimes in both the black hole and naked singularity regimes. By analyzing test-particle motion and employing numerical ray tracing of thin accretion disk models, we identify their characteristic optical signatures. We find that increasing the quantum correction parameter reduces the apparent shadow size. While qOS black holes exhibit dark inner shadows, naked singularities produce central bright rings, driven by an infinite repulsive core barrier, yet still retain key optical features such as photon rings. Furthermore, using a semi-analytical approach, we obtain higher-order photon-ring impact and gap parameters that closely align with our numerical findings. Notably, the gap parameter intervals for qOS naked singularities deviate from the Schwarzschild case, providing a concrete criterion for observational tests. Finally, in the black-hole sector, the application of Geometrothermodynamics (GTD) identifies the specific-heat divergence at the Davies point. By linking photon-ring observables to GTD curvature scalars, we reveal a direct connection between qOS black hole shadows, thermodynamic stability, and microscopic interaction structures.",
+   "authors": "Jose Miguel Ladino, Anuar Idrissov, Carlos E. Romero-Figueroa, Hernando Quevedo",
+   "id": "2610.00640",
+   "version": "2610.00640",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Identifying Exceptional Points in Black Hole Ringdowns",
+   "link": "https://arxiv.org/abs/2610.01416",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01416v1 Announce Type: new Abstract: Ringdown spectroscopy probes black hole (BH) dynamics, and exceptional points (EPs) can reveal underlying degrees of freedom. We develop a procedure to identify EPs in ringdowns using a time-weighted Jordan term and a splitting bound. For relative Jordan excitation proportional to separation, we derive a sixth-order squared distance between split and EP waveforms after fitting the resonance center. Independent constraints on these quantities can restore fourth order. Complete waveforms show that omitting ordinary responses can strengthen EP evidence and spuriously tighten splitting bounds.",
+   "authors": "Zhen-Xiao Zhang, Chen Lan, Yi Wang",
+   "id": "2610.01416",
+   "version": "2610.01416",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Can structure formation distinguish between holographic dark energy models?",
+   "link": "https://arxiv.org/abs/2610.01430",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01430v1 Announce Type: new Abstract: Structure formation has been used to test the viability of the IR cutoff in the THDE model, and the future event horizon was found to be a viable IR cutoff (Phys. Rev. D {\\bf 113}, 123531 (2026)). Motivated by this, in this paper, using the combined Pantheon+ SN Ia, OHD, DESI DR2, and CMB distance prior datasets, we constrain the model parameters for the HDE, THDE, and BHDE models, and use parameter sets from the MCMC samples to analyze the evolution of $f\\sigma_{8}(z)$ and $S_{8}(z)$ for these models. We find that the evolutionary curves of both $f\\sigma_{8}(z)$ and $S_{8}(z)$ for HDE and BHDE are nearly indistinguishable, while the curves for the THDE model lie lowest. The $\\chi^{2}$ statistic shows that the THDE model yields the lowest $\\chi^{2}$ value for both $f\\sigma_{8}$ and $S_{8}$ measurements. Finally, we construct the ($f\\sigma_{8}$,$S_{8}$) plane as a diagnostic to analyze the trajectories of these models, and find that the trajectory of the THDE model can achieve the current ($f\\sigma_{8}$,$S_{8}$) data region. These results demonstrate that structure formation can distinguish THDE from HDE and BHDE, and suggest that structure formation can serve as a useful probe for distinguishing HDE models and can be extended to other HDE scenarios.",
+   "authors": "Qihong Huang, Bing Xu, Kaituo Zhang, Hao Chen",
+   "id": "2610.01430",
+   "version": "2610.01430",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Closed timelike curves in modified theories of gravity",
+   "link": "https://arxiv.org/abs/2610.01476",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.01476v1 Announce Type: new Abstract: We study closed timelike curves (CTCs) in three rotating spacetimes arising in modified gravity: the tidally charged braneworld black hole, the Kerr-Newman black hole in Rastall gravity, and the charged Johannsen-Psaltis spacetime. Using the sign of $g_{\\phi\\phi}$ on the equatorial plane, we show that an additional parameter of each geometry controls the chronology-violating region, and we obtain critical parameter values analytically. In the braneworld case, the positive $r$ CTC region exists only for positive tidal charge and disappears completely for $q\\leq 0$. In Rastall gravity, the extent of the CTC region depends jointly on the Rastall coupling and the surrounding matter. For each matter type we find a finite range of the coupling for which the CTC region is absent. In the charged Johannsen-Psaltis spacetime, the deformation parameter can either increase or decrease $g_{\\phi\\phi}$ depending on the radial position, and we derive a window of its values for which the CTC region is removed from the radial domain considered. Thus, in all three examples, the additional parameters can be chosen to control the extent of equatorial CTCs, and even to eliminate them entirely.",
+   "authors": "Agnik Sen Roy, Sashideep Gutti, Shailesh Kulkarni",
+   "id": "2610.01476",
+   "version": "2610.01476",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Analytic Metric for Rotating Black Holes in Higher-Derivative Gravity",
+   "link": "https://arxiv.org/abs/2610.02004",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.02004v1 Announce Type: new Abstract: We turn metric reconstruction into an analytic solver for rotating black holes in modified gravity, bypassing the direct solution of coupled field equations. As an example, in parity-even cubic gravity, we construct the first analytic spinning black hole metric at linear order in the coupling, without spin or weak-field expansions. We stringently validate the field equations and reproduce independent analytic predictions for horizon properties. This establishes a new route to construct spinning black holes beyond Einstein gravity and lays the foundation for strong-field tests.",
+   "authors": "Jierui Hu, Dongjun Li, Nicol\\'{a}s Yunes",
+   "id": "2610.02004",
+   "version": "2610.02004",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "Effects of Poisson Isocurvature Perturbations on Induced Gravitational Waves",
+   "link": "https://arxiv.org/abs/2610.00989",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.00989v1 Announce Type: new Abstract: A sudden transition from an early matter-dominated era to a radiation-dominated era provides a representative mechanism for enhancing induced gravitational waves (GWs). In the primordial black hole (PBH) evaporation scenario, discrete PBH number-density fluctuations naturally generate Poisson isocurvature perturbations. By evaluating the GWs induced by these perturbations through the sudden evaporation transition, we show how the full hierarchy of intrinsic non-Gaussian statistics of a Poisson isocurvature source enters the induced GW spectra. We find that the tensor power spectrum retains only the two-point correlations of the scalar source, while higher-order correlations first appear in the tensor bispectrum. We also find a nontrivial scale dependence in the relative amplitudes of different bispectrum configurations, which may provide additional information for distinguishing the discrete PBH scenario from other induced-GW mechanisms.",
+   "authors": "Zi-An Zhou, Cheng-Jun Fang, Zong-Kuan Guo",
+   "id": "2610.00989",
+   "version": "2610.00989",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
