@@ -1,0 +1,178 @@
+{
+ "listing_date": "2026-10-08",
+ "no_update": false,
+ "total_new_unseen": 48,
+ "passed_prefilter": 9,
+ "candidates": [
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Maximally symmetric black holes with torsion in Lovelock gravity",
+   "link": "https://arxiv.org/abs/2610.10348",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10348v1 Announce Type: new Abstract: We analyze the existence of static black hole solutions with maximally symmetric horizons and nontrivial torsion in five-dimensional Lovelock gravity. For each symmetry class, we obtain a black hole solution characterized by two independent constants. We also determine the conserved charges associated with these solutions.",
+   "authors": "B. Cvetkovi\\'c, D. Simi\\'c",
+   "id": "2610.10348",
+   "version": "2610.10348",
+   "kscore": 8,
+   "ktags": [
+    "背景相关",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE",
+    "hep-th"
+   ],
+   "title": "Analytic parity-violating greybody factors of a dynamical Chern-Simons black hole",
+   "link": "https://arxiv.org/abs/2610.10280",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10280v1 Announce Type: new Abstract: We study the low-frequency scattering of gravitational and pseudoscalar waves off a non-rotating black hole in dynamical Chern-Simons (dCS) gravity, where the axial (odd-parity) gravitational sector is irreducibly coupled to the dynamical pseudoscalar while the polar sector remains general relativistic. Working to first order in the dimensionless coupling zeta = (ell_CS/M)^4 and using matched asymptotic expansions, we obtain an exact closed form for the graviton-to-pseudoscalar conversion probability, d_2 = 3(pi^2-9)^2/8, and a high-precision reconstruction, in a proven transcendental basis, of the graviton greybody (absorption) asymmetry, kappa_2 = (21/80) pi^4 + (27/8) pi^2 - 89833/1536, for the quadrupole (ell=2) channel. Both reduce to combinations of pi^4, pi^2, and rational numbers, with no ln2 or odd-zeta terms in the reconstructed basis; the transmission-phase sector, by contrast, contains an analytically derived zeta(3)-9/8 static integral, while its overall matching prefactor is identified numerically. The leading reflection-phase asymmetry vanishes, so that no polarization rotation is imprinted on the reflected wave at leading low-frequency order, while a subleading O(omegazeta) asymmetry remains in the transmitted phase. The normalized flux asymmetries are numerically consistent with a 1/(Momega)^2 falloff in the geometric-optics limit, where the leading remaining flux effect is conversion loss. The matched-asymptotic results are checked against direct two-channel integration, while the one-dimensional integral determining kappa_2 is evaluated to high precision within an analytically controlled transcendental basis. The results provide analytic targets linking dCS parity violation in absorption and mode conversion to the axial/polar quasinormal-mode splitting.",
+   "authors": "Abhishek Rout (University of South Carolina)",
+   "id": "2610.10280",
+   "version": "2610.10280",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Cosmic Birefringence from Large Lepton Asymmetry",
+   "link": "https://arxiv.org/abs/2610.09748",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.09748v1 Announce Type: new Abstract: Cosmic birefringence, the rotation of the polarization plane of CMB photons, provides an intriguing probe of physics beyond the Standard Model. In this paper, we investigate a vector Chern-Simons coupling between the neutrino current and photons as a possible origin of isotropic cosmic birefringence. Firstly, we perform the first analysis of anisotropic cosmic birefringence induced by the neutrino current. We find that the anisotropic signal sourced by lepton-number isocurvature fluctuations can be important on large scales, whereas on small scales, the anisotropic signal induced by gravitational effects becomes dominant comparing with the axion-like particle (ALP) scenario. Secondly, we show that a large lepton asymmetry generated through the Affleck-Dine mechanism can successfully account for the observed isotropic birefringence, and discuss its possible connection to the recently reported low helium-4 abundances in Subaru EMPRESS and Atacama Cosmology Telescope (ACT).",
+   "authors": "Kentaro Kasai, Ippei Obata",
+   "id": "2610.09748",
+   "version": "2610.09748",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Anisotropic Cosmology with Inhomogeneous $SU(2) $ and $SL(2,\\mathbb{R})$ Nonlinear $\\sigma$-Models",
+   "link": "https://arxiv.org/abs/2610.09049",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.09049v1 Announce Type: new Abstract: We investigate the cosmological dynamics of the nonlinear $\\sigma$-model in a locally rotational symmetric Bianchi V background geometry. We employ the $SU(2)$ and the $SL(2,\\mathbb{R})$ internal symmetries, for which the kinetic metric of the multi-scalar fields is a space of constant curvature. We assume an inhomogeneous ansatz for the scalar fields, such that the $\\sigma$-model, which allows the existence of nontrivial solutions in the Bianchi V geometry. For an exponential potential, we perform a detailed analysis of the phase space, we determine the stationary points, and we study their stability properties. The scalar field inhomogeneities prevent both the slow-roll and hyperbolic inflationary epochs. The existence of a cosmological constant is required to describe cosmic acceleration.",
+   "authors": "N. Dimakis, A. Giacomini, G. Leon, F. Moncada, A. Paliathanasis",
+   "id": "2610.09049",
+   "version": "2610.09049",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "The price of regularity: core gradient instability in nonsingular dyonic black holes",
+   "link": "https://arxiv.org/abs/2610.08909",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.08909v1 Announce Type: new Abstract: Spacetime singularities displayed by classical black hole solutions are expected to be cured by high-energy effects, beyond the regime of validity of General Relativity. On the other hand, there are well-known examples of classical theories allowing for nonsingular black hole solutions. The most prominent is obtained by complementing the gravitational sector of General Relativity with a minimally coupled nonlinear-electrodynamics sector. It has recently been shown that purely electric/purely magnetic nonsingular black holes in an Einstein-nonlinear-electrodynamics setup are always plagued by a gradient instability. In this work, we derive the quadratic action for linear perturbations of static, spherically symmetric dyonic solutions of Einstein-nonlinear-electrodynamics theories with a general dependence on both invariants. We show that regularity of the center, absence of ghosts and angular gradient stability cannot hold simultaneously: arbitrarily close to a regular center, at least one photon polarization has a negative squared angular propagation speed. We further show that regularity drives one electromagnetic kinetic eigenvalue to zero at the center, which may limit perturbative control near the core. Evading the obstruction requires extending the theory, for example by introducing additional degrees of freedom.",
+   "authors": "Lodovico Capuano, Alessandro Longo",
+   "id": "2610.08909",
+   "version": "2610.08909",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE"
+   ],
+   "title": "Toward a complete understanding of the properties of GW190521",
+   "link": "https://arxiv.org/abs/2610.09199",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.09199v1 Announce Type: new Abstract: Interpreting GW190521 remains challenging due to its exceptionally high total mass and correspondingly small number of observable gravitational-wave cycles, which gives rise to degeneracies between different physical interpretations. Motivated by the outstanding questions surrounding the event, we present a comprehensive reanalysis of GW190521 using waveform models drawn from multiple families, including a model that includes both eccentricity and spin-precession. We find evidence that the source was highly eccentric, with an inferred eccentricity of $0.81^{+0.05}_{-0.01}$ at 5 Hz, and show that non-eccentric interpretations arise from failing to probe the high-likelihood region at large eccentricities. We further demonstrate that when eccentricity is included in the analysis, there is no indication of spin precession, suggesting that the apparent precession in quasicircular analyses is at least partially driven by an eccentricity--spin-precession degeneracy. While all waveform models favor a comparable-mass binary, one model admits a secondary mode at more asymmetric masses. We find a robust probability $(\\geq97\\%)$ that the primary black hole lies within the pair-instability supernova mass gap ($\\sim60-130\\,M_\\odot$), whereas the probability that the secondary lies in the gap depends on the waveform model. Through inference of GW190521-like injections, we show that the waveform systematics observed in the analysis of GW190521 could arise from the response of models to unmodeled eccentricity, rather than from intrinsic differences between waveform models. When analyzing a quasicircular spin-precessing injection similar to GW190521, we find no significant model dependence in the inferred parameters. Finally, because the inferred eccentricity lies beyond the calibration regime of current models, we test its robustness by recovering highly eccentric numerical-relativity waveforms.",
+   "authors": "Aasim Jan, Sophia Nicolella, Aaron Zimmerman, Deirdre Shoemaker, Katerina Chatziioannou, Richard O'Shaughnessy, Muhammed Saleem",
+   "id": "2610.09199",
+   "version": "2610.09199",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "Cosmological Correlators from Generating Potentials and Projective Geometry",
+   "link": "https://arxiv.org/abs/2610.08915",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.08915v1 Announce Type: new Abstract: We introduce novel scalar generating potentials to compute three and four point cosmological correlators in orthogonal Grassmannian space. These correlators are obtained by applying appropriate directional derivatives on these potentials, combined with helicity-dependent minors. We emphasize that, this is not a spin-raising analog, but a much more powerful construction. The four point generating potential is associated with the geometry of a projective triangle. First-order directional derivatives generate gluon correlator, while the Hessian of the same scalar potential produces the four-graviton correlators, thus realizing a differential double copy. Thus, double copy is a natural consequence of the underlying scalar potential as the origin of the gluon and graviton four point correlators. This framework extends naturally to any spin-$s$. We exhibit a geometric origin for the gluon colour identities: the projective homogeneity of the scalar potential implies Kleiss-Kuijf identity, while the kinematic Jacobi identity follows as a consequence of the closure of the triangle under directional derivatives. We also uncover a connection between the BCFW bridge deformation of the scalar potential and directional derivatives that produces the spin-s correlator. Thus the generating potential provides a universal geometrical interpretation for any spin-$s$ four point Grassmannian correlator, unlike \\cite{Bala:2026lvw} where geometric interpretation was only shown for the gluons.",
+   "authors": "Aswini Bala, Sachin Jain, Deep Mazumdar",
+   "id": "2610.08915",
+   "version": "2610.08915",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el"
+   ],
+   "title": "A Superfluid at All Temperatures",
+   "link": "https://arxiv.org/abs/2610.10169",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10169v1 Announce Type: new Abstract: We construct unitary, local, 3+1-dimensional conformal field theories with finitely many fields whose thermal state breaks a continuous global symmetry at every temperature. They are finite-$N$ versions of the Chaudhuri--Choi--Rabinovici theories, whose planar circle of fixed points has an ordered arc. The circle is lifted at order $1/N^2$, and an infinite family of fixed points on this arc reaches arbitrarily weak coupling, where the superfluid is under parametric control. We also show that weakly gauging the symmetry gives a superconductor over an exponential range of temperatures.",
+   "authors": "Sven Harder, Adar Sharon",
+   "id": "2610.10169",
+   "version": "2610.10169",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Null string holography in AdS from local BRST descent",
+   "link": "https://arxiv.org/abs/2610.10540",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10540v1 Announce Type: new Abstract: We show that the radial sector of a Carroll-Weyl gauged null string in Poincar\\'e $\\mathrm{AdS}_D$ is locally trivial in BRST cohomology. In a quotient-adapted BFV basis, the radial coordinate, its conjugate momentum, and the associated ghosts form a contractible quartet. An explicit contracting homotopy extends this reduction to the full algebra of local spatial jets, leaving precisely the $(D-1)$-dimensional ILST BRST complex. The same quartet carries zero net Virasoro central charge, so that the anomaly condition of the parent theory, $D=27$, descends to the ILST condition $d=26$.",
+   "authors": "Sarthak Duary, Sourav Maji",
+   "id": "2610.10540",
+   "version": "2610.10540",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  }
+ ],
+ "errors": []
+}
