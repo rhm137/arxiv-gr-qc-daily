@@ -1,0 +1,433 @@
+{
+ "listing_date": "2026-10-09",
+ "no_update": false,
+ "total_new_unseen": 80,
+ "passed_prefilter": 22,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Beyond the Dolgov-Kawasaki instability: Covariant scalaron stability, entropy transport, and inner horizons in f(R) gravity",
+   "link": "https://arxiv.org/abs/2610.11649",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11649v1 Announce Type: new Abstract: The Dolgov-Kawasaki instability tests the local scalaron response in metric $f(R)$ gravity, but does not determine strong-field horizon dynamics. We separate these questions using $F=f_R$ and the Legendre potential $\\mathcal U(F)=FR-f$. The scalaron restoring coefficient is $m_{\\rm sc}^2=(F-Rf_{RR})/(3f_{RR})$, whereas exact spherical Wald-area transport identities cancel the scalaron Hessian. Their Einstein-frame interpretation distinguishes longitudinal kinetic focusing from potential-dependent cross-focusing. We prove that, at fixed constant-curvature background with tracefree matter, transport depends only on $(f,f_R)$, while the scalaron mass depends on the independently adjustable $f_{RR}$. Reissner-Nordstr\\\"om in $f(R)=R+\\alpha R^2$ gives an exact discriminator: identical background transport coexists with opposite scalaron mass signs. A charged solution with varying $F$ and a cosmological check test the identities beyond this constant-$F$ sector. For a nonzero massive scalaron tail transmitted to a nondegenerate Cauchy horizon, a conditional fixed-background estimate gives a nonintegrable contribution to generalized entropy focusing. This estimate does not establish nonlinear mass inflation or a particular extendibility class. The results provide a layered framework for coupling regularity, background transport, scalaron stability, and nonlinear inner-horizon evolution.",
+   "authors": "Francisco S. N. Lobo, Francisco Tello-Ortiz",
+   "id": "2610.11649",
+   "version": "2610.11649",
+   "kscore": 14,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "引力热力学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-th"
+   ],
+   "title": "Holographic dark energy from generalized entropies and extended infrared cut-offs",
+   "link": "https://arxiv.org/abs/2610.11616",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11616v1 Announce Type: new Abstract: We study holographic dark energy models constructed from generalized entropy functionals and local infrared cut-offs. Three entropies (Barrow and the three and five-parameter generalized entropies) are each combined with the Granda-Oliveros (GO) cut-off and two extensions, one adding a $\\gamma H^{-2}$ term and one a $\\gamma \\ddot{H}/H$ term, the latter raising the dark-energy evolution equation to second order. The nine resulting models are constrained against DESI DR2 BAO, Pantheon+ and a Planck compressed CMB likelihood through an MCMC analysis, and compared using the Akaike and Bayesian information criteria. The Hubble constant is stable across all models. The $H^{-2}$ term is unconstrained in every case, as it becomes relevant only in the far future, and never improves on the GO cut-off. The $\\ddot{H}/H$ term, instead, is tightly constrained for Barrow and $S_5$, where it improves the fit substantially, but not for $S_3$. The best fit is obtained for Barrow entropy with the $\\ddot{H}/H$ cut-off, yet the Barrow exponent remains compatible with zero in all cases. The data thus favour a higher-order infrared cut-off, while showing no significant evidence for a departure from the Bekenstein-Hawking area law. We also investigate the dark energy equation of state (EoS) of $S_3$ and $S_5$, discovering quintessence-like behavior and phantom crossing.",
+   "authors": "Ke Chen, Simone D'Onofrio, Sergei D. Odintsov, Tanmoy Paul",
+   "id": "2610.11616",
+   "version": "2610.11616",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "title": "Closed Universe, Quantum Entanglement and Observers",
+   "link": "https://arxiv.org/abs/2610.10667",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10667v1 Announce Type: new Abstract: It has been argued that in quantum gravity the Hilbert space associated with any closed universe is trivially one-dimensional. To reconcile this argument with the richness of our own universe, it was suggested that a nontrivial Hilbert space will emerge once an ``observer\" is included. Such an ``observer\" has been modeled in different ways. There are three concrete classes of models: $\\textbf{1)}$ The ``observer\" is modeled by a term in the full Hamiltonian of the system which is linear in a phase space variable; $\\textbf{2)}$ The ``observer\" is modeled in the quantum circuit model of holography as a subsystem in the closed universe which is entangled with an external non-gravitational system; $\\textbf{3)}$ The ``observer\" is argued to be described by the emergent Goldstone bosons when the diffeomorphisms are spontaneously broken. In fact, the third class was discovered by an attempt to physically realize the first class. In this paper, we will show that the second class can also be unified into the third class. Our result indicates that the emergence of the ``observer\" is a manifestation of the $\\textit{Massive Islands}$ paradigm. It demonstrates that the graviton mass is a feature of the quantum state. One should think of the islands as closed universes and the Goldstone boson associated with the graviton mass as the ``observer\", which is exactly the case at late-times for evaporating black holes. An implication of this work is that the ``observer\" can ``observe\" global symmetries in quantum gravity.",
+   "authors": "Hao Geng",
+   "id": "2610.10667",
+   "version": "2610.10667",
+   "kscore": 10,
+   "ktags": [
+    "引力热力学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE",
+    "hep-th"
+   ],
+   "title": "Nonreciprocal black holes with primary hair in beyond Horndeski gravity: Exact solutions and stability",
+   "link": "https://arxiv.org/abs/2610.11712",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11712v1 Announce Type: new Abstract: We develop a novel systematic method for constructing exact, static, and asymptotically flat black-hole solutions in shift-symmetric and $Z_2$-symmetric beyond Horndeski theories. In contrast to previous studies, our approach does not rely on the restrictive reciprocal condition $g_{tt}g_{rr}=-1$, allowing for more general geometries characterized by two independent metric functions. The resulting solution space contains two qualitatively distinct types of hair originating from different branches of the theory. One branch is characterized by khronometric hair, while the other by genuine scalar hair. In both, the scalar profile defines a nontrivial preferred foliation, but the shift-symmetry Noether current and the associated propagating degree of freedom are trivial for the former and nonvanishing for the latter. Focusing mainly on the second branch, we derive several distinct families of exact black-hole solutions. In general, these solutions are singular and exhibit primary scalar hair associated with an independent scalar charge. Nevertheless, we demonstrate that they can be regularized to yield regular black-hole or solitonic configurations, for which the scalar hair becomes secondary. We further investigate the stability properties of these solutions under linear perturbations by analyzing the axial sector and the monopole $(\\ell=0)$ mode of the even-parity sector. For representative solutions with scalar hair, the perturbative analysis provides evidence for linear stability under the modes considered.",
+   "authors": "Sebastian Bahamonde, Theodoros Nakas, Simon Iteanu",
+   "id": "2610.11712",
+   "version": "2610.11712",
+   "kscore": 8,
+   "ktags": [
+    "修正引力",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "hep-ph",
+    "quant-ph"
+   ],
+   "title": "Scattering entanglement entropy between one particle species and the others",
+   "link": "https://arxiv.org/abs/2610.10704",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10704v1 Announce Type: new Abstract: We construct the entanglement entropy of a general scattering process between one particle species (denoted as $A$) and the rest of the final state. Assuming a pure initial momentum eigenstate, we show that the reduced density matrix in particle $A$'s Fock space is block-diagonal in zero-, one- and multi-particle states, and is diagonal in the momentum basis for the one-particle state. As a result, we could write down the Von Neumann entropy of particle $A$, $S_A$, in terms of scattering probabilities and differential cross sections, assuming no more than one particle $A$ is produced in the final state. $S_A$ contains the information of both the total scattering probabilities (or cross sections) and the differential distributions --- the latter depends on a phase-space resolution factor as a result of the infinite-dimensional momentum Hilbert space. Our result is general and model-independent since we consider the full final state from time evolution ($S|i\\rangle$) rather than a specific outcome, and is applicable as long as the probability for producing multiple particle $A$ is subleading. We also obtain the $n\\geq2$ Tsallis and R\\'enyi entropies in our framework and find out that, at the leading order, they are proportional to the total scattering probability and carry no differential information.",
+   "authors": "Yuan-Hao Zheng, Jiayin Gu",
+   "id": "2610.10704",
+   "version": "2610.10704",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Reconstruction of Black Hole Islands from Hawking Radiation via the Algebraic Petz Map",
+   "link": "https://arxiv.org/abs/2610.10769",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10769v1 Announce Type: new Abstract: The island proposal guarantees a unitary Page curve for evaporating black holes, implying that operators deep behind the horizon must be fully reconstructable from asymptotic Hawking radiation. However, because the interior is causally disconnected and highly dynamical, standard entanglement wedge reconstruction methods, relying on global isometries or continuous modular flow, fail to provide this mapping. We resolve this by constructing a protocol for island reconstruction using the algebraic Petz map. By using modular theory, we reflect island operators into the accessible complement, transport them to the boundary, and map them into the radiation algebra. Furthermore, we demonstrate that this purely algebraic derivation naturally yields the structure of Papadodimas-Raju mirror operators. This framework provides a rigorous operational dictionary for the island formula, proving that information trapped inside a black hole can be decoded.",
+   "authors": "Niloofar Vardian",
+   "id": "2610.10769",
+   "version": "2610.10769",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Entanglement entropy of black holes from the first law of thermodynamics",
+   "link": "https://arxiv.org/abs/2610.11777",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11777v1 Announce Type: new Abstract: We compute the entanglement entropy of quantum matter in spacetimes with a Killing horizon entirely on-shell, by integrating the first law of thermodynamics along a one-parameter family of equilibrium backgrounds labelled by the Hawking temperature. This yields a closed expression in terms of the renormalized stress-energy tensor and the Killing vector, finite by construction, with no replicas and no conical singularities. Its covariant form agrees with the matter terms of the Bardeen--Carter--Hawking mass variation formula. We show in details that for static patch of de Sitter space and for the non-rotating BTZ black hole it reproduces the conical entropy exactly, contact term $Q$ included.",
+   "authors": "D. V. Diakonov, Gleb S. Zverev",
+   "id": "2610.11777",
+   "version": "2610.11777",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Chameleon Gravity with an Environmental Frequency Dependent on Density",
+   "link": "https://arxiv.org/abs/2610.11207",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11207v1 Announce Type: new Abstract: Scalar field theories of modified gravity are strongly constrained by the absence of detectable long range fifth forces in laboratory and Solar System environments. The chameleon mechanism addresses this problem by making the equilibrium value and effective mass of the scalar field dependent on the ambient matter density. In this work, we investigate an effective phenomenological extension of the chameleon framework in which the scalar potential contains an additional quadratic environmental contribution characterized by a density dependent background frequency. This background frequency is distinct from the frequency of scalar perturbations and parametrizes unresolved environmental effects beyond the conventional matter coupling. For an inverse power law scalar potential, we derive the modified equilibrium configuration and identify a frequency dominated regime in which the environmental contribution controls the density dependence of the field. Linear perturbations about the environmental minimum obey a Klein Gordon dispersion relation with a density-dependent effective mass, and the absence of tachyonic instability requires a positive environmental coupling. We further derive analytical consistency conditions associated with frequency dominance, thin shell screening, fifth-force suppression, and the weak field approximation. Numerical illustrations for representative parameter choices demonstrate how the modified density scaling can enhance fifth-force suppression relative to the conventional chameleon case.",
+   "authors": "Raziyeh Zaregonbadi, Nasim Saba",
+   "id": "2610.11207",
+   "version": "2610.11207",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th",
+    "quant-ph"
+   ],
+   "title": "Note on decoherence of the cosmological background by thermal perturbations in the language of open quantum systems",
+   "link": "https://arxiv.org/abs/2610.11397",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11397v1 Announce Type: new Abstract: We study, within a toy model, how a thermal bath of cosmological perturbations can decohere the homogeneous degrees of freedom of the universe, treating the perturbations as an environment in the framework of open quantum systems. In contrast to several earlier approaches, instead of tracing out the perturbations from a semiclassical ansatz for the total wave function, we incorporate their cosmological backreaction through an effective second-order coupling and derive a master equation. Our toy model consists of a spatially flat semiclassical inflationary universe with a clock field in the slow-roll regime, while scalar cosmological perturbations in an assumed thermal-like state constitute the environment. One of the features of the model is the absence of the Markov approximation. The resulting coupling constant is determined by thermal correlation functions of the quantized perturbation modes. Within this framework, we find that, for a representative set of parameter estimates, the characteristic decoherence timescale corresponding to the thermal contribution can be shorter than the Hubble timescale. In addition, we address the question of whether the pointer-state structure induced by the decoherence in such a framework could provide a criterion for the choice of semiclassical states in the early universe.",
+   "authors": "Alexander Kulyabin",
+   "id": "2610.11397",
+   "version": "2610.11397",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "General Spin-1 Dynamics During Inflation: Microcausality Constraints and Cosmological Collider Signals",
+   "link": "https://arxiv.org/abs/2610.10693",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10693v1 Announce Type: new Abstract: We construct the general theory of a spin-1 field propagating on an inflationary background consistent with scale invariance, rotations, Bunch-Davies conditions and microcausality. Our Boostless Proca theory generalises the usual massive Proca theory to a Lagrangian with 5 free parameters: 4 corresponding to parity-even terms and a single parity-odd term. We impose three degrees of freedom from the outset and find that microcausality, the statement that field operators vanish outside the lightcone, requires the kinetic terms to be gauge invariant. We couple this spin-1 state to the inflaton and study the signatures it imprints on cosmological correlators. We find no new signals for the bispectrum meaning that the known signals are the most general thereby providing a very clean model-independent probe of new physics in this leading form of non-Gaussianity. For the trispectrum and higher-point functions, the boostless Proca theory produces new shapes with all 5 parameters in principle measurable.",
+   "authors": "Trevor Cheung, Carlos Duaso-Pueyo, David Stefanyszyn, Dong-Gang Wang",
+   "id": "2610.10693",
+   "version": "2610.10693",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "High-Accuracy Semi-Analytic Mode Functions, Ultraviolet Regularity, and Particle Creation in the Hybrid Approach to mLQC-I",
+   "link": "https://arxiv.org/abs/2610.10802",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10802v1 Announce Type: new Abstract: We construct high-accuracy semi-analytic mode functions for scalar cosmological perturbations in mLQC-I within the hybrid approach to study ultraviolet regularity and gravitational particle creation. The evolution comprises an asymptotic pre-de Sitter branch, a pre-inflationary region containing the quantum bounce, and inflation. In the intermediate region, we construct the complete third-order uniform asymptotic solution and introduce adaptive defect correction. The third-order approximation achieves sub-percent complex-mode accuracy for representative higher-wavenumber modes; defect-corrected solutions agree with numerical evolution at the 0.00001% level over the tested low-wavenumber range. Retaining amplitudes and phases provides a controlled basis for future precision calculations of primordial power spectra and non-Gaussian correlations. We compare the de Sitter vacuum selected in the remote contracting branch with a fourth-order adiabatic state imposed at the bounce. Finite-wavenumber matching and the strict ultraviolet limit require different asymptotic treatments: extrapolating the leading connection to infinite wavenumber yields a spurious constant negative-frequency coefficient and an apparent ultraviolet divergence. Instead, the large-wavenumber de Sitter mode agrees with the fourth-order adiabatic expansion through the order required for energy-momentum tensor renormalization, and smooth exact evolution preserves this ultraviolet structure. Finite and intermediate modes can nevertheless undergo nonadiabatic Bogoliubov mixing and particle creation. Finite-mode particle production thus coexists with ultraviolet regularity. The ultraviolet argument also extends to the dressed-metric approach in its corresponding large-wavenumber regime, while quantitative mode functions must be recalculated using its effective mass.",
+   "authors": "Jamal Saeed, Rui Pan, Anzhong Wang",
+   "id": "2610.10802",
+   "version": "2610.10802",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Probing the Black Hole Singularity with a Quantum String",
+   "link": "https://arxiv.org/abs/2610.10861",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10861v1 Announce Type: new Abstract: In this paper, we investigate the quantum behaviour near the classical singularity of a black hole. We describe the black-hole interior by the Kantowski-Sachs metric, with a string propagating in this region. This approach is motivated by the fact that, near the classical singularity, spacetime curvature reaches Planck or string scales, necessitating a description in terms of string-theoretic degrees of freedom. The string dynamics is formulated via the Polyakov action, and the combined system is canonically quantized to derive the corresponding Wheeler-DeWitt equation. Although the equation is separable in the radial and azimuthal string sectors, the remaining geometric and string degrees of freedom are nontrivially coupled. To address this, we employ a perturbative approach and obtain the wave function up to first order. At the zeroth-order, the angular part is described by the general Heun function, while the geometric part is expressed in terms of the Bessel function. The first-order wave function is governed by a source term containing the zeroth-order solution, and we obtain its explicit expression in terms of the complementary function and the particular integral. We confirm regularity of the wave function at both zeroth and first order, at the singularity as well as at the horizon. Regularity at the horizon imposes a discretization condition on one eigenvalue, while another eigenvalue is quantized due to the azimuthal periodicity of the wave function. Importantly, both zeroth- and first-order solutions satisfy the DeWitt boundary condition, implying resolution of the black hole singularity within this quantum framework.",
+   "authors": "Harpreet Singh, Malay K. Nandy",
+   "id": "2610.10861",
+   "version": "2610.10861",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Probing hairy Kerr black holes through quasi-periodic oscillations II: a study based on the resonance models",
+   "link": "https://arxiv.org/abs/2610.11378",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11378v1 Announce Type: new Abstract: Hairy black holes (BHs), characterized by nontrivial scalar or matter fields, introduce additional degrees of freedom beyond mass, charge, and spin, providing a framework for testing deviations from the Kerr paradigm. We investigate a class of rotating hairy black holes constructed within the gravitational decoupling framework, whose spacetime satisfies the Einstein field equations with a conserved energy-momentum tensor consistent with the strong energy conditions. In our previous work (Paper I; Dasgupta et al. 2026), we studied their horizon structure and test-particle dynamics and confronted two kinematic high-frequency quasi-periodic oscillation (HFQPO) models with observations of six black hole sources. Building on that analysis, we here test nine resonance models against the same HFQPO data, enabling a systematic comparison of eleven models (two kinematic and nine resonance) within the hairy Kerr framework. A comprehensive analysis based on the two kinematic models (Paper I) and the nine resonance models reveals that the HFQPO data with the current level of precision cannot rule out the hairy Kerr scenario. By implementing the Akaike Information Criterion and by examining the consistency of the inferred spins with previous independent spin estimates, our analysis provides a systematic framework for assessing the relative performance of different HFQPO models for each source. These results highlight the potential of HFQPOs to probe black hole hair and the need for more precise observations and a better understanding of the physical origin of QPOs.",
+   "authors": "Anirban Dasgupta, Supragyan Priyadarshinee, Indrani Banerjee, Subhash Mahapatra",
+   "id": "2610.11378",
+   "version": "2610.11378",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Gluons and Knots",
+   "link": "https://arxiv.org/abs/2610.10673",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10673v1 Announce Type: new Abstract: We argue that the scattering amplitude of a single minus helicity gluon with arbitrarily many positive helicity gluons is topological. The amplitude is constant in chambers of kinematic space, its resonances are located at walls and its factorization is determined by wall-crossing. Yangian invariance dictates the amplitude to be determined by a 2d null Wilson loop that can be lifted into a positive and transverse 3d link. By reinterpreting wall-crossing and the Weinberg soft theorem as skein relations and Reidemeister moves of the subknots, we construct a state-counting description consisting of adding the `corners' of their HOMFLY-PT polynomials. Beyond the classical limit, we argue that this provides a conjectured but precise connection to topological field and string theory. The new formula is rigorously derived via a Lean-formalized dependency graph (DAG) as detailed in a companion paper, laying out the precise assumptions including Reidemeister III invariance. It is further tested exhaustively, including novel `star' kinematics where the amplitude and state count are shown to become Catalan numbers, in agreement with knot theory literature.",
+   "authors": "Alfredo Guevara",
+   "id": "2610.10673",
+   "version": "2610.10673",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "hep-ph"
+   ],
+   "title": "Covariant BCFW for All Masses",
+   "link": "https://arxiv.org/abs/2610.10686",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10686v1 Announce Type: new Abstract: We use the massive spinor-helicity formalism to describe a novel construction for massive spinors which allows one to connect the many choices of bases useful in the representation of amplitudes involving massive particles, and we use this to derive a new formulation for the general BCFW shift that is valid regardless whether or which of the particles involved are massive or massless. This formalism should help facilitate a more coherent implementation of on-shell recursion for computing amplitudes involving massive particles in four dimensions.",
+   "authors": "Jacob L. Bourjaily, Michael Plesser",
+   "id": "2610.10686",
+   "version": "2610.10686",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Surface defects in $\\mathcal{N}=4$ Super Yang-Mills: exact results and holographic bootstrap",
+   "link": "https://arxiv.org/abs/2610.10723",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10723v1 Announce Type: new Abstract: We study two-point functions of chiral primary operators in $\\mathcal{N}=4$ Super Yang-Mills in the presence of a half-BPS surface defect. Such a defect preserves only the diagonal combination of transverse rotations and of a global U(1) R-symmetry, so that the correlator depends on one additional cross-ratio and splits into sectors of definite angular charge. We solve the superconformal Ward identities and construct the bulk and defect superconformal blocks in all sectors, including the charged ones, which have no analogue for defects preserving transverse rotations. The solution contains a holomorphic sector, which we fix non-perturbatively by mapping it to a chiral algebra correlator. We extend this map to defects breaking transverse rotations, where it requires a redefinition of the modes of the two-dimensional current algebra, and use it to fix the charged sectors as well. We then use the defect dispersion relation to reconstruct the full correlator of the dimension-two chiral primary at leading order at large N and strong coupling. In the charged sectors long multiplets are absent and the answer is conjecturally exact in both N and the coupling; expanding it at weak coupling, we find perfect agreement with known results. From these correlators we extract infinitely many new pieces of defect CFT data. Finally, we reproduce the strong-coupling answer by an independent Witten diagram bootstrap on the rotation-invariant locus.",
+   "authors": "Lorenzo Bianchi, Davide Bonomi, Maddalena Ferragatta, Valentina Forini",
+   "id": "2610.10723",
+   "version": "2610.10723",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "hep-ph",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "Quantum Gravity in Asymptotically Flat Spacetimes from Unstable D-Branes",
+   "link": "https://arxiv.org/abs/2610.11493",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11493v1 Announce Type: new Abstract: We present a non-perturbative formulation of quantum gravity in asymptotically flat spacetimes using Witten's cubic open string field theory (OSFT) on unstable D-branes. Given that the massless spin-2 sector of the closed string spectrum inherently encodes the degrees of freedom of quantum gravity, we establish this connection by mapping on-shell closed string excitations directly to gauge-invariant operators in OSFT, realizing a concrete flat-space analogue of the AdS/CFT correspondence. By evaluating the OSFT correlation functions of these operators perturbatively around the tachyon vacuum, we systematically reproduce the all-orders genus expansion of the closed string S-matrix for the associated states. This demonstrates that closed string theory-and thus quantum gravity-emerges dynamically from the open string tachyon vacuum, establishing Witten's OSFT as a fully calculable, non-perturbative framework for flat-space quantum gravity.",
+   "authors": "Roji Pius",
+   "id": "2610.11493",
+   "version": "2610.11493",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "quant-ph"
+   ],
+   "title": "Dielectric constant of holographic insulator from quantum geometry",
+   "link": "https://arxiv.org/abs/2610.11635",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11635v1 Announce Type: new Abstract: We study dielectric properties of holographic insulators from the quantum geometry of the ground state. We realize the insulating state by the pseudoscalar interaction of holographic fermions and calculate the fermionic Green function to extract the effective hamiltonian. We then derive the quantum metric and Berry curvature to compute the transports and finally get the dielectric constant from the imaginary part of conductivity.",
+   "authors": "Debabrata Ghorai, Taewon Yuk, Sang-Jin Sin",
+   "id": "2610.11635",
+   "version": "2610.11635",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "Extremal black hole mimickers: geometry, stability, and long-delay signal trains",
+   "link": "https://arxiv.org/abs/2610.11664",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.11664v1 Announce Type: new Abstract: We present a spacetime that serves as a horizonless mimicker of extremal black holes. Unlike previously studied mimickers of black holes with non-degenerate horizons, whose geometries are of the wormhole type and consist of two asymptotically flat regions connected by a very long throat, the mimicker of an extremal black hole possesses a single asymptotically flat region at one end and an infinitely long throat at the other. In the throat region, the spacetime approaches the direct-product geometry $M_{1,1} \\times S^2$, where $M_{1,1}$ is two-dimensional Minkowski spacetime and $S^2$ is the two-sphere. We investigate scalar-field dynamics and the fate of the Aretakis instability. Although Aretakis-like modes arise in a local analysis of the throat, they do not lead to a physical instability of the mimicker. A scalar perturbation initially localized in the throat gives rise, at late times, to a sequence of signals with a characteristic separation $t_{\\rm delay}\\sim 1/\\lambda$, where $\\lambda\\ll 1$ is a deformation parameter. This timescale is parametrically larger than the echo time $t_{\\rm echo}\\sim \\ln(1/\\lambda)$ characteristic of non-extremal black-hole mimickers. We refer to this sequence as a {\\it long-delay signal train}. Geometrically, the periodicity of the long-delay signals is associated with periodic geodesics on $S^2$. We then extend the construction to extremal Kerr. In this case, the throat region approaches a generalized product geometry involving $M_{1,1}$ and a two-dimensional surface $\\Sigma_2$. The corresponding signals are expected to form a quasi-periodic signal train, reflecting the quasi-periodic geodesic motion on $\\Sigma_2$. We also comment on the generalization to wormhole mimickers of non-extremal black holes and on the implications of these results for unitarity in the context of the AdS/CFT correspondence.",
+   "authors": "Sergey N. Solodukhin",
+   "id": "2610.11664",
+   "version": "2610.11664",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Probability measures for de Sitter JT gravity",
+   "link": "https://arxiv.org/abs/2610.12174",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.12174v1 Announce Type: new Abstract: Jackiw-Teitelboim (JT) gravity with positive cosmological constant is a toy model to study the emergence of expanding de Sitter universes from a quantum state. Its density matrix is a superposition of double-trumpet amplitudes which are solutions of a Wheeler-DeWitt equation. We compare predictions of such mixed states for classical expanding universes with the corresponding predictions of no-boundary wavefunctions. Double-trumpet amplitudes consistent with holography, whose semiclassical limit matches the result from Schwarzian boundary fluctuations, lead to a flat probability distribution for the size of the universe, consistent with models of inflation. This is in contrast to the suppression of large universes predicted by no-boundary wave functions.",
+   "authors": "Wilfried Buchmuller, Alexander Westphal",
+   "id": "2610.12174",
+   "version": "2610.12174",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Primordial black holes as a natural consequence of scale-invariance",
+   "link": "https://arxiv.org/abs/2610.10677",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10677v1 Announce Type: new Abstract: We show that a scale-invariant $U(1)$ gauge theory can naturally realize large curvature perturbations around the end of thermal inflation, seeding the formation of primordial black holes (PBHs). The allowed nonminimal gravitational interaction $\\xi$ of the Higgs field induces a Hubble-scale negative mass-squared term for positive $\\xi \\sim \\mathcal{O}(1)$, and triggers a second order phase transition that ends thermal inflation while keeping the extra $e$-folds small. This sharp contrast to the minimally coupled case allows the gauge coupling to be much smaller than unity. It turns out that field fluctuations are dominated by thermal fluctuations around the onset of the phase transition, and sufficiently amplified to produce an appreciable amount of PBHs with a wide range of possible masses. The associated scalar-induced gravitational waves (GWs) are accompanied by cosmic-string induced GWs coming from the breaking of the $U(1)$ symmetry. As a result, the generated PBH population can have a correlated GW signature relevant to pulsar timing arrays, space-based interferometers, or ground-based detectors.",
+   "authors": "TaeHun Kim, Wan-Il Park",
+   "id": "2610.10677",
+   "version": "2610.10677",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "title": "Primordial black holes",
+   "link": "https://arxiv.org/abs/2610.10750",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.10750v1 Announce Type: new Abstract: Primordial black holes, whose formation in the early Universe was first hypothesized by Ya.B.~Zel'dovich and I.D.~Novikov in 1966 (the text of this pioneering article is provided in Appendix II to this review), have attracted increasing attention in recent years. Modern astronomical data across the electromagnetic spectrum, together with observations of gravitational waves and cosmic neutrinos, have revealed a number of unique astrophysical phenomena that may be related to primordial black holes formed in the pre-stellar cosmological epoch. This review describes various models of primordial black hole formation, as well as methods for testing these models with astronomical and astrophysical observations. In particular, we discuss in detail the formation of primordial black holes and their clusters through the collapse of closed domain walls and through effects associated with extra spatial dimensions of the Universe.",
+   "authors": "V. I. Dokuchaev, Yu. N. Eroshenko, V. V. Nikulin, K. A. Postnov, S. G. Rubin, V. D. Stasenko",
+   "id": "2610.10750",
+   "version": "2610.10750",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
