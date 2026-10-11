@@ -1,0 +1,18 @@
+{
+ "listing_date": "2026-10-10",
+ "feed_dates": [
+  "2026-10-10",
+  "2026-10-10",
+  "2026-10-10"
+ ],
+ "fetched_at": "2026-10-11T10:16:12+08:00",
+ "per_feed": {
+  "gr-qc": 0,
+  "hep-th": 0,
+  "astro-ph.CO": 0
+ },
+ "total_deduped": 0,
+ "already_seen": 0,
+ "no_update": true,
+ "papers": []
+}
