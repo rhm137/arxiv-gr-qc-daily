@@ -15,6 +15,7 @@ Env vars: DEEPSEEK_API_KEY
 import json
 import os
 import re
+import shutil
 import sys
 import time
 import xml.etree.ElementTree as ET
@@ -66,6 +67,12 @@ CATEGORY_META = {
 
 RETRY_ABBR = ("LIGO, GW, BH, GR, QPO, ISCO, FLRW, ADM, TOV, PBH, EHT, SKA, LISA, EGB, "
               "QFT, SUSY, CFT, EFT, RG, SUGRA, SNe, CMB, BAO, LSS, AGN, SMBH, GRB, FRB, DM, DE")
+
+# ── 滚动归档（今天 + 过去 5 个工作日批次 = 6 个）──
+# git 仓库里的 archive/ 是历史批次的唯一账本：Actions checkout 把它带下来，
+# 当日页面入档并裁剪后整包部署（deploy-pages 是全量替换），最后由 workflow 回提交。
+ARCHIVE_DIR = os.environ.get("ARCHIVE_DIR", "./archive")
+KEEP_DAYS = 6
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -715,6 +722,14 @@ body { font-family:var(--font-sans);background:var(--bg);color:var(--text);min-h
 .card .desc { font-size:13px;color:var(--text-secondary);line-height:1.5; }
 .footer { margin-top:60px;text-align:center;font-size:13px;color:var(--text-secondary); }
 .footer a { color:#2563eb; }
+.archives { margin-top:36px;max-width:900px;width:100%;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.06);padding:20px 24px;text-align:center; }
+.archives h3 { font-size:15px;font-weight:600;color:#111;margin-bottom:14px; }
+.arc-list { display:flex;flex-wrap:wrap;gap:10px;justify-content:center; }
+.arc-item { display:inline-block;font-size:14px;padding:8px 16px;border-radius:100px;text-decoration:none;color:#2563eb;background:#eff6ff;border:1px solid #dbeafe; }
+a.arc-item:hover { background:#dbeafe; }
+.arc-item.arc-current { color:#fff;background:#2563eb;border-color:#2563eb;font-weight:600; }
+.arc-count { font-size:12px;color:var(--text-secondary);margin-left:6px;font-weight:400; }
+.arc-item.arc-current .arc-count { color:#bfdbfe; }
 """
 
 HUB_INFO = {
@@ -837,15 +852,87 @@ document.querySelectorAll('details.paper-card').forEach(function(el){{el.addEven
         print(f"  Built {p}")
 
 
-def build_hub_html(summary: dict, out_dir: str, date_display: str):
-    """Build hub page."""
+# ═══ 滚动归档 ═══
+CATS_ALL = ["gr-qc", "hep-th", "astro-ph"]
+
+
+def _load_manifest() -> list[dict]:
+    """读归档清单（新→旧）；文件不存在或损坏时返回空。"""
+    try:
+        with open(os.path.join(ARCHIVE_DIR, "archive.json"), encoding="utf-8") as f:
+            return json.load(f).get("days", [])
+    except Exception:
+        return []
+
+
+def _save_manifest(days: list[dict]):
+    os.makedirs(ARCHIVE_DIR, exist_ok=True)
+    with open(os.path.join(ARCHIVE_DIR, "archive.json"), "w", encoding="utf-8") as f:
+        json.dump({"days": days}, f, ensure_ascii=False, indent=2)
+
+
+def update_archive(label: str, display: str, summary: dict, out_dir: str) -> list[dict]:
+    """今日批次入档并裁剪到 KEEP_DAYS 个批次，返回最新清单（新→旧）。
+
+    重跑同一批次幂等：分区页覆盖写、清单按日期去重。
+    被裁掉的批次，其分区页从 archive/ 删除；部署时整包复制进 out_dir，
+    线上随之消失（deploy-pages 全量替换，不在包里的文件即下线）。
+    """
+    os.makedirs(ARCHIVE_DIR, exist_ok=True)
+    qd = label.replace("-", "")
+    for cat in CATS_ALL:
+        fn = f"arxiv-{cat}-{qd}.html"
+        src = os.path.join(out_dir, fn)
+        if os.path.exists(src):
+            shutil.copy2(src, os.path.join(ARCHIVE_DIR, fn))
+
+    days = [d for d in _load_manifest() if d.get("date") != label]
+    days.insert(0, {"date": label, "qd": qd, "display": display,
+                    "counts": dict(summary), "total": sum(summary.values())})
+    days.sort(key=lambda d: d["date"], reverse=True)
+    for old in days[KEEP_DAYS:]:
+        print(f"  Archive window: drop {old['date']}")
+    days = days[:KEEP_DAYS]
+
+    keep_files = {f"arxiv-{cat}-{d['qd']}.html" for d in days for cat in CATS_ALL}
+    for fn in sorted(os.listdir(ARCHIVE_DIR)):
+        if re.fullmatch(r"arxiv-[\w.-]+-\d{8}\.html", fn) and fn not in keep_files:
+            os.remove(os.path.join(ARCHIVE_DIR, fn))
+            print(f"  Archive pruned: {fn}")
+    _save_manifest(days)
+    return days
+
+
+def _short_date(date: str) -> str:
+    """'2026-10-16' → '10月16日'"""
+    return f"{int(date[5:7])}月{int(date[8:10])}日"
+
+
+def _archive_nav_html(days: list[dict], current_qd: str) -> str:
+    """批次切换导航：窗口内全部批次（新→旧），当前页所在批次高亮为不可点。"""
+    items = []
+    for i, d in enumerate(days):
+        txt = _short_date(d["date"]) + ("（今天）" if i == 0 else "")
+        cnt = f'<span class="arc-count">{d["total"]} 篇</span>'
+        if d["qd"] == current_qd:
+            items.append(f'<span class="arc-item arc-current">{txt}{cnt}</span>')
+        else:
+            items.append(f'<a class="arc-item" href="hub-{d["qd"]}.html">{txt}{cnt}</a>')
+    return ('<div class="archives"><h3>📚 最近批次（滚动保留 6 个批次）</h3>'
+            f'<div class="arc-list">{"".join(items)}</div></div>')
+
+
+def _render_hub(day: dict, days: list[dict], is_latest: bool) -> str:
+    """渲染一个批次的 Hub 页：三大分区卡片 + 批次导航。
+    最新批次的卡片指向 {cat}-latest.html，历史批次指向各自的日期页。"""
     cards = []
-    for cat in ["gr-qc", "hep-th", "astro-ph"]:
+    for cat in CATS_ALL:
         info = HUB_INFO[cat]
-        count = summary.get(cat, 0)
+        count = day["counts"].get(cat, 0)
         if count > 0:
             cnt_html = f'<div class="count" style="color:{info["color"]}">{count} 篇</div>'
-            link = f'<a href="{cat}-latest.html" class="card">'
+            href = f"{cat}-latest.html" if is_latest else f"arxiv-{cat}-{day['qd']}.html"
+            link = f'<a href="{href}" class="card">'
         else:
             cnt_html = '<div class="no-update">没更新</div>'
             link = '<div class="card" style="cursor:default">'
@@ -853,20 +940,42 @@ def build_hub_html(summary: dict, out_dir: str, date_display: str):
                      f'<span class="cat-badge" style="background:{info["color"]}">arXiv {cat}</span>'
                      f'<h2>{info["title"]}</h2>{cnt_html}<p class="desc">{info["desc"]}</p>'
                      f'{"</a>" if count > 0 else "</div>"}')
-
-    html = f"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+    heading = "📰 arXiv 今日论文速览" if is_latest else "📰 arXiv 论文速览"
+    nav = _archive_nav_html(days, day["qd"]) if len(days) > 1 else ""
+    return f"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>arXiv Daily Hub — {date_display}</title><style>{HUB_CSS}</style></head><body>
-<div class="header"><h1>📰 arXiv 今日论文速览</h1><p class="date">{date_display}</p></div>
+<title>arXiv Daily Hub — {day['display']}</title><style>{HUB_CSS}</style></head><body>
+<div class="header"><h1>{heading}</h1><p class="date">{day['display']}</p></div>
 <div class="grid">{''.join(cards)}</div>
-<div class="footer">Generated by WorkBuddy · {date_display}
+{nav}
+<div class="footer">Generated by WorkBuddy · {day['display']}
  · Data from <a href="https://arxiv.org" target="_blank">arxiv.org</a></div>
 </body></html>"""
 
-    path = os.path.join(out_dir, "latest.html")
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(html)
-    print(f"  Hub: {path}")
+
+def build_hub_html(days: list[dict], out_dir: str):
+    """生成全部 Hub 页：latest.html（= 今天）、每个批次的 hub-<qd>.html、index.html 跳转页。
+
+    Hub 页是纯函数：只依赖归档清单（日期 + 各分区篇数），每次部署全量重渲染，
+    所以历史页上的批次导航永远只指向窗口内存活的页面，不会产生死链。
+    """
+    today_qd = days[0]["qd"]
+    for d in days:
+        is_latest = d["qd"] == today_qd
+        html = _render_hub(d, days, is_latest)
+        names = ["latest.html", f"hub-{d['qd']}.html"] if is_latest else [f"hub-{d['qd']}.html"]
+        for fn in names:
+            with open(os.path.join(out_dir, fn), "w", encoding="utf-8") as f:
+                f.write(html)
+            print(f"  Hub: {fn}")
+    # 分类页页脚的 Hub 链接指向 index.html —— 生成跳转页兜底
+    with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write('<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">'
+                '<meta http-equiv="refresh" content="0; url=latest.html">'
+                '<title>arXiv Daily Hub</title></head><body>'
+                '<p style="font-family:sans-serif;padding:40px">'
+                '<a href="latest.html">→ arXiv Daily Hub</a></p></body></html>')
+    print("  Hub: index.html (redirect)")
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1030,7 +1139,14 @@ def main():
             continue
         build_category_html(papers, cat, args.out, display, qd)
 
-    build_hub_html(summary, args.out, display)
+    # ── STEP 3b: 滚动归档（今天入档 → 裁剪到 KEEP_DAYS → 整包进部署目录）──
+    print(f"\n--- Rolling archive (keep {KEEP_DAYS} batches) ---")
+    days = update_archive(label, display, summary, args.out)
+    for fn in sorted(os.listdir(ARCHIVE_DIR)):
+        shutil.copy2(os.path.join(ARCHIVE_DIR, fn), os.path.join(args.out, fn))
+    print(f"  Archive payload: {len(os.listdir(ARCHIVE_DIR))} files from {ARCHIVE_DIR}")
+
+    build_hub_html(days, args.out)
 
     # ── STEP 4: Save summary（含批次日期，供重复推送防护比对）──
     spath = os.path.join(args.out, "summary.json")

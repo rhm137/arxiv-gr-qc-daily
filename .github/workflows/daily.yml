@@ -12,6 +12,11 @@ on:
         required: false
         type: boolean
         default: false
+      notify:
+        description: '推送 PushPlus 群通知（验证运行时可关）'
+        required: false
+        type: boolean
+        default: true
 
 concurrency:
   group: arxiv-daily-digest
@@ -22,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     permissions:
-      contents: read
+      contents: write   # write: 归档目录 archive/ 需要回提交到本仓库
       pages: write
       id-token: write
 
@@ -57,12 +62,30 @@ jobs:
       - uses: actions/deploy-pages@v4
         if: steps.digest.outputs.new_batch != 'false'
 
+      # 滚动归档回提交：archive/ 是历史批次（今天+过去5个工作日）的唯一账本，
+      # run.py 已在 checkout 里更新并裁剪好，这里存回仓库供明天 checkout 使用。
+      # 失败不阻断——线上站点本次已整包部署成功，下次运行会再试。
+      - name: Commit rolling archive to repo
+        if: steps.digest.outputs.new_batch != 'false'
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add archive/
+          if git diff --cached --quiet; then
+            echo "archive unchanged — nothing to commit"
+            exit 0
+          fi
+          git commit -m "archive: rolling window update (${{ steps.digest.outputs.display }}) [skip ci]"
+          git pull --rebase origin main || git rebase --abort || true
+          git push origin main || echo "::warning::archive push failed (non-fatal; site already deployed)"
+
       # Wait for Pages propagation then push notification
       - name: Wait for Pages
         if: steps.digest.outputs.new_batch != 'false'
         run: sleep 30
       - name: Send PushPlus notification
-        if: steps.digest.outputs.new_batch != 'false'
+        if: steps.digest.outputs.new_batch != 'false' && inputs.notify
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/latest.html
