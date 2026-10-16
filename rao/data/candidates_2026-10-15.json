@@ -1,0 +1,331 @@
+{
+ "listing_date": "2026-10-15",
+ "no_update": false,
+ "total_new_unseen": 69,
+ "passed_prefilter": 17,
+ "candidates": [
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Testing Departures from the $\\Lambda$CDM model in f(T) Gravity with DESI DR2",
+   "link": "https://arxiv.org/abs/2610.20002",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20002v1 Announce Type: new Abstract: Recent analyses combining DESI baryon acoustic oscillation (BAO) measurements with other cosmological observations have reported indications of departures from the $\\Lambda$CDM model within dynamical dark energy scenarios. We investigate whether such deviations are reproduced consistently in $f(T)$ gravity and whether they persist when different cosmological observations are combined. Using the DESI DR2 BAO measurements, Cosmic Microwave Background (CMB), and Pantheon+ Type Ia Supernovae (SNe Ia) sample, we constrain three representative $f(T)$ models: the power-law, exponential, and hyperbolic-tangent models. We compare the constraints obtained from different combinations of data, distinguishing changes in marginalized parameter distributions from changes in the relative statistical performance of the models. For the power-law model, the mild deviation from the $\\Lambda$CDM model obtained from BAO+CMB disappears after the SNe Ia data are included. In contrast, the exponential model retains a preference for a nonzero deformation parameter in the full analysis, while the allowed parameter space of the hyperbolic-tangent model changes substantially after the CMB distance priors are included. Importantly, the parameter-level deviation found for the exponential model does not lead to a clear statistical preference over the $\\Lambda$CDM model according to the information criteria, whereas the hyperbolic-tangent model shows a poorer statistical performance for the combined data. Despite these differences in the model constraints, the inferred transition redshift $z_T$ remains relatively stable among the three models and data combinations. Our results show that the departures from the $\\Lambda$CDM model indicated by DESI analyses are not a generic feature of $f(T)$ gravity, but depend strongly on the specific modified gravity parameterization and on the combination of cosmological observations.",
+   "authors": "Jie Zheng, Mingzhi Wang, Ming Zhang",
+   "id": "2610.20002",
+   "version": "2610.20002",
+   "kscore": 14,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "背景相关",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-th"
+   ],
+   "title": "All Quiet on the Vector Front: Scalar Growth and Perturbative Control in Horndeski--Weyl-squared Gravity",
+   "link": "https://arxiv.org/abs/2610.20156",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20156v1 Announce Type: new Abstract: Higher-order curvature corrections to general relativity arise naturally in many fundamental theories and provide phenomenologically interesting low-energy effective field theories. However, higher-derivative terms can introduce ghost modes, which call the validity of such models into question. Here, we thoroughly investigate the classical linear stability of the most general second-order scalar-tensor theory, namely the Horndeski theory of gravity, augmented by a Weyl-squared term in the action. We consider shift-symmetric de Sitter and power-law FLRW backgrounds and study the evolution of linear perturbations. Vector perturbations are free of gradient and tachyonic instabilities for a positive Weyl-induced mass squared. Tensor perturbations necessarily contain a ghost; their superhorizon branches are bounded, while a frozen-background calculation identifies a separate finite-momentum stability condition. The scalar sector instead contains a growing long-wavelength branch for all expanding backgrounds we consider, which is inherited by at least one of the gauge-invariant Bardeen potentials. We show that this growth enters the Bardeen potentials through an inverse-gradient factor $a^2/k^2$: the dynamical scalar fields remain bounded on the inflationary backgrounds, the direct contribution of the growing shear to the clock-matched tidal field cancels, and the electric part of the Weyl tensor decays. We discuss the implications of our results for perturbative control and for the phenomenological viability of theories including quadratic curvature corrections.",
+   "authors": "Antonio De Felice, Guillem Dom\\`enech, Jan Tr\\\"ankle",
+   "id": "2610.20156",
+   "version": "2610.20156",
+   "kscore": 9,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th",
+    "quant-ph"
+   ],
+   "title": "Gravity from generalized entropy",
+   "link": "https://arxiv.org/abs/2610.19106",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.19106v1 Announce Type: new Abstract: Gravity from entropy (GfE) identifies its Lagrangian with the geometric quantum relative entropy (GQRE) between the spacetime metric and a metric induced by matter and curvature, treating the metric itself as a quantum operator. We extend this construction to the Tsallis, R\\'enyi, and Sharma-Mittal families, which we call gravity from generalized entropy (GfGE), and determine their common Einstein limit, weak-field spectra, auxiliary-field formulation, and horizon entropy. The entropy choice controls the leading higher-curvature terms and additional modes. We confirm that the linearized GfE spectrum contains a healthy scalar and a Planck-scale tachyonic spin-2 ghost. We identify the conditions that remove this ghost: curvature must enter through its scalar trace, or the entropy generator must be flat to quadratic order at the identity. The latter gives exact general relativity for Tsallis at $q=0$ and ghost-free $f(R,L_m)$ theories for R\\'enyi and Sharma-Mittal. On shell, the auxiliary G-field is proportional to the tensor in Wald's entropy formula. For analytic entropy functions, horizons with a single curvature scale have an area term followed by constant and inverse-area corrections. We also extend the volume-constraint cosmological constant to the full family; its leading entropy dependence is set by the scalar mass. A finite set of entropy-function derivatives controls the leading weak-curvature departures from general relativity.",
+   "authors": "Hussain Gohar",
+   "id": "2610.19106",
+   "version": "2610.19106",
+   "kscore": 8,
+   "ktags": [
+    "引力热力学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "The Atacama Cosmology Telescope: DR6 Constraints on Isotropic Time-Dependent Cosmic Birefringence from Axion-like Particles",
+   "link": "https://arxiv.org/abs/2610.19049",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.19049v1 Announce Type: new Abstract: Axion-like particles (ALPs) with sufficiently low masses are dark matter candidates because they could account for much or all of the observed dark matter energy density and help explain observations of galactic substructure. Such pseudoscalar fields could couple to photons, causing a time-dependent rotation of the polarization of the light with an oscillation frequency equal to the ALP mass. We use measurements of the polarization of the cosmic microwave background (CMB) by the Atacama Cosmology Telescope (ACT) between 2017 and 2022 to search for this effect using an EB power spectrum estimator. By probing oscillation periods from days to years, the data constrain the coupling between ALPs and photons for ALP masses between $2.5\\times 10^{-23}$ eV and $4.8\\times 10^{-20}$ eV. We find no evidence for such a signal and set a 95% upper bound on the axion-photon coupling constant, $g_{\\phi\\gamma} < 1.1\\times10^{-11}\\left({m_\\phi}/{10^{-21}\\,\\mathrm{eV}}\\right)\\,\\mathrm{GeV}^{-1} .$ This limit assumes that ALPs make up all of the dark matter and that the ALP field amplitude is stochastically distributed, which leads to more conservative bounds than the deterministic-field assumption used in some previous CMB polarization analyses. Among searches for ALP-photon coupling using CMB polarization, we set the strongest bounds to date under the stochastic-field assumption. This work develops a methodology to analyze over 10,000 time-sliced \"depth-1\" polarization maps from ACT, a data product that will be standard for time-domain astrophysics with the Simons Observatory, enabling searches with a higher sensitivity and observing span.",
+   "authors": "Zachary B. Huber, Huajian Yang, Steve K. Choi, Erminia Calabrese, Vera Gluscevic, Sigurd Naess, Michael D. Niemack, Lyman A. Page, Alexander van Engelen, Edward J. Wollack",
+   "id": "2610.19049",
+   "version": "2610.19049",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "A quantum probabilistic approach to the emergence of an inflationary Starobinsky Universe",
+   "link": "https://arxiv.org/abs/2610.19616",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.19616v1 Announce Type: new Abstract: We propose that the necessary conditions for the existence of inflation could be explained by a quantum probabilistic approach. We interpret physical states $\\psi$ obtained via the path integral formulation as probability density amplitudes for the Universe to be measured at a particular geometric configuration. First, we examine the problem of ordering ambiguities in the Wheeler-DeWitt (WDW) equation. We develop a formalism to handle ambiguities in the canonical quantization of a $1d$ minisuperspace by defining ambiguity functions within the WDW equation. We define a Hilbert space inner product for calculating physical observables, and using an argument from the hermiticity of the Hamiltonian, we obtain an expression for its measure $\\mu$ in addition to constraints on the ambiguity functions. By defining a new quantum state $\\Psi =\\sqrt{\\mu} \\psi$ and using the path integral formalism, we are able to resolve ambiguities and prove the theory is universal. We then generalize for any $M$-dimensional minisuperspace system, for which we can prove universality in the semi-classical approximation for a large class of models. We also show that this universality extends to all orders of quantum theory if the target space manifold of the theory is flat. We calculate probability amplitudes for various cosmological scenarios involving Starobinsky inflation. We summarize the Hartle-Hawking no-boundary proposal for GR and we comment on the distinct possibilities of defining a contour of integration: the sign choice of Hartle-Hawking vs that of Linde-Vilenkin. We make an analogous calculation for $R^{2}$ gravity and find that for the Linde- Vilenkin choice it is statistically more likely for the Universe to emerge in its inflationary stage. Finally, we calculate transition amplitudes when the kinetic energy of the inflaton field $\\phi$ takes non-zero values.",
+   "authors": "Eftychios Kaimakkamis",
+   "id": "2610.19616",
+   "version": "2610.19616",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.IM"
+   ],
+   "title": "Quantum noise and torque correlations in a torsion-bar Sagnac speed meter",
+   "link": "https://arxiv.org/abs/2610.19938",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.19938v1 Announce Type: new Abstract: Quantum fluctuations entering through weakly transmitting mirrors can limit a torsion-bar Sagnac speed meter for low-frequency gravitational-wave detection, even when its optical layout suppresses radiation-pressure back action. We show that, in the Cryogenic sub-Hz cROss torsion bar detector with quantum NOn-demolition Speed meter (CHRONOS), vacuum fields entering from behind the end and middle test masses can dominate the low-frequency quantum noise despite cancellation of the torques on opposite ends of each bar. For a reference configuration with mirror power transmissions of only $10^{-7}$, these fields contribute $89.7\\%$ of the total quantum-noise power spectral density at 0.1 Hz. Omitting them would underestimate the amplitude spectral density by a factor of 3.11. Our input-output model connects the correlations produced by successive optical interactions to the forces on each bar and the measured signal. This connection shows why strong torque cancellation does not, by itself, ensure a corresponding improvement in detector sensitivity. Replacing mirror transmission with absorption at fixed reflectivity leaves the excess quantum noise essentially unchanged for the two operating points studied. The predicted signal response and quantum noise agree with independent FINESSE 3 calculations as recycling detuning and homodyne angle are varied. These results establish rear vacuum fields as a limiting noise source in this torsion-bar speed meter and provide quantitative requirements for its mirror and readout design.",
+   "authors": "Yuki Inoue, Mario Onglao, Daiki Tanabe, Masashi Hazumi, Vivek Kumar, Apimook Watcharangkool",
+   "id": "2610.19938",
+   "version": "2610.19938",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE"
+   ],
+   "title": "Black Hole Fine Structure",
+   "link": "https://arxiv.org/abs/2610.18989",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.18989v1 Announce Type: new Abstract: In General Relativity, axial and polar black-hole perturbations share identical quasinormal-mode spectra, a property known as isospectrality. New physics can break this degeneracy, producing a spectral splitting analogous to atomic fine structure. We perform a theory-agnostic search for such splitting in gravitational-wave observations. We find no evidence for isospectrality breaking and place a combined $90\\%$ upper limit of $<28.5\\%$ on the relative frequency splitting. We map these constraints onto several modified-gravity theories, constraining the coupling-lengths to be $\\lesssim 28\\,\\mathrm{km}$.",
+   "authors": "Adrian Ka-Wai Chung, Richard Dyer, Tomasz Kinowski, Christopher J. Moore",
+   "id": "2610.18989",
+   "version": "2610.18989",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "The Forgetful Black Hole: Memory Burden and Hysteresis in Hawking Evaporation",
+   "link": "https://arxiv.org/abs/2610.18997",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.18997v1 Announce Type: new Abstract: The memory-burden scenario of black hole evaporation proposes that Hawking emission may become increasingly suppressed as maintaining stored quantum information becomes dynamically costly. In this work, we revisit this scenario and investigate the conditions under which information retention can produce a genuine dynamical burden. We derive general scaling conditions for incremental memory accumulation at a fixed fractional mass loss and establish a conditional no-go result: entropy-suppressed, zero-mean deposits with subextensive integrated correlations cannot produce an order-one luminosity modification through unamplified accumulation and bounded feedback. We identify three essential requirements for dynamical memory: a record of the past must be written, retained, and coupled back to subsequent evaporation. We illustrate these requirements with concrete toy models that exhibit either a prolonged but finite black hole lifetime or an asymptotically approached finite-mass state (an effective remnant). We further distinguish kinetic-memory, thermodynamic-memory, and spectral-memory sub-categories of possible memory-burden mechanisms. In particular, we demonstrate that an independently evolving memory variable can generate evaporation-accretion hysteresis, such that a black hole returning to the same mass may possess a different retained memory and consequently a different luminosity. This history dependence may have implications for primordial black hole phenomenology. Finally, we briefly discuss the possibility of \"merger rejuvenation\", in which black hole mergers reorganize or reset the effective memory state.",
+   "authors": "Yen Chin Ong",
+   "id": "2610.18997",
+   "version": "2610.18997",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE"
+   ],
+   "title": "Testing Charged Black Holes Embedded in Anisotropic Matter and Surrounded by Plasma through Gravitational Lensing: Bounds from the Sloan Lens ACS Survey",
+   "link": "https://arxiv.org/abs/2610.20017",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20017v1 Announce Type: new Abstract: We investigate weak gravitational lensing by a charged black hole surrounded by anisotropic matter, described by the two-component Kiselev metric, and immersed in a homogeneous plasma. We first examine the black hole geometry and horizon structure and then derive the weak-deflection angle from the Hamiltonian description of light propagation in plasma, using an expansion with a fixed turning point that we verify against direct numerical integration. Using the gravitational lens equation, we obtain the Einstein-ring angle, the image positions, the total magnification and the fractional magnifications of the primary and secondary images. We then confront the model with the Einstein radii of two galaxy-scale lenses of the Sloan Lens ACS Survey, J0008$-$0004 and J0029$-$0055. Because the Einstein angle cannot be smaller than the reduced deficit deflection, the observed radii give the mass-independent bounds $K<6.5\\times10^{-6}$ and $K<4.2\\times10^{-6}$, respectively. The charge correction to the Einstein radius is suppressed by $r_s/R_E\\approx 5\\times10^{-6}$ and is unobservable, while the plasma parameter at the optical wavelengths of the SLACS imaging is of order $10^{-22}$ and cannot be constrained. Our results show that galaxy-scale strong lensing data place stringent limits on anisotropic matter surrounding the lens, whereas plasma effects can be probed only at low radio frequencies.",
+   "authors": "Ritesh Pandey, Shubham Kala, Amare Abebe, Hemwati Nandan, G. G. L. Nashed",
+   "id": "2610.20017",
+   "version": "2610.20017",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Directional effects of the Unruh effect on steering harvesting",
+   "link": "https://arxiv.org/abs/2610.20151",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20151v1 Announce Type: new Abstract: We investigate directional quantum steering harvesting by two uniformly accelerated non-identical Unruh-DeWitt detectors coupled to a massless scalar field in the Minkowski vacuum. We show that the Unruh effect does not simply degrade harvested steering, but can reshape its directionality in a strongly parameter-dependent manner. At low detector energy scales, acceleration predominantly suppresses steering, whereas at higher energy scales, moderate acceleration can enhance steering and even activate an initially absent steering direction. Most strikingly, within a finite acceleration window, the Unruh effect enhances steering in one direction while simultaneously suppressing it in the opposite direction, revealing an intrinsically directional influence of relativistic acceleration. Detector non-identicality provides an additional control mechanism: a moderate energy-gap mismatch can enhance or activate one steering direction while suppressing the reverse one, whereas sufficiently large energy-gap mismatch suppresses the harvested steering. Moreover, the maximal steering asymmetry approximately marks the transition from two-way to one-way steering. Our results establish relativistic acceleration and detector non-identicality as means of controlling the strength and directionality of vacuum-harvested quantum correlations.",
+   "authors": "Shu-Min Wu, Rui-Yang Xu, Zhihong Liu",
+   "id": "2610.20151",
+   "version": "2610.20151",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Search for Compact Binary Coalescences with Sub-solar Mass Components in Data from the Second Part of LIGO-Virgo-KAGRA's Fourth Observing Run",
+   "link": "https://arxiv.org/abs/2610.20276",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20276v1 Announce Type: new Abstract: We report on a gravitational wave search for compact binary coalescences with secondary mass between 0.2 M and 1 M and primary mass between 0.2 M and 10 M, restricting the component mass ratio to lie between 0.1 and 1. The analysis uses data collected by the LIGO and Virgo detectors between 2024 April 10 15:00:00 and 2025 January 28 17:00:00, the second part of the fourth observing run of the LIGO-Virgo-KAGRA Collaboration. Results from two out of three search pipelines show outlier candidates, but not at a sufficient level of significance to provide evidence for detection. We report the combined sensitivity of the current searches over the first and second parts of the observing run to the target sub-solar mass (SSM) black hole (BH) population, as well as to neutron star (NS) binaries with one or more sub-solar component. We place upper limits on the merger rate of SSM BHs, ranging from $50 {\\rm Gpc}^{-3} {\\rm yr}^{-1}$ to~$5000 {\\rm Gpc}^{-3} {\\rm yr}^{-1}$ (90% confidence) for different component mass combinations. We use the merger rate limits to constrain two illustrative dark matter (DM) scenarios that can form SSM compact objects: primordial BHs, and dark BHs forming in a dissipative DM model. Our search limits the fraction of DM in primordial BHs, assuming a monochromatic mass distribution, to be $\\leq$ (0.018-0.032) at 1 M, and $\\leq$ (0.10-0.18) at 0.35 M for early-forming binaries; or to be less than 1 at masses above (0.62-0.74) M for late-forming binaries. For the dissipative model, we constrain the fraction of DM for a range of minimum dark black hole masses below $1\\,M$ to be as low as (1.0-1.1) x $10^{-5}$; we also exclude minimum masses above (0.62-0.74) M, if dark BHs constitute all of the DM. For binary NSs that include sub-solar mass components, assuming a simple, fixed population model we find a merger rate upper limit of $249 {\\rm Gpc}^{-3} {\\rm yr}^{-1}$.",
+   "authors": "The LIGO Scientific Collaboration,  the Virgo Collaboration,  the KAGRA Collaboration, A. G. Abac, A. Abe, I. Abouelfettouh, F. Acernese, K. Ackley, A. Adam, S. Adhicary, D. Adhikari, R. X. Adhikari, V. K. Adkins, S. Afroz, A. Agapito, D. Agarwal, M. Agathos, N. Aggarwal, S. Aggarwal, O. D. Aguiar, I. -L. Ahrend, L. Aiello, A. Ain, P. Ajith, T. Akutsu, L. Albers, W. Ali, S. Al-Kershi, C. Allan, C. Allene, A. Allocca, S. Al-Shammari, J. A. Alvarez, S. Alvarez-Lopez, W. Amar, O. Amarasinghe, A. Amato, F. Amicucci, C. Amra, A. B. Anand, C. Anand, A. Ananyeva, S. B. Anderson, W. G. Anderson, M. Andia, M. Ando, F. Andrade-Oliveira, M. Andr\\'es-Carcasona, J. L. Andrey, T. Andri\\'c, J. Anglin, J. Anna, J. M. Antelis, S. Antier, T. Aoki, M. Aoumi, E. Z. Appavuravther, E. A. Appelt, S. Appert, S. K. Apple, K. Arai, A. Araya, M. C. Araya, M. Arca Sedda, F. Arciprete, J. S. Areeda, N. Aritomi, F. Armato, S. Armstrong, N. Arnaud, M. Arogeti, S. M. Aronson, G. Ashton, Y. Aso, L. Asprea, M. Assiduo, S. Assis de Souza Melo, S. M. Aston, P. Astone, P. S. Aswathi, F. Attadio, F. Aubin, K. AultONeal, G. Avallone, N. Avdeev, E. A. Avila, S. Babak, C. Badger, S. Bae, S. Bagnasco, S. Baimukhametova, L. Baiotti, T. Baka, K. A. Baker, T. Baker, G. Balbi, G. Baldi, N. Baldicchi, M. Ball, G. Ballardin, M. Ballelli, S. W. Ballmer, S. Banagiri, B. Banerjee, D. Bankar, T. M. Baptiste, P. Baral, M. Baratti, J. C. Barayoga, K. Baric, B. C. Barish, D. Barker, D. Barman, N. Barman, F. Barone, B. Barr, M. Barrios, L. Barsotti, M. Barsuglia, D. Barta, M. A. Barton, I. Bartos, A. Basalaev, R. Bassiri, A. Basti, M. Bawaj, J. C. Bayley, A. C. Baylor, P. A. Baynard II, M. Bazzan, V. M. Bedakihale, F. Beirnaert, M. Bejger, A. S. Bell, C. Bellani, D. S. Bellie, D. Beltran-Martinez, E. Benedetti, W. Benoit, I. Bentara, M. Ben Yaala, S. Bera, F. Bergamin, B. K. Berger, M. Beroiz, C. P. L. Berry, I. Berry, D. Bersanetti, T. Bertheas, A. Bertolini, J. Betzwieser, D. Beveridge, N. Bevins, J. Bezerra-Sobrinho, R. Bhandare, R. Bhatt, A. Bhattacharjee, D. Bhattacharjee, S. Bhattacharyya, S. Bhaumik, V. Biancalana, F. Bianchi, I. A. Bilenko, M. Bilicki, G. Billingsley, A. Binetti, S. Bini, S. Biot, O. Birnholtz, S. Biscoveanu, A. Bisht, M. Bitossi, M. -A. Bizouard, S. Blaber, J. Black, J. K. Blackburn, L. A. Blagg, C. D. Blair, D. G. Blair, M. Bloch, N. Bode, N. Boettner, P. Bogdan, G. Boileau, M. Boldrini, G. N. Bolingbroke, L. D. Bonavena, V. A. Bonhomme, E. Bonilla, M. S. Bonilla, A. Bonino, R. Bonnand, A. Borchers, N. Borghi, V. Boschi, S. Bose, V. Bossilkov, Y. Bothra, A. Boudon, T. D. Boybeyi, M. Boyle, A. Bozzi, C. Bradaschia, M. J. Brady, P. R. Brady, A. Branch, M. Branchesi, T. Briant, A. Brillet, M. Brinkmann, P. Brockill, E. Brockmueller, A. F. Brooks, D. D. Brown, M. L. Brozzetti, S. Brunett, G. Bruno, R. Bruntz, J. Bryant, Y. Bu, F. Bucci, A. Buchicchio, A. Buggiani, O. Bulashenko, T. Bulik, H. J. Bulten, A. Buonanno, K. Burtnyk, R. Buscicchio, N. Busdon, D. Buskulic, R. L. Byer, R. Cabrita, V. A. C\\'aceres-Barbosa, L. Cadonati, G. Cagnoli, C. Cahillane, A. Calafat, J. Calder\\'on Bustillo, J. D. Callaghan, T. A. Callister, E. Calloni, S. R. Callos, K. Cannon, V. Cantory, H. Cao, L. A. Capistran, E. Capocasa, G. Capoccia, E. Capote, C. Capuano, G. Capurri, F. Carbognani, K. J. Cardona-Mart\\'inez, M. Carlassara, M. Carpinelli, G. Carrillo, G. Carullo, A. Casallas-Lagos, J. Casanueva Diaz, C. Casentini, S. Caudill, M. Cavagli\\`a, R. Cavalieri, A. Ceja, G. Cella, P. Cerd\\'a-Dur\\'an, N. Chabbra, W. Chaibi, A. Chakraborty, P. Chakraborty, S. Chakraborty, S. Chalathadka Subrahmanya, C. Chan, J. C. L. Chan, M. Chan, C. -Y. Chang, K. Chang, S. Chao, P. Charlton, E. Chassande-Mottin, C. Chatterjee, Debarati Chatterjee, Deep Chatterjee, M. Chaturvedi, S. Chaty, A. Chen, A. H. -Y. Chen, D. Chen, H. Chen, H. Y. Chen, S. Chen, Yanbei Chen, Yiwen Chen, G. Cheng, H. P. Cheng, P. Chessa, T. Cheunchitra, H. T. Cheung, S. Y. Cheung, F. Chiadini, G. Chiarini, A. Chiba, A. Chincarini, D. Chintala, A. Chiummo, A. Chopra, C. Chou, S. Choudhary, N. Christensen, Y. K. Chu, S. S. Y. Chua, G. Ciani, P. Ciecielag, M. Cie\\'slar, M. Cifaldi, B. Cirok, F. Clara, J. A. Clark, T. A. Clarke, A. Claveus, M. R. Claypool, S. Clesse, F. Cleva, S. M. Clyne, E. Coccia, E. Codazzo, P. -F. Cohadon, D. E. Cohen, E. Colangeli, O. Cole, M. Colleoni, C. G. Collette, J. Collins, S. Colloms, A. Colombo, G. Comp\\`ere, C. M. Compton, G. Connolly, L. Conti, T. R. Corbitt, I. Cordero-Carri\\'on, S. Corezzi, N. J. Cornish, A. Corsi, S. Cortese, L. A. Corubolo, L. Cotnoir, R. Cottingham, J. A. Cotturone, M. W. Coughlin, P. Couvares, R. Coyne, A. Cozzumbo, J. D. E. Creighton, T. D. Creighton, S. Crook, R. Crouch, J. Csizmazia, K. Csuk\\'as, T. J. Cullen, A. Cumming, E. Cuoco, M. Cusinato, R. R. Cuzinatto, L. V. da Concei\\c{c}\\~{a}o, T. Dal Canton, S. Dall'Osso, S. Dal Pra, G. D\\'alya, Y. Dang, B. D'Angelo, S. Danilishin, O. Danner, S. D'Antonio, K. Danzmann, K. E. Darroch, L. P. Dartez, R. Das, S. Das, A. Dasgupta, V. Dattilo, A. Daumas, I. Dave, A. Davenport, T. F. Davies, D. Davis, M. C. Davis, P. Davis, E. J. Daw, M. Dax, J. De Bolle, E. deBruin, M. Deenadayalan, J. Degallaix, U. Deka, M. De Laurentis, C. J. Delgado Mendez, F. De Lillo, S. Della Torre, W. Del Pozzo, O. M. del Rio, A. Demagny, F. De Marco, G. Demasi, F. De Matteis, C. de Melo, N. Demos, T. Dent, A. Depasse, N. DePergola, R. De Pietri, R. De Rosa, C. De Rossi, E. K. Derrick, M. Desai, D. DeSantis, S. Deshmukh, V. Deshmukh, R. De Simone, S. Determan, S. Dhage, A. Dhani, R. Dhatri, R. Dhurkunde, R. Diab, C. Diaz, M. C. D\\'iaz, F. Diaz Guerra, M. Di Cesare, M. A. Dicorato, T. Dietrich, C. Di Fronzo, M. Di Giovanni, D. Diksha, J. Ding, S. Di Pace, I. Di Palma, D. Di Piero, F. Di Renzo,  Divyajyoti, A. Dmitriev, J. P. Docherty, Z. Doctor, N. Doerksen, E. Dohmen, A. Doke, A. Domiciano De Souza, L. D'Onofrio, F. Donovan, K. L. Dooley, S. Doravari, O. Dorosh, F. Dosopoulou, M. Drago, J. C. Driggers, M. Dubois, R. S. Dumbreck, U. Dupletsa, D. D'Urso, P. Dutta Roy, H. Duval, S. Dwivedi, S. E. Dwyer, C. Eassa, M. Eberhardt, M. Ebersold, M. Ebiri, G. Eddolls, A. Effler, J. Eichholz, H. Einsle, M. Eisenmann, M. Emma, K. Endo, R. Enficiaud, V. Ernst, L. Errico, R. Espinosa, M. Esposito, R. C. Essick, H. Estell\\'es, T. Etzel, M. Evans, T. Evstafyeva, J. M. Ezquiaga, F. Fabrizi, V. Fafone, S. Fairhurst, X. Fan, A. M. Farah, B. Farr, W. M. Farr, M. Favata, M. Fays, M. Fazio, J. Feicht, M. M. Fejer, J. -N. Feldhusen, E. Fenyvesi, A. Feo, J. Fernandes, T. Fernandes, G. Fern\\'andez Rodr\\'iguez, D. Fernando, S. Ferraiuolo, T. A. Ferreira, M. Ferrer-Martinez, F. Fidecaro, P. Figura, I. Fiori, M. Fishbach, R. P. Fisher, S. K. Fitzgerald, V. Fiumara, R. Flaminio, B. Flanagan, S. M. Fleischer, L. S. Fleming, F. Flocco, E. Floden, H. Fong, J. A. Font, F. Fontinele-Nunes, C. Foo, B. Fornal, P. W. F. Forsyth, A. Fragkos, N. Franchini, A. Franco-Ordovas, F. Frappez, F. Frasconi, J. P. Freed, Z. Frei, A. Freise, O. Freitas, R. Frey, W. Frischhertz, P. Fritschel, V. V. Frolov, M. Fuentes-Garcia, R. Fujii, T. Fujimori, Y. Fujiwara, P. Fulda, M. Fyffe, B. U. Gadre, J. R. Gair, S. Galaudage, V. Galdi, M. Galimberti, A. Gamboa, S. Gamoji, A. Ganguly, B. Garaventa, P. Garc\\'ia Abia, J. Garc\\'ia-Bellido, C. Garc\\'{i}a-Quir\\'{o}s, J. W. Gardner, S. Garg, J. Gargiulo, X. Garrido, A. Garron, F. Garufi, P. A. Garver, C. Gasbarra, F. Gautier, V. Gayathri, T. Gayer, G. Gemme, A. Gennai, V. Gennari, J. George, R. George, O. Gerberding, L. Gergely, A. Ghinassi, Archisman Ghosh, Sayantan Ghosh, Shaon Ghosh, Shrobana Ghosh, Suprovo Ghosh, Tathagata Ghosh, J. A. Giaime, K. D. Giardina, D. R. Gibson, C. Gier, F. Gittins, J. Glanzer, F. Glotin, E. Glowacki, J. Godfrey, R. V. Godley, O. Godwin, A. S. Goettel, E. Goetz, J. Golomb, S. Gomez Lopez, G. Gonz\\'alez, P. Goodarzi, S. R. Goode, A. Goodwin-Jones, M. Gosselin, S. M. Goss-Grubbs, C. Gostiaux, R. Gouaty, D. W. Gould, D. Goupilliere, K. Govorkova, A. Grado, V. Graham, A. E. Granados, M. Granata, V. Granata, S. Gras, P. Grassia, C. Gray, R. Gray, G. Greco, A. C. Green, L. Green, S. R. Green, A. M. Gretarsson, E. M. Gretarsson, D. Griffith, C. Grimaud, H. Grote, S. Grunewald, A. G. Guerrero, G. M. Guidi, T. Guidry, H. K. Gulati, F. Gulminelli, H. Guo, W. Guo, Y. Guo, A. Gupta, I. Gupta, N. C. Gupta, S. K. Gupta, V. Gupta, N. Gupte, N. Guttman, F. Guzman, M. Haberland, S. Haino, E. D. Hall, E. Z. Hamilton, G. Hammond, W. -B. Han, M. Haney, J. Hanks, C. Hanna, M. D. Hannam, O. A. Hannuksela, H. Hansen, J. Hanson, R. Harada, A. R. Hardison, S. Harikumar, K. Haris, I. Harley-Trochimczyk, J. Harms, G. M. Harry, I. W. Harry, M. T. Hartman, B. Haskell, C. -J. Haster, K. Haughian, H. Hayakawa, K. Hayama, J. Hedberg, A. Heffernan, D. Hegde, M. C. Heintze, J. Heinzel, H. Heitmann, F. Hellman, A. F. Helmling-Cornell, G. Hemming, O. Henderson-Sapir, M. Hendry, I. S. Heng, M. H. Hennig, C. Henshaw, A. Heranval, M. Heurs, A. L. Hewitt, J. Heynen, J. Heyns, S. Hido, S. Hild, M. Hill, S. Hill, Y. Himemoto, C. Hirose, D. Hofman, N. A. Holland, K. Holley-Bockelmann, I. J. Hollows, D. E. Holz, L. Honet, K. M. Hoops, M. E. Hoque, D. J. Horton-Bailey, J. Hough, S. Hourihane, N. T. Howard, E. J. Howell, C. G. Hoy, P. Hsi, H. -Y. Hsieh, C. Hsiung, S. -H. Hsu, W. -F. Hsu, H. Y. Huang, Y. Huang, A. D. Huddart, B. Hughey, D. C. Y. Hui, S. Husa, L. Iampieri, G. A. Iandolo, M. Ianni, Y. Ichinose, K. Ide, R. Iden, A. Ierardi, S. Ikeda, H. Imafuku, K. Imai, G. Inguglia, Y. Inoue, P. Iosif, J. Irwin, K. Ishida, R. Ishikawa, T. Ishikawa, H. Ishino, M. Isi, K. S. Isleif, Y. Itoh, S. Iwaguchi, M. M. Iwaya, B. R. Iyer, C. Jacquet, T. Jacquot, S. J. Jadhav, S. P. Jadhav, K. Jain, A. L. James, K. Jani, S. Jani, J. Janquart, N. N. Janthalur, S. Jaraba, P. Jaranowski, R. Jaume, W. Javed, M. Jensen, W. Jia, J. Jiang, H. -B. Jin, S. -J. Jin, G. R. Johns, N. A. Johnson, M. C. Johnston, R. Johnston, N. Johny, D. H. Jones, D. I. Jones, R. Jones, P. Joshi, S. K. Joshi, G. Joubert, J. Ju, L. Ju, I. L. Juarez-Reyes, K. Jung, H. B. Kabagoz, B. Kacskovics, T. Kajita, I. Kaku, V. Kalogera, M. Kalomenopoulos, M. Kamiizumi, N. Kanda, S. Kandhasamy, G. Kang, J. B. Kanner, S. J. Kapadia, D. P. Kapasi, A. Karia, A. S. Karia, R. Kashyap, M. Kasprzack, H. Kato, T. Kato, E. Katsavounidis, W. Katzman, R. Kaushik, K. Kawabe, S. Kawamura, D. Keitel, S. A. Kemper, L. J. Kemperman, J. Kennington, R. Kesharwani, J. S. Key, R. Khadela, S. S. Khadkikar, F. Y. Khalili, C. Khamar, F. Khan, M. Khursheed, N. M. Khusid, W. Kiendrebeogo, C. Kim, G. Kim, J. C. Kim, K. Kim, M. H. Kim, S. Kim, Y. -M. Kim, C. Kimball, K. Kimes, M. Kinnear, J. S. Kissel, S. Klimenko, A. M. Knee, N. Knust, K. Kobayashi, S. M. Koehlenbeck, K. Kohri, K. Kokeyama, S. Koley, P. Kolitsidou, A. E. Koloniari, K. Komori, K. Kompanets, A. K. H. Kong, A. Kontos, K. Kopczuk, L. M. Koponen, M. Korobko, X. Kou, N. Kouvatsos, T. Koyama, D. B. Kozak, E. Kraja, S. L. Kranzhoff, V. Kringel, N. V. Krishnendu, S. Kroker, A. Kr\\'olak, K. Kruska, J. Kubisz, K. Kubota, G. Kuehn, D. Kukla, A. Kulur Ramamohan, Achal Kumar, Anil Kumar, Dhruv Kumar, Praveen Kumar, Prayush Kumar, Rahul Kumar, Rakesh Kumar, Ravi Kumar, Sumit Kumar, J. Kume, K. Kuns, N. Kuntimaddi, S. Kuroyanagi, K. Kwak, K. Kwan, S. Kwon, G. Lacaille, D. Laghi, A. H. Laity, N. Lajili, A. Lakhal, E. Lalande, M. Lalleman, S. Lalvani, M. Landry, R. N. Lang, A. Lange, J. A. Lange, R. Langgin, B. Lantz, I. La Rosa, O. Laske, P. D. Lasky, L. Lavezzi, J. Lawrence, M. Laxen, A. Lazzarini, C. Lazzaro, P. Leaci, L. Leali, Y. K. Lecoeuche, H. W. Lee, J. Lee, K. Lee, R. -K. Lee, R. Lee, Sungho Lee, Sunjae Lee, W. Lee, Y. Lee, F. Legger, I. N. Legred, J. Lehmann, L. Lehner, M. Le Jean, A. Lema{\\^i}tre, R. Lemrani Alaoui, M. Lenti, M. Leonardi, M. Lequime, M. Lesovsky, N. Letendre, M. Lethuillier, Y. Levin, S. Lexmond, K. Leyde, A. K. Y. Li, K. L. Li, T. G. F. Li, X. Li, Y. Li, Z. Li, Q. Liang, C-Y. Lin, E. T. Lin, F. Lin, L. C. -C. Lin, Y. -C. Lin, C. Lindsay, S. D. Linker, A. Liu, F. Liu, G. C. Liu, Jian Liu, S. Liu, F. Llamas Villarreal, J. Llobera-Querol, R. K. L. Lo, J. -P. Locquet, S. C. G. Loggins, L. T. London, A. Longo, M. Lopez Portilla, A. Lorenzo-Medina, V. Loriette, M. Lormand, M. Lorusso, G. Losurdo, T. P. Lott IV, J. D. Lough, H. A. Loughlin, C. O. Lousto, N. K. Y. Low, N. Lu, H. L\\\"uck, O. Lukina, D. Lumaca, A. P. Lundgren, L. Lunghini, A. W. Lussier, L. -T. Ma, X. Ma, M. Ma'arif, S. MacBride, K. Machida, D. M. Macleod, I. A. O. MacMillan, A. Macquet, S. S. Madekar, S. Maenaut, S. S. Magare, R. M. Magee, E. Maggio, M. Magnozzi, P. Mahapatra, M. Mahesh, S. Majhi, E. Majorana, C. N. Makarem, E. Makelele, N. Malagon, D. Malakar, J. A. Malaquias-Reis, U. Mali, S. Maliakal, A. Malik, L. Mallick, A. -K. Malz, N. Man, M. Mancarella, V. Mandic, V. Mangano, Z. Mangi, B. Mannix, G. L. Mansell, M. Manske, M. Mantovani, M. Mapelli, S. Marchetti, F. Marion, J. Mark, A. S. Markosyan, J. Markus, E. Maros, S. Marsat, F. Martelli, I. W. Martin, R. M. Martin, B. B. Martinez, M. Martinez, V. Martinez, A. Martini, Juan Carlos Martins, Julio C. Martins, D. V. Martynov, E. J. Marx, L. Massaro, A. Masserot, M. Masso-Reid, T. Masters, S. Mastrogiovanni, G. Mastropasqua, M. Matiushechkina, A. Matte-Landry, L. Maurin, N. Mavalvala, N. Maxwell, A. McCann, G. McCarrol, R. McCarthy, D. E. McClelland, S. McCormick, L. McCuller, L. I. McDermott, C. McElhenny, G. I. McGhee, K. B. M. McGowan, J. McIver, A. McLeod, I. McMahon, T. McRae, R. McTeague, K. McWhirter, D. Meacher, B. N. Meagher, R. Mechum, L. G. Medeiros, R. M. Mehta, A. Melatos, C. S. Menoni, R. A. Mercer, L. Mereni, K. Merfeld, E. L. Merilh, J. R. M\\'erou, C. Messick, M. Meyer-Conde, F. Meylahn, H. Miao, C. Michel, Y. Michimura, H. Middleton, D. P. Mihaylov, S. J. Miller, M. Millhouse, E. Milotti, V. Milotti, E. Minakaki, Y. Minenkov, Ll. M. Mir, L. Mirasola, C. -A. Miritescu, A. Mishra, C. Mishra, T. Mishra, A. Mitchell, J. G. Mitchell, O. Mitchem, S. Mitra, V. P. Mitrofanov, K. Mitsuhashi, R. Mittleman, O. Miyakawa, S. Miyoki, G. Mo, L. Mobilia, S. R. P. Mohapatra, M. Molina-Ruiz, M. Mondin, M. Montani, G. Montefusco, C. J. Moore, D. Moraru, A. More, S. More, C. Moreno, E. A. Moreno, G. Moreno, A. Moreso Serra, C. Morgan, S. Morisaki, S. Moriwaki, Y. Moriwaki, G. Morras, A. Moscatello, M. Mould, B. Mours, C. M. Mow-Lowry, L. Muccillo, F. Muciaccia, Arunava Mukherjee, D. Mukherjee, Samanwaya Mukherjee, Soma Mukherjee, Subroto Mukherjee, Suvodip Mukherjee, N. Mukund, A. Mullavey, C. L. Mungioli, Y. Murakami, M. Murakoshi, P. G. Murray, D. Nabari, S. Nadji, A. Nagar, N. Nagarajan, K. Nakagaki, A. Nakamura, K. Nakamura, H. Nakano, M. Nakano, D. Nanadoumgar-Lacroze, D. Nandi, V. Napolano, S. U. Naqvi, P. Narayan, A. Nardecchia, I. Nardecchia, T. Narikawa, H. Narola, L. Naticchioni, R. K. Nayak, J. Neeson, L. Negri, A. Nela, C. Nelle, A. Nelson, T. J. N. Nelson, A. Nemmani, A. Neunzert, M. Newell, S. Ng, T. C. K. Ng, L. -A. T. Nguyen, T. T. Nguyen, L. Nguyen Quynh, A. B. Nielsen, Y. Nishino, A. Nishizawa, S. Nissanke, W. Niu, F. Nocera, J. Noller, M. Norman, M. Norris, C. North, J. Novak, G. Nurbek, L. K. Nuttall, K. Obayashi, J. Oberling, C. E. Ochoa, C. O'Connor, J. O'Dell, E. Oelker, M. Oertel, G. Oganesyan, J. J. Oh, T. O'Hanlon, M. Ohashi, F. Ohme, Y. Okabe, I. Oke, R. Oliveira, R. Omer, N. O'Neill, M. Onishi, K. Oohara, P. Ophardt, R. J. Oram, B. O'Reilly, R. O'Shaughnessy, S. Oshino, J. Ostrovska, A. Osumi, I. Ota, G. Othman, M. Otsuka, D. J. Ottaway, A. Ouzriat, H. Overmier, B. J. Owen, A. E. Pace, M. A. Page, A. Pai, S. Pal, M. A. Palaia, M. P\\'alfi, C. Palomba, H. Pan, J. Pan, K. -C. Pan, P. K. Panda, Shiksha Pandey, Swadha Pandey, P. T. H. Pang, F. Pannarale, B. C. Pant, F. H. Panther, M. Panzeri, F. Paoletti, A. Paoli, A. Paolone, A. Papadopoulos, E. E. Papalexakis, L. Papalini, G. Papigkiotis, A. Paquis, A. Parisi, B. -J. Park, Jihwan Park, Junegyu Park, W. Parker, G. Pascale, D. Pascucci, A. Pasqualetti, L. Passenger, D. Passuello, O. Patane, A. V. Patel, L. Pathak, A. Patra, B. Patricelli, B. G. Patterson, K. Paul, S. Paul, E. Payne, T. Pearce, M. Pedraza, A. Pele, F. E. Pe\\~na Arellano, X. Peng, Y. Peng, S. Penn, A. Perreca, J. Perret, D. Pesios, S. Petracca, C. Petrillo, H. P. Pfeiffer, H. Pham, K. A. Pham, K. S. Phukon, H. Phurailatpam, L. Piccari, O. J. Piccinni, M. Pichot, A. Pied, M. Piendibene, F. Piergiovanni, L. Pierini, G. Pierra, V. Pierro, M. Pillas, B. Pillon, L. Pinard, I. M. Pinto, M. Pinto, B. J. Piotrzkowski, M. Pirello, A. Pisarski, M. D. Pitkin, E. Placidi, M. L. Planas, C. Plunkett, R. Poggiani, E. Polini, M. Polo, J. Pomper, L. Pompili, J. Poon, E. Porcelli, A. S. Porter, E. K. Porter, C. Posnansky, J. Powell, G. S. Prabhu, M. Pracchia, A. K. Prajapati, K. Prasai, R. Prasanna, P. Prasia, G. Pratten, G. Principe, G. A. Prodi, P. Prosperi, P. Prosposito, A. Puecher, J. Pullin, M. Punturo, P. Puppo, M. P\\\"urrer, H. Qi, M. Qiao, J. Qin, G. Qu\\'em\\'ener, V. Quetschke, P. J. Quinonez, R. Rading, I. Rainho, S. Raja, C. Rajan, B. Rajbhandari, M. R. Raj Sah, K. E. Ramirez, F. A. Ramis Vidal, M. Ramos Arevalo, A. Ramos-Buades, S. Ranjan, M. Ranjbar, K. Ransom, P. Rapagnani, B. Ratto, A. Ravichandran, A. Ray, V. Raymond, M. Razzano, J. Read, J. Redepenning, J. Regan, T. Regimbau, T. Reichardt, S. Reid, C. Reissel, D. H. Reitze, A. I. Renzini, B. Revenu, A. Revilla-Pe\\~na, F. Ricci, M. Ricci, A. Ricciardone, J. Rice, J. W. Richardson, M. L. Richardson, K. Riles, H. K. Riley, A. Riminucci, F. Robinet, M. Robinson, A. Rocchi, J. Rodriguez, R. Rodriguez Lopez, L. Rolland, J. G. Rollins, A. E. Romano, R. Romano, A. Romero-Rodr\\'iguez, I. M. Romero-Shaw, J. H. Romie, S. Ronchini, T. J. Roocke, T. J. Rosauer, C. A. Rose, D. Rosi\\'nska, M. P. Ross, M. Rossello-Sastre, S. Rowan, K. Rowlands, S. K. Roy, S. Roy, T. RoyChowdhury, D. Rozza, P. Ruggi, G. H. Ruiz, E. Ruiz Morales, K. Ruiz-Rocha, V. Russ, S. M. S, S. Sachdev, T. Sadecki, F. Safai Tehrani, P. Saffarieh, S. Safi-Harb, S. Saha, T. Sainrat, S. Sajith Menon, K. Sakai, Y. Sakai, M. Sakellariadou, S. Sakon, F. Salces-Carcoba, L. Salconi, M. Saleem, F. Salemi, M. Sall\\'e, M. Salom\\'e, S. U. Salunkhe, S. Salvador, A. Salvarese, A. Samajdar, P. M. Samir, A. Sanchez, E. J. Sanchez, J. Sanchez, D. Sanchez-Cid, N. Sanchis-Gual, J. R. Sanders, E. M. S\\\"anger, F. Santoliquido, E. Sapkin, F. Sarandrea, T. R. Saravanan, P. Sarkar, A. Sasli, P. Sassi, B. Sassolas, O. Sauter, R. L. Savage, T. Savicheva, T. Sawada, H. L. Sawant, D. Schaetzl, M. Scheel, A. Schiebelbein, M. G. Schiworski, K. Schluterman, P. Schmidt, R. Schnabel, M. Schneewind, R. M. S. Schofield, M. Schoor, K. Schouteden, B. W. Schulte, M. Schulz, B. F. Schutz, E. Schwartz, M. Scialpi, J. Scott, S. M. Scott, R. M. Sedas, T. C. Seetharamu, M. Seglar-Arroyo, Y. Sekiguchi, D. Sellers, N. Sembo, E. G. Seo, J. W. Seo, G. Seong, V. Sequino, M. Serra, C. K. Sethi, A. Sevrin, T. Shaffer, U. S. Shah, M. A. Shaikh, L. Shao, J. Sharkey, A. Sharma, A. K. Sharma, Preeti Sharma, Priyanka Sharma, Sushant Sharma-Chaudhary, P. Shawhan, T. Shen, Z. -H. Shi, K. Shimode, H. Shinkai, S. Shirke, D. H. Shoemaker, D. M. Shoemaker, R. W. Short, S. ShyamSundar, H. Siegel, V. Sierra, D. Sigg, L. Silenzi, P. J. S. Silva, L. Silvestri, M. Simmonds, L. P. Singer, A. Singh, D. Singh, M. K. Singh, N. Singh, S. Singh, M. R. Sinha, P. Sinha, A. M. Sintes, V. Skliris, B. J. J. Slagmolen, T. J. Slaven-Blair, J. Smetana, D. A. Smith, J. R. Smith, J. Smith, L. Smith, W. J. Smith, S. Soares de Albuquerque Filho, M. Soares-Santos, K. Somiya, I. Song, Q. Song, S. Soni, V. Sordini, F. Sorrentino, H. Sotani, N. E. Sovitzky, F. Spada, V. Spagnuolo, A. P. Spencer, M. Spera, P. Spinicelli, A. K. Srivastava, F. Stachurski, V. V. Stanford, A. Stanton, D. A. Steer, N. Steinle, J. Steinlechner, S. Steinlechner, C. Stephens, N. Stergioulas, M. StPierre, J. Stremiz, M. D. Strong, A. Strunk, M. Suchenek, S. Sudhagar, R. Sugimoto, L. Suleiman, K. D. Sullivan, J. Sun, L. Sun, S. Sunil, J. Suresh, P. J. Sutton, K. Suzuki, M. Suzuki, A. Svizzeretto, B. L. Swinkels, A. Syx, M. J. Szczepa\\'nczyk, M. Tacca, M. Tagliazucchi, H. Tagoshi, S. C. Tait, H. Takaba, K. Takada, H. Takahashi, R. Takahashi, A. Takamori, S. Takano, H. Takeda, I. Takimoto Schmiegelow, C. Talbot, M. Tamaki, N. Tamanini, D. Tanabe, K. Tanaka, S. J. Tanaka, S. Tanioka, D. B. Tanner, W. Tanner, L. Tao, R. D. Tapia, E. N. Tapia San Mart\\'in, A. Taruya, J. D. Tasson, J. G. Tau, A. Tejera, J. G. Temple, Y. Teng, H. Themann, A. Theodoropoulos, M. P. Thirugnanasambandam, L. M. Thomas, M. Thomas, P. Thomas, J. E. Thompson, S. R. Thondapu, E. Thrane, J. Tissino, A. Tiwari, Pawan Tiwari, Praveer Tiwari, S. Tiwari, V. Tiwari, M. R. Todd, E. Tofani, M. Toffano, A. M. Toivonen, K. Toland, T. Tomaru, V. Tommasini, H. Tong, C. I. Torrie, I. Tosta e Melo, E. Tournefier, A. Trapananti, R. Travaglini, F. Travasso, G. Traylor, L. Traylor, M. Trevor, M. C. Tringali, A. Tripathee, G. Troian, A. Trovato, L. Trozzo, R. J. Trudeau, T. Tsang, S. Tsuchida, K. Tsuji, L. Tsukada, A. Tuci, M. Turconi, C. Turski, H. Ubach, A. S. Ubhi, N. Uchikata, T. Uchiyama, R. P. Udall, T. Uehara, V. Undheim, V. Upadhyaya, L. E. Uronen, T. Ushiba, M. Vacatello, H. Vahlbruch, G. Vajente, J. Valencia, M. Valentini, E. Vallejo-Pag\\`es, S. A. Vallejo-Pe\\~na, S. Vallero, M. van Dael, E. Van den Bossche, J. F. J. van den Brand, C. Van Den Broeck, M. van der Kolk, M. van der Sluys, A. Van de Walle, J. van Dongen, K. Vandra, M. VanDyke, H. van Haevermaet, J. V. van Heijningen, P. Van Hove, J. Vanier, J. Vanosky, N. van Remortel, M. Vardaro, A. F. Vargas, V. Varma, A. Vecchio, G. Vedovato, J. Veitch, P. J. Veitch, S. Venikoudis, P. Verdier, M. Vereecken, D. Verkindt, B. Verma, S. Verma, Y. Verma, S. M. Vermeulen, F. Vetrano, A. Veutro, A. Vicer\\'e, S. Vidyant, A. D. Viets, A. Vijaykumar, A. Vilkha, N. Villanueva Espinosa, E. T. Vincent, J. -Y. Vinet, S. Viret, S. Vitale, A. Vives, L. Vizmeg, B. Vizzone, H. Vocca, D. Voigt, E. R. G. von Reis, J. S. A. von Wrangel, W. E. Vossius, L. Vujeva, S. P. Vyatchanin, J. Wack, L. E. Wade, M. Wade, K. J. Wagner, L. Wallace, R. -Z. Wan, H. Wang, P. Wang, W. H. Wang, Y. F. Wang, Z. Wang, R. L. Ward, J. Warner, M. Was, T. Washimi, N. Y. Washington, D. Watarai, B. Weaver, S. A. Webster, N. L. Weickhardt, M. Weinert, A. J. Weinstein, R. Weiss, L. Wen, K. Wette, C. Wheeler, J. T. Whelan, B. F. Whiting, E. G. Wickens, D. Wilken, B. M. Williams, D. Williams, M. J. Williams, N. S. Williams, J. L. Willis, B. Willke, M. Wils, L. Wimmer, C. W. Winborn, A. Wingfield, J. Winterflood, C. C. Wipf, G. Woan, N. E. Wolfe, H. T. Wong, I. C. F. Wong, T. Wouters, J. L. Wright, M. Wright, B. Wu, C. Wu, D. S. Wu, H. Wu, K. Wu, T. Wu, Z. Wu, E. Wuchner, D. M. Wysocki, V. A. Xu, Y. Xu, N. Yadav, H. Yamamoto, K. Yamamoto, T. S. Yamamoto, T. Yamamoto, R. Yamazaki, T. Yan, H. Yang, K. Z. Yang, Y. Yang, Z. Yarbrough, J. Y\\'ebana Carrilero, A. B. Yelikar, X. Yin, J. Yokoyama, T. Yokozawa, M. Yoshihara, S. Yuan, H. Yuzurihara, M. Zanatta, M. Zanolin, M. Zeeshan, T. Zelenova, J. -P. Zendri, M. Zeoli, M. Zerrad, M. Zevin, H. Zhang, J. Zhang, L. Zhang, N. Zhang, R. Zhang, T. Zhang, C. Zhao, J. Zhao, Yue Zhao, Yuhang Zhao, L. -M. Zheng, Y. Zheng, L. Zhizhong, H. Zhong, H. Zhou, H. O. Zhu, X. -J. Zhu, Z. -H. Zhu, Z. Zhu, D. Z. Zieba, A. B. Zimmerman, L. Zimmermann, M. E. Zucker",
+   "id": "2610.20276",
+   "version": "2610.20276",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Separation of gravitational perturbations of singly spinning Myers-Perry black holes",
+   "link": "https://arxiv.org/abs/2610.18956",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.18956v1 Announce Type: new Abstract: Gravitational perturbations of rotating black holes in higher dimensions generally obey coupled partial differential equations. We show that scalar gravitational perturbations invariant under rotations of the transverse sphere of a singly spinning Myers-Perry black hole separate, despite the obstruction to a decoupled Teukolsky equation. Two commuting, second-order angular operators organise the three gauge-invariant curvature components into joint eigenfunctions. The physical radial problem is a $2\\times2$ first-order system, equivalent to a single second-order equation. This gives a separation of the sector containing both the bar-mode and axisymmetric ultraspinning instabilities. Using only ordinary differential equations, we compute the bar-mode quasinormal spectrum in $d=5,6,7$ and find instability onsets at $a/r_+=0.90498$ and $0.83228$ in $d=6,7$. We also compute the growing axisymmetric modes and their onset rotations in $d=6,\\ldots,9$. The construction shows how separability can survive the coupling between gravitational polarisations.",
+   "authors": "Jorge E. Santos",
+   "id": "2610.18956",
+   "version": "2610.18956",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Post-Newtonian theory in de Sitter and anti-de Sitter spacetimes",
+   "link": "https://arxiv.org/abs/2610.20589",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20589v1 Announce Type: new Abstract: We develop the post-Newtonian framework for the near-zone dynamics of a binary in de Sitter and anti-de Sitter spacetime. We consider a binary interacting via a free scalar field in a fixed (A)dS background in $D+1$ spacetime dimensions, with $D\\ge3$ and odd. Using multipole expansion and re-summation techniques, we solve for the field degrees of freedom to obtain an effective particle description in the form of a Fokker action. We derive the equations of motion for the binary up to second post-Newtonian (2PN) order and obtain the corresponding 2PN Hamiltonian and conserved charges in phase space. We show that the conformal algebra, corresponding to the isometry algebra of the (A)dS background, is realised in phase space as a curvature-dependent deformation of the Poincare algebra at each PN order. Our results provide a systematic extension of post-Newtonian effective dynamics to finite-curvature backgrounds. This could serve as a useful framework for studying bound-state dynamics in (A)dS as well as in the corresponding holographic CFT.",
+   "authors": "R. Loganayagam, Avi Wadhwa",
+   "id": "2610.20589",
+   "version": "2610.20589",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Heavy-Heavy-Light-Light correlators from holography on the worldsheet",
+   "link": "https://arxiv.org/abs/2610.20602",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20602v1 Announce Type: new Abstract: We study correlation functions of light local operators and defect changing operators on the conformal line set by the 1/2 BPS Wilson line of $\\mathcal N=4$ super Yang-Mills. We consider the defect changing operators associated with geometrical and internal cusp angles, which at strong coupling have a large scaling dimension and back-react on the dual $AdS_2$ world-sheet. We set up a holographic computation of correlation functions, in which the light operators are described by fluctuations around the cusped classical string solution, so that correlators of two defect changing operators and an arbitrary number of light protected operators are obtained from the on-shell action of these fluctuations. We implement this prescription in detail for the case of certain 4-point functions, with two light and two defect changing operators. Finally, since for small cusp angles the defect changing operators become light, we manage to derive relations satisfied by integrated correlators of light operators, valid at any coupling. We verify these relations at strong coupling for both internal and geometrical cusps.",
+   "authors": "Mat\\'ias Colaneri, Diego H. Correa, V\\'ictor I. Giraldo-Rivera, Nicol\\'as A. Ivanovich",
+   "id": "2610.20602",
+   "version": "2610.20602",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Audible curvaton: modulated phase transition as the origin of large-scale curvature perturbations and gravitational wave anisotropies",
+   "link": "https://arxiv.org/abs/2610.18975",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.18975v1 Announce Type: new Abstract: We propose a post-inflationary first-order phase transition modulated by a light spectator field as the origin of primordial large-scale curvature perturbations. Spectator fluctuations acquired during inflation modulate the bubble nucleation history, generating curvature perturbations together with correlated intrinsic gravitational-wave (GW) anisotropies. We show that this mechanism can reproduce the observed amplitude of curvature perturbations while producing a loud stochastic GW background in the frequency bands of space-based detectors such as LISA, Taiji, and TianQin. A concrete benchmark yields strongly enhanced intrinsic GW anisotropies and a local primordial non-Gaussianity signal within reach of future large-scale-structure surveys.",
+   "authors": "Wen-Yuan Ai, Gabriele Franciolini, Xin Wang, Xiang-Xi Zeng",
+   "id": "2610.18975",
+   "version": "2610.18975",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Exact map-space beam convolution via spin-mapmaking",
+   "link": "https://arxiv.org/abs/2610.20231",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20231v1 Announce Type: new Abstract: Forthcoming cosmic microwave background (CMB) experiments are targeting ambitious science goals, including the exploration of the particle content of the Universe across cosmic times and the search for the faint signal from primordial gravitational waves. To pursue these goals, CMB experiments will house an unprecedented high number of detectors that will dramatically enhance their sensitivity. This will in turn require a tight control of instrumental systematics, demanding efficient and precise simulation of systematic effects. Leveraging spin-mapmaking, we present a map-based method to propagate beam convolution systematics to the map-level, especially well-suited for main-beam studies. From the scanning strategy information compressed into precomputed h-maps and the beam and sky harmonic coefficients, our method directly outputs beam convolved maps. We validate against pixel-centered TOD-level 4{\\pi} convolution for circular, elliptical, and Planck HFI scanning beams, demonstrating that our method retains agreement to numerical precision, while operating in map space. This formalism enables efficient simulation of beam convolution systematics across the full focal plane of upcoming experiments. As a first practical application, we demonstrate the ability to efficiently produce beam-convolved simulated Planck maps, showing excellent agreement with the QuickPol pipeline at the power-spectrum level. We release a public code, Smarties4Planck, to easily generate such maps for broader use.",
+   "authors": "Camille Demay, Magdy Morshed, Martina Gerbino, Luca Pagano",
+   "id": "2610.20231",
+   "version": "2610.20231",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Origin of the red spectral tilt in Inflation without an Inflaton",
+   "link": "https://arxiv.org/abs/2610.20378",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.20378v1 Announce Type: new Abstract: In Inflation without an Inflaton (IWI), a de Sitter (dS) background drives inflation, and the graviton bilinear generates scalar perturbations at second order, with no inflaton or additional fundamental scalar field. We investigate how this scenario can account for the observed scalar spectral tilt. The tensor-mode dependence of the scalar power spectrum gives the consistency relation $n_s-1=2n_T$, since it contains four tensor mode functions. The scalar spectral tilt $n_s\\simeq0.9649$ at CMB scales therefore gives $n_T\\simeq-0.0175$, independent of the tensor-to-scalar ratio $r$, hence different from the standard single-field slow-roll prediction $n_T=-r/8$. A full time-dependent calculation of $\\phi_2$ in exact dS leads to an almost scale-invariant scalar power spectrum, with a small blue infrared residual on the order of $n_s-1\\simeq+4\\times10^{-4}$. In order to account for the observed red tilt, we introduce a slow drift in the Hubble rate, parametrized by $\\varepsilon=-\\dot H/H^2$. The tensor tilt is then given by $n_T=-2\\varepsilon$, implying $n_s-1\\simeq-4\\varepsilon$, at leading order. The observed tilt requires $\\varepsilon_\\ast\\simeq0.0088$, far exceeding the drift that can be sustained by the classical graviton backreaction, for which we find $|\\varepsilon_{\\rm self}|\\lesssim10^{-11}$. Therefore, we investigate the quantum break-time of dS as the origin of the background evolution. In this picture, the scalar tilt becomes $n_s-1=-4C_qN_{sp}(H/m_{pl})^2$, where $C_q$ is an order-one depletion coefficient, and the tilt is directly connected to the particle content of dS, $N_{sp}$. The evolution of the drift itself further predicts a positive running of $\\alpha_s=+\\tfrac12(1-n_s)^2\\simeq+6\\times10^{-4}$. These results conclude the distinctive observational predictions of the IWI scenario, establishing it as a falsifiable alternative to standard inflaton-driven models.",
+   "authors": "Raul Jimenez, Daniele Bertacca, Mariam Abdelaziz, Sabino Matarrese, Angelo Ricciardone, Marisol Traforetti",
+   "id": "2610.20378",
+   "version": "2610.20378",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
