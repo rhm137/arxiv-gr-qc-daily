@@ -1,0 +1,204 @@
+{
+ "listing_date": "2026-10-16",
+ "generated_at": "2026-10-17T09:37:41+08:00",
+ "generator": "deepseek-chat/deepseek-chat",
+ "stats": {
+  "total_new": 48,
+  "candidates": 15,
+  "core": 3,
+  "radar": 6,
+  "keyword": 0
+ },
+ "papers": [
+  {
+   "id": "2610.21426",
+   "title": "Bound States Inside the Horizon and Black Hole Entropy",
+   "cn_title": "视界内部的束缚态与黑洞熵",
+   "authors": "Hassan Firouzjahi",
+   "link": "https://arxiv.org/abs/2610.21426",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 8.0,
+   "must_read": true,
+   "one_liner": "该文用Schwarzschild视界内部束缚态微态谱做微正则计数，得到熵正比于视界面积，但要求束缚态能量占黑洞总能量O(1)份额才能饱和。",
+   "cn_summary": "黑洞熵的微观起源是量子引力核心问题。视界内部区域在经典上不可及，但量子化后可能存在离散束缚态；若这些束缚态能给出面积律熵，就为黑洞微态提供了一种纯引力的、不依赖弦论或全息的解释。此前工作多关注视界外准正规模或视界面积量子化，视界内部束缚态谱与熵的定量联系尚缺。\n\n作者研究Schwarzschild黑洞内部束缚态扰动，模式由自旋s、径向激发数p和角动量(ℓ,m)标记。要求高激发束缚态的最短波长不低于量子引力尺度，给出角截断 ℓ_max ∼ r_H/L_Pl，使角简并度正比于视界面积。在微正则系综中计数构型，得到熵 S_bs = α A/(ħG)。再要求束缚态与黑洞在Hawking温度下热平衡，定出束缚态能量占黑洞总能量的比例；对引力扰动扇区，平衡时的熵贡献与能量份额通常很小。作者还考察了束缚态完全解释黑洞熵的条件：态计数层面可以饱和，但需要O(1)的能量份额，此时对背景几何的反作用不可忽略。",
+   "cn_review": "【创新点】把黑洞熵的统计来源放在视界内部束缚态而非视界外自由度上，用波长截断 ℓ_max ∼ r_H/L_Pl 自然导出角简并度∝面积，并给出 S_bs = α A/(ħG) 的显式计数；进一步用Hawking温度热平衡条件约束能量份额，指出引力扰动扇区贡献偏小。\n【局限性】计数依赖“最短波长不低于Planck尺度”这一唯象截断，α未由第一原理定出；饱和情形要求O(1)能量份额，意味着必须处理反作用，而文中未做自洽背景修正；只处理Schwarzschild，未涉及转动/带电或一般视界。\n【对 Rao 的意义】直接落在引力热力学主线的“黑洞熵微观统计”与“系综/负热容”模块，可与Wald熵、Iyer–Wald荷的协变定义对照：束缚态计数给出的是统计熵，而Wald熵是几何熵，二者关系值得辨析。对P5（动态热流与协变荷通量）也有间接启发。",
+   "learn": "可借用其“波长截断→角截断→面积律”的计数逻辑：ℓ_max ∼ r_H/L_Pl 给出简并度∝A，这是把面积律与离散谱联系起来的简洁模板。注意区分微正则计数熵与热力学熵：文中用Hawking温度做热平衡匹配，等价于令 ∂S/∂E = 1/T，这正是第一定律的统计版本。警惕约定：S_bs = α A/(ħG) 中的α是待定常数，不能直接与 Bekenstein–Hawking 的 1/4 等同；反作用不可忽略时，背景几何不再是固定Schwarzschild，需用协变相空间或准局域能量处理。",
+   "topics": "1) 把束缚态计数推广到一般静态球对称或带毛黑洞，检验 ℓ_max ∼ r_H/L_Pl 截断是否仍给出面积律，并与Wald熵比较α的几何来源；第一步：写出一般度规下视界内部径向方程，求离散谱与角简并度。2) 与P5衔接：将束缚态能量份额视为准局域能量通量，用Misner–Sharp或Kodama矢量计算反作用修正，检验饱和条件是否与统一第一定律自洽；第一步：在Schwarzschild背景上算束缚态能量密度对Misner–Sharp质量的一阶修正。"
+  },
+  {
+   "id": "2610.21830",
+   "title": "Thermodynamics of rotating black holes with constrained primary hair",
+   "cn_title": "带约束初级毛的转动黑洞热力学",
+   "authors": "Wentao Liu, Di Wu, Shao-Wen Wei, Yu-Xiao Liu",
+   "link": "https://arxiv.org/abs/2610.21830",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 8.0,
+   "must_read": true,
+   "one_liner": "该文构造广义Proca理论中二阶转动、视界等温的精确转动解，用协变面荷导出对数Hamiltonian熵并验证两方向第一定律与尺度修正Smarr关系。",
+   "cn_summary": "转动黑洞热力学通常假设Kerr型解，但精确转动几何若表面引力在视界上变化，就不处于平衡。广义Proca理论允许矢量毛，其对齐零解可给出非Kerr转动几何；问题在于如何约束毛使视界等温，并自洽定义质量、角动量与熵。\n\n作者构造渐近平坦、非Kerr的对齐零解子族，要求外视界精确Killing且在转动二阶等温。视界条件约束矢量毛，归一化视界荷的可积性定出剩余二阶振幅。计算完整引力与非最小矢量面荷，得到渐近归一化质量与总角动量，并导出对数Hamiltonian熵。第一定律在所得两参数解空间的两个独立方向都成立。作者把质量表为熵与角动量的函数，恢复几何热力学势，并建立保留量纲耦合的尺度修正Smarr关系。精确度规定义几何，而平衡热力学一致地只限于自旋二阶。",
+   "cn_review": "【创新点】在广义Proca框架内给出视界精确Killing且二阶等温的转动解，并用协变面荷（而非仅用Killing荷）定义质量、角动量与对数熵；第一定律在两个独立方向成立，且Smarr关系保留量纲耦合，比通常无毛Kerr的尺度关系更一般。\n【局限性】平衡热力学只到自旋二阶，高阶转动下视界可能不再等温，第一定律是否保持未知；解限于对齐零解子族与渐近平坦，未涉及宇宙学视界或带电荷情形；对数熵的系数由面荷积分定出，其微观解释未讨论。\n【对 Rao 的意义】与引力热力学主线的“协变荷/Wald熵/Iyer–Wald”模块高度相关：文中用完整引力+矢量面荷构造Hamiltonian熵，正是Iyer–Wald协变相空间方法在带毛转动解上的具体实现。对P2（f(Q) P-V临界）与Q1（静态球对称无毛条件审计）有方法迁移价值。",
+   "learn": "可学到协变面荷的完整计算流程：先算引力与物质（非最小矢量）面荷，再做渐近归一化得到质量与角动量，最后积分可积性条件得熵。关键恒等式是尺度修正Smarr关系 M = 2TS + 2ΩJ + ...（保留量纲耦合项），注意与无毛Kerr的 M = 2TS + 2ΩJ 的差异来自矢量毛的标度。警惕约定：文中“对数Hamiltonian熵”不是Bekenstein–Hawking面积熵，而是由面荷可积性定义的Hamiltonian熵，二者在带毛时一般不等；等温条件只到二阶，不能外推到快转。",
+   "topics": "1) 与Q1衔接：把该文的视界等温+可积性约束方法搬到标准NYTG静态球对称分支，审计无毛条件是否等价于视界等温与面荷可积；第一步：写出NYTG球对称解的视界面荷，检验可积性条件。2) 与P2衔接：在f(Q)宇宙学中构造类似的两参数解空间，检验第一定律是否在两个独立方向成立，并推导保留联络耦合的尺度修正Smarr关系；第一步：对f(Q)静态球对称解计算视界温度与面荷，写出候选Smarr关系。"
+  },
+  {
+   "id": "2610.21574",
+   "title": "Krylov complexity and oscillatory quantum dynamics in two-field inflation",
+   "cn_title": "双场暴胀中的Krylov复杂度与振荡量子动力学",
+   "authors": "Tao Li, Lei-Hua Liu, Hai-Bing Fu",
+   "link": "https://arxiv.org/abs/2610.21574",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "该文用四模压缩态描述双场暴胀的曲率-熵扰动，发现两通道Krylov复杂度在视界穿越处出现振荡，源于压缩方程中的相对相位。",
+   "cn_summary": "Krylov复杂度是刻画量子态在Krylov空间中传播的指标，已在单场暴胀和量子多体中被用于探测量子混沌与热化。双场暴胀存在曲率与熵两个耦合扰动通道，其量子态是四模压缩态，但两通道的压缩历史差异如何反映在Krylov复杂度上、是否出现可观测的振荡结构，此前未系统研究。\n\n作者从曲率与熵扰动的二次作用量出发，用Bunch–Davies初始条件解模方程，构造二次Hamiltonian。高斯量子态由带两个压缩通道的四模压缩态描述。作者导出压缩强度与压缩角的演化，并据此计算Krylov复杂度、Krylov熵与通道分辨的Lanczos系数。数值结果显示：两通道在视界内压缩都弱，视界退出后压缩历史分化；两通道有不同的起始时间与振荡的Krylov动力学。第二通道更早进入强压缩并主导中间演化，第一通道延迟增强。Krylov复杂度在视界穿越处呈振荡结构，在强压缩超视界区出现显著涨落；这些振荡来自压缩方程中的相对相位，并通过不同通道Krylov复杂度之间的非线性关系被放大。",
+   "cn_review": "【创新点】首次把Krylov复杂度用于双场暴胀的两通道压缩态，给出通道分辨的Lanczos系数与压缩角演化，指出视界穿越处的振荡来自相对相位而非背景膨胀，并揭示两通道的非线性放大机制。\n【局限性】纯数值、依赖二次作用量与Bunch–Davies真空，未含相互作用或非高斯修正；Krylov复杂度本身不是规范不变量，其振荡是否对应物理可观测未讨论；只处理双场，未推广到多场或非最小耦合。\n【对 Rao 的意义】与P3（非绝热扰动/相对熵模对视界熵的有限波长响应）直接相关：文中两通道压缩与相对相位正是非绝热扰动的量子信息刻画，可把Krylov复杂度与相对熵作为互补的量子信息诊断量。对P1（标量—张量纠缠与手征分配）的高斯协方差方法也有方法借鉴。",
+   "learn": "可借用四模压缩态与两通道压缩角/压缩强度的计算框架：高斯态完全由协方差矩阵刻画，压缩角演化中的相对相位是振荡来源。关键工具是Lanczos系数与Krylov熵的通道分辨计算，可与相对熵、纠缠熵对照使用。警惕约定：Krylov复杂度依赖算符选择与Krylov基的构造，不同文献的归一化可能不同；Bunch–Davies初始条件在双场中需指定两通道的真空，压缩角定义也需与曲率/熵基的选取一致。",
+   "topics": "1) 与P3衔接：把该文的两通道压缩角相对相位与相对熵模联系起来，计算非绝热扰动对视界熵的有限波长响应，检验Krylov振荡是否对应熵的振荡；第一步：写出双场压缩态的协方差矩阵，计算相对熵随视界穿越的演化。2) 与P1衔接：在NYTG不规则联络宇宙中，用类似四模压缩态框架处理标量—张量纠缠，计算手征分配与Krylov复杂度的关系；第一步：构造标量—张量耦合的二次作用量，求压缩通道与Lanczos系数。"
+  }
+ ],
+ "radar": [
+  {
+   "id": "2610.21701",
+   "title": "An exact Simpson-Visser family in bumblebee gravity",
+   "cn_title": "bumblebee 引力中的精确 Simpson-Visser 族",
+   "authors": "A. A. Ara\\'{u}jo Filho",
+   "link": "https://arxiv.org/abs/2610.21701",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 5.0,
+   "relation": "same-family",
+   "relation_label": "近邻",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "在 bumblebee 引力中构造出由幽灵标量、磁非线性电动力学与固定模矢量支撑的精确 Simpson-Visser 解，统一给出虫洞、零最小几何与黑洞反弹。",
+   "cn_summary": "Simpson-Visser 型度规是把 Schwarzschild 黑洞与虫洞用单一参数连接起来的正则化几何，此前主要在 GR 与若干标量-张量理论中构造。bumblebee 引力因洛伦兹破缺矢量获得额外自由度，其精确解结构（尤其是矢量方程如何约束物质源、视界能否正则延拓）尚不清楚，而这类解正是检验洛伦兹破缺与正则化几何相互作用的天然实验室。\n本文用幽灵标量、磁非线性电动力学和固定模 spacelike 矢量作为源，在度规 bumblebee 引力中构造精确解。独立矢量方程确定一个局域拉格朗日乘子和一个时间分量，使度规视界处存在正则的 ingoing 延拓。重构物质函数后，同一作用量给出连续的虫洞、零最小几何与 black-bounce 族。黑洞情形下，面积光子球与临界类时轨道半径保持 Schwarzschild 值，而角偏折、近星点进动与光子轨道不稳定性依赖 bounce 与 bumblebee 参数；固定 lapse 质量与面积观测者位置时度规阴影与 Schwarzschild 一致，且 Sgr A* 阴影直径与 M87* 角质量比较无法分别定出这些参数。耦合轴向方程给出不同的张量、度规与横向 bumblebee 模式。",
+   "cn_review": "【创新点】首次在 bumblebee 引力中给出精确的 Simpson-Visser 族，并用独立矢量方程显式解出拉格朗日乘子与时间分量，使视界正则延拓成为解的内在性质而非事后拼接；同一作用量连续覆盖虫洞—零最小几何—black-bounce，且指出阴影与 Schwarzschild 简并、Sgr A*/M87* 数据无法分离参数。\n【局限性】源组合（幽灵标量 + 磁非线性电动力学 + 固定模矢量）高度特设，幽灵场本身带来经典不稳定性隐患；摘要只给出轴向扰动的模式分类，未给出准正规模谱或稳定性判据，也未讨论非轴向扇区与能量条件。\n【对 Rao 的意义】属修正引力宇宙学一般项的现象学类构造，方法新意有限，但“矢量方程定出乘子、视界正则延拓”这一技巧与联络/约束消元思路相通，可作为洛伦兹破缺矢量理论中约束结构的参考案例。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.22274",
+   "title": "Exact algebraic separation of the gravitoelectromagnetic perturbations of Kerr-Newman-(anti-)de Sitter black holes",
+   "cn_title": "Kerr-Newman-(反)de Sitter 黑洞引力电磁扰动的精确代数分离",
+   "authors": "Jun-Kun Zhao",
+   "link": "https://arxiv.org/abs/2610.22274",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 6.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "对非极端 Kerr-Newman-(A)dS 黑洞，用常数行列式矩阵把耦合的引力与电磁辐射方程显式分离，径向与角向系统对任意复频率成立。",
+   "cn_summary": "Teukolsky 型分离是可旋转黑洞扰动理论的核心工具，但带电且带宇宙学常数的 Kerr-Newman-(A)dS 背景中，引力与电磁扰动通过度规-电磁耦合方程耦合在一起，此前缺乏对任意频率一致有效的显式分离，这直接限制了准正规模计算与稳定性分析。\n本文构造一个行列式为常数的矩阵，其选择不依赖频率与方位角数，并在同一框架内处理正、负自旋扇区，从而显式分离非极端 Kerr-Newman-(A)dS 上耦合的引力与电磁辐射方程。作者证明该变换在开 AdS 外部区域以及 dS 的事件视界与宇宙视界之间光滑且可逆，所得径向与角向系统对任意复频率有效；并把 Newman-Penrose 辐射变量在旋转轴与未来视界处的正则性表述为分离解上的条件。在渐近平坦极限下，该变换通过允许的标架自由度与 Hintz 的矩阵积分因子相联系。",
+   "cn_review": "【创新点】给出不依赖频率与 $m$ 的常数行列式分离矩阵，首次把带电旋转 (A)dS 背景的引力-电磁耦合方程在正负自旋统一框架下显式分离，并证明变换在 AdS 外部与 dS 两视界间光滑可逆，还给出 NP 变量在轴与视界处的正则性条件。\n【局限性】纯代数/微局部分离，未给出任何准正规模数值或稳定性结论；矩阵构造的具体形式与唯一性未在摘要中说明，且非极端条件排除了极端与近极端情形。\n【对 Rao 的意义】同领域参考：分离矩阵与标架自由度、正则性条件的处理方式，对 Rao 在 SVT 分解与规范—共形不变量中处理耦合方程、以及视界处边界条件的设定有方法上的借鉴价值。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.20705",
+   "title": "Quantum critical collapse in the large $D$ limit",
+   "cn_title": "大 $D$ 极限下的量子临界坍缩",
+   "authors": "Chih-Hung Wu",
+   "link": "https://arxiv.org/abs/2610.20705",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "在大 $D$ 极限下研究 Einstein-标量临界坍缩的量子自能模，证明普适 Lyapunov 指数在连续与离散自相似下均存活，并给出量子墙半径 $r_h\\propto(D-2)^{-2}$。",
+   "cn_summary": "Einstein-标量临界坍缩中，坍缩物质的量子自能在主导 $s$ 波扇区以 Lyapunov 指数 $D-2$ 增长，最终与经典不稳定性竞争，移动裸奇点阈值并产生有限质量间隙；但当时空维数 $D\\to\\infty$ 时半经典控制是否失效一直未明。\n本文在连续（CSS）与离散（DSS）自相似临界时空中研究该量子增长模。结果表明普适 Lyapunov 指数在两种自相似形式下都存活。在 CSS 情形，经典趋向裸奇点的过程被陷获面的出现打断；在大 $D$ 下视界追踪约化为 Bessel 问题，给出半径满足 $r_h\\propto(D-2)^{-2}$ 的量子墙。该半径在有限 $D$ 下可保持在 Planck 尺度之上，但维持这一层级需要额外条件。",
+   "cn_review": "【创新点】把量子自能模的分析从连续自相似推广到离散自相似，证明 Lyapunov 指数 $D-2$ 的普适性；并首次在大 $D$ 下把视界追踪化为 Bessel 问题，得到量子墙半径的解析标度 $r_h\\propto(D-2)^{-2}$。\n【局限性】限于 Einstein-标量、球对称 $s$ 波与自相似假设，未涉及旋转或带电；大 $D$ 展开的截断误差与维持 $r_h$ 高于 Planck 尺度的条件未在摘要中量化。\n【对 Rao 的意义】同领域参考：临界坍缩与裸奇点阈值、量子墙标度属于黑洞形成与半经典引力的边界问题，与 Rao 黑洞热力学模块中视界形成与 Planck 尺度层级讨论相关，但方法（大 $D$ 展开）与 Rao 当前工具链距离较远。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.21235",
+   "title": "Model-independent parameters from DESI DR1 LRG2 with an explicitly varying power-spectrum shape",
+   "cn_title": "DESI DR1 LRG2 上形状参数显式变化的模型无关参数测量",
+   "authors": "Yong-Seon Song, M. Icaza-Lizaola, Minji Oh, Yi Zheng",
+   "link": "https://arxiv.org/abs/2610.21235",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "提出同时约束原初功率谱形状参数与模型无关距离/增长参数的方法，用 N 体模板加高斯过程 emulator 拟合 DESI DR1 LRG2。",
+   "cn_summary": "区分暗能量与修正引力需要模型无关地测量宇宙距离和结构增长，但原初功率谱形状参数通常被固定为 CMB 定出的值，这会把形状不确定性错误地吸收进距离与增长参数中，从而削弱模型区分能力。\n本文提出一套方法，让形状参数与模型无关的距离、增长参数同时被约束。其 emulator 建立在混合模型上：微扰论预言由从 N 体模拟直接测量的模板补充，因为模板是测量而非展开得到，模型在小尺度上带有超出微扰截断阶的非线性修正，精度由模拟而非展开适用范围决定；高斯过程 emulator 提供这些模板。作者将其应用于 DESI DR1 LRG2 样本。",
+   "cn_review": "【创新点】把原初形状参数从固定量变为同时拟合的自由参数，并用“测量模板 + 高斯过程 emulator”的混合方案把非线性信息带入模型无关的距离与增长测量，避免形状误差污染暗能量/修正引力判别。\n【局限性】摘要未给出具体约束数值、置信区间或与固定形状情形的定量对比，也未说明 emulator 的模拟分辨率与模板外推误差；属现象学类，方法新意有限。\n【对 Rao 的意义】同领域参考：DESI BAO 与增长因子的模型无关约束是修正引力宇宙学检验的观测端，Rao 若做 f(Q)/NYTG 的 P-V 临界或扰动预言，可参考其“形状参数不固定”的处理以避免参数简并。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.20716",
+   "title": "The unified Bound Dark Energy--Bound Dark Matter model: theory and constraints from DESI DR2",
+   "cn_title": "统一的 Bound Dark Energy–Bound Dark Matter 模型：理论与 DESI DR2 约束",
+   "authors": "Jose Agustin Lozano Torres, Axel de la Macorra",
+   "link": "https://arxiv.org/abs/2610.20716",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "从单一 $SU(3)$、$N_f=6$ 超对称规范群同时导出暗能量与全部暗物质，规范耦合统一预言 $\\Lambda_c=34^{+16}_{-11}$ eV，DESI DR2 拟合给出 $43.67\\pm0.13$ eV。",
+   "cn_summary": "暗能量与暗物质通常被当作两个独立部门处理，参数数目多且缺乏高能理论预言；若两者来自同一规范群凝聚，则暗能量部门可不引入超出 $\\Lambda$CDM 的参数，暗物质部门只多一个参数，从而在拟合优度与理论简约性之间取得可检验的平衡。\n本文提出统一的 Bound Dark Energy–Bound Dark Matter（BDE-BDM）模型，二者来自单一超对称 $SU(3)$ 规范群、$N_f=6$ 味。规范耦合统一在未用任何宇宙学数据前预言凝聚尺度 $\\Lambda_c=34^{+16}_{-11}$ eV。拟合 DESI DR2 BAO、Planck CMB、Planck+ACT DR6 CMB 透镜以及三个超新星汇编（PantheonPlus、Union3.1、DES-Dovekie）后，Union3.1 给出 $\\Lambda_c=43.67\\pm0.13$ eV，落在预言区间内；状态方程演化到 $w_0=-0.9262\\pm0.0005$ 且从不穿越 phantom 分界。相对 $\\Lambda$CDM，模型把 DESI BAO 的 $\\chi^2$ 降低 2.95–3.67、超新星 $\\chi^2$ 降低 2.53–4.07，恢复了 $w_0w_a$ 用两个暗能量参数拟合同一数据所获总降低量的 57%–71%。",
+   "cn_review": "【创新点】用单一超对称 $SU(3)$、$N_f=6$ 规范群同时给出暗能量与全部暗物质，且凝聚尺度 $\\Lambda_c$ 是先于宇宙学数据的高能预言，被 DESI DR2 拟合值 $43.67\\pm0.13$ eV 落在预言区间内；暗能量部门不增加参数，$\\chi^2$ 改善达到 $w_0w_a$ 的 57%–71%。\n【局限性】属现象学拟合类，方法新意有限；模型依赖超对称 $SU(3)$ 凝聚的具体动力学假设，摘要未给出微扰稳定性、早期宇宙相变或与结构增长数据的检验。\n【对 Rao 的意义】同领域参考：作为修正/替代暗能量模型与 DESI DR2 的对比基准，Rao 在评估 f(Q) 宇宙学 P-V 临界或暗能量部门预言时，可用其 $\\chi^2$ 改善幅度与 $w_0$ 值作为参照。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.20977",
+   "title": "Disentangling geometry & growth in cosmic neutrino mass constraints: a more physical split and diagnostic",
+   "cn_title": "解耦几何与增长：宇宙中微子质量约束的更物理拆分与诊断",
+   "authors": "Fei Ge, Frank J. Qu, Hanyue Wang, Emmanuel Schaan, W. L. Kimmy Wu, Alexander Friedland",
+   "link": "https://arxiv.org/abs/2610.20977",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ex"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "把中微子质量拆成控制距离的几何部分与控制扰动增长的生长部分，Planck+ACT+SPT+DESI 数据显示两者都偏好负值。",
+   "cn_summary": "宇宙学数据近年给出中微子质量总和 $\\sum m_\\nu$ 的偏好值低于振荡实验下限，甚至偏向负值，这一反常究竟来自背景膨胀历史（几何）还是结构增长，此前没有干净的诊断手段。由于大质量中微子同时改变 $H(z)$ 和扰动演化，标准分析把两种效应混在一起，无法判断数据内部是否自洽。\n\n作者在 Boltzmann 代码层面把膨胀率拆成两套：$\\sum m_\\nu^{geo}$ 只用于距离计算中的 $H(z)$，$\\sum m_\\nu^{growth}$ 只用于扰动演化中的 $H(z)$，并允许两者取负值。联合 Planck 主 CMB、Planck+ACT+SPT 的 CMB 透镜以及 DESI BAO 数据，得到 $\\sum m_\\nu^{geo} = -0.07\\pm0.10$ eV（68% C.L.），生长通道给出相近的灵敏度和负值偏好，说明几何与增长并未互相矛盾，负质量偏好不是单一通道的假象。",
+   "cn_review": "【创新点】把 $\\sum m_\\nu$ 按物理效应拆成几何与增长两个独立参数，并在代码层面分别注入 $H(z)$，比此前笼统的“负质量”拟合更能定位反常来源；结果显示两通道灵敏度相当且都偏负，排除了单一通道系统误差的简单解释。\n【局限性】仍是现象学参数化，负质量没有物理机制支撑；拆分依赖具体 Boltzmann 实现，几何与增长通道在透镜等观测中并非完全独立，简并可能残留；未给出与修正引力或早期暗能量模型的对照。\n【对 Rao 的意义】现象学类，方法新意有限，但“把 $H(z)$ 按用途拆开”的诊断思路可迁移到修正引力宇宙学中背景与扰动一致性检验，与 P2 中 f(Q) 宇宙学参数允许性的讨论有方法上的类比价值。",
+   "action": "暂无"
+  }
+ ],
+ "radar_note": null,
+ "keyword": []
+}
