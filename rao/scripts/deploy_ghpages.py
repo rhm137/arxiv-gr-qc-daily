@@ -81,11 +81,9 @@ def main() -> int:
                    json={"content": base64.b64encode(content).decode(), "encoding": "base64"}).json()
         entries.append({"path": path, "mode": "100644", "type": "blob", "sha": blob["sha"]})
 
-    tree_payload: dict = {"tree": entries}
-    if base_sha:
-        base_tree = req("get", f"{API}/repos/{REPO}/git/commits/{base_sha}").json()["tree"]["sha"]
-        tree_payload["base_tree"] = base_tree
-    tree = req("post", f"{API}/repos/{REPO}/git/trees", json=tree_payload).json()
+    # 不带 base_tree：tree 从零构建 = site/ 的整站镜像（全量替换）。
+    # 滚动窗口裁掉的旧日期页不在 entries 里，线上随之 404 下线。
+    tree = req("post", f"{API}/repos/{REPO}/git/trees", json={"tree": entries}).json()
 
     msg = "deploy " + datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     commit = req("post", f"{API}/repos/{REPO}/git/commits",
