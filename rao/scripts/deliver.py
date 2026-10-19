@@ -753,9 +753,14 @@ def rebuild_site_window(today: str, digest: dict, listing: dict) -> list[dict]:
     （渲染是纯函数，数据都在 data/ 里），所以所有页面的日期导航永远只指向
     窗口内存活的页面，不会产生死链；窗口外页面从 site/ 删除，部署为整站
     镜像后线上随之消失。重跑同一天幂等：页面覆盖写、窗口按日期去重。
+
+    窗口以 data/ 里的 digest 历史为准，而不是 site/ 里现有页面：data/ 由
+    workflow 每日提交回仓库，CI 每次 checkout 都能拿到完整历史；site/ 不入库，
+    只是渲染产物（群推送用入库的 archive/ 做账本，这里用 data/ 做账本，效果相同）。
     """
-    existing = [f.stem for f in SITE.glob("2*.html")]
-    window = sorted(set(existing) | {today}, reverse=True)[:KEEP_DAYS]
+    data_dates = [m.group(1) for f in DATA.glob("digest_2*.json")
+                  if (m := re.fullmatch(r"digest_(\d{4}-\d{2}-\d{2})", f.stem))]
+    window = sorted(set(data_dates) | {today}, reverse=True)[:KEEP_DAYS]
 
     # 先算窗口元数据（导航与索引都依赖它），再渲染页面
     days = []
