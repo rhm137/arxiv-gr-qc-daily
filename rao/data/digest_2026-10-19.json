@@ -1,0 +1,160 @@
+{
+ "listing_date": "2026-10-19",
+ "generated_at": "2026-10-20T10:10:44+08:00",
+ "generator": "deepseek-chat/deepseek-chat",
+ "stats": {
+  "total_new": 46,
+  "candidates": 12,
+  "core": 2,
+  "radar": 3,
+  "keyword": 2
+ },
+ "papers": [
+  {
+   "id": "2610.23628",
+   "title": "Alleviating cosmological strong coupling with torsion in regularized 4D Einstein-Gauss-Bonnet gravity",
+   "cn_title": "用挠率缓解正则化4D Einstein-Gauss-Bonnet引力中的宇宙学强耦合",
+   "authors": "Jianhui Qiu, Ling-Wei Luo, Chunhui Liu, Chao-Qiang Geng",
+   "link": "https://arxiv.org/abs/2610.23628",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "该文在Riemann-Cartan几何中做共形正则化，发现含迹挠率的de Sitter吸引子上标量动能项不为零，从而避开强耦合，并给出无鬼、无梯度不稳定的参数区。",
+   "cn_summary": "把Gauss-Bonnet项共形正则化到四维得到的标量-张量理论，在其晚期de Sitter吸引子上标量扰动动能项为零，这是已知的强耦合问题：线性扰动理论在该背景上失效，二阶作用量的标量扇区退化。若这一退化是正则化方案的内禀性质，则这类模型的红外宇宙学预言不可信，因此需要判断强耦合是方案依赖还是几何依赖。\n作者把正则化改在Riemann-Cartan几何中进行，联络含挠率。结果显示，理论允许带迹挠率的de Sitter吸引子，其上标量动能项保持非零。在空间平坦FLRW背景上展开二阶作用量，得到1个标量模、2个张量模，矢量扰动非动力学。作者进一步扫参数空间，指认出一个非空参数区，其中de Sitter吸引子的标量、张量扰动在所有动量下均无鬼、无梯度不稳定。",
+   "cn_review": "【创新点】把“正则化几何”当作自由度，用挠率迹给标量动能项提供非零贡献，直接消解了共形正则化4D EGB在dS吸引子上的强耦合；并给出完整的二阶作用量模数统计（1标量+2张量，矢量非动力学）与无鬼、无梯度不稳定的参数区。\n【局限性】只做了二次作用量的鬼与梯度稳定性分析，未涉及强耦合能标、非线性截断与紫外完备性；参数区是存在性证明，未与CMB/BAO观测做拟合；挠率迹背景的动力学自洽性（是否吸引子、是否与物质耦合一致）摘要未体现。\n【对 Rao 的意义】与 Rao 的“联络分支意识”和“约束消元/动能矩阵”研究线直接相关：这是“换几何表述改变扰动谱健康性”的清晰案例，可对照 P2 中 f(Q) 联络分支对P-V临界点稳定性的影响，也可为 P1 中不规则联络下动能矩阵退化问题提供方法参照。",
+   "learn": "可学到一个具体判据：强耦合的根源是二阶作用量中标量动能系数 K 在背景解上为零，因此检查任何标量-张量/修正引力模型的健康性，第一步应写出 K 的显式表达式并在吸引子上求值，而非只看参数约束。Riemann-Cartan 中挠率迹作为额外标量自由度进入 K 的机制，可与 f(Q) 中非度规性（dτ）的标量模做类比：两者都是“联络自由度救活退化扇区”。需警惕约定差异：该文的“迹挠率”背景与 teleparallel 的“标量挠率 T”不是同一对象，比较前须统一符号与作用量归一化；此外“所有动量无梯度不稳定”依赖 FLRW 空间平坦与二次截断，不能外推到各向异性背景。",
+   "topics": "课题1（接 P2）：在 f(Q) 宇宙学中，对给定联络分支写出标量扰动动能系数 K 在 P-V 临界点背景上的值，检验临界点是否落在 K=0 的强耦合面上；第一步计算是用 SVT 分解写出二阶标量作用量并提取 K 的显式表达式。课题2（接 P1）：在 NYTG 不规则联络 FLRW 中，检查标量扇区动能矩阵是否因联络自由度而退化，若退化则参照本文思路寻找非零贡献项；第一步是写出不规则联络分支的二次作用量并做约束消元。"
+  },
+  {
+   "id": "2610.23522",
+   "title": "The metric-affine $\\mathring{R}^2$ scalaron: parameter-free inflation",
+   "cn_title": "度规-仿射 $\\mathring{R}^2$ scalaron：无自由参数的暴胀",
+   "authors": "Christian Dioguardi",
+   "link": "https://arxiv.org/abs/2610.23522",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "该文用联络的平移对称性把度规-仿射Starobinsky项约化为 $\\alpha\\mathring{R}^2$，只传播引力子与一个健康标量，标量振幅定出 $\\alpha$ 后模型无自由参数，预言 $n_s\\simeq0.968$–$0.974$、$r\\simeq0.011$–$0.008$。",
+   "cn_summary": "度规-仿射引力中联络独立于度规，联络本身携带额外分量，通常导致额外自由度或不稳定。Starobinsky 型 $R(\\Gamma)^2$ 在度规-仿射框架下的传播谱与可观测量并不清楚：哪些联络分量是物理的、标量谱是否健康、预言是否仍落在观测窗口内，都是开放问题。若能用对称性把理论约化到最小传播谱，就能得到一个可证伪、无自由参数的暴胀模型。\n作者要求 Einstein-Hilbert 项是唯一破坏联络四个平移对称性中三个的算符，并把剩余对称性强加于度规-仿射 Starobinsky 项 $\\alpha R(\\Gamma)^2$，使其替换为不变部分曲率平方 $\\alpha\\mathring{R}^2$。理论只传播引力子和一个健康标量（$\\mathring{R}^2$ scalaron），势呈多项式平台 $U\\simeq U_0(1-\\mu^2/\\chi^2)$，$\\mu=\\sqrt{6}M_P$ 由联络曲率固定。标量振幅定出 $\\alpha\\simeq2\\times10^{8}$ 后无自由参数；领头阶预言 $n_s\\simeq1-3/(2N_*)$、$r\\simeq2\\sqrt3 N_*^{-3/2}$，精确慢滚下 $N_*=50$–$60$ 给出 $n_s=0.968$–$0.974$、$r=0.011$–$0.008$，与当前数据一致且 $r$ 在下一代 B 模测量范围内。",
+   "cn_review": "【创新点】用“联络平移对称性”这一度规-仿射特有的对称性原理筛掉 $R(\\Gamma)^2$ 中的病态分量，得到只含引力子+一个健康标量的最小谱；$\\mu=\\sqrt{6}M_P$ 由联络曲率而非手调给出，$\\alpha$ 由标量振幅固定，因此是真正的单参数（实为零自由参数）预言，$r\\sim0.01$ 可被 CMB-S4/LiteBIRD 检验。\n【局限性】只做了慢滚与领头阶解析预言，未给出完整二阶扰动谱与张量-标量一致性检验；联络平移对称性的施加是模型选择而非导出，其他对称性选择会给出不同 $\\mathring{R}^2$ 系数；摘要未涉及 reheating 与度规-仿射框架下物质耦合的一致性。\n【对 Rao 的意义】与 Rao 的“度规-仿射/联络分支”与“SVT 分解、约束消元”研究线高度契合：这是“用对称性原理固定联络自由度”的范式，可直接迁移到 P1 中 NYTG 不规则联络分支的筛选，也可为 P2 中 f(Q) 允许变分（联络对称性约束）提供方法论模板。",
+   "learn": "核心工具是“联络的 shift 对称性”计数：度规-仿射联络有4个平移对称性，EH 项破坏3个，剩余1个用于约束高阶曲率项的形式，从而消去病态分量。这与 f(Q)/STG 中“非度规性 dτ 的规范/对称性约束”是同一类论证，可对照 Rao 在 P2 中处理联络分支允许变分的方式。需注意：$\\mathring{R}$ 是曲率的“不变部分”，其定义依赖联络分解约定（与通常 $R(\\Gamma)$ 的缩并顺序、符号约定不同），跨文献比较 $\\mu=\\sqrt{6}M_P$ 前须核对曲率定义；此外“健康标量”的判定基于二次作用量无鬼，未含强耦合能标分析。",
+   "topics": "课题1（接 P1）：把“联络平移对称性筛选高阶项”的思路用于 NYTG 不规则联络分支，检验哪些联络分量可被对称性消去、剩余标量扇区是否健康；第一步是写出 NYTG 联络的对称性变换并计数被 EH 项破坏的生成元。课题2（接 P2）：在 f(Q) 中施加类似的联络对称性约束，检验 P-V 临界点参数区是否因此收缩到物理允许子集；第一步是列出 f(Q) 平联络的剩余对称性并写出对应的允许变分条件。"
+  }
+ ],
+ "radar": [
+  {
+   "id": "2610.23514",
+   "title": "Timelike entanglement entropy with gravitational anomaly from complexified geometry",
+   "cn_title": "含引力反常的复几何类时纠缠熵",
+   "authors": "Minwoo Lim, Himanshu Parihar, Junggi Yoon",
+   "link": "https://arxiv.org/abs/2610.23514",
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "score": 6.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "宇称破缺引力"
+   ],
+   "one_liner": "作者在 $c_L\\neq c_R$ 的二维 CFT 中，用复测地线与 Chern-Simons 表述计算类时纠缠熵，并验证其与对偶场论一致。",
+   "cn_summary": "全息纠缠熵的 Ryu-Takayanagi 公式已在类空区间上得到充分检验，但类时区间的纠缠熵（TEE）定义与全息对偶仍不清晰，尤其当左右中心荷不等（引力反常）时，体理论对应拓扑大质量引力，边界理论不再具有手征对称性，TEE 的实部与虚部如何被唯一确定是开放问题。本文在 Poincaré AdS$_3$、非极端与极端旋转 BTZ 背景中，把 TEE 表示为锚定在类时区间端点的单条复测地线上大质量自旋粒子的 on-shell 作用，该作用由复测地线长度与平行移动法标架的 twist 两部分组成；作者还给出等价的 Chern-Simons 推导，其中体联络保持实而只有 Wilson 线探针的鞍点变复。三种背景下全息结果均与对偶场论的 TEE 相符；TEE 实部被唯一固定，虚部则依赖边界 $i\\epsilon$ 处方与区间取向，体侧对取向的依赖反映为复几何中的某种歧义。",
+   "cn_review": "【创新点】首次把含引力反常（$c_L\\neq c_R$）的 TEE 纳入复测地线加自旋粒子作用框架，并给出体联络为实的 Chern-Simons 等价表述，把虚部歧义定位到边界处方与区间取向上。【局限性】仅限 AdS$_3$/二维 CFT 的高对称低维情形，虚部未被唯一确定，说明定义本身仍不完整；摘要未说明能否推广到更高维或一般 $c_L\\neq c_R$ 的体理论。【对 Rao 的意义】属全息纠缠熵方向（画像 §1 量子信息与引力、hep-th 入口），与 P3 的“相对熵模对视界熵的有限波长响应”在“纠缠熵的复化/解析延拓”上有方法交集，但模型背景（AdS$_3$ 拓扑大质量引力）与 Rao 的 FRW 视界热力学相距较远，可作背景参考。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.23739",
+   "title": "The magnetic universe in the theory of gravity with non-minimal kinetic coupling of a scalar field",
+   "cn_title": "非最小动能耦合标量场引力理论中的磁化宇宙",
+   "authors": "Ruslan K. Muharlyamov, Tatiana N. Pankratyeva",
+   "link": "https://arxiv.org/abs/2610.23739",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "作者把非最小动能耦合标量场的 Bianchi I 磁化宇宙解从轴对称推广到 $a_1\\neq a_2\\neq a_3$，并确认各向同化与无鬼、无 Laplace 不稳定性条件仍成立。",
+   "cn_summary": "含 $\\eta\\,(\\phi/2)\\,G_{\\mu\\nu}\\nabla^\\mu\\nabla^\\nu\\phi$ 非最小动能耦合的标量场引力理论，此前已在局部旋转对称 Bianchi I（$a_1=a_2$）加单向磁场的设定下求得解析宇宙解，并发现当 $l=1+\\varepsilon\\eta\\Lambda/\\mu>0$ 时模型同时具备膨胀期各向同化、快速进入暴胀、无鬼与无 Laplace 不稳定性等性质。遗留问题是这些结论是否只是轴对称假设的产物。本文把该问题推广到三个标度因子互不相同的完整 Bianchi I 时空，重新求解爱因斯坦方程与标量场方程，得到解析解族，并逐项检验上述性质。结果显示模型仍保留若干独有特征，主要结论不变：在 $l>0$ 条件下依旧实现各向同化、快速过渡到暴胀，且不出现鬼模与 Laplace 不稳定性；作者认为解适用于原初暴胀之前及暴胀期间。",
+   "cn_review": "【创新点】把先前 JCAP05(2025)018 的轴对称磁化 Bianchi I 解推广到 $a_1\\neq a_2\\neq a_3$，证明各向同化与稳定性结论不依赖轴对称假设，这是对原结果的实质性加固。【局限性】仍是高度对称背景下的解析解构造，$l>0$ 是充分性条件而非一般性判据；摘要未给出扰动层面的完整 SVT 分析，稳定性结论限于背景与特定扇区。【对 Rao 的意义】属修正引力宇宙学一般项（风向）：非最小动能耦合是 Horndeski/DHOST 族的一个子类，其“背景解加稳定性条件”的检验方式与 Rao 在 P2 中对 f(Q) 宇宙学稳定性与允许变分的审计思路同构，可作方法对照；现象学类，方法新意有限。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.23384",
+   "title": "Spinors, Doppelg\\\"angers and the Non-Perturbative Classical Double Copy",
+   "cn_title": "旋量、二重身与非微扰经典双拷贝",
+   "authors": "Kymani Armstrong-Williams",
+   "link": "https://arxiv.org/abs/2610.23384",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "hep-ph",
+    "math-ph",
+    "math.MP"
+   ],
+   "score": 5.0,
+   "relation": "none",
+   "relation_label": "风向",
+   "radar_fields": [
+    "teleparallel/f(T)"
+   ],
+   "one_liner": "作者用正手征自旋联络把复化 SU(2) Yang-Mills 的 CFTW 扇区与共形平坦引力精确对应，并证明无源 YM 方程要求标量曲率为常数。",
+   "cn_summary": "经典双拷贝把引力的解与规范理论的“平方”联系起来，但多数构造是微扰的；非微扰层面，复化 SU(2) Yang-Mills 的 Corrigan-Fairlie-'t Hooft-Wilczek（CFTW）扇区与四维共形平坦引力之间存在已知对应，然而其几何与旋量结构、以及物质迹的推广一直不清楚。本文把规范势等同于共形平坦度规的正手征自旋联络，从而给出 Yang-Mills 场强与 Riemann 张量手征投影之间的精确关系，实现“二重身”（doppelgänger）观点：规范场与引力场是同一联络数据的不同解读。作者证明在该扇区内无源 Yang-Mills 方程要求标量曲率为常数，由此解释了双方共享的非线性标量方程，并把引力对应从无迹物质推广到能量-动量迹为常数的物质；进一步把伴随色指标表示为旋量指标的对称对，导出规范场强旋量与曲率旋量之间的精确映射。",
+   "cn_review": "【创新点】把非微扰经典双拷贝提升为几何陈述（规范势即正手征自旋联络），并给出“标量曲率为常数”这一可检验的精确约束，把双拷贝的适用范围从无迹物质扩展到常迹物质。【局限性】限于复化 SU(2) 的 CFTW 扇区与共形平坦引力，是高度特殊的解类；摘要未说明实截面、非共形平坦度规或含一般物质时的推广。【对 Rao 的意义】与 Rao 的宇称破缺引力主线（手征投影、自旋联络、旋量表述）在技术语言上相邻：正手征投影 Riemann 张量与旋量指标配对的做法，可借鉴到 Nieh-Yan 宇称奇算符的旋量重写；但双拷贝本身不在 Rao 课题卡内，属同领域方法参考。",
+   "action": "暂无"
+  }
+ ],
+ "radar_note": null,
+ "keyword": [
+  {
+   "id": "2610.23497",
+   "title": "Can coupled thawing quintessence reproduce DESI DR2? A test with two potentials",
+   "cn_title": "耦合解冻精质能否重现 DESI DR2？两个势函数的检验",
+   "authors": "Jhananii Yuvaraj Babu, Luca Amendola",
+   "link": "https://arxiv.org/abs/2610.23497",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "用余弦与双指数山顶两类解冻势检验耦合精质能否重现 DESI DR2 的 phantom 穿越，耦合被限制在 $|\\beta|<0.073$。",
+   "cn_summary": "DESI DR2 的 BAO 数据偏好暗能量状态方程在历史上穿越 $w=-1$，即出现表观 phantom 行为。若暗部门真的存在耦合，则在假定暗部门各自守恒的分析框架下会给出有效状态方程 $w_{\\rm eff}<-1$，从而无需引入 phantom 场即可解释这一现象。问题在于：这一机制能否在具体势函数下定量重现 DESI 的偏好，以及耦合强度被数据限制到什么程度。\n作者选取两个解冻（thawing）势——余弦势与双指数山顶势——构建耦合精质模型，联合 DESI DR2 BAO、Planck PR4 以及三组超新星汇编进行拟合。两个模型相对 $\\Lambda$CDM 的改进为 $\\Delta\\chi^2=5$–$15$，达到 $w_0w_a$CDM 改进量的 $64\\%$–$92\\%$。它们在 $z\\lesssim0.4$ 内能追踪 $w_0w_a$CDM 的状态方程，但 phantom 穿越发生在更晚的 $z\\simeq1$，而非 DESI 偏好的 $z\\simeq0.4$–$0.5$。耦合被限制为 $|\\beta|<0.073$（$95\\%$ 置信度），两个势对该限制的一致性在 $0.15\\sigma$ 以内；二者差别体现在可达的状态方程演化上，余弦势更接近 DESI 偏好。",
+   "cn_review": "【创新点】把“耦合暗部门在分离守恒假设下产生有效 $w<-1$”这一机制放到两个具体解冻势上做定量检验，给出 $\\Delta\\chi^2=5$–$15$、达到 $w_0w_a$CDM 改进量 $64\\%$–$92\\%$ 的量化结论，并指出 phantom 穿越红移 $z\\simeq1$ 与 DESI 偏好的 $z\\simeq0.4$–$0.5$ 存在系统性错位——这是该机制能否成立的直接判据。\n【局限性】耦合限制 $|\\beta|<0.073$ 已接近零，模型对 DESI 的改进主要来自势函数而非耦合；且“有效状态方程”依赖于把耦合暗部门人为拆分为分离守恒分量的分析约定，不同约定下 $w_{\\rm eff}$ 的定义与穿越红移可能移动。摘要未给出完整似然与模型比较判据（如 AIC/BIC）。\n【对 Rao 的意义】现象学类，方法新意有限，但“耦合导致有效 $w<-1$ 而非真 phantom”的辨析与 Rao 在 f(Q)/标量—张量宇宙学中处理有效状态方程定义的问题同构，可作为 P2 中 P-V 临界点物理允许性讨论的对照案例：有效量依赖守恒假设的拆分方式。"
+  },
+  {
+   "id": "2610.23828",
+   "title": "Revisiting the Mass and Scale Dependence of the \"Lensing is Low\" Effect with DECADE",
+   "cn_title": "用 DECADE 重新审视“透镜效应偏低”的质量与尺度依赖",
+   "authors": "Kimiko Queen, Abigail V. Fisher, Johannes U. Lange",
+   "link": "https://arxiv.org/abs/2610.23828",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "astro-ph.GA"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "用 DECADE 透镜数据重检透镜效应偏低问题，发现大尺度张力被削弱、小尺度不变，支持该问题具有尺度依赖。",
+   "cn_summary": "星系—星系透镜（GGL）是同时探测宇宙学与星系形成的探针，但理论预言的 GGL 振幅在小尺度上比观测高约 $20$–$40\\%$，即所谓“透镜效应偏低”（lensing is low）问题。若不能用天体物理过程或测量系统误差解释，这一差异可能指向标准宇宙学模型的张力。Lange 等人（2021）用 BOSS 前景星系与 SDSS 透镜测量曾指出该失配延伸到大尺度，而在大尺度上天体物理解释不被偏好，因而更值得警惕。\n本文用暗能量相机 DECADE（Dark Energy Camera All Data Everywhere）项目的透镜数据重做这一检验。与 SDSS 相比，DECADE 测量削弱了大尺度上的张力，而小尺度测量基本不变。因此新结果倾向于认为透镜效应偏低问题具有尺度依赖：大尺度失配更可能是测量系统误差，小尺度失配则仍需天体物理或新物理来解释。摘要未给出具体的信噪比与尺度分界数值。",
+   "cn_review": "【创新点】用独立且更新的 DECADE 透镜数据直接复核 Lange 等（2021）关于“失配延伸到大尺度”的关键论断，结论发生方向性改变——大尺度张力减弱、小尺度不变，把问题从“宇宙学张力”重新定位为“尺度依赖的星系形成/测量问题”。\n【局限性】摘要未给出尺度分界、协方差处理与系统误差预算的细节，无法判断大尺度张力减弱是源于数据质量提升还是分析选择；小尺度上 $20$–$40\\%$ 的失配依旧存在，未被解释。\n【对 Rao 的意义】纯观测/数据处理类，与 Rao 的引力热力学与修正引力理论主线无直接接口，仅作背景了解：若未来把 lensing-is-low 当作修正引力或暗部门耦合的观测动机引用，需注意其大尺度证据已被削弱。"
+  }
+ ]
+}
