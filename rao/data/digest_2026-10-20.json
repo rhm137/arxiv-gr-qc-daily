@@ -1,0 +1,259 @@
+{
+ "listing_date": "2026-10-20",
+ "generated_at": "2026-10-21T10:05:46+08:00",
+ "generator": "deepseek-chat/deepseek-chat",
+ "stats": {
+  "total_new": 101,
+  "candidates": 27,
+  "core": 2,
+  "radar": 6,
+  "keyword": 4
+ },
+ "papers": [
+  {
+   "id": "2610.24402",
+   "title": "Observational constraints on scalar-nonmetricity cosmology: the role of the connection",
+   "cn_title": "标量—非度规宇宙学的观测约束：联络所扮演的角色",
+   "authors": "Ghulam Murtaza, Avik De, Emmanuel N. Saridakis",
+   "link": "https://arxiv.org/abs/2610.24402",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 8.0,
+   "must_read": true,
+   "one_liner": "该文系统比较了标量—非度规引力中三个对称远平行联络分支在超新星、BAO 与 CMB 数据下的表现，发现联络 I 在 DES Y5+CMB+DESI DR2 下以 ΔAIC=-5.99 优于 ΛCDM。",
+   "cn_summary": "标量—非度规引力把引力相互作用编码在非度规张量中，是 f(Q) 对称远平行引力的标量—张量推广。其关键特征是：即便在空间平坦 FRW 背景上，对称远平行联络仍允许三个不等价分支，而此前多数宇宙学拟合只取其中一个分支，联络自由度是否具有可观测后果一直没有系统回答。\n作者取陡峭标量势与幂律非最小耦合，对三个联络分支做统一观测比较，数据组合包括 Pantheon Plus 与 DES Year 5 两类 Ia 型超新星、DESI DR2 重子声学振荡以及压缩 CMB 信息。结果显示三个分支都能实现从物质主导到晚期加速的转变，但行为强烈依赖联络：联络 I 对超新星样本最敏感，联络 II 的重构历史异常稳定，联络 III 居中。最突出的是 DES Y5+CMB+DESI DR2 组合下联络 I 给出 Δχ²_min=-13.99、ΔAIC=-5.99，按 Akaike 信息准则优于 ΛCDM。",
+   "cn_review": "【创新点】首次把三个对称远平行联络分支放在同一势函数、同一耦合与同一数据组合下横向比较，并给出分支依赖的定量结论（联络 I 的 ΔAIC=-5.99、联络 II 重构历史稳定），把“联络选择”从约定问题提升为可观测判别量。\n【局限性】只取陡峭势与幂律耦合这一小片模型空间，结论对势参数与耦合指数的稳健性未在摘要中体现；ΔAIC 约 6 的证据强度属中等，且依赖 DES Y5 超新星绝对定标，联络 I 对超新星样本的强敏感性本身提示结果可能由该数据集驱动。\n【对 Rao 的意义】直接对应课题卡 P2（f(Q) 宇宙学 P-V 临界点的物理允许性与允许变分）：该文说明联络分支不是形式选择而是影响拟合的实质自由度，可作为 P2 中“允许变分”讨论的观测侧支撑；其分支分类与 Rao 的联络分支意识一致，可对照其分支定义检查约定差异。",
+   "learn": "可借用其三分支参数化与数据组合流程作为 P2 的对照基线；注意对称远平行联络分支的命名（Connection I/II/III）在不同文献中约定不一，比较前须核对其联络分量与 Rao 所用 f(Q) 文献（如平 FRW 的 Q=6H² 约定、联络分量 γ 参数化）是否一致；ΔAIC 而非 Δχ² 作为判据的做法值得在 P2 稳定性分析中沿用，但需警惕超新星样本系统误差对联络 I 的放大效应。",
+   "topics": "课题 1（对接 P2）：在 Rao 的 f(Q) 宇宙学 P-V 临界点框架中，对三个联络分支分别计算临界点存在条件与热容符号，检验“联络 I 被数据偏好”是否与“联络 I 的 P-V 临界点物理允许”一致；第一步是写出各分支下 Q(H) 与联络分量，代入临界点方程组 ∂T/∂r=∂²T/∂r²=0 求数值解。课题 2（对接 P2 允许变分）：检验该文所用幂律非最小耦合在联络 I 下是否满足变分良定义（边界项与联络方程一致性），第一步是复算其联络方程并检查非度规张量散度项是否被正确消去。"
+  },
+  {
+   "id": "2610.26094",
+   "title": "Black hole free energy landscapes from constrained instantons",
+   "cn_title": "由约束瞬子得到的黑洞自由能景观",
+   "authors": "Shan-Ping Wu, Jia-Zhou Liu, Yu-Xiao Liu, Shao-Wen Wei",
+   "link": "https://arxiv.org/abs/2610.26094",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "该文用引力路径积分的约束扇区分解，在固定外部温度与角速度下把广义黑洞自由能景观解释为约束瞬子，并证明其鞍点作用量取 I=β(E_B-ΩJ_B)-S 形式，可推广到无曲率导数的 f(Riemann) 理论并配 Wald 熵。",
+   "cn_summary": "黑洞热力学中，固定温度系综下的自由能景观（多鞍点、相变与亚稳态）通常由欧氏路径积分的鞍点近似给出，但当边界数据与内部解不匹配（温度或角速度失配）时，标准鞍点并不存在，景观的严格定义一直含糊。如何在路径积分层面给这些“非平衡”鞍点一个半经典解释，是黑洞化学与系综问题的核心缺口。\n作者对引力路径积分做分解，用边界积分变换把形式配分函数写成对约束扇区的积分，扇区由辅助超曲面上的完备局部 partial-Neumann 数据标记。独立变分给出成对的规则子区域解，即约束瞬子，其拉格朗日乘子允许 lapse 与切向 shift 的跳变以容纳热失配与转动失配。对选定的非极端稳态族，约束鞍点作用量为 I_constr=βF_gen=β(E_B-Ω^I_B J_B,I)-S，其中 E_B、J_B,I 为重整化 Hamiltonian 荷，S 来自规则视界帽。内部驻点在保留变分独立张成熵与角动量方向时对应光滑平衡鞍点。构造被推广到无曲率导数的宇称偶 f(Riemann) 理论，保留完整辅助界面数据后同一热力学形式成立，但熵换为 Wald 熵且无需小 deficit 展开。Schwarzschild、Kerr 作 Einstein 情形示例，五维静态 AdS 黑洞在 Einstein–Gauss–Bonnet 引力中、新大质量引力的转动 BTZ 分支作高阶曲率检验。",
+   "cn_review": "【创新点】把自由能景观的“非平衡鞍点”严格实现为约束瞬子，给出 I_constr=β(E_B-Ω_B J_B)-S 的普适形式，并证明在 f(Riemann) 中只需把 S 换成 Wald 熵、无需小 deficit 展开，这比此前依赖近似展开的构造更干净。\n【局限性】只处理无曲率导数的宇称偶 f(Riemann)，即不含 ∇Riemann 的高阶理论，故不覆盖一般高阶导数引力的 Ostrogradsky 情形；构造依赖辅助超曲面上 partial-Neumann 数据的完备性，对非稳态或无视界帽的时空适用性未在摘要中说明。\n【对 Rao 的意义】直接落在引力热力学主线的“几何熵与协变荷”模块：E_B、J_B,I 是重整化 Hamiltonian 荷，S 是 Wald 熵，与 Rao 正在学的 Iyer–Wald Noether 荷、辛势与边界歧义高度衔接；其“视界帽贡献熵”的图像可与 P5（动态热流与协变荷通量）的协变荷通量语言对照。",
+   "learn": "可学到：约束瞬子作用量中 β(E-ΩJ)-S 的结构正是统一第一定律的路径积分版本，可对照 Rao 在 FRW 视界热力学中用的 Misner–Sharp 能量与 Kodama 矢量构造，理解“边界 Hamiltonian 荷 + 视界熵”如何拼出作用量；注意 Wald 熵在此处无需小 deficit 展开，这与 Wald 原始推导中把熵写成 Noether 荷积分、并依赖 bifurcate 视界或近似 Killing 场的做法不同，是约定差异需警惕之处；f(Riemann) 中“保留完整辅助界面数据”对应协变相空间里边界辛势的选取，可与 Iyer–Wald 的边界项处理互证。",
+   "topics": "课题 1（对接 P5）：把该文的约束瞬子作用量形式搬到动态（非稳态）视界，检验 I_constr=β(E_B-ΩJ_B)-S 在表观视界上是否仍成立、此时 E_B 应取 Misner–Sharp 能量还是 Kodama 荷；第一步是在球对称动态时空中写出辅助超曲面上的 partial-Neumann 数据并做变分。课题 2（对接几何熵模块）：在 f(Riemann) 情形下核对“视界帽贡献 Wald 熵”与 Iyer–Wald Noether 荷积分是否给出同一 S，第一步是对 Einstein–Gauss–Bonnet 五维 AdS 黑洞复算该文给出的约束鞍点作用量并与 Wald 熵公式比对。"
+  }
+ ],
+ "radar": [
+  {
+   "id": "2610.25291",
+   "title": "Probing parity-breaking black-hole geometry with extreme-mass-ratio inspirals",
+   "cn_title": "用极端质量比旋进探测宇称破缺黑洞几何",
+   "authors": "Zhen-Bo Wu, Qing Ou, Peng-Cheng Li",
+   "link": "https://arxiv.org/abs/2610.25291",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 6.0,
+   "relation": "same-family",
+   "relation_label": "近邻",
+   "radar_fields": [
+    "宇称破缺引力"
+   ],
+   "one_liner": "该文计算宇称破缺共形 Kerr 黑洞赤道反射对称破缺在 EMRI 波形中的退相位，发现二阶动力学修正经多周期累积后显著、快转增强失配。",
+   "cn_summary": "EMRI 是检验黑洞几何偏离 Kerr 的精密探针：小质量天体绕大质量黑洞旋进时，轨道频率的微小偏移会经成百上千个周期累积成可测的波形退相位。此前宇称破缺黑洞的波形研究多集中在准正规模或后牛顿修正，对赤道反射对称破缺（极向位移为奇）在 EMRI 中的累积效应缺少系统计算，而这一效应对旋转与倾角依赖很强，值得单独评估。\n作者在宇称破缺共形 Kerr 背景上取与赤道 Kerr 轨道相连的圆轨道分支，把无量纲形变参数 $\\varepsilon$ 展开到二阶，用质量四极矩处方构造绝热旋进与引力波信号。赤道反射把 $\\varepsilon\\to-\\varepsilon$，故极向位移为奇、轨道频率与能量为偶；一阶谐波直接贡献很小，但二阶动力学修正经多周期累积产生可观的退相位，黑洞快转增强相位效应与噪声加权波形失配。对 $10M_\\odot$ 天体旋进 $10^6M_\\odot$、$a/M=0.9$ 的一年旋进，作者给出了倾角依赖的失配估计。",
+   "cn_review": "【创新点】把宇称破缺形变的奇偶性（$\\varepsilon\\to-\\varepsilon$ 下频率与能量为偶）转化为明确的波形预言：一阶谐波贡献小、二阶累积退相位主导，并指出快转放大失配，这比只算准正规模频率偏移更接近可观测层面。\n【局限性】只处理与赤道 Kerr 轨道相连的圆轨道分支，未覆盖偏心、非赤道或强形变区；质量四极矩处方是近似，未做完整 Teukolsky 型自洽计算；摘要未给出失配的具体数值与信噪比阈值。\n【对 Rao 的意义】属宇称破缺引力雷达层近邻：其“形变参数奇偶性 → 频率/能量偶次展开 → 累积退相位”的展开逻辑可直接迁移到你关于手征 GW 与宇称奇算符分类的研究线，也可作为检验 NYTG 类宇称破缺模型可观测性的模板。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.26678",
+   "title": "A new class of rotating black hole solutions endowed with a scalar hair",
+   "cn_title": "一类带标量毛的新旋转黑洞解",
+   "authors": "Hugo Candan, Philippe Grandclement",
+   "link": "https://arxiv.org/abs/2610.26678",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 5.0,
+   "relation": "same-family",
+   "relation_label": "近邻",
+   "radar_fields": [
+    "mimetic/标量-张量"
+   ],
+   "one_liner": "该文用谱方法数值构造 Horndeski 子类中带原初标量毛的稳态轴对称黑洞，解非圆、依赖新参数，并破坏黑洞热力学第零定律。",
+   "cn_summary": "无毛定理在标量—张量理论中可被绕过，但绝大多数带毛旋转解依赖度规 ansatz 或微扰展开，难以判断毛是否真实存在而非坐标/截断假象。Horndeski 中不与曲率非最小耦合的子类因标量场线性时间依赖可给出“原初毛”，此前多限于静态球对称或慢转，完整旋转解及其热力学性质仍缺。\n作者用基于谱方法的 Kadath 库数值求解完整非线性方程，不设显式度规 ansatz，而用一组数值坐标处理稳态轴对称几何。所得解一般偏离 Kerr，依赖一个来自标量场线性时间依赖的独立原初毛参数；解具有 Killing 视界，但非圆（non-circular），并破坏黑洞热力学第零定律（视界表面引力非常数）。",
+   "cn_review": "【创新点】不依赖显式度规 ansatz 的完整旋转带毛解在 Horndeski 子类中尚属少见；明确指出解非圆并破坏第零定律，把“毛”与视界热力学的失效直接挂钩，比只报告度规函数更有物理内容。\n【局限性】纯数值工作，未给出解析近似或参数空间的系统扫描；非圆解使 ADM 质量/角动量与视界积分的定义需额外小心，摘要未讨论稳定性与毛的观测约束。\n【对 Rao 的意义】直接落在你的引力热力学主线上：非圆视界上第零定律失效是检验 Wald 熵与 Iyer–Wald 协变荷构造适用范围的现成反例，可用来审视你关于视界熵定义与统一第一定律的推导前提（表面引力常数、Killing 归一化）。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.24356",
+   "title": "Grey-body factors of black holes",
+   "cn_title": "黑洞的灰体因子",
+   "authors": "Roman Konoplya, Alexander Zhidenko",
+   "link": "https://arxiv.org/abs/2610.24356",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 6.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文系统综述渐近平直、dS 与 AdS 时空中灰体因子的散射表述、计算方法及其与准正规模、修正引力的联系。",
+   "cn_summary": "灰体因子把 Hawking 辐射的理想黑体谱转换为远处观测者实际测到的谱，同时决定吸收与散射截面，是与准正规模互补的实频可观测量。过去二十年相关计算分散在各类背景与场自旋上，缺乏统一处理渐近平直、de Sitter、anti-de Sitter 三种渐近结构的框架，也缺少对修正引力中灰体因子行为的梳理。\n这篇综述统一表述了灰体因子的散射问题：定义透射系数并建立其与吸收截面、Hawking 辐射、ringdown 的联系；评述计算方法，并综述近期进展，包括灰体因子与准正规模的对应、有效势形变下的稳定性、虫洞透射与超辐射，以及修正引力理论中的行为。",
+   "cn_review": "【创新点】作为综述，其价值在于把灰体因子—准正规模对应、势形变稳定性与修正引力中的结果放在同一框架下，便于横向比较不同渐近结构与理论中的计算约定。\n【局限性】综述性质，本身不含新计算；对修正引力部分只作概览，未深入讨论具体理论（如 f(Q)、f(T)）中灰体因子的模型依赖。\n【对 Rao 的意义】属半经典辐射与 Hadamard 入门模块的现成参考：可借其透射系数与吸收截面的定义约定，为 P3（非绝热扰动对视界熵的有限波长响应）中视界附近模函数的边界条件处理提供对照。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.26775",
+   "title": "Spherically symmetric solutions with dust and radiation sources in Schouten-Codazzi Gravity",
+   "cn_title": "Schouten–Codazzi 引力中带尘埃与辐射源的球对称解",
+   "authors": "Sebasti\\'an N\\'ajera, Roberto A. Sussman, Juan Carlos Hidalgo",
+   "link": "https://arxiv.org/abs/2610.26775",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文在 Schouten–Codazzi 引力中构造广义 Vaidya 与 LTB 型精确解，Codazzi 张量修正 Misner–Sharp 质量并可在无暗能量下实现加速膨胀。",
+   "cn_summary": "Schouten–Codazzi 引力在 Einstein 方程上加一个满足 Codazzi 方程的 Codazzi 张量，属二阶度规理论，其额外自由度可扮演有效宇宙学常数。此前该理论的宇宙学背景解已有讨论，但带物质源（尘埃、零辐射）的球对称精确解及其对 Misner–Sharp 质量的影响尚未系统给出，而这正是判断该理论能否替代暗能量的关键测试。\n作者考虑描述零辐射与不均匀尘埃的两种球对称几何（广义 Vaidya 与 Lemaître–Tolman–Bondi），Codazzi 方程把几何限制到由两个积分函数决定，自然生成有效宇宙学常数与一个额外自由度。Vaidya 情形中 Codazzi 贡献修正 Misner–Sharp 质量；LTB 情形的演化方程变为系数依赖积分函数的立方多项式，动力学类比 GR 更宽，可在不引入暗能量的情况下得到加速膨胀与永远膨胀模型。",
+   "cn_review": "【创新点】给出带物质源的球对称精确解而非仅背景宇宙学解，并明确 Codazzi 张量对 Misner–Sharp 质量的修正与 LTB 立方演化方程，使“无暗能量加速膨胀”的说法落到具体解上。\n【局限性】只处理球对称与特定物质源，未讨论解的稳定性、与 Solar System/PPN 约束的相容性；积分函数的选择自由度大，摘要未说明哪些参数区被观测排除。\n【对 Rao 的意义】与你的 FRW 视界热力学线（Misner–Sharp 能量、统一第一定律）直接相关：Codazzi 项对 Misner–Sharp 质量的修正会改变视界热力学第一定律中的能量通量项，可作为检验你统一第一定律推导在非 GR 二阶理论中是否仍成立的练习对象。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.23999",
+   "title": "How do late-time photons \"record\" primordial curvature perturbations?",
+   "cn_title": "晚期光子如何“记录”原初曲率扰动？",
+   "authors": "Tomotaka Kuroda, Fumiya Sano, Yusuke Yamada",
+   "link": "https://arxiv.org/abs/2610.23999",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-th",
+    "quant-ph"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文用“宇宙学经典分支”与物理记录概念，说明晚期物质组分如何携带同一原初扰动的相容记录，从而赋予单实现描述物理意义。",
+   "cn_summary": "暴胀把原初曲率扰动制备成量子叠加态，而标准宇宙学却假定一个确定的经典实现并用经典微扰论预言引力势、CMB 各向异性与大尺度结构。压缩与退相干本身不足以解释为何单实现描述在物理上成立，缺的是一个量子信息意义上的“记录”机制，这关系到原初手征谱等观测量究竟在什么意义上被定义。\n作者用“宇宙学经典分支”（CCBs）框架，借助物理记录这一量子信息概念：不同晚期物质组分携带同一原初构型的相容记录，一个组分中的记录使该构型可读，而不相交的相容记录抑制对第一组分操作可及的干涉。每个分支因此在晚期获得共同的 c-数原初标签，作者据此论证单实现经典描述的合法性。",
+   "cn_review": "【创新点】把“记录”而非“退相干”作为经典化判据，并强调多组分记录的相容性，这比单纯讨论压缩态退相干更贴近观测者实际可访问的信息结构。\n【局限性】概念性框架，摘要未给出具体的退相干速率、记录强度估计或与 CMB 非高斯性/手征谱的可观测预言；对暴胀模型细节依赖未讨论。\n【对 Rao 的意义】属量子信息与引力雷达层风向：与你 P1 中高斯协方差/纠缠描述及原初手征谱的量子态基础有概念交集，但方法新意有限，暂只作背景了解，不宜直接接入课题卡。",
+   "action": "暂无"
+  },
+  {
+   "id": "2610.26692",
+   "title": "Gravitational fingerprints of a black hole solution in Palatini Kalb-Ramond gravity",
+   "cn_title": "Palatini Kalb-Ramond 引力中黑洞解的引力指纹",
+   "authors": "Carlos F. S. Pereira, Ara\\'ujo Filho, Marcos V. de S. Silva, N. Heidari",
+   "link": "https://arxiv.org/abs/2610.26692",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文分析 Palatini Kalb-Ramond 黑洞的粒子运动、光学观测量与线性波传播，发现固定轨道质量后光子球、临界碰撞参数与 ISCO 仍取 Schwarzschild 值，径向形变只进入距离、下落时间与潮汐本征值。",
+   "cn_summary": "Palatini Kalb-Ramond 引力把 Kalb-Ramond 场以非最小耦合方式引入引力扇区，是近年修正引力中较活跃的分支；但该理论中静态黑洞解的可观测特征尚未被系统梳理，尤其是哪些量真正携带理论参数、哪些只是坐标或质量定义的假象，这直接决定观测约束能否有效。\n文章在零宇宙学常数下研究静态黑洞周围的粒子运动、光学量与线性波传播，明确区分守恒质量 $M$ 与轨道质量 $\\bar{M}=M/\\rho$，并分离出径向形变 $\\sigma^2=1-q/2$（$q=\\ell_2/(1-\\ell_1)$）。结果显示：固定 $\\bar{M}$ 时，光子球、临界碰撞参数与 ISCO 保持 Schwarzschild 值，径向频率比亦然；而固有距离、下落时间与累积轨道角依赖 $\\sigma$。径向下落中潮汐本征值获得 $\\sigma^{-2}$ 因子，光子轨道不稳定指数按 $\\sigma^{-1}$ 标度。弱场与强场偏折显式计入锥形渐近，Sgr A* 与 M87* 阴影对比出现耦合简并。",
+   "cn_review": "【创新点】把 Palatini Kalb-Ramond 黑洞的观测量按“质量定义—径向形变”分层，指出固定轨道质量后光子球与 ISCO 不携带理论信息，真正可观测信号集中在潮汐本征值 $\\sigma^{-2}$、不稳定指数 $\\sigma^{-1}$ 与下落时间，这比笼统算阴影半径更有判别力。\n【局限性】全文限于静态球对称、零宇宙学常数与线性波，未涉及转动解或强场动力学；阴影对比出现耦合简并，说明单靠 Sgr A*/M87* 阴影难以独立约束 $q$，摘要未给出定量置信区间。\n【对 Rao 的意义】现象学类，方法新意有限，但“守恒质量 vs 轨道质量”的区分与径向形变分离手法，对 P2 中 f(Q) 静态解的物理量定义与观测量审计有直接借鉴；其锥形渐近处理也提醒在非渐近平直解中做偏折计算时的约定差异。",
+   "action": "暂无"
+  }
+ ],
+ "radar_note": null,
+ "keyword": [
+  {
+   "id": "2610.26493",
+   "title": "Exploring the Evidence for Evolving Dark Energy with the Jeffreys prior",
+   "cn_title": "用 Jeffreys 先验检验演化暗能量的证据",
+   "authors": "Joshua Layton, Alex Hall, Naomi Clare Robertson",
+   "link": "https://arxiv.org/abs/2610.26493",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "将无信息 Jeffreys 先验引入 DESI DR2 等数据对 $w_0w_a$CDM 的贝叶斯证据计算，发现证据对先验高度敏感、甚至可反转模型选择结论。",
+   "cn_summary": "暗能量状态方程是否随时间演化是当前宇宙学最受关注的问题之一。DESI DR2 的 BAO 数据结合 CMB 与多组 Ia 型超新星，此前对 $w_0w_a$CDM 给出了偏离 $\\Lambda$CDM 的偏好，但这类贝叶斯证据分析几乎都默认使用均匀先验，而先验选择本身可能主导结论。Jeffreys 先验作为参数化不变的无信息先验，理论上更合理，却因计算昂贵而少有人系统使用。\n作者对 DESI DR2 BAO、Planck 2018 CMB 以及 DES-SN5YR、DES-Dovekie、Pantheon+、Union3 四组超新星数据重新做后验推断与证据计算，并给出 Jeffreys 先验的物理解释方法。为克服计算量，他们搭建了全 JAX 流程：CosmoPower-JAX 模拟器、基于梯度的 NUTS 采样、JAX 加速嵌套采样。结果显示 $w_0$、$w_a$ 的 marginalized 后验对先验基本稳健，仅在约束较弱的数据组合下略向 MAP 偏移；但贝叶斯证据对 Jeffreys 先验极为敏感，用其替换均匀先验会反转模型选择结论。",
+   "cn_review": "【创新点】首次在 DESI DR2 时代系统地把 Jeffreys 先验纳入 $w_0w_a$CDM 的证据计算，并给出该先验的物理解读；同时用全 JAX 的模拟器+梯度采样+嵌套采样流程把原本不可行的计算落地，明确指出证据而非参数约束才是先验敏感之处。\n【局限性】结论依赖所选的参数化与数据集组合，摘要未说明 Jeffreys 先验在 $w_a$ 上的行为是否受参数边界影响；此外证据对先验敏感本身也意味着“Jeffreys 先验更正确”这一前提需要额外论证，文中未体现对先验族系统性的比较。\n【对 Rao 的意义】现象学类，方法新意有限，但属于暗能量模型选择的风向标：Rao 若在 f(Q)/f(T) 等修正引力模型里做 P-V 临界或宇宙学拟合，需注意贝叶斯证据对先验的敏感性可能同样存在，可作为模型比较时的警示参考。"
+  },
+  {
+   "id": "2610.24104",
+   "title": "A DECADE of Giants: A catalog of 42,000 optically identified galaxy clusters from 13,000 $\\mathrm{deg}^2$ of the sky",
+   "cn_title": "DECADE of Giants：13,000 平方度天区光学证认的 42,000 个星系团目录",
+   "authors": "D. Anbajagane, C. To, M. Gaido, C. Chang, A. Drlica-Wagner, M. Adamow, A. Alarcon, M. R. Becker, C. R. Bom, J. A. Carballo-Bello, N. Chicoine, Y. Choi, M. Costanzi, P. S. Ferguson, M. Gatti, P. A. Giles, S. Grandis, D. Gruen, R. A. Gruendl, W. G. Hartley, G. Herron, David J. James, T. E. Jeltema, N. MacCrann, M. Navabi, C. E. Mart\\'inez-V\\'azquez, S. Mau, J. McCullough, B. Mutlu-Pakdil, N. E. D. No\\\"el, A. B. Pace, J. Prat, A. H. Riley, A. K. Romer, D. J. Sand, L. Santana-Silva, L. F. Secco, I. Sevilla-Noarbe, T. Shin, G. S. Stringfellow, C. Y. Tan, R. Teixeira, H. -Y. Wu, A. Zenteno, Y. Zhang, Z. Zhang, J. Zuntz",
+   "link": "https://arxiv.org/abs/2610.24104",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "astro-ph.GA"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "用 DECam 13,000 平方度成像与 redMaPPer 算法构建 42,000 个星系团目录，红移精度达 $\\sigma_z/(1+z)\\le0.008$。",
+   "cn_summary": "星系团对从微观物理到宇宙学尺度的广泛物理过程敏感，是检验结构形成与暗能量模型的关键探针。光学巡天在证认星系团方面效率高，但此前缺乏覆盖大天区、红移精度高且与毫米波/X 射线目录交叉证认的统一样本，限制了星系团标度关系的标定与宇宙学应用。\n本文利用暗能量相机（DECam）成像的 13,000 平方度天区，用 redMaPPer 算法提取 40,000 余个星系团，覆盖 $0.2<z<0.9$、$M_{\\rm 200c}\\gtrsim10^{14}\\,{\\rm M}_\\odot/h$。四波段（$griz$）测光红移精度在 $z<0.65$ 时 $\\sigma_z/(1+z)\\le0.008$，在 $0.65<z<0.9$ 时 $\\le0.011$，离群率 $f_{\\rm out}<0.2\\%$。作者用光谱数据标定星系团证认，发现扩大光谱样本并不改善红移估计；与毫米波和 X 射线目录交叉匹配后提取了多观测量标度关系，结果与已有估计高度一致。",
+   "cn_review": "【创新点】给出了迄今面积与样本量都很大的光学星系团目录之一（13,000 平方度、42,000 个团），并系统比较了光谱标定样本规模对红移估计的影响，得出“更大光谱样本不改善性能”这一有实用价值的结论。\n【局限性】纯观测目录构建与标度关系标定，未涉及任何修正引力或热力学层面的分析；测光红移精度与质量标定仍依赖 redMaPPer 的 richness–质量关系假设，高红移端（$z>0.65$）精度明显下降。\n【对 Rao 的意义】属纯巡天数据处理与目录构建，按画像降权规则应排除；仅当需要星系团丰度数据来约束修正引力宇宙学（如 $f(Q)$ 或 mimetic 模型的团数计数预言）时可作背景数据参考，与 P1–P5/Q1 课题卡无直接关联。"
+  },
+  {
+   "id": "2610.24618",
+   "title": "Galactic warps constrain equivalence-principle violation in the dark sector",
+   "cn_title": "星系翘曲约束暗扇区的等效原理破坏",
+   "authors": "Harry Desmond, Pedro G. Ferreira",
+   "link": "https://arxiv.org/abs/2610.24618",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "astro-ph.GA"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "用 SDSS 中约 4000 个侧向盘星系的翘曲形状，将暗物质第五力强度限制在 ΔG/G_N < 7.7×10⁻⁴（95% 置信度）。",
+   "cn_summary": "宇宙膨胀测量允许存在偏离宇宙学常数的演化暗能量，其状态方程甚至可能违反零能条件。一种解释是暗能量与暗物质直接耦合：这种耦合破坏等效原理，却因第五力只作用于暗物质而躲过实验室与常规天体物理检验。此类模型此前缺乏针对暗物质内部差异效应的直接观测约束，而星系盘恰好提供了检验场所。\n作者指出，只作用于暗物质的第五力会使暗物质晕中心与恒星盘中心分离，在盘面上形成势梯度，把侧向盘拉成杯状翘曲。他们测量了 Sloan Digital Sky Survey 图像中 $4\\times10^3$ 个侧向盘星系的翘曲，并将第五力信号与重子效应（如卫星扰动、盘不稳定性）联合建模。结果未发现翘曲与第五力场之间存在模型预言的关联，由此给出第五力相对引力的强度上限 $\\Delta G/G_N<7.7\\times10^{-4}$（95% 置信度），计入系统误差后为 $<1.7\\times10^{-3}$。",
+   "cn_review": "【创新点】把星系盘翘曲这一经典形态学观测量转化为暗扇区第五力的探针，利用暗物质晕与恒星盘中心分离这一只在暗物质内部起作用的效应，避开了常规等效原理检验的盲区，并给出 $\\Delta G/G_N\\sim10^{-3}$ 量级的定量上限。\n【局限性】约束依赖翘曲信号与第五力场的相关性建模，重子效应（卫星、棒、盘自身不稳定性）与第五力简并需靠模拟先验打破；结果是对特定耦合形式的限制，不能直接推广到一般暗能量—暗物质相互作用。\n【对 Rao 的意义】属现象学拟合类，方法新意有限，但给出了暗扇区等效原理破坏的当前最强星系尺度上限，可作为修正引力/相互作用暗能量模型的观测约束参照；与 Rao 的 f(Q)、mimetic 等标量—张量宇宙学模型无直接计算接口，仅作背景约束参考。"
+  },
+  {
+   "id": "2610.26727",
+   "title": "Cosmological implications of two mock TianQin standard siren catalogs generated under different background cosmological models",
+   "cn_title": "两种不同背景宇宙学模型下生成的模拟 TianQin 标准汽笛星表的宇宙学含义",
+   "authors": "Jun-Xian Li, Shuang Wang, Liang-Gui Zhu",
+   "link": "https://arxiv.org/abs/2610.26727",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "作者用 $\\Lambda$CDM 与 wbin 两种背景模型各生成一套 TianQin 模拟标准汽笛星表，发现两者在 CPL 拟合下给出的宇宙学约束存在可辨差异。",
+   "cn_summary": "空间引力波探测器 TianQin 预期能探测大质量黑洞双星并合产生的亮标准汽笛，从而独立测量 luminosity distance 与红移的关系，为暗能量状态方程提供不依赖距离阶梯的约束。此前所有 TianQin 模拟研究都默认用 $\\Lambda$CDM 生成模拟星表，但真实宇宙若偏离 $\\Lambda$CDM，星表的事件分布与红移—距离映射会随之改变，这一模型依赖性此前未被定量评估。\n\n作者分别以 $\\Lambda$CDM 和红移分箱的暗能量重构模型（wbin）为背景，生成两套模拟 TianQin 标准汽笛星表 TQSS1 与 TQSS2，比较其事件数、红移分布与距离误差结构，再在 CPL 参数化下单独及联合 DESI DR2 BAO、$\\textit{Planck}$ 2018 CMB、DESY5 SN Ia 数据进行拟合。结果显示两套星表给出的 CPL 约束存在差异，说明用 $\\Lambda$CDM 生成的模拟数据会系统性偏置对未来 TianQin 暗能量能力的预估；联合外部数据后差异被部分稀释，但并未完全消失。",
+   "cn_review": "【创新点】首次把“模拟星表生成时所用背景模型”当作系统误差源来量化，用 wbin 重构模型与 $\\Lambda$CDM 对照，指出 TQSS1 与 TQSS2 在 CPL 拟合下的约束差异，此前 TianQin 文献普遍忽略这一点。\n\n【局限性】差异只在 CPL 两参数参数化下比较，未检验更一般的暗能量 EFT 或 $w(z)$ 自由形式；亮汽笛样本依赖大质量黑洞双星形成与电磁对应体模型，模拟星表的红移分布本身带有这些假设，摘要未说明其影响。\n\n【对 Rao 的意义】现象学类，方法新意有限，属未来 GW 标准汽笛的预报性研究，与 Rao 的引力热力学、f(Q)/NYTG 主线无直接接口；仅在其关注引力波多信使约束暗能量时作背景参考。"
+  }
+ ]
+}
