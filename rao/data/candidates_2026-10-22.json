@@ -1,0 +1,272 @@
+{
+ "listing_date": "2026-10-22",
+ "no_update": false,
+ "total_new_unseen": 58,
+ "passed_prefilter": 14,
+ "candidates": [
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Alleviating CMB-BAO tension with a large cosmic birefringence angle during reionization induced by energy injection to axion-like particles",
+   "link": "https://arxiv.org/abs/2610.29764",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29764v1 Announce Type: new Abstract: The recent measurement of baryon acoustic oscillations by the Dark Energy Spectroscopic Instrument reveals a mild tension with observations of the cosmic microwave background (CMB) within the standard $\\Lambda$CDM cosmological model. Another interesting hint beyond standard cosmology arises from recent analyses of Planck polarization data which has been interpreted as cosmic birefringence. One possible solution to explain both observations is to introduce cosmic birefringence induced by axion-like particles (ALPs) that has a much larger rotation angle during the reionization epoch than that during the recombination: the large rotation suppresses the $EE$ reionization signal, allowing an elevated value of the CMB optical depth $\\tau$ that alleviates the CMB-BAO tension. In this paper, we explore a scenario where the energy transfers from matter to ALPs before the reionization. Using Planck low-$\\ell$ $EE$, $BB$, and $EB$ data, we show that, for energy injection at $10 \\lesssim z \\lesssim 100$, there exist parameter regions where $\\tau \\simeq 0.08-0.10$ is compatible with the data.",
+   "authors": "Salvatore Samuele Sirletti, Toshiya Namikawa, Blake D. Sherwin",
+   "id": "2610.29764",
+   "version": "2610.29764",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph",
+    "hep-th"
+   ],
+   "title": "Cosmological Gravitational Wave Collider Physics",
+   "link": "https://arxiv.org/abs/2610.29885",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29885v1 Announce Type: new Abstract: Primordial tensor non-Gaussianity can probe massive particles present during inflation. We investigate this possibility in an effective field theory where the massless graviton mixes with the helicity-two mode of an additional massive spin-two field $\\sigma_{ij}$ with cubic self-interactions. For constant sound speed, we compute the leading tensor power-spectrum correction and the tree-level bispectrum, finding novel analytical expressions for these quantities. In the $m_\\sigma>3H/2$ regime, we find a nonanalytic squeezed contribution that exhibits logarithmic oscillations with characteristic dependence $(k_L/k_S)^{3/2\\pm i\\mu}$, where $\\mu=\\sqrt{m_\\sigma^2/H^2-9/4}$. The oscillation frequency is set by the mass $m_\\sigma$, while the polarisation contractions determine the relative amplitudes of the different graviton helicity configurations. The same mixing generates corrections to the power spectrum and the bispectrum. We derive the associated quadrupolar modulation of short-scale tensor power spectrum and relate its amplitude to the model parameters. Finally, we explore how a slowly varying sound speed modifies the squeezed signal.~These results connect the two-point, three-point, and quadrupolar tensor signatures of massive spin-two fields in the cosmological gravitational wave collider.",
+   "authors": "Sukannya Bhattacharya, Matteo Fasiello, Anish Ghoshal, Gianmassimo Tasinato",
+   "id": "2610.29885",
+   "version": "2610.29885",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Regular magnetic black holes with anti-de Sitter cores in scalar-tensor gravity with nonlinear electrodynamics: ghost-free construction and axial stability",
+   "link": "https://arxiv.org/abs/2610.28670",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28670v1 Announce Type: new Abstract: We construct static, asymptotically flat regular black holes in Einstein-frame scalar--tensor gravity, sourced by a canonical scalar coupled to magnetic nonlinear electrodynamics. Prescribing the density and scalar profiles, we reconstruct the metric, the scalar--photon coupling and the potential. Regularity requires the mass function to vanish at the centre, which fixes the ADM mass, and the central $r^2$ growth of the density to be balanced by the scalar gradient energy. The solutions have an anti-de Sitter core supported by a negative potential and a nearly Reissner--Nordstr\\\"om exterior; the no-ghost condition confines the magnetic charge to a window that closes at a finite core depth. Axial perturbations reduce to a symmetric two-channel master system whose positive-definite potential guarantees mode stability; spectral and time-domain quasinormal frequencies agree. An angular Laplacian instability near the centre can be hidden behind the inner horizon, which excludes horizonless solutions.",
+   "authors": "Rustam Ibadov, Najibullokhon Shukurullokhon",
+   "id": "2610.28670",
+   "version": "2610.28670",
+   "kscore": 8,
+   "ktags": [
+    "修正引力",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Tomimatsu--Sato $\\delta=2$ Solution in Kaluza--Klein Theory",
+   "link": "https://arxiv.org/abs/2610.29277",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29277v1 Announce Type: new Abstract: We construct the Kaluza-Klein electric dressing of the Tomimatsu-Sato $\\delta=2$ vacuum spacetime by uplifting to five dimensions, boosting along the compact direction and reducing to Einstein-Maxwell-dilaton theory with coupling $a=\\sqrt3$. It carries a nontrivial dilaton, unlike the known Einstein-Maxwell charged and magnetized Tomimatsu-Sato solutions. At leading order it shares the mass-charge-dilaton relations and gyromagnetic ratio $g=2-\\tanh^2\\alpha$ of the boosted Kerr black hole; the seed first shows up in the quadrupole. Using Mayerson's non-vacuum Geroch-Hansen multipoles, we derive the exact law $M_2(\\alpha)=\\frac12(1+\\cosh^2\\alpha)M_2^{(0)}$, so the $\\delta=2$ quadrupole excess $\\Delta M_2=-\\frac14p^2m^2M$ survives every boost. In the Kodama-Hikida picture the Weyl segment $\\rho=0$, $|z|<\\kappa$ is a singular rod with degenerate Killing horizons at its endpoints. There the boost function equals $\\cosh\\alpha$, so the near-horizon geometry is a constant rescaling of the seed's: the horizons stay degenerate and non-rotating, their areas and Komar angular momenta scale by $\\cosh\\alpha$, and the electric potential is $\\frac12\\tanh\\alpha$. The electric flux through any closed surface is $\\sinh\\alpha\\cosh\\alpha$ times the enclosed seed Komar mass, so the horizons and the ring singularity are uncharged and the rod carries all the charge; the boost-invariant identity $M-\\Phi_eQ=m$ follows. The ergosurface stays at $f=0$; a new curvature-singular boundary appears at $f=\\coth^2\\alpha$, where the Kaluza-Klein circle becomes null. As the seed potential $f$ is unbounded above near the ring, it exists for every nonzero boost: unlike for Kerr, no Kaluza-Klein boost of TS$_2$ is a spacelike reduction everywhere. The excised region is compact, has the ring on its boundary and never reaches the horizons. Charging pointwise strengthens the causality violation near the rod.",
+   "authors": "Haryanto M. Siahaan, Masoud Ghezelbash",
+   "id": "2610.29277",
+   "version": "2610.29277",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "Parity-odd CMB Correlations induced by a Chiral Gravitational Wave Background",
+   "link": "https://arxiv.org/abs/2610.29182",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29182v1 Announce Type: new Abstract: We investigate weak lensing effects of a chiral gravitational wave background (GWB) as a new mechanism for generating parity-odd correlations in the cosmic microwave background (CMB). Accounting for both photon deflection and polarization rotation, we derive the resulting parity-odd EB and TB angular power spectra. For representative GWB energy density spectra, we find parameter choices that provide good fits to existing measurements. This mechanism provides a potential observational probe of chiral GWB, which can arise in a wide range of theoretical scenarios.",
+   "authors": "Baoyu Xu, Yun-Long Zhang",
+   "id": "2610.29182",
+   "version": "2610.29182",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Fields on accelerating and super accelerating black holes: stability, quasinormal modes, greybody factors and strong cosmic censorship",
+   "link": "https://arxiv.org/abs/2610.28796",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28796v1 Announce Type: new Abstract: We investigate the propagation of massless scalar, Dirac, and Maxwell fields on accelerating and super accelerating black hole spacetimes described by the C-metric. The latter regime has only recently been identified and remains largely unexplored. We study the linear and mode stability of these backgrounds and derive analytical expressions for the quasinormal mode spectra and greybody factors in various spacetime limits. We classify the quasinormal mode families, paying particular attention to new families arising in the super accelerating regime. We also investigate strong cosmic censorship through Christodoulou's $\\beta$ criterion, finding regions of parameter space where it may be violated, including in the super accelerating regime. These violations are possible for massless scalar and Maxwell fields, whereas Dirac fields preserve the conjecture.",
+   "authors": "Francisco Silva",
+   "id": "2610.28796",
+   "version": "2610.28796",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Quasinormal-mode stability bounds in gravitational EFT: resolvability, predictivity, and positivity",
+   "link": "https://arxiv.org/abs/2610.28721",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28721v1 Announce Type: new Abstract: It has been proposed that consistency limits how slowly black holes can ring down in extensions of General Relativity: effective-field-theory (EFT) corrections may lengthen the decay time of a quasinormal mode by at most about one oscillation period, $\\Re[\\omega_{\\rm GR}]\\,\\delta\\tau\\lesssim1$. We argue that, under standard power counting, this condition yields no new, model-independent constraint on gravitational EFTs. First, its motivation does not extend straightforwardly to black holes: the inverse oscillation frequency is not a universal, detector-independent uncertainty in the damping time of a classical waveform. Our main argument, however, rests on eikonal power counting alone. The decay-time shift grows with the angular momentum $\\ell$ of the mode, but so does the weight of higher-derivative operators. When curvature and derivatives are controlled by a single scale $\\Lambda$, as in every known ultraviolet completion, the EFT around a black hole of radius $r_s$ remains predictive up to $\\ell\\sim(r_s\\Lambda)^2$, and the shift becomes of order one only there, where an infinite tower of operators contributes at the same order. A resolvable shift within the predictive regime requires either large numerical coefficients or a two-scale power counting, which has no known ultraviolet completion. In both cases the quartic-curvature operators dominate, and the condition coincides parametrically with the positivity bounds that flat-space graviton amplitudes impose under standard assumptions on the ultraviolet completion. Only in scalar--tensor theories could the two-scale window probe beyond positivity, and then at most one family of dimension-ten operators. The axial sector of Einstein--dilaton--Gauss--Bonnet gravity and Einstein--Maxwell theory illustrate these results.",
+   "authors": "Leonardo Juliano, Enrico Trincherini",
+   "id": "2610.28721",
+   "version": "2610.28721",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "de Sitter Gluon Correlators in Momentum Space",
+   "link": "https://arxiv.org/abs/2610.28724",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28724v1 Announce Type: new Abstract: We show a new diagrammatic representation of tree-level wavefunction coefficients for gluons in four-dimensional de Sitter space at any multiplicity. Its ``disc diagrams\" make the cutting rule manifest, while the remaining contact term is fixed by the absence of folded singularities. We determine this term for configurations with zero, one and two negative-helicity gluons. It simplifies as more gluons share a helicity, and it vanishes for all-plus. We illustrate the expansion at four and five points, attach explicit results up to eight points all-plus, and relate it to Grassmannian residues.",
+   "authors": "Melvyn Nabavi, Guilherme L. Pimentel, Facundo Rost, Marcelo dos Santos, Jaroslav Trnka",
+   "id": "2610.28724",
+   "version": "2610.28724",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Orientifold and Integrability: $\\mathcal{N}=4$ Super-Yang-Mills on $\\mathbb{RP}^4$",
+   "link": "https://arxiv.org/abs/2610.28725",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28725v1 Announce Type: new Abstract: We study planar $\\mathcal{N}=4$ super Yang-Mills theory (SYM) on the real projective space $\\mathbb{RP}^4$ using integrability, holography and supersymmetric localization, and discuss its relation to orientifolds in string theory. We show that the integrability of $\\mathcal{N}=4$ SYM is preserved when combining the $\\mathbb{Z}_2$ involution defining $\\mathbb{RP}^4$ with the action of the charge conjugation of the SU$(N)$ gauge group. We demonstrate this by calculating one-point functions of non-BPS single-trace operators in various subsectors at weak coupling, which can be mapped to overlaps between energy eigenstates and crosscap states in integrable spin chains. The results exhibit a parity selection rule, a hallmark of integrability, and are given in terms of a ratio of determinants. Building on these results, we conjecture a closed formula for general single-trace operators. We further provide evidence that this construction is holographically dual to a probe orientifold O1-plane in $\\text{AdS}_5\\times \\text{S}^5$ by constructing the corresponding worldsheet crosscap states in the pp-wave limit. Finally, we use supersymmetric localization to compute one-point functions of half-BPS operators exactly at finite $g_{\\rm YM}$ and $N$. The computation reduces to two-dimensional Yang-Mills theory on $\\mathbb{RP}^2$ twisted by charge conjugation and leads to a matrix integral of a Wishart-Laguerre type. In the planar limit, the exact result interpolates between the weak-coupling gauge-theory result, the strong-coupling supergravity prediction for the orientifold, and the worldsheet crosscap in the pp-wave limit.",
+   "authors": "Joao Caetano, Shota Komatsu, Paolo Soresina, Anders Wallberg",
+   "id": "2610.28725",
+   "version": "2610.28725",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Carrollian Symmetries and Dynamical Entropy",
+   "link": "https://arxiv.org/abs/2610.29956",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29956v1 Announce Type: new Abstract: Carrollian geometry has recently emerged as the proper language to understand the geometry of null hypersurfaces from an intrinsic perspective. In this paper, we demonstrate that the Noether charge associated with the intrinsic conformal symmetry of Carrollian manifolds yields exactly the dynamical entropy formula recently proposed by Hollands, Wald and Zhang. This result follows directly from the requirement that the gravitational phase space induced on a finite distance null hypersurface be anomaly-free, in a covariant phase space sense. We then show that a linearized perturbation of this dynamical entropy charge, sourced by an external matter perturbation falling across the hypersurface, satisfies a physical process first law. Moreover, upon imposing the classical null energy condition, a linearized second law holds for the dynamical entropy. We then turn to a semi-classical generalization of this construction, where we argue that a notion of dynamical generalized entropy follows from considering perturbations sourced by external quantum matter. By imposing the quantum null energy condition (QNEC), we find a generalized second law for a linearized perturbation of the dynamical generalized entropy. Finally, we use our results to speculate on relations to the quantum focusing conjecture.",
+   "authors": "Michael Imseis",
+   "id": "2610.29956",
+   "version": "2610.29956",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "title": "Poisson Clustering and Seed Effect of PBHs: Implications for Microlensing, Gravitational Waves, Little Red Dots and Ultra-Faint Dwarf Galaxies",
+   "link": "https://arxiv.org/abs/2610.28723",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28723v1 Announce Type: new Abstract: The existence of primordial black holes (PBHs) could have significant effects on the formation of cosmic structures through both the seed effect and the Poisson effect. For an extended PBH mass function, this should lead to dark virialised bound clusters of black holes with modest mass, together with central black holes of larger mass. We consider the combination of three effects: the inevitable gravitational binding of small-scale inhomogeneities due to Poisson and seed fluctuations; the dilution through dynamical heating of all clusters smaller than around $10^{6}\\,M_{\\odot}$; the survival of clusters in the outer Galactic halo (i.e. towards the Magellanic Clouds) but their destruction in the central halo region through tidal disruption and collisions. We examine the implications of this for the constraints on the fraction of dark matter in PBHs from microlensing surveys and gravitational-wave events. Although the clustering of PBHs with the expected mass and radius is unlikely to relax the microlensing limits, the decline of the Galactic rotation curve might do so, allowing much of the dark matter to be in solar-mass PBHs formed at the quantum chromodynamics transition. We also emphasise that binary merger rates must be revised: binaries formed in PBH clusters can dominate the merger rate, which may be compatible with the LIGO-Virgo-KAGRA gravitational-wave limits if PBHs provide the dark matter. More positively, Ultra-Faint Dwarf Galaxies and Little Red Dots might arise through a combination of the seed and Poisson effects. Our conclusions could be modified for PBHs produced from primordial fluctuations with exponential non-Gaussian tails, since the clustering would then exceed the Poissonian prediction, opening up new possibilities to explain dark matter with solar-mass PBHs.",
+   "authors": "Bernard Carr, Sebastien Clesse, Juan Garcia-Bellido, Michael Hawkins, Florian Kuhnel",
+   "id": "2610.28723",
+   "version": "2610.28723",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "astro-ph.GA"
+   ],
+   "title": "Constraints on Reionization from Planck Low-$\\ell$ EE Polarization and the Lyman-Series Forests",
+   "link": "https://arxiv.org/abs/2610.28765",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.28765v1 Announce Type: new Abstract: CMB measurements tightly constrain the Thomson scattering optical depth ($\\tau_{\\rm es}$), but they still permit a broad range of degenerate reionization histories. Incorporating Lyman-series forest constraints on the end of reionization can alleviate the degeneracy and narrow the range of allowed histories. We explore this effect using forest measurements combined with full Planck likelihoods. We apply upper limits on the neutral fraction at $4.9\\lesssim z\\lesssim6.9$ derived from the dark pixel fraction, as well as a lower limit at $z=5.8$ from damping-wing-like features on the edges of long dark gaps in stacked forest spectra. We find that neither the choice of parametric vs. non-parametric reionization model, nor the choice among different forest data combinations, produces a significant shift in $\\tau_{\\rm es}$ or the other cosmological parameters. Instead, forest constraints primarily redistribute $\\tau_{\\rm es}$ in redshift. Combining dark pixel, damping-wing-like, and CMB measurements, we find $z_{50}=7.7^{+0.7}_{-0.8}$ and a 95\\% upper limit of $\\Delta z_{90}<11.4$ for the midpoint and duration of reionization, respectively. The asymmetry of the reionization history ($A_z$) is not well constrained by these data. Stronger constraints can be obtained using Ly$\\alpha$ forest measurements of the mean IGM photoionization rate, at the cost of requiring more detailed modeling. Using a new semi-analytic reionization model, we obtain (model-dependent) constraints of $z_{50} = 7.4^{+0.2}_{-0.3}$, $\\Delta z_{90}=6.0^{+0.8}_{-1.0}$, and $A_z = 2.4^{+0.3}_{-0.7}$. We also find evidence that the ionizing emissivity of reionization sources declines after $z=7-8$, perhaps signaling a decline in the escape fraction and/or the onset of a feedback process. Our results motivate the development of forest likelihood products and fast forward models for its transmission statistics.",
+   "authors": "Garett Lopez, Anson D'Aloisio, Christopher Cain",
+   "id": "2610.28765",
+   "version": "2610.28765",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-lat",
+    "hep-ph"
+   ],
+   "title": "Magnetic monopoles produced by first-order phase transition",
+   "link": "https://arxiv.org/abs/2610.29349",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29349v1 Announce Type: new Abstract: We present the first 3D lattice simulations of magnetic monopole production from a first-order phase transition, using the Press-Ryden-Spergel method, capturing the subsequent annihilation stage and the entry into the scaling regime in an expanding universe. We establish the quantitative relationship between the initial bubble number and the residual monopole abundance, and calculate the magnetic field and gravitational wave power spectra sourced by monopole dynamics. Crucially, we find that the magnetic field spectrum displays a steep $k^{-5}$ decline beyond the monopole size $w_M$, whereas the peak of the gravitational wave spectrum aligns with the scale of the mean monopole separation $d_M$, governed by $k^3$ and $k^{-3}$ scalings on the low- and high-wavenumber sides of the peak, respectively. However, since the resulting magnetic field strength is excluded by blazar observations, magnetic monopoles cannot be the origin of primordial cosmic magnetic fields. Finally, we determine the allowed monopole mass under the constraints of the Parker bound ($m_M\\lesssim2.18\\times10^{11}\\,\\mathrm{GeV}$) and dark matter abundance ($m_M\\lesssim1.58\\times10^{12}\\,\\mathrm{GeV}$).",
+   "authors": "Yuefeng Di, Ligong Bian, Rong-Gen Cai",
+   "id": "2610.29349",
+   "version": "2610.29349",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Constraining Dynamical Dark Energy with Tomographic Galaxy and CMB Weak Lensing Through Higher-Order Statistics",
+   "link": "https://arxiv.org/abs/2610.29937",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.29937v1 Announce Type: new Abstract: Tomographic weak gravitational lensing probes cosmic structure growth and geometry, making it a powerful probe of dynamical dark energy. We forecast information beyond the lensing power spectrum from non-Gaussian statistics of tomographic galaxy and CMB lensing convergence maps. Using the $\\texttt{DDELenS}$ suite of ray-traced $N$-body simulations, we build Gaussian process emulators for power spectra, Minkowski functionals, moments, peak and minima counts, and the wavelet scattering transform, varying $\\Omega_m$, $\\sigma_8$, $w_0$, and $w_a$. We consider Rubin-like galaxy lensing and Simons Observatory-like CMB lensing over $15{,}000\\,\\mathrm{deg}^2$, and validate the analysis using a withheld fiducial cosmology, analytical power-spectrum forecasts, and Gaussian random-field null tests. As an initial step, we neglect baryonic effects and intrinsic alignments and approximate galaxy sources as discrete redshift planes. Using all source redshifts at $z_s=\\{0.5, 1, 1.5, 2, 2.5, 1100\\}$, combining all five non-Gaussian statistics reduces uncertainties on $w_0$ and $w_a$ by $24.3\\%$ and $28.0\\%$, and on $\\Omega_m$ and $\\sigma_8$ by $41.9\\%$ and $45.8\\%$, relative to the power-spectrum-only baseline. The resulting $w_0$ and $w_a$ uncertainties are $34.7\\%$ and $48.7\\%$ smaller than current DESI+DES constraints. If the DESI+DES best-fit values remain unchanged, this precision would increase the significance of the departure from $\\Lambda$CDM from $3.0\\sigma$ to $5.2\\sigma$, compared with $3.8\\sigma$ from the power spectrum alone, assuming a Gaussian posterior and unchanged $w_0$--$w_a$ correlation. Minkowski functionals and moments provide comparable constraining power, while combining them with the other summaries gives the strongest constraints. Broad galaxy-lensing redshift coverage is particularly important for dynamical dark energy, while CMB lensing provides complementary information.",
+   "authors": "Shu-Fan Chen, J. Colin Hill, Zolt\\'an Haiman",
+   "id": "2610.29937",
+   "version": "2610.29937",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
