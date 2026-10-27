@@ -1,0 +1,104 @@
+{
+ "listing_date": "2026-10-26",
+ "no_update": false,
+ "total_new_unseen": 47,
+ "passed_prefilter": 5,
+ "candidates": [
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Local Thermodynamics and R\\'enyi Bounds on Black Hole Mergers",
+   "link": "https://arxiv.org/abs/2610.31680",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.31680v1 Announce Type: new Abstract: R\\'enyi entropy inequalities have been proposed to strengthen the area-theorem bound on mergers of thermodynamically stable black holes in Anti de Sitter (AdS) space. The stronger bounds depend on the joint initial state, whereas masses and temperatures fix only its local thermal marginals. We quantify this distinction inside the canonical two-hole description. Correlations confined to rare energy fluctuations can leave both thermal states exactly intact and drive the trace distance and mutual information to zero, yet still change the joint R\\'enyi entropy at leading semiclassical order. We determine the smallest entropy compatible with a controlled approach to statistical independence, uniformly over all positive R\\'enyi orders up to one. For equal Schwarzschild--AdS$_4$ holes, the resulting optimized canonical mass constraint reduces to the area bound at leading semiclassical order. The reduction concerns only the information needed to infer a bound; it does not produce a lighter attainable remnant or a dynamical instability. Stronger merger constraints therefore require control of the initial correlations beyond single black hole thermodynamics.",
+   "authors": "Sudhanva Joshi, Sunil Kumar Mishra",
+   "id": "2610.31680",
+   "version": "2610.31680",
+   "kscore": 10,
+   "ktags": [
+    "引力热力学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Entanglement entropy of evolving wormholes",
+   "link": "https://arxiv.org/abs/2610.32675",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.32675v1 Announce Type: new Abstract: We compute the entanglement entropy of a discretized scalar field in the fixed spacetime background of an evolving wormhole. Evolving wormholes are a class of time dependent and spherically symmetric wormhole geometries. In both expanding and contracting models, we find dynamically generated entanglement. Asymptotically far from the wormhole throat, the entanglement entropy is well described by the leading term in the area law, although its coefficient can depend sensitively on the value of the UV cutoff. As the UV cutoff is decreased, the coefficient becomes progressively less sensitive to the cutoff, providing numerical evidence that it approaches a cutoff-independent value in the continuum limit. Near the throat, we find a double-dip structure in the entanglement entropy which cannot be described by the leading and logarithmic contributions to the area law.",
+   "authors": "Ben Kain, Hong Y. Ling",
+   "id": "2610.32675",
+   "version": "2610.32675",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "First-Order Structure of the Linearised Einstein Equations: Constant-Curvature Backgrounds",
+   "link": "https://arxiv.org/abs/2610.32692",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.32692v1 Announce Type: new Abstract: Teukolsky's decoupled equations and Wald's adjoint method of metric reconstruction are built from second-order operators: the linearised Einstein operator G, the curvature-extraction operator T, the decoupled operator O and the reconstruction operator S^*, related by SG=OT. We show that on four-dimensional constant-curvature backgrounds with non-zero Lambda all of these operators factor into first-order maps through a single intermediate variable: the perturbation of the self-dual half of the spin connection. We also show that for non-zero Lambda the metric perturbation is itself obtained from the connection perturbation by a first-order map. The connection therefore gives a complete description of linearised gravity, and the fourth-order identity SG=OT follows by composition from a single second-order identity. Using conformal flatness, we choose the Hertz-potential map so that, after a conformal rescaling, the potential obeys the flat wave equation component by component. This leads to a new reconstruction scheme, in which the potential is sourced by the curvature psi, which in turn obeys a decoupled sourced equation. A prescribed curvature is then reached by a second-order rather than a fourth-order equation, and the corrector is local and algebraic in the stress-energy tensor. The price is that the full curvature, rather than a single component, must be determined, and that the reality of the reconstructed metric becomes a condition, which we argue holds for retarded solutions. We illustrate the scheme for a static point mass in de Sitter space, where it gives a real metric perturbation that agrees with linearised Schwarzschild-de Sitter up to a diffeomorphism. We view these results as a proof of concept for a first-order Teukolsky-Wald framework on Kerr.",
+   "authors": "Kirill Krasnov, Adam Shaw",
+   "id": "2610.32692",
+   "version": "2610.32692",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "The fate of primordial gravitational waves during domain-wall domination",
+   "link": "https://arxiv.org/abs/2610.32568",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.32568v1 Announce Type: new Abstract: Primordial gravitational waves probe inflation, but their interpretation depends on their subsequent evolution. During domain-wall domination, a frozen wall network retains a nonzero shear response that can modify the superhorizon evolution of primordial gravitational waves. Starting from the wall-forming scalar field, we derive an effective tensor mass term and a source associated with the frozen wall geometry in the thin-wall, quasistatic limit. Together they drive superhorizon tensor perturbations toward a configuration set by the network. This configuration carries both any inherited primordial deformation and the network's intrinsic random structure. We derive how these contributions enter the tensor transfer and power spectrum. The resulting description connects superhorizon tensor evolution to the microscopic wall response and the geometry established as the network freezes.",
+   "authors": "Zhen-Min Zeng",
+   "id": "2610.32568",
+   "version": "2610.32568",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Generalized Thermodynamics and Phase Transitions of Vaidya-adS Black Holes",
+   "link": "https://arxiv.org/abs/2610.31760",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.31760v1 Announce Type: new Abstract: This work investigates the thermodynamics of non-stationary anti-de Sitter (adS) black holes and their gauge-gravity duals. To model a non-equilibrium process, we employ a time-dependent Vaidya-adS metric to describe the collapse of a null fluid and the subsequent thermalization of the dual field theory. We introduce an effective version of free energy as a quasilocal probe to be used in a dynamical setup. By analyzing how this quantity evolves, we show that a first-order phase transition occurs when the final black-hole mass exceeds the limit established by the Hawking-Page temperature. Furthermore, we demonstrate that the final state only approaches the thermal behavior of the N=4 supersymmetric Yang-Mills theory for mass states much larger than the adS radius. Finally, we compute the boundary energy-momentum tensor using holographic renormalization and compare the resulting energy density with the strong-coupling limit. This demonstrates that the dual description provides a consistent framework for both the equilibrium and non-equilibrium thermodynamics of strongly coupled gauge theories.",
+   "authors": "A. F. Cardona, C. Molina",
+   "id": "2610.31760",
+   "version": "2610.31760",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  }
+ ],
+ "errors": []
+}
