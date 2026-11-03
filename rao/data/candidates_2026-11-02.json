@@ -1,0 +1,223 @@
+{
+ "listing_date": "2026-11-02",
+ "no_update": false,
+ "total_new_unseen": 58,
+ "passed_prefilter": 11,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.GA"
+   ],
+   "title": "Gravitational Lensing Signatures of a Black Hole in Mimetic Euler-Heisenberg theory",
+   "link": "https://arxiv.org/abs/2610.40669",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40669v1 Announce Type: new Abstract: The present study delves into the gravitational lensing phenomena in the weak field limit of a charged black hole in the mimetic Euler-Heisenberg theory. The deflection angle of light is computed for the specified asymptotically flat spacetime assuming that the observer and the light source are both located at finite distances from the lens using the Gauss-Bonnet theorem. Additionally, the Einstein ring radius is analytically derived as a direct implementation of the deflection angle. The relevant influence of the Euler-Heisenberg parameter and the charge parameter on the Einstein ring radius is briefly discussed. We also investigate the observational implications of lensing in the weak gravitational limit of the black hole. The magnification and distortion parameter are also analyzed in this manuscript. Furthermore, the time delay of light due to gravitational lensing is also briefly discussed. Our study reveals the significant influence of the model parameters of the specified black hole on the gravitational lensing signatures.",
+   "authors": "Nashiba Parbin",
+   "id": "2610.40669",
+   "version": "2610.40669",
+   "kscore": 8,
+   "ktags": [
+    "修正引力",
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.mes-hall",
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Induced Lorentzian geometry from the fermionic quantum metric",
+   "link": "https://arxiv.org/abs/2610.41138",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.41138v1 Announce Type: new Abstract: Quantum geometry is conventionally understood in parameter or momentum space and need not be related to a geometry in configuration space. Here we show for Dirac fermions in a background electromagnetic field that an induced Lorentzian geometry is generated from the fermionic quantum metric. We study a Lorentz covariant phase space worldline path integral construction, whose application of the adiabatic theorem onto spin degrees of freedom leads to the appearance of the Berry phase at $O(\\hbar)$, and the quantum metric at $O(\\hbar^2)$ in the worldline action. Both the Feynman and retarded/advanced propagators are examined in 3+1 and 2+1 dimensions, whose different on-shell implementations lead to related quantum metrics; QED/QED${}_3$ and condensed matter Dirac theory are considered. An effective theory is found by integrating out the momenta degrees of freedom, which gives rise to an emergent Lorentzian metric in configuration space, whose perturbation to the flat metric is dependent on the quantum metric and the background field strength. Apart from the spin degrees of freedom encoded into the Berry phase, the effective theory describes a scalar particle moving in the induced quantum geometry. Phenomenological applications to the covariant geometry are further studied using spectral holonomy in a gapped 3-dimensional Dirac material.",
+   "authors": "Patrick Copinger, Pablo Morales",
+   "id": "2610.41138",
+   "version": "2610.41138",
+   "kscore": 8,
+   "ktags": [
+    "引力热力学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Primordial black holes and gravitational waves from aligned axion inflation",
+   "link": "https://arxiv.org/abs/2610.41823",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.41823v1 Announce Type: new Abstract: We study the production of primordial black holes (PBHs) and scalar-induced gravitational waves (SIGWs) in aligned axion inflation through the transition between two stages of inflation. The first stage proceeds along a metastable trajectory and ends when this trajectory loses stability, causing the fields to turn towards the attractor of the second inflationary stage. During the transition, coupled adiabatic--entropy evolution produces a localized enhancement of the curvature power spectrum. We compute the PBH abundance from this spectrum assuming Gaussian primordial curvature perturbations and using the nonlinear compaction-function formalism with a spectrum-dependent collapse threshold and critical collapse. Representative benchmark solutions yield asteroid-mass PBHs with a potentially significant dark-matter abundance, together with an associated SIGW background.",
+   "authors": "Nadir Ijaz",
+   "id": "2610.41823",
+   "version": "2610.41823",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Novel thermodynamic topological subclass from inverse-temperature asymptotics",
+   "link": "https://arxiv.org/abs/2610.41585",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.41585v1 Announce Type: new Abstract: We investigate the thermodynamic topology of the charged McGuigan--Nappi--Yost black hole in the canonical ensemble at fixed electric charge, identifying equilibrium black hole solutions as zeros of the thermodynamic vector field constructed from the generalized off-shell free energy. The inverse Hawking temperature diverges as the extremal limit is approached and approaches a finite positive value in the large-horizon limit. The zero points of the thermodynamic vector field reveal a thermodynamic phase structure consisting solely of a locally stable branch with positive winding number ($w=+1$). The innermost small black hole state is locally stable in the low-temperature limit. As the temperature increases, the stable branch extends toward the outermost large black hole regime, while no black hole states exist in the high-temperature regime beyond the finite upper Hawking temperature. This distinct asymptotic behavior of the inverse temperature places the thermodynamic defect structure outside the established topological (sub)classes, although its topological number agrees with that of the standard $W^{1+}$ class. We therefore identify this defect structure as a new thermodynamic topological subclass, $\\breve W^{1+}$. This finding extends the existing classification to include a finite, nonzero large-horizon limit of the inverse Hawking temperature and suggests that distinct asymptotic behaviors in other black hole families may reveal further topological (sub)classes and thermodynamic phase structures.",
+   "authors": "Dejiang Yin, Qi-Qi Liang, Yu-Die Wan, Li-yun Zhang",
+   "id": "2610.41585",
+   "version": "2610.41585",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "math-ph",
+    "math.MP",
+    "quant-ph"
+   ],
+   "title": "Proof of the entropic $c$-theorem",
+   "link": "https://arxiv.org/abs/2610.40874",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40874v1 Announce Type: new Abstract: We prove an entropic $c$-theorem in two dimensions by constructing a $c$-function from the mutual information between spacelike separated wedges, defined through the relative entropy. The proof follows Casini and Huerta's, with strong subadditivity of entanglement entropy replaced by increasing differences of the mutual information, which we prove directly in the continuum from the split property and standard properties of relative entropy. The benefit of relative entropy is that every quantity we use is finite and no cutoff ever needs to be introduced. The assumptions of the theorem are only the standard axioms of algebraic quantum field theory, the split property with finite mutual information across a gap (both implied by modular $p$-nuclearity), and a finite ultraviolet bound on the resulting $c$-functions. We also note that, formally, the $c$-function is proportional to the minimal averaged null energy of a state that reproduces the vacuum correlations between the two wedges.",
+   "authors": "Jonah Kudler-Flam",
+   "id": "2610.40874",
+   "version": "2610.40874",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Hilbert space in the flat limit of AdS/CFT. II. Massless particles",
+   "link": "https://arxiv.org/abs/2610.40878",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40878v1 Announce Type: new Abstract: Building on Part I of this series, where we described the emergence of massive scattering states, we demonstrate how unitary lowest-weight representations $\\mathcal D(\\Delta,s)$ of the conformal group with fixed dimension $\\Delta$ and arbitrary integer spin $s$ contract to massless Poincar\\'e particle representations. This requires combining the In\\\"on\\\"u--Wigner contraction $\\mathfrak{so}(2,3) \\to \\mathfrak{iso}(1,3)$ with an infinite boost, in which case massless scattering states naturally emerge in a carrollian basis. For $\\Delta>s+1$, we find that $\\mathcal D(\\Delta,s)$ contracts to the direct sum of massless particles of all spins $s'\\leq s$. At the unitarity bound, lower-spin states become null so that $\\mathcal D(s+1,s)$ contracts to a single massless particle representation carrying the two maximal helicities $J=\\pm s$. In both cases, the inner product converges to the Poincar\\'e-invariant one after a single helicity-independent rescaling, so that unitarity is preserved throughout the contraction.",
+   "authors": "Kevin Nguyen",
+   "id": "2610.40878",
+   "version": "2610.40878",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Facets of Gravity: A journey exploring spacetime from Planckian to cosmological scales",
+   "link": "https://arxiv.org/abs/2610.40908",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40908v1 Announce Type: new Abstract: What does it mean to quantize gravity, and what can a quantum theory of spacetime actually predict? This thesis explores these questions through complementary non-perturbative approaches, from the geometry of quantum spacetime to the emergence of cosmological physics. Within Causal Dynamical Triangulations, we develop observables to investigate effective topology, statistical homogeneity, and curvature in strongly fluctuating geometries, where conventional differential-geometric tools are unavailable. Tests in two-dimensional models reveal distinct coarse-graining behaviours and provide new ways to probe the emergence of familiar geometric properties. We then turn to the Functional Renormalization Group and Asymptotic Safety, developing flow invariants to characterize ultraviolet-critical surfaces and introducing Flow Invariant Neural Networks as a computational method for reconstructing them. In scalar-tensor gravity, we investigate how ultraviolet consistency conditions can constrain infrared interactions, obtaining an inflationary scenario compatible with cosmological observations. Finally, we question whether the metric must be the fundamental variable of quantum gravity. We formulate a lattice statistical approach to purely affine gravity, in which the connection is fundamental and the metric, when it exists, is emergent. Monte Carlo simulations provide exploratory results in two dimensions, while a four-dimensional homogeneous and isotropic construction yields preliminary evidence for de Sitter-like geometry and allows the study of curvature correlations. Together, these investigations develop complementary tools for studying quantum spacetime, testing its possible continuum behaviour, and connecting fundamental gravitational theories with observable physics, while identifying the conceptual and computational challenges that remain.",
+   "authors": "Agust\\'in Silva",
+   "id": "2610.40908",
+   "version": "2610.40908",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "宇宙学"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "astro-ph.CO"
+   ],
+   "title": "New Effects in Multifield Cosmology Coupled to the Gauss-Bonnet Term",
+   "link": "https://arxiv.org/abs/2610.41636",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.41636v1 Announce Type: new Abstract: We study the rapid-turn regime of multifield cosmology coupled to the Gauss-Bonnet term. We derive the corresponding modified relations between the inflationary Hubble and potential slow-roll parameters, in the two-field case. These relations show that including the Gauss-Bonnet coupling broadens the possibilities for realizing rapid turn inflation and for satisfying the swampland conjectures. We also derive a consistency condition relating the scalar field-space metric to the scalar potential and the Gauss-Bonnet coupling, which two-field slow-roll and rapid-turn inflationary solutions have to satisfy. Finally, we find general conditions under which phantom-like behavior is possible in multifield dark energy models coupled to the Gauss-Bonnet term. Notably, although we do not consider a direct interaction between dark matter and dark energy, dark matter is crucial for the occurrence of a phantom regime.",
+   "authors": "Lilia Anguelova, Sonia Paban",
+   "id": "2610.41636",
+   "version": "2610.41636",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "宇宙学"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Thin-shell wormholes from magnetic black holes in exponential electrodynamics",
+   "link": "https://arxiv.org/abs/2610.40711",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40711v1 Announce Type: new Abstract: Transparent magnetic wormholes can share a black hole exterior while their supporting matter controls the response of the throat. We construct symmetric thin shells from the magnetic black hole of exponential nonlinear electrodynamics and derive their equilibrium stresses and linear radial stability criterion. Restricting the seed to its zero-bare-mass magnetic branch ties the charge and coupling along the fixed-mass family. In sampled cases, calibrated linear barotropic shells are unstable, whereas variable phantom and variable Chaplygin laws admit locally stable radial sectors. Explicit radius dependence strengthens the phantom restoring term; the Chaplygin response cancels the divergent inverse lapse contribution and permits stable sectors close to a non-extremal seed horizon. The surface density remains negative, although an inner interval satisfies the tangential null and intrinsic strong energy conditions. At the seed photon sphere, the two variable laws share an exact stabilization threshold. The complete radial averaged null energy remains negative even when the proper shell energy tends to zero. Numerical null geodesic imaging uses independent, minimally coupled light and transparent junctions, with celestial sources and rotating thin disks truncated at the innermost stable circular orbit (ISCO). For observer-side disk emission with the prescribed ISCO truncation and a throat below the seed photon sphere, inclined images coincide with the seed black hole image. A throat above that sphere removes selected returning contributions while preserving much of the bright primary structure. Illuminating the opposite exterior adds inner disk arcs, but a central dark region can survive because the disk does not illuminate every transmitted direction. Image degeneracy depends jointly on the retained null trajectories and the emitting support, rather than on the presence of a horizon alone.",
+   "authors": "Jonathan A. Rebou\\c{c}as, Edson Otoniel, Muhammad Israr Aslam, Francisco S. N. Lobo",
+   "id": "2610.40711",
+   "version": "2610.40711",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Leaking Sound Waves: Gravitational Waves From Dark Sectors Weakly Coupled to the Standard Model",
+   "link": "https://arxiv.org/abs/2610.40781",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40781v1 Announce Type: new Abstract: First-order phase transitions in a dark sector can produce an observable stochastic gravitational-wave background, and many models predicting such signals in current and future experiments have been explored. For moderately strong transitions, hydrodynamical simulations suggest that sound waves generated by the expansion and collisions of true-vacuum bubbles are the dominant source of gravitational waves. It is often assumed that these sound waves propagate only within the dark-sector fluid, while the impact of the visible sector is neglected. In this paper, we investigate the effects of a weak coupling between the dark and visible fluids on the resulting gravitational-wave signal. We adopt a phenomenological hydrodynamical description of two ultra-relativistic fluids, parametrizing their interactions without specifying an underlying microscopic model. We focus on the regime in which the coupling can be neglected during the phase transition but becomes relevant during the subsequent, longer-lasting period of sound wave propagation. Within this framework, we analytically show that, even if the bubble expansion initially affects only the dark fluid, sound waves can subsequently be induced in the visible sector. Using the sound-shell model, we find that, despite the additional sound waves generated in the visible sector, the total gravitational-wave signal sourced by both fluids is generally suppressed compared to the case of a completely decoupled dark sector. This suppression becomes more pronounced for larger interaction rates and a larger ratio of relativistic degrees of freedom in the visible sector to those in the dark sector. The coupling also modifies the shape of the gravitational-wave spectrum.",
+   "authors": "Marco Finetti, Helena Kole\\v{s}ov\\'{a}, Daniil Krichevskiy",
+   "id": "2610.40781",
+   "version": "2610.40781",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE"
+   ],
+   "title": "Effects of Eddington-inspired Born-Infeld Gravity on Black Hole Accretion",
+   "link": "https://arxiv.org/abs/2610.40795",
+   "announce_type": "new",
+   "abstract": "arXiv:2610.40795v1 Announce Type: new Abstract: Black holes offer a unique setting to test gravity in the strong-field regime, where deviations from General Relativity are expected to be most pronounced. We study how modified gravity changes the structure of an advection-dominated accretion flow (ADAF) around a supermassive black hole. The gravitational field governing the disc is described by a Paczy\\'{n}ski--Wiita-like potential derived in Eddington-inspired Born--Infeld (EiBI) gravity, formulated \\textit{\\`a la} Palatini. We solve the ADAF-like equations for this potential and compare the radial profiles of the flow with those obtained for the standard Paczy\\'{n}ski--Wiita potential. The largest difference appears in the gas density, which is several orders of magnitude higher in the EiBI case near the inner region and converges to the standard result at large radii. The specific angular momentum and temperature are lower in EiBI gravity, while the radial velocity differs mainly at large radii for both solution branches, $ s=-1$ and $+1$. The angular velocity and the disk aspect ratio $H/r$ change only slightly. These results show that EiBI gravity can modify the density structure of hot accretion flows in the strong-field regime, potentially providing observational discriminators.",
+   "authors": "Merce Guerrero, Razieh Ranjbar",
+   "id": "2610.40795",
+   "version": "2610.40795",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
