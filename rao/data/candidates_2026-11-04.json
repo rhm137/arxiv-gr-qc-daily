@@ -1,0 +1,488 @@
+{
+ "listing_date": "2026-11-04",
+ "no_update": false,
+ "total_new_unseen": 77,
+ "passed_prefilter": 25,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Mixed-Order Parity-Violating Corrections to Rotating Black Holes in Combined Scalar Gauss-Bonnet and Dynamical Chern-Simons Gravity",
+   "link": "https://arxiv.org/abs/2611.04945",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04945v1 Announce Type: new Abstract: We construct the leading mixed-order $\\mathcal{O}(\\zeta_{\\rm GB}\\zeta_{\\rm CS})$ deformation of rotating black holes in a combined scalar Gauss-Bonnet and dynamical Chern-Simons effective theory, the sector in which the parity-even and parity-odd corrections act simultaneously. Using a pseudospectral solution of the coupled mixed scalar and metric equations, we compute horizon and equatorial-geodesic observables--the horizon angular velocity, surface gravity, area, and Wald entropy; the innermost stable circular orbit and photon-ring radii; and photon-ring eikonal estimates of the ringdown--at fixed mass and angular momentum over the spin range $0.1\\le a\\le0.9$, where the solution is numerically convergent and the perturbative expansion is controlled for sufficiently small dimensionless couplings. We verify the exact Kerr and Schwarzschild limits, reproduce available pure-sector benchmarks, and quantify spectral, residual, and extraction uncertainties. The mixed solution satisfies every component of the field equations, including the one that is not imposed in its construction, and its Wald entropy satisfies the first law to about one part in $10^{5}$. The mixed coefficients exhibit spin dependence qualitatively distinct from the individual sectors within this EFT truncation. All four horizon quantities, and several orbital and eikonal ones, change sign as functions of spin. The ringdown results are leading photon-ring eikonal estimates; a full coupled finite-$\\ell$ perturbation calculation is left to future work.",
+   "authors": "Abhishek Rout, Brett Altschul",
+   "id": "2611.04945",
+   "version": "2611.04945",
+   "kscore": 15,
+   "ktags": [
+    "修正引力",
+    "宇称破缺/双折射",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "quant-ph"
+   ],
+   "title": "On the universality of entanglement entropy in quantum field theory",
+   "link": "https://arxiv.org/abs/2611.04238",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04238v1 Announce Type: new Abstract: The standard definition of entanglement entropy in quantum field theory requires regularizing the entangling surface and factorizing the Hilbert space, which in turn involves a choice of boundary conditions at the regularized surface. This raises two natural questions which are open at present. The first is under what conditions there is a choice of boundary conditions that leads to a unitary map between the original Hilbert space and the factorized one, which is a necessary condition for a well-defined entanglement entropy. The second concerns the situation where there are multiple such choices, in which case the question is whether they all yield the same entropy, or at least the same terms usually referred to as universal. Focusing on topological theories and using three-dimensional Chern-Simons theory as a concrete illustration, we show under specified assumptions that different such choices affect only the non-universal terms in the entropy, such that the remaining terms are universal in this sense as well, while we explicitly demonstrate that boundary conditions corresponding to non-unitary maps can change these terms. We then explain how a similar argument applies to two-dimensional conformal field theories and discuss a condition for universality in general theories.",
+   "authors": "Orr Sela",
+   "id": "2611.04238",
+   "version": "2611.04238",
+   "kscore": 12,
+   "ktags": [
+    "宇称破缺/双折射",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "On mass inflation and late-time divergences in limiting-curvature regular black holes",
+   "link": "https://arxiv.org/abs/2611.04618",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04618v1 Announce Type: new Abstract: Mass inflation in non-extremal regular black holes with a non-linear dependence of the Misner-Sharp mass $M$ on the asymptotic mass $m>0$ may be a transient phenomenon followed by a model-dependent non-exponential late-time divergence. We analyse these regimes based on the generalised Ori model for a class of static spherically symmetric and asymptotically flat regular black holes with a de Sitter core and an $m$-independent upper bound on the Misner-Sharp mass density and Kretschmann scalar inspired by quasi-topological gravity. We discuss the geometric mechanism behind divergences of physical quantities at the inner horizon of the perturbed spacetime, and show that these require the unphysical mass parameter inside the shell to evolve outside the positive-real domain, or in some cases force a distinct type of dynamical continuation of the static metric. Imposing an asymptotic late-time divergence in form of a fractional power-law scaling, tunable to be arbitrarily mild within the considered approximation and effectively taming mass inflation, allows us to single out a family of generalised Fan-Wang regular black holes.",
+   "authors": "Johanna Borissova",
+   "id": "2611.04618",
+   "version": "2611.04618",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Gauge-invariant thermodynamic description of rotating black strings in 5D minimal supergravity via Kaluza-Klein reduction",
+   "link": "https://arxiv.org/abs/2611.04373",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04373v1 Announce Type: new Abstract: We develop a gauge-invariant formulation of the thermodynamics of rotating black strings in five-dimensional minimal supergravity through Kaluza-Klein reduction. At the two-derivative level, we consistently reduce the bulk action and the Gibbons-Hawking-York boundary term, carefully accounting for the surface contributions induced by the Chern-Simons coupling. The resulting four-dimensional theory is $\\mathcal{N}=2$ supergravity coupled to a single vector multiplet, with prepotential $P=\\frac{1}{3\\sqrt{3}}\\frac{X_1^3}{X_0}$. Employing the Hamiltonian formalism, we establish the quantum statistical relation between the Euclidean on-shell action and the Gibbs free energy. We further compute the leading four-derivative corrections to the thermodynamics of a rotating magnetic black string using the Reall-Santos method. The resulting corrections are in precise agreement with previous results obtained directly for the Kerr-Newman black hole in four-dimensional $\\mathcal{N}=2$ supergravity.",
+   "authors": "Yang Yu, Peng-Ju Hu",
+   "id": "2611.04373",
+   "version": "2611.04373",
+   "kscore": 10,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "hep-lat",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "An Exact QFT/Lattice Map for Fermions",
+   "link": "https://arxiv.org/abs/2611.05329",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05329v1 Announce Type: new Abstract: We construct an exact map between continuum fermion fields and lattice fields in 1+1 dimensions. This map rewrites a continuum Hamiltonian as a lattice Hamiltonian with nearest-neighbor couplings and an infinite-dimensional local Hilbert space. The resulting lattice model reproduces exactly the energy spectrum, global operator algebra, chiral symmetries, and anomalies of the continuum QFT on any finite lattice. Unlike domain wall fermions, truncating the local Hilbert space introduces no extra massless modes, and the entanglement entropy of an interval converges as the truncation is removed. The lattice local algebras are of type I and lie between the type III continuum algebras of nested spatial regions, in accordance with the split property. We demonstrate this construction explicitly for $N$ Majorana fermions, realizing the $\\mathrm{O}(N)_\\mathrm{L}\\times\\mathrm{O}(N)_\\mathrm{R}$ lattice chiral symmetry. We also construct an exact lattice model for the Schwinger model and numerically reproduce the mass gap $e/\\sqrt{\\pi}$.",
+   "authors": "Shu-Heng Shao, Nikita Sopenko",
+   "id": "2611.05329",
+   "version": "2611.05329",
+   "kscore": 10,
+   "ktags": [
+    "引力热力学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-th"
+   ],
+   "title": "Gauge-invariant non-universal scalar couplings in teleparallel gravity",
+   "link": "https://arxiv.org/abs/2611.03740",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03740v1 Announce Type: new Abstract: We develop a gauge-invariant teleparallel framework in which the universality of the gravitational coupling is relaxed for a scalar field, while the gravitational sector retains the form of the teleparallel equivalent of General Relativity. The non-universal interaction is encoded in a scalar-sector tetrad whose coupling to the universal translational gauge potential is controlled by a field-dependent gravitational charge. A St\\\"uckelberg completion preserves local translational gauge invariance, and we derive the gravitational, scalar-field, and St\\\"uckelberg equations, together with the antisymmetric constraint and their consistency relations. As a first application, we investigate homogeneous and isotropic cosmology, where the St\\\"uckelberg constraint provides a first integral governing the evolution of the non-universal coupling. In the kination-dominated regime, the standard stiff-fluid behavior is recovered asymptotically, whereas in the potential-dominated regime, accelerated expansion requires additional conditions beyond potential domination. We identify compatible expanding solutions in which departures from universality are dynamically suppressed, including examples approaching power-law inflation or asymptotically de Sitter expansion. Including a universally coupled perfect fluid and a constant scalar potential, we obtain a late-time solution exhibiting a subdominant matter-like contribution to the background Friedmann equation and an asymptotic de Sitter limit. These results provide a gauge-theoretic realization of non-universal scalar couplings and highlight their potential implications for early- and late-time cosmology.",
+   "authors": "Giovanni Otalora, Rudranil Roy",
+   "id": "2611.03740",
+   "version": "2611.03740",
+   "kscore": 9,
+   "ktags": [
+    "宇宙学",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Single-horizon regular black holes and the fate of the inner-horizon instability",
+   "link": "https://arxiv.org/abs/2611.04385",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04385v1 Announce Type: new Abstract: Regular black holes (RBHs) are often constructed with a regular point-like center and two horizons, including an inner Cauchy horizon susceptible to mass inflation. We show that a two-horizon structure is not a necessary consequence of regularity. For static, spherically symmetric geometries with an asymptotically static exterior, we establish a horizon-parity theorem: a regular point-like center requires an even number of sign-changing zeros of $f$. We then construct two classes of single-horizon RBHs with a finite-area core, distinguished by whether the horizon lies outside the core or coincides with it, and analyze their matter content, energy conditions, and thermodynamic properties. The absence of an inner Cauchy horizon eliminates the classical mass-inflation mechanism on the single-horizon patch. We further establish mode stability against scalar perturbations for these finite-area-core configurations by showing that the effective potential is non-negative. Our results establish how the central geometry and asymptotic structure constrain horizon multiplicity and identify single-horizon configurations that avoid the classical inner-horizon instability.",
+   "authors": "Chen Lan, Hao Yang, Maxim Khlopov, Maxim Krasnov",
+   "id": "2611.04385",
+   "version": "2611.04385",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "A Ghost-Free dS/AdS Correspondence in $\\mathcal{N}=1$ Supergravity",
+   "link": "https://arxiv.org/abs/2611.03977",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03977v1 Announce Type: new Abstract: Reversing the sign of the scalar potential exchanges de Sitter and anti-de Sitter vacua and, through the domain-wall/cosmology correspondence, maps flat domain walls onto flat FLRW cosmologies, but its supersymmetric version has ghosts on the cosmological side. We show that this pointwise correspondence is realized between two ordinary, ghost-free four-dimensional $\\mathcal{N}=1$ supergravities with spontaneously broken supersymmetry. Within a single superconformal K\\\"ahler cone, a $\\mathbb{Z}_2$ reflection of the nilpotent goldstino K\\\"ahler metric through the flat limit $V=0$ reverses $V\\leftrightarrow-V$ pointwise while preserving the visible K\\\"ahler metric, the superpotential, and the unitary-gauge fermion Lagrangian. The paired vacua obey a sharp dictionary with $H=1/L$, $m^2_{\\rm dS}=-m^2_{\\rm AdS}$, equal conformal weights, and $m_{3/2}>H$, and are simultaneously stable precisely within the window $0\\le m^2_{\\rm dS}\\le\\frac94H^2$ set by the Breitenlohner--Freedman bound. Applied to string compactifications and cosmology, this correspondence pairs over-uplifted with under-uplifted anti-D3-brane vacua, confines the de Sitter swampland conjecture to the goldstino (anti-brane) sector, and maps slow-roll inflation onto a healthy AdS domain wall obeying the holographic $c$-theorem.",
+   "authors": "Omer Guleryuz",
+   "id": "2611.03977",
+   "version": "2611.03977",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Circuit Complexity of Scalar and Tensor Perturbations in Luminal Einstein--Gauss--Bonnet Inflation",
+   "link": "https://arxiv.org/abs/2611.04441",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04441v1 Announce Type: new Abstract: We investigate the circuit complexity of primordial scalar and tensor perturbations in the luminal branch of Einstein--Gauss--Bonnet inflation. Starting from the quadratic perturbation actions, we construct the two-mode Hamiltonians and derive the evolution equations for the squeezing amplitudes and angles. Although the tensor speed is fixed to unity, the Gauss--Bonnet (GB) coupling remains dynamical through the scalar and tensor pump fields. We track the squeezing dynamics from the subhorizon to the superhorizon regime and evaluate the Nielsen wave-function complexity of the resulting two-mode squeezed states. The GB correction produces a clear separation in the squeezing amplitudes, while the unwrapped squeezing angles remain nearly phase locked. Consequently, the circuit complexity is controlled mainly by the amplitude evolution. A positive coupling enhances the scalar complexity but slightly suppresses the tensor complexity for the benchmarks considered. These opposite trends show that scalar and tensor Gaussian states retain distinct information about the same modified inflationary background even when tensor propagation is luminal.",
+   "authors": "Tao Li, Hai-Bing Fu, Lei-Hua Liu",
+   "id": "2611.04441",
+   "version": "2611.04441",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "De-lensing cosmic birefringence with joint reconstruction",
+   "link": "https://arxiv.org/abs/2611.03761",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03761v1 Announce Type: new Abstract: Reconstruction of anisotropic cosmic birefringence from the CMB is limited by lensing $B$-mode sample variance and partially degenerate with the lensing curl. We study the joint reconstruction of lensing (gradient and curl) and birefringence at the maximum-a-posteriori point, whose spectra are near-optimal statistics. We predict the joint response and noise analytically, validate them on simulations, and show unbiased inference of its amplitude. Errors will shrink $5$-fold relative to quadratic estimators at SPT-3G+ depths, promising much tighter constraints on parity-violating new physics, owing to the removal of the lensing $B$-polarization sample variance.",
+   "authors": "Sebastian Belkner, Julien Carron",
+   "id": "2611.03761",
+   "version": "2611.03761",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Scale-Dependent Weak-Field Dynamics in Horndeski Theory: Galaxy Rotation Curves and Turnaround Scales",
+   "link": "https://arxiv.org/abs/2611.05089",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05089v1 Announce Type: new Abstract: In this work, the weak-field dynamics of a gravitational-wave compatible subclass of Horndeski gravity is investigated on galactic and intergalactic scales. The analysis is performed within the weak-field approximation for stationary and approximately spherically symmetric configurations, retaining the nonlinear scalar derivative interactions responsible for scale-dependent modifications of the gravitational field. On galactic scales, the transition regime is investigated through the effective potential, the stability of circular orbits, galaxy rotation curves, and the relation between dynamical and lensing masses. The analysis shows that the scalar field modifies the orbital dynamics and the radial dependence of the rotational velocity, while generating a nonvanishing gravitational slip between the dynamical and lensing mass estimates. On intergalactic scales, the asymptotic weak-field dynamics is investigated and a turnaround scale is derived from the balance between the effective gravitational attraction and the large-scale curvature contribution. At large distances, the asymptotic gravitational field is governed by the background curvature contribution.",
+   "authors": "Hatice \\\"Ozer",
+   "id": "2611.05089",
+   "version": "2611.05089",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Weyl Rescalings: A First Order Approach",
+   "link": "https://arxiv.org/abs/2611.04978",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04978v1 Announce Type: new Abstract: Weyl transformations, --local rescalings in which the metric transforms as $g_{\\mu\\nu}(x)\\longrightarrow \\Omega^2(x)\\, g_{\\mu \\nu}(x)$--, are expected to be a symmetry of nature at extremely high energy, that should be (spontaneously) broken at low energy. In Cartan's first order formulation of gravity this translates into the condition that the local frames (vielbein) scale as $e^a(x) \\longrightarrow \\Omega(x) e^a(x)$. In this construction, the Lorentz connection one-form fields $\\omega^a{}_b$ are independent from $e^a$, and since Lorentz transformations and dilatations commute, $\\omega$ and $R(\\omega)$ must be Weyl invariant, while in the second order metric formalism the Ricci tensor undergoes a non-homogeneous transformation. This generates a tension between the two formulations, which should be equivalent in the vanishing torsion limit. Here we show how the puzzle can be resolved taking into account the role of torsion. This also sheds some light on the conformal coupling of matter fields to gravity.",
+   "authors": "L. Andrianopoli, J. Zanelli",
+   "id": "2611.04978",
+   "version": "2611.04978",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Cosmological evolution and late-time attractors in axion-monopole interacting dark energy",
+   "link": "https://arxiv.org/abs/2611.05190",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05190v1 Announce Type: new Abstract: We investigate the cosmological dynamics of axion-monopole interacting dark energy, examining whether a microscopically motivated dark-sector interaction can sustain stable late-time acceleration. In particular, magnetic monopoles constitute dark matter and an ultralight axion contributes to dark energy, with their interaction arising from the Witten effect through field-dependent dyon masses. We formulate the autonomous system, classify its critical points and stability, and investigate the evolution analytically and numerically. We find that stable de Sitter attractors at finite positive Hubble parameter require a positive cosmological constant and correspond to axion-potential minima, whereas those at maxima are unstable. Nevertheless, transient axion-driven acceleration remains possible without an explicit cosmological constant. Furthermore, the interaction induces matter-era tracking, namely an attracting slow-drift regime rather than an exact critical point. The interaction-effective dark-energy equation of state can cross the phantom divide, although the physical equation of state remains non-phantom. Extending the analysis to the full Bogomol'nyi-Prasad-Sommerfield dyon mass, we find that the main dynamical features persist, while the field evolution and interaction strength depend on the microscopic dyon properties. Our results demonstrate how a microscopically motivated dark-sector interaction can give rise to distinctive cosmological evolution and effective dark-energy behavior.",
+   "authors": "Emmanuel N. Saridakis",
+   "id": "2611.05190",
+   "version": "2611.05190",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "math.AP"
+   ],
+   "title": "Nonlinear stability of Schwarzschild black holes for the Einstein-massless Dirac system in spherical symmetry",
+   "link": "https://arxiv.org/abs/2611.03708",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03708v1 Announce Type: new Abstract: In this paper, we establish the nonlinear stability of the Schwarzschild exterior for the spherically symmetric Einstein-massless Dirac system. More precisely, we consider sufficiently small perturbations of Schwarzschild characteristic initial data and prove that the corresponding maximal development remains globally controlled in the exterior region (orbital stability), and converges, in a suitable teleological double-null gauge, to a Schwarzschild spacetime with a final mass (asymptotic stability). In particular, the maximal future development contains a complete future null infinity and a regular event horizon, with a nonempty black hole region in its interior. The main difficulties in the proof arise from the delicate coupling between the Dirac operator and the geometry, compared with the scalar wave counterpart, as well as from the failure of the Dirac stress-energy tensor to satisfy a positive energy condition. To overcome these difficulties, we rely on a bootstrap argument coupling the geometry and the Dirac field. Working in suitable teleological double-null gauges adapted to the asymptotic null boundaries, we establish weighted energy estimates combining integrated local energy decay, red-shift estimates near the event horizon, and an rp-estimates towards null infinity. A core ingredient is the use of suitable reweightings of the spinor components, which allow us to close these estimates despite the nonlinear coupling to the geometry.",
+   "authors": "Lamberto Tresoldi",
+   "id": "2611.03708",
+   "version": "2611.03708",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Effective Optical Geometry and Holographic Phase Structure of a Magnetic AdS Black Hole",
+   "link": "https://arxiv.org/abs/2611.03749",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03749v1 Announce Type: new Abstract: We study circular null orbits, thermodynamic topology, and the holographic thermodynamic description of a four-dimensional magnetically charged AdS black hole in nonlinear electrodynamics. The background orbit structure is classified using Duan s phi-mapping construction and compared with the extraordinary electromagnetic characteristics. The latter defines an effective optical metric with an additional radial factor that modifies the orbit condition and introduces explicit dependence on the AdS radius. For four representative configurations, the local indices of the five isolated orbits are unchanged while their radii shift by up to 5.187 %. The background mass thresholds vary smoothly across sigma = 1/4 when the total mass is used, whereas the fixed-m0 parametrization is singular there. Regularity at the center requires sigma > 1 and m0 = 0. The thermodynamic analysis separates local stability indices from equilibrium coexistence: stable Gibbs-free-energy branches cross only in model-dependent parameter intervals. The boundary canonical ensemble exhibits critical behavior consistent with mean-field exponents, and the examined grand-canonical ensemble has a Hawking-Page crossing. In the mixed ensemble, the free-energy branches have a finite endpoint discontinuity, but the sampled competing states do not satisfy the full local-stability criterion",
+   "authors": "Mohammad Ali S. Afshar, Mohammad Reza Alipour, Saeed Noori Gashti, Jafar Sadeghi",
+   "id": "2611.03749",
+   "version": "2611.03749",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE",
+    "hep-th"
+   ],
+   "title": "Binary black hole mergers in massive Einstein-scalar-Gauss-Bonnet gravity",
+   "link": "https://arxiv.org/abs/2611.03913",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03913v1 Announce Type: new Abstract: We study fully non-linear binary black hole mergers in massive Einstein-scalar-Gauss-Bonnet (EsGB) gravity with a linear Gauss-Bonnet coupling function. In the absence of a well-developed initial data solver for EsGB gravity, we demonstrate that the conventional workaround solution for massless scalar fields results in confined junk radiation that contaminates late-time dynamics in the massive theory. We propose a solution to this problem by suitably modifying the equations of motion at the early stages of the simulation to tame such junk radiation, thereby allowing us to study the dynamics of the scalar field during the process of a black hole merger. This is followed by a preliminary analysis of the frequency content in the ringdown of the scalar and tensor modes. In particular, the quadrupole scalar mode exhibits a rich ringdown structure: while it is dominated by the spin-2 ``contamination'' frequency in the early stages, its late time morphology becomes primarily determined by the scalar mass frequency.",
+   "authors": "Harry L. H. Shum, Llibert Arest\\'e Sal\\'o, Miguel Bezares, Thomas P. Sotiriou",
+   "id": "2611.03913",
+   "version": "2611.03913",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "On Isaacson's Procedure in $f(R)$-Gravity with Second Order Metric Perturbations",
+   "link": "https://arxiv.org/abs/2611.04639",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04639v1 Announce Type: new Abstract: In the recent paper arXiv:2504.02253 we generalized classical Isaacson's procedure for describing back-reaction of the averaged energy-momentum for high frequency gravitational waves to $f(R)$ gravity case with a choice of the de Sitter background. To describe this second order effect we used standard first order decomposition of metric tensor. In this paper, we take into account possible contribution to this process from second order term in metric tensor decomposition. We find that on the de Sitter background all possible contributions from this term are strongly suppressed and therefore results obtained in the paper arXiv:2504.02253 are left unchanged.",
+   "authors": "Petr V. Tretyakov, Alexander N. Petrov",
+   "id": "2611.04639",
+   "version": "2611.04639",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Final state of superradiant instability in Einstein-Maxwell-dilaton black hole",
+   "link": "https://arxiv.org/abs/2611.04646",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04646v1 Announce Type: new Abstract: This article examines the instability of charged black holes, using Einstein-Maxwell-dilaton theory and a massless charged scalar field. Our study demonstrates that these black holes become unstable in a certain range of frequencies, which causes scalar \"hair\" to form outside the event horizon. By using numerical integration on the coupled field equations, we show that there is a phase transition between a purely charged black hole and a hairy black hole configuration. The results show that the hairy phase appears when the temperature is less than $T_C$, the critical temperature, whereas for $T>T_C$, the system stays purely charged. Also, our findings show that the critical temperature increases with the size of the black hole, implying that the onset of the phase transition becomes progressively more difficult for larger horizons. Lastly, we see that the system enters a stable equilibrium at the critical temperature, which is the final state of the superradiant instability. These results provide us with useful information on how nonlinear superradiant events change and how scalarized black holes arise in more comprehensive theories of gravity.",
+   "authors": "Afsaneh Rahmani, Samaneh Oghbaiee",
+   "id": "2611.04646",
+   "version": "2611.04646",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Particle dynamics in rotating charged Bumblebee black holes: An analytical correspondence with Kerr-Newman",
+   "link": "https://arxiv.org/abs/2611.04750",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.04750v1 Announce Type: new Abstract: In this paper, we establish an analytical correspondence between the equatorial dynamics of spinless and spinning test particles in a slowly rotating charged Einstein--Bumblebee black hole spacetime and those in an effective Kerr--Newman spacetime. For spinning particles, the correspondence is established within the Mathisson--Papapetrou--Dixon framework under appropriate parameter matching. We show that corresponding circular orbits have identical radii and coordinate angular velocities, while their radial dynamics and local instability rates exhibit a Lorentz-violation-dependent scaling. Nevertheless, the correspondence does not imply complete dynamical equivalence, as orbital trajectories and radial perturbation growth over an azimuthal period generally differ. These results delineate the scope and limitations of the effective Kerr--Newman correspondence by distinguishing the dynamical properties preserved under parameter matching from those modified by the Lorentz-violating radial deformation.",
+   "authors": "Deyou Chen, Chuang Yang",
+   "id": "2611.04750",
+   "version": "2611.04750",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Full-Stokes response to a stochastic gravitational-wave background in pulsar timing arrays: Fully analytic overlap reduction functions at finite distance and coherence of close pulsar pairs",
+   "link": "https://arxiv.org/abs/2611.05219",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05219v1 Announce Type: new Abstract: We derive fully analytic overlap reduction functions for the full-Stokes response of a pulsar timing array to an anisotropic tensor gravitational-wave background in general relativity. The response retains both pulsar distances and their complete propagation phases. At each fixed finite sky multipole, the intensity and circular polarization responses reduce to finite combinations involving exponential integrals and logarithms, while the electric and magnetic linear polarization responses require only elementary functions. We evaluate all components through $\\ell=8$. Symmetry separates exact nulls from additional Earth-term nulls that propagation can lift. Even an unpolarized background can produce an imaginary cross-spectrum. For a pair with three-dimensional separation $d$, the pulsar terms can remain coherent when $2\\pi fd/c\\lesssim1$, even if both pulsars are many wavelengths from Earth. A uniform approximation retaining all four Earth and pulsar terms connects this regime to the short-wavelength limit, and a rotationally invariant relation fixes the leading transverse magnetic response. Common-distance errors cancel from the aligned pair phase, while relative-depth errors directly affect coherence. Under Gaussian differential averaging, fixed low-multipole norms and the squared norm summed over all multipoles decay at different rates as the response shifts to higher multipoles. Published pulsar configurations illustrate the roles of distance accuracy, bandwidth, and timing fits. At fixed pointwise intensity, a polarization covariance bound and a relative-depth noise budget quantify when differencing suppresses the background. Independent sky integration and matched-accuracy benchmarks test the analytic expressions over the parameter ranges studied.",
+   "authors": "Kun Zhou, Jin Li",
+   "id": "2611.05219",
+   "version": "2611.05219",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Worldsheet functional RG and the $\\alpha'$-tower",
+   "link": "https://arxiv.org/abs/2611.03781",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03781v1 Announce Type: new Abstract: We apply the functional renormalization group to the worldsheet theory of the bosonic string. Imposing the Weyl anomaly cancellation as a condition on the local renormalization group flow, we derive flow equations for the background couplings and the corresponding effective spacetime equations of motion, first in a two-derivative truncation, on a general curved background. We then consider a truncation to all orders in $\\alpha'$, which captures only a subset of the possible tensor structures but is analytically tractable, in analogy with $f(R)$-like approximations. Within this truncation, we obtain Tseytlin's spacetime effective action, and we use it to study solutions to all orders in $\\alpha'$, including black holes. Our results show that the functional renormalization group can be implemented on the string worldsheet and provide a framework to access the strong-curvature regime. As a longer-term goal, this may allow one to test the scenario of effective asymptotic safety in string theory, in which an approximately scale-invariant regime lies between the low-energy effective field theory and a stringy completion.",
+   "authors": "Ivano Basile, Francesco Ferrarin, Alessia Platania, Matteo Zatti",
+   "id": "2611.03781",
+   "version": "2611.03781",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Inner Product of Closed Universe from Gravitational Path-integral",
+   "link": "https://arxiv.org/abs/2611.03789",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03789v1 Announce Type: new Abstract: We construct the Hilbert space of a closed universe of fixed topology in anti-de Sitter (AdS) and de Sitter (dS) Jackiw-Teitelboim (JT) gravity from the gravitational path integral. Quantizing gravity involves several subtleties, including the choice of lapse contour, path-integral measure, operator ordering, global structure of the gauge group, the implementation of gravitational constraints and the gauge symmetries at initial and final timeslices. We develop a formalism that addresses these issues and determines the inner product of physical states, providing a framework to assign probabilities to cosmological wavefunctions. For a fixed topology and a lapse contour, we compute the inner product exactly and obtain the corresponding resolution of the identity in JT gravity. We demonstrate that the co-invariant and invariant Hilbert spaces in refined algebraic quantization arise from particular gauge fixing at the initial and final timeslices. In particular, the formalism provides precise meaning for a gravitational wavefunction with fixed geometric data as a co-invariant state, including its integral measure. These constructions can be formulated within the Hamiltonian BFV-BRST formalism. We also discuss the global structure of the Hilbert space, which differs from that of BF theory and depends on the prescription adopted near the big bang/crunch. Our results imply that the cylinder geometry captures the gravitational inner product for all perturbative states, including the Hartle-Hawking no-boundary state.",
+   "authors": "Masamichi Miyaji, Sunil Sake, Kotaro Shinmyo",
+   "id": "2611.03789",
+   "version": "2611.03789",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "quant-ph"
+   ],
+   "title": "Reconstruction of the conformal algebra from a critical groundstate on the (fuzzy) sphere",
+   "link": "https://arxiv.org/abs/2611.03817",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.03817v1 Announce Type: new Abstract: Recently, we found a method to reconstruct the dilatation operator (sphere Hamiltonian) from a regulated conformal field theory groundstate. In this paper, we explore methods to construct the whole global conformal algebra, and test our construction using fuzzy sphere regularization. Starting from a groundstate of the same Hamiltonian, these methods perform better than constructions of the conformal generators based on a Hamiltonian density, are model-independent, require no additional tuning, and improve with system size. One purpose of reconstructing the conformal algebra is to identify conformal primary states, which we do with some success. We also find further evidence supporting the model of the short-distance corrections to the entanglement Hamiltonian proposed earlier and use it to make systematic improvements.",
+   "authors": "Rolando Ramirez Camasca, Xiang Li, Ting-Chun Lin, John McGreevy",
+   "id": "2611.03817",
+   "version": "2611.03817",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Response to \"Late Time Dynamical Dark Energy and the CMB-Distance Ladder Tension\"",
+   "link": "https://arxiv.org/abs/2611.05199",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05199v1 Announce Type: new Abstract: We respond to the recent paper by Efstathiou (arXiv:2607.29562) who makes several statements that appear to be in conflict with our recent paper (Turner & Huterer, arXiv:2606.05358). We stand by our primary result that direct determinations of $H_0$ can be sensitive to the late-time expansion history. We also point out where there is significant agreement between his work and ours.",
+   "authors": "Michael S. Turner, Dragan Huterer",
+   "id": "2611.05199",
+   "version": "2611.05199",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "SBi3PCF: cosmology with Dark Energy Survey Year 3 cosmic shear",
+   "link": "https://arxiv.org/abs/2611.05367",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05367v1 Announce Type: new Abstract: We present the first cosmic shear data analysis of the integrated 3-point correlation function (i3PCF), a higher-order weak lensing statistic, and the first simulation-based inference (SBI) analysis of a three-point cosmic shear correlation function on survey data. Using SBi3PCF, our previously developed SBI framework for the i3PCF, we jointly constrain the $w$CDM parameter space with the cosmic shear 2-point correlation functions $\\xi_\\pm$ (2PCFs) and the i3PCFs $\\zeta_\\pm$ from the Dark Energy Survey Year 3 (DES Y3) weak lensing shape catalogue, from which we detect $\\zeta_\\pm$ with a signal-to-noise ratio of 12.8. Our forward model is built on the CosmoGridV1 N-body simulations and includes the survey mask, shape noise, intrinsic alignment, baryonic feedback, photometric redshift uncertainty and shear calibration bias. The analysis was carried out blind, with all choices frozen, and only unblinded once coverage tests, tests of the accuracy of the learned likelihoods, and internal consistency tests had been passed. For the joint $\\xi_\\pm$ + $\\zeta_\\pm$ analysis we obtain $\\Omega_m = 0.272^{+0.038}_{-0.033}$, $S_8 = 0.784^{+0.024}_{-0.021}$ and $w_0 = -1.04^{+0.25}_{-0.19}$. Adding $\\zeta_\\pm$ improves the figure of merit in the $\\Omega_m$-$S_8$-$w_0$ parameter space by a factor of $1.59$ over $\\xi_\\pm$ alone, as predicted by simulated i3PCF analyses. This gain comes from third-order information on angular scales $\\geq 15'$ and aperture radii $\\geq 50'$, a regime where baryonic effects are subdominant. The constraints are consistent with the other DES Y3 analyses of the same catalogue and with independent lensing analyses, and differ by at most $2.4\\sigma$ from CMB and BAO data (Planck 2018 + BAO, in $\\Omega_m$-$S_8$-$w_0$). This shows that $\\zeta_\\pm$ can be analysed on cosmological survey data with a fully simulation-based approach, an important step towards Stage-IV surveys.",
+   "authors": "David Gebauer, Anik Halder, Zhengyangguang Gong, Cora Uhlemann",
+   "id": "2611.05367",
+   "version": "2611.05367",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
