@@ -1,0 +1,426 @@
+{
+ "listing_date": "2026-11-05",
+ "no_update": false,
+ "total_new_unseen": 54,
+ "passed_prefilter": 22,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Black hole quasinormal mode excitation and mixing for coupled fields",
+   "link": "https://arxiv.org/abs/2611.05488",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05488v1 Announce Type: new Abstract: The idea of testing the nature of black holes and possible deviations from general relativity from their oscillation spectrum, known as ``black hole spectroscopy'', has become an experimental science. In many modified theories of gravity, the gravitational perturbations couple to additional degrees of freedom, leading to mode mixing and to a more complex ringdown signal. We adopt the parametrized quasinormal mode formalism for nonrotating black holes to study coupled perturbations in modified gravity theories in order to understand how the interaction with additional fields affects the quasinormal mode frequencies and their amplitudes. We compute the quasinormal mode spectrum of the coupled system in the frequency domain using direct integration and a matrix-valued continued-fraction method. We then compare the results with time-domain evolutions, where we extract the mode frequencies and amplitudes using the Prony method as well as least-squares fitting. In the weak-coupling regime, the scaling of the amplitudes associated with the gravitational-led and secondary-led modes can be understood perturbatively. The excitation of additional families of ringdown modes can become significant even when the frequency shifts remain moderate. We use our numerical time evolutions to provide ready-to-use coefficients for the mode amplitudes for representative initial data configurations. We work out specific examples, including dynamical Chern-Simons gravity and the special near-resonant case of coupled perturbations between the polar and axial quasinormal modes. Our theory-agnostic characterization of coupled systems should be useful to quantify systematic effects in black hole spectroscopy with next-generation gravitational-wave detectors.",
+   "authors": "Caio F. B. Macedo, Orival R. de Medeiros, Emanuele Berti, Hector O. Silva, Sebastian H. V\\\"olkel",
+   "id": "2611.05488",
+   "version": "2611.05488",
+   "kscore": 13,
+   "ktags": [
+    "修正引力",
+    "宇称破缺/双折射",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Inflationary attractors in metric-affine gravity",
+   "link": "https://arxiv.org/abs/2611.06750",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06750v1 Announce Type: new Abstract: We study single-field slow-roll inflation in metric-affine gravity (MAG). We consider the most general action up to operators linear in curvature and quadratic in the distortion, without propagating torsion and non-metricity. We first impose projective invariance and promote every coefficient to a function of the scalar field. After integrating out the non-dynamical distortion, the net contribution is a correction $k(\\phi)$ to the scalar kinetic term. We then consider the class of $\\xi$-attractors for which the non-minimal couplings and the scalar potential are fixed by a single function $f(\\phi)$. It is well-known that in the metric formulation the strong-coupling regime is universally the Starobinsky attractor. In the Palatini framework, instead, this attractor is lost and the predictions become model-dependent. Here, we show that the MAG framework restores universality: in the strong coupling limit with finite ratios of the distortion couplings to $\\xi$ we have an $\\alpha$-attractor, $n_s=1-2/N_*$ and $r=12\\alpha/N_*^2$, with $\\alpha=1+\\zeta/(6\\xi)$. The ratio $\\zeta/\\xi$ encodes the distortion contribution. Starobinsky and Palatini inflation are recovered as specific limits. Through a numerical parameter scan we show that almost all the healthy points lie on one of the two attractors : either Nieh-Yan-like inflation (studied in a previous work and extended here) or the new MAG $\\alpha$-attractor found here. Finally, we explicitly drop projective invariance and analyse the general MAG theory. The same large-field asymptotic structure survives. We conclude that no extra inflationary phenomenology is reached by the non-projectively invariant operators: the $\\alpha$-attractor is a general prediction of MAG.",
+   "authors": "Ilaria Andrei, Christian Dioguardi",
+   "id": "2611.06750",
+   "version": "2611.06750",
+   "kscore": 12,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Coupled membrane response and horizon dissipation in four-dimensional Einstein-scalar-Gauss-Bonnet gravity",
+   "link": "https://arxiv.org/abs/2611.06198",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06198v1 Announce Type: new Abstract: We develop an action-based membrane paradigm for nonextremal, static, spherically symmetric black holes in four-dimensional Einstein-scalar-Gauss-Bonnet (EsGB) gravity, describing their interaction with external perturbations through an effective fluid membrane. We calculate the linear membrane responses to perturbations and use them to analyze the work done on the membrane and the energy absorbed by the horizon. Horizon energy absorption receives contributions from geometric shear and scalar interactions. The scalar contribution includes both direct work on the membrane and work associated with the induced horizon expansion. We then establish a balance relation between the integrated horizon absorption and the second-order change in Wald entropy between stationary horizon cuts. Applying this framework to slow dynamics near a simple turning point, we obtain the leading exponential growth or decay rate of spherically symmetric scalar perturbations without fitting a dynamical damping coefficient.",
+   "authors": "Yan-Heng Jin, Wen-Biao Han",
+   "id": "2611.06198",
+   "version": "2611.06198",
+   "kscore": 10,
+   "ktags": [
+    "修正引力",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "hep-ph"
+   ],
+   "title": "Gluon and Faddeev--Popov ghost propagators in rotating background: An eigenfunction approach",
+   "link": "https://arxiv.org/abs/2611.05789",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05789v1 Announce Type: new Abstract: We construct the free gluon and Faddeev--Popov ghost propagators in rigidly rotating cylindrical coordinates using an eigenfunction approach within the Feynman gauge. Starting from the quadratic gauge-fixed QCD action, we derive the corresponding kinetic operators and obtain their spectral representations. For the gluon field, a circular polarization basis diagonalizes the vector wave operator, leading to polarization-dependent shifts in the orders of the radial Bessel functions. In the absence of radial boundaries, we explicitly recover the standard Minkowski propagator in inertial Cartesian coordinates, showing that the off-diagonal tensor components in the cylindrical basis have a geometrical origin. We then extend the construction to a finite-radius cylinder satisfying the causality condition $|\\Omega|R<1$, imposing relative boundary conditions on the gluon field and Dirichlet conditions on the ghosts. The resulting discrete transverse spectra involve both Dirichlet and Neumann eigenvalues for the gluon modes, from which we obtain explicit spectral representations of the propagators. Our results provide a consistent framework for perturbative QCD calculations in rotating geometries, retaining the angular-momentum, polarization, and boundary effects relevant to future studies of correlation functions and radiative corrections.",
+   "authors": "Benjam\\'in Garc\\'ia-Contreras, Luis A. Hern\\'andez, R. Zamora",
+   "id": "2611.05789",
+   "version": "2611.05789",
+   "kscore": 8,
+   "ktags": [
+    "宇称破缺/双折射",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "physics.data-an"
+   ],
+   "title": "Gravitational-Wave Microlensing as a Probe of Compact Object Population",
+   "link": "https://arxiv.org/abs/2611.05947",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05947v1 Announce Type: new Abstract: The abundance of compact objects ranging from stellar to intermediate masses ($\\sim 1 - 10^{5}M_{\\odot}$) remains poorly constrained, particularly for populations such as primordial black holes and dark matter subhalos that emit little or no electromagnetic radiation. Gravitational-wave (GW) microlensing provides a complementary way to probe these populations through wave-optics effects imprinted on the GW signals, with implications for astrophysical and cosmological inference. We develop a hierarchical Bayesian framework to infer the population properties of microlenses from an ensemble of microlensed GW events, constraining the slope of the power-law lens mass function ($\\alpha_{\\rm ML}$), the lens number density ($n_0$), and the fraction of dark matter in compact lenses ($f_{\\rm DM}$). Using simulated microlensed GW signals drawn from a realistic binary black hole population, we find that $\\sim 100$ detected microlensed events are able to constrain both $\\alpha_{\\rm ML}$ and $n_0$, although a degeneracy between the two remains. For a low-mass-dominated lens population ($\\alpha_{\\rm ML}=2$) with $n_0=10^6~\\mathrm{Mpc}^{-3}$, a three-year observation at the O4 sensitivity yields $\\sim 130$ detectable microlensed events and recovers the injected dark-matter fraction, $f_{\\rm DM}\\simeq 1.2 \\times 10^{-4}$, with a 90% credible interval of $7.3 \\times 10^{-5} \\lesssim f_{\\rm DM} \\lesssim 1.8 \\times 10^{-4}$.",
+   "authors": "Eungwang Seo, Jose Mar\\'ia Ezquiaga, Martin Hendry",
+   "id": "2611.05947",
+   "version": "2611.05947",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "hep-ph"
+   ],
+   "title": "Satisfying Freed--Witten quantization on smooth divisors in Calabi--Yau orientifolds",
+   "link": "https://arxiv.org/abs/2611.05480",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05480v1 Announce Type: new Abstract: Freed--Witten quantization conditions on several divisors wrapped by D-branes must be satisfied with one bulk $B$-field. On a smooth Calabi--Yau threefold $X$ with a holomorphic O3/O7 involution $\\sigma$, we show that the common background $B_{2,+}^{\\star}=\\tfrac12[R]$, where $R$ is the total O7 divisor, permits Freed--Witten period quantization on the full two-cycle lattice of \\emph{every smooth connected divisor}, modulo torsion. The worldvolume fluxes are chosen individually and obey the orientifold relation between each divisor and its image. The central step concerns setwise invariant divisors $D$: we prove that the bulk Freed--Witten class $\\eta_D^\\star=\\tfrac12([R]+[D])|_D$ has integer periods on every $\\sigma$-even integral two-cycle class, including inherited and autochthonous classes. Its periods on purely $\\sigma$-odd classes vanish, so any remaining non-integer periods occur only on classes that are neither $\\sigma$-even nor $\\sigma$-odd. We show how to choose $\\sigma$-odd worldvolume fluxes on these invariant divisors that make all periods integral. For exchanged divisor pairs, quantizing the flux on one member automatically quantizes its orientifold image. On invariant divisors with $h^{2,0}_-(D)=0$, the constructed flux is of type $(1,1)$ and admits a primitive representative; this includes every smooth rigid invariant divisor. We also study zero worldvolume flux on invariant divisors. For $h^{1,1}_-(X)\\leq1$, we construct common bulk backgrounds satisfying every inherited intersection period on all such divisors. A binary compatibility test determines whether a common shift exists for larger $h^{1,1}_-(X)$. Non-inherited period tests then determine whether the resulting backgrounds allow zero flux on the full worldvolume lattices.",
+   "authors": "Mudit Jain",
+   "id": "2611.05480",
+   "version": "2611.05480",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "An obstruction to cosmic acceleration from shift-symmetric dark sector interactions",
+   "link": "https://arxiv.org/abs/2611.05560",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05560v1 Announce Type: new Abstract: Using the effective field theory of cosmological media, we show that derivative interactions in the dark sector between a perfect fluid and a superfluid cannot support slow-roll expansion while remaining free from instabilities. Furthermore, decomposing the dark sector medium into effective dark matter and dark energy components, we find that the stability conditions exclude a phantom-to-non-phantom crossing. Our approach gives a clear route for constructing theoretically viable dark sector models, and highlights the fundamental constraints that stability requirements impose on their cosmological dynamics.",
+   "authors": "Jose Beltr\\'{a}n Jim\\'{e}nez, Luis J. Garay, Erik Jensko, Mar\\'{i}a P\\'{e}rez Garrote",
+   "id": "2611.05560",
+   "version": "2611.05560",
+   "kscore": 6,
+   "ktags": [
+    "宇宙学",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Horndeski Gravity as an Effective Dark Energy Fluid in Cosmological N-body Simulations",
+   "link": "https://arxiv.org/abs/2611.06330",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06330v1 Announce Type: new Abstract: Unraveling the nature of the cosmic expansion, driven by Dark Energy (DE), remains one of the key challenges in modern cosmology. Modified Gravity (MG) models provide an alternative to the standard cosmological constant paradigm. These models predict distinct signatures in the growth of structure, yet analytical predictions are challenging due to the highly non--linear equations involved. To overcome this problem, we study MG as an effective DE fluid. To this end, we have incorporated linear DE perturbations into the N--body code $\\texttt{CO}N\\texttt{CEPT}$, which relies on the Einstein--Boltzmann solver $\\texttt{CLASS}$. We replaced the $\\texttt{CLASS}$ version used by $\\texttt{CO}N\\texttt{CEPT}$ with $\\texttt{mochi\\_CLASS}$, a patched version that includes Horndeski family models. By writing linear DE perturbations ($\\delta\\rho_{\\rm DE}$, $\\delta P_{\\rm DE}$, $\\theta_{\\rm DE}$, and $\\sigma_{\\rm DE}$) in terms of metric perturbations in the synchronous gauge, the N--body code is able to evolve the effective fluid using the Boltzmann equation. Our current simulations encompass a range of cosmological scenarios ---$w_0w_a$CDM, Hu--Sawicki $f(R)$ and cubic Galileon--- each extended to include massive neutrinos. For each of the models, we have found deviations from General Relativity close to what is predicted in the linear regime: a sub-$0.2\\%$ relative difference for $\\Lambda$CDM, up to $40\\%$ for $f(R)$ and a sub-$25\\%$ for cubic Galileon. Since our code is the first to implement Horndeski gravity into an N--body code, its validation is a non--trivial computational task. Our novel code opens the door to explore a vast number of modified gravity models in the context of current and future cosmological surveys.",
+   "authors": "Vicente Pedreros Aballay",
+   "id": "2611.06330",
+   "version": "2611.06330",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "宇宙学"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "The quasi-topological space of quasi-topological gravities",
+   "link": "https://arxiv.org/abs/2611.05485",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05485v1 Announce Type: new Abstract: We investigate general properties of quasi-topological theories of gravity involving infinite towers of polynomial densities and of their regular vacuum black hole solutions. We show that every positive-mass regular vacuum solution necessarily possesses a de Sitter core, while Minkowski and anti-de Sitter cores are excluded. Regarding the horizon structure, we prove that asymptotically flat and anti-de Sitter regular black holes always admit extremal configurations. We find that there is no upper bound on the number of horizons and that horizons of arbitrarily high degeneracy can arise. These results extend to more general theories of gravity with second-order equations on spherically symmetric backgrounds. Finally, we characterize the space of quasi-topological theories admitting regular black holes, showing that it is contractible (in particular, path-connected and simply connected) and that regularity is stable under suitably small deformations of the higher-order couplings. In the sense of Spanier, this space is naturally a contractible \\emph{quasi-topological} space. Additionally, we prove that any theory defined by a set of couplings up to any arbitrarily high, but finite, curvature order can be completed into a theory yielding regular black hole solutions, while preserving the same set of lower-order couplings. These results show that regular solutions arise in a broad class of quasi-topological gravities and do not require fine-tuning of the couplings.",
+   "authors": "Pablo Bueno, Robie A. Hennigar, Matteo G. Marrone, \\'Angel J. Murcia",
+   "id": "2611.05485",
+   "version": "2611.05485",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Geodesic completeness and photon propagation in a superconducting T-duality black hole",
+   "link": "https://arxiv.org/abs/2611.05630",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05630v1 Announce Type: new Abstract: The purpose of this article is twofold. First, we study the geodesic completeness of the string T-duality black hole with the Raychaudhuri equation, for radial massive particles of arbitrary specific energy $\\varepsilon$. Exact proper-time quadratures reveal three classes of observers: supercritical observers reach the regular centre in finite proper time through a caustic and pass through it, critical observers ($\\varepsilon=1$) approach it only asymptotically with finite expansion, and subcritical observers are reflected at a fold caustic. Because the lapse is analytic and even in $r$, geodesics continue regularly through the centre, and all three classes are complete on the stipulated maximal extension. A diverging expansion therefore signals a caustic of the congruence rather than an endpoint of the geodesics, in contrast with Schwarzschild spacetime. Second, radial Maxwell rays are likewise complete but form a single class, since a massless ray carries no energy scale. We propose to model the black-hole core itself as a superconductor, with London response $\\mu^2=4\\pi\\kappa\\rho$ attributed to the existing source. A symmetry-breaking potential with a vacuum-energy offset reproduces the de Sitter core and its photon mass exactly at the centre and approximately in the inner core; since no static scalar theory reproduces the anisotropic source further out, the full radial response remains phenomenological. The resulting Hamiltonian rays follow timelike geodesics of $\\mu^2g_{\\mu\\nu}$ up to reparametrisation and reproduce the three classes, separated by the central mass $\\mu_0$, while the density gradient of the core adds a defocusing contribution near the centre. We also distinguish Hamiltonian completeness from completeness of the conformal metric.",
+   "authors": "Kimet Jusufi",
+   "id": "2611.05630",
+   "version": "2611.05630",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "quant-ph"
+   ],
+   "title": "Exact teleportation bounds for fermionic Hawking thermality beyond the single-mode approximation",
+   "link": "https://arxiv.org/abs/2611.05773",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05773v1 Announce Type: new Abstract: Fermionic teleportation near a Schwarzschild horizon involves two physically distinct ingredients that are often varied together: Hawking thermal mixing and the relative composition of the right and left Unruh modes. We separate them by factorizing the reduced map of the detected exterior fermionic mode into a mode-preparation channel and a Hawking thermal channel. At fixed right-left Unruh-mode composition, we then solve a global constrained quantum-channel optimization over all two-qubit resource states whose fully entangled fraction remains at or below the standard teleportation threshold immediately before thermal mixing. A parity twirl and positivity reduce the arbitrary-state problem exactly to a two-variable quadratic optimization. The solution yields a necessary-and-sufficient activation boundary, a second exact boundary for attaining the universal optimum, and explicit optimizing states. The resulting phase diagram contains a strict no-go region, a composition-limited activation region, and a universal-bound region. The analysis converts state-specific observations of Hawking-assisted teleportation into exact channel-level bounds over the full two-qubit state space.",
+   "authors": "Zhiming Huang",
+   "id": "2611.05773",
+   "version": "2611.05773",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO"
+   ],
+   "title": "Spacetime Evolution Induced by a Massive Cosmic String in Numerical Relativity",
+   "link": "https://arxiv.org/abs/2611.05996",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05996v1 Announce Type: new Abstract: Cosmic strings are one-dimensional topological defects formed during phase transitions in the early universe. ''Massive'' cosmic strings possess a sufficiently large tension to close their transverse space, forming a conical singularity outside the string, as a static gravitational effect. In a dynamical context, such strings are expected to drive topological inflation. In this work, we investigate the spacetime evolution induced by the formation of a massive cosmic string in a radiation-dominated cosmological background, imposing cylindrical symmetry. Using full numerical relativity simulations, we observe that the string core undergoes topological inflation and that its boundary moves inwards superluminally, which causally disconnects the core from the outer universe. Between the core and the asymptotic regions, a nearly matter-dominated decelerating region originates sourced by the oscillating string fields. This region is bounded by a local maximum (''belly'') and local minimum (''throat'') of the circumferential radius, while the throat recedes outwards at about 10% the speed of light. Furthermore, a gravitational wavefront is emitted from the string, characterizing the light cone of the string formation. Even behind the wavefront, the exterior region no longer exhibits a ''conical'' structure. Based on the simulation results, we construct a Penrose diagram, reflecting the causal structure of the entire spacetime.",
+   "authors": "Yoshihiro Kishimoto, Cristian Joana, Teruaki Suyama",
+   "id": "2611.05996",
+   "version": "2611.05996",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "A Geometric No-Go Theorem for Regular Black Holes in Scalar-Tensor Theories",
+   "link": "https://arxiv.org/abs/2611.06460",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06460v1 Announce Type: new Abstract: Perturbative instabilities generically puzzles singularity-free spacetimes, including non-singular bounce, traversible wormholes and regular black holes (RBHs). Can the scalar-tensor (ST) theories that stabilize the first two also stabilize RBHs? We show that the answer is no for static, spherically symmetric RBHs supported by a radial scalar field within a broad class of ST theories. In any RBHs with two-horizon structure, the ratio of the longitudinal scale to the sphere radius must attain an interior maximum. The proper-time derivative of that ratio is associated to the squared propagation speed of odd-parity tensor perturbations by the background field equations in a broad class of scalar-tensor theories. A Lorentzian odd-tensor cone then requires a local minimum instead of a maximum. This conflicts indicate a geometric no-go theorem, covering a broad class of ST theories including spatially covariant gravity, Horndeski theory, quadratic GLPV, DHOST, and U-DHOST theories, and their admissible disformal extensions. Viable RBHs therefore require relaxing at least one geometric or dynamical assumption.",
+   "authors": "Shulang Peng, Jun Tao, Mian Zhu, Yi-Fu Cai",
+   "id": "2611.06460",
+   "version": "2611.06460",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Quasi-equilibrium tidal folds of white dwarfs around rotating black holes in shift-symmetric Einstein--scalar--Gauss--Bonnet gravity",
+   "link": "https://arxiv.org/abs/2611.06647",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06647v1 Announce Type: new Abstract: We examine how the geometry of rotating black holes in linear, shift-symmetric Einstein--scalar--Gauss--Bonnet (EsGB) gravity changes the limiting tidal equilibria of white dwarfs (WDs). The relativistic tidal field is obtained from numerical EsGB backgrounds in a parallel-transported frame and coupled to a compressible affine model. Comparisons with Kerr black holes matched in Arnowitt--Deser--Misner (ADM) mass and angular momentum show a positive shift in the orbital frequency at the tidal fold. At fixed spin the relative correction follows an approximately quadratic dependence on the EsGB coupling, consistent with the leading response of the metric to the scalar field. Over the sampled backgrounds, the relative correction reaches order $10^{-3}$. Black hole rotation also changes the relation between the tidal fold and the innermost stable circular orbit (ISCO): the sampled prograde folds remain outside the ISCO, while retrograde folds move inside it at higher spins. Orbital orientation therefore controls whether tidal equilibrium is lost before the orbital stability limit is reached. For the stellar and black hole masses considered here, the characteristic gravitational wave (GW) frequencies fall in the millihertz band relevant to planned space based interferometers. Future GW observations capable of resolving deviations from Kerr predictions could constrain the EsGB coupling.",
+   "authors": "Shoupan Liu, Meilin Liu, Yu Wang, Yunqi Liu",
+   "id": "2611.06647",
+   "version": "2611.06647",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Axial black hole perturbations in purely-metric Horndeski theories",
+   "link": "https://arxiv.org/abs/2611.06875",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06875v1 Announce Type: new Abstract: We study axial (odd-parity) perturbations about static and spherically-symmetric curvaturised black hole solutions of purely-metric Horndeski theories. We first review the construction of purely-metric theories of gravity with second-order equations of motion and an additional propagating scalar degree of freedom which is purely gravitational. We then revisit the formation, in a subclass of these theories, of a new branch of hairy black hole solutions under tachyonic instabilities of the scalar field near the Schwarzschild solution. Because a non-zero Ricci curvature grows and by analogy with black hole scalarisation, the latter black hole formation mechanism is dubbed \\emph{curvaturisation}. We then apply the first-order approach to the dynamics of axial perturbations and find that it is equivalent to that of axial perturbations in general relativity evolving in a distinct effective metric. We explicitly provide that effective metric in terms of the background and the Lagrangian functions, and show that it shares the same causality structure as the background metric of curvaturised black holes. By turning to the Schr\\\"odinger-like formulation of the perturbations, we analyse the scattering potential and conclude that the axial perturbations of curvaturised black holes are linearly stable. Finally, we confirm these findings by explicitly computing the fundamental quasi-normal mode as well as the first five overtones for the quadrupole $\\ell = 2$.",
+   "authors": "H\\'elo\\\"ise Delaporte, Hugo Roussille",
+   "id": "2611.06875",
+   "version": "2611.06875",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.HE",
+    "hep-th"
+   ],
+   "title": "Gravitational-Wave Constraints on $R^2$ Gravity",
+   "link": "https://arxiv.org/abs/2611.06902",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06902v1 Announce Type: new Abstract: Gravitational waves from compact binary coalescences provide a unique opportunity to test general relativity in the strong-field regime. Quadratic $f(R)=R+aR^2$ gravity is among the simplest higher-curvature extensions of general relativity and introduces a massive scalar degree of freedom whose finite interaction range can modify compact-binary dynamics and gravitational-wave emission. We map this theory onto the effective-field-theory waveform for generic massive scalar-tensor gravity, obtaining a theory-specific inspiral phase correction governed by the single coupling parameter $a$. Using Bayesian analyses of the binary-neutron-star events GW170817 and GW190425, we obtain a combined constraint on the quadratic-curvature coupling of $a\\lesssim6.2\\times10^6\\,\\mathrm{m}^2$ at $90\\%$ credibility, corresponding to a lower bound on the scalar mass of $m_s\\gtrsim3.2\\times10^{-11}\\,\\mathrm{eV}$. This constitutes the strongest astrophysical constraint on the quadratic-curvature coupling, improving the previous best bound by approximately five orders of magnitude and demonstrating the sensitivity of binary-neutron-star inspirals to finite-range scalar interactions in the strong-field regime.",
+   "authors": "Pawan Kumar Gupta, Laura Sagunski",
+   "id": "2611.06902",
+   "version": "2611.06902",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "Chiral edge modes from lattice Chern-Simons theory",
+   "link": "https://arxiv.org/abs/2611.05663",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05663v1 Announce Type: new Abstract: It is shown that a level $k$ Abelian lattice Chern-Simons theory with continuum time and a spatial square lattice, which is a topological field theory on the latticized plane and torus, when quantized on a spatial cylinder reduces to chiral edge excitations, exactly localized on the two boundaries and carrying two commuting lattice versions of the level-$k$ $U(1)$ Kac-Moody algebra of opposite chirality. The algebras are represented on a Fock space in the noncompact theory and by a finite Weyl algebra in the compact one. We also observe that the theory has a natural framing of Wilson loops which exhibits the correct framing anomaly.",
+   "authors": "Gordon W. Semenoff",
+   "id": "2611.05663",
+   "version": "2611.05663",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Partially Massless Condensates and Reentrant NUT/Bolt Phase Transitions in Conformal Gravity",
+   "link": "https://arxiv.org/abs/2611.05787",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05787v1 Announce Type: new Abstract: We study non-Einstein Bach-flat Taub-NUT/Bolt instantons with weakened AdS boundary conditions. In particular, the next-to-leading-order coefficient in the Fefferman--Graham expansion is nonvanishing, and it sources the partially massless response in the dual conformal field theory. As in the Einstein case, the holographic stress tensor of these instantons represents a perfect fluid with vorticity. Remarkably, we identify a non-Einstein Taub-Bolt branch supporting a nonvanishing partially massless response at zero source, while preserving the full symmetry of the squashed conformal boundary. The additional holographic degrees of freedom enrich the thermodynamic phase structure, allowing the conventional NUT/Bolt transition to disappear or give way to reentrant transitions. We further show that non-Einstein Bolts can possess negative thermodynamic volume and establish the absence of negative modes of a conformally coupled probe scalar on regular Bach-flat NUT backgrounds.",
+   "authors": "Crist\\'obal Corral, Felipe Diaz, Borja Diez, Eleftherios Papantonopoulos, Per Sundell",
+   "id": "2611.05787",
+   "version": "2611.05787",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph",
+    "hep-th"
+   ],
+   "title": "Gravitational waves flooding the Universe after wall domination",
+   "link": "https://arxiv.org/abs/2611.05504",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05504v1 Announce Type: new Abstract: We discuss a possible early Universe scenario, where radiation era is interrupted by the epoch of domination of domain walls eventually annihilating into particles. During this period the Universe undergoes accelerated expansion, while the comoving correlation length of the domain wall network remains constant. The network serves as a source of tensor modes, which get frozen upon exiting the horizon similarly to the case of inflationary fluctuations. The modes re-enter the horizon during the subsequent stage of radiation domination and since then contribute to the gravitational wave background. The spectral shape of gravitational waves predicted in this scenario is markedly different compared to the case of domain walls remaining sub-dominant all the way till annihilation. These gravitational waves are strong enough to be observed with present-day and future facilities in a broad range of frequencies. In particular, their energy density is sufficient to produce a significant impact on the effective number of neutrino species, unless the duration of wall domination is suitably constrained.",
+   "authors": "Sabir Ramazanov, Zhen-Min Zeng",
+   "id": "2611.05504",
+   "version": "2611.05504",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "PrimordialPy: A Python library for single-field inflation, primordial black holes, and scalar-induced gravitational waves",
+   "link": "https://arxiv.org/abs/2611.05566",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.05566v1 Announce Type: new Abstract: We present \\texttt{PrimordialPy}, an open-source Python library designed to compute the cosmological predictions of arbitrary canonical single-field inflationary models. By numerically solving the background dynamics and the curvature perturbation equation, the package evaluates the primordial power spectrum of scalar and tensor perturbations at all relevant scales. Furthermore, it automatically computes the resulting mass fraction and abundance of Primordial Black Holes (PBHs), as well as the associated spectrum of scalar-induced gravitational waves (SIGWs). Users can seamlessly implement any canonical single-field model by simply specifying the inflaton potential $V(\\phi)$ and its parameters. Designed to be modular, efficient, and highly accessible, \\texttt{PrimordialPy} comes with comprehensive documentation, validation benchmarks, and practical examples, making it a versatile tool for both research and education in early-universe cosmology.",
+   "authors": "Flavio Pineda",
+   "id": "2611.05566",
+   "version": "2611.05566",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "title": "Primordial Black Holes and Induced Gravitational Waves from Inflation with History-Dependent Effective Dissipation",
+   "link": "https://arxiv.org/abs/2611.06329",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06329v1 Announce Type: new Abstract: We study inflation with an exponential factor multiplying the scalar Lagrangian and depending on the accumulated expansion history through a field-dependent coupling. Variation of the complete action on a finite interval yields an adjoint response with a final-time boundary condition. We derive the background and coupled scalar perturbation equations and examine five benchmarks for an exponential plateau potential and a smooth single-window coupling. The kinetic, direct-coupling and adjoint contributions nearly cancel, producing transient positive minima of the first Hubble slow-roll parameter, $\\epsilon_1$, without a comparable reduction in field velocity. The scalar spectra, normalized to the cosmic microwave background (CMB) pivot amplitude, develop localized peaks with amplitudes $0.033$--$0.098$. Under Gaussian statistics and the adopted radiation-era collapse prescription, the the primordial black hole (PBH) abundance peaks span masses from $4.52\\times10^{-13}$ to $34.05\\,M_\\odot$. The lightest-mass benchmark reaches $f_{\\rm PBH}\\simeq0.99$, allowing nearly all dark matter within the monochromatic approximation. The accompanying scalar-induced gravitational-wave spectra span peak frequencies from $6.78\\times10^{-10}$ to $5.92\\times10^{-3}\\,\\mathrm{Hz}$, with selected benchmarks lying within the projected sensitivities of future detectors.",
+   "authors": "Narges Rashidi",
+   "id": "2611.06329",
+   "version": "2611.06329",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Magnetohydrodynamics During Reheating",
+   "link": "https://arxiv.org/abs/2611.06872",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.06872v1 Announce Type: new Abstract: Reheating is a crucial phase that connects inflation with the hot Big Bang Universe. During this phase, the nonlinear interactions among the inflaton, the radiation plasma, and the primordial magnetic fields can influence the subsequent evolution of cosmic structures we observe today. In this paper, we develop a multifluid framework to investigate the evolution of three dimensional nonlinear magnetohydrodynamics (MHD) during the non instantaneous reheating phase driven by the perturbative decay of the inflaton into the radiation plasma. For the present paper, we consider the simplest scenario where the inflaton field homogeneously injects energy into the radiation sector. We study the MHD evolution of the coupled inflaton radiation system during the reheating phase, including the evolution of their individual kinetic energies, the velocity perturbations, vorticity, magnetic fields, and gravitational waves. We find that homogeneous energy transfer from the inflaton to the radiation sector increases the radiation and kinetic energy densities but does not significantly amplify the initial magnetic field perturbations. Consequently, the magnetic spectrum remains largely unchanged with respect to the instantaneous reheating scenario, while the velocity perturbations undergo a scale redistribution that affects the resulting GW spectrum. Our results demonstrate the importance of nonlinear multifluid MHD dynamics in understanding the evolution of primordial fields during reheating and provide a framework for exploring more realistic scenarios involving inhomogeneous decay processes and detailed thermalization effects.",
+   "authors": "Sovan Sau, Subhasis Maiti, Sahel Dey, Alberto Roper Pol, Debaprasad Maity",
+   "id": "2611.06872",
+   "version": "2611.06872",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
