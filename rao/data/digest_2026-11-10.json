@@ -1,0 +1,377 @@
+{
+ "listing_date": "2026-11-10",
+ "generated_at": "2026-11-11T11:11:42+08:00",
+ "generator": "deepseek-chat/deepseek-chat",
+ "stats": {
+  "total_new": 96,
+  "candidates": 26,
+  "core": 6,
+  "radar": 8,
+  "keyword": 4
+ },
+ "papers": [
+  {
+   "id": "2611.10604",
+   "title": "Generalized Second Law of Thermodynamics in $f(Q)$ Symmetric Teleparallel Gravity",
+   "cn_title": "f(Q) 对称远平行引力中表观视界的广义热力学第二定律",
+   "authors": "Nadeem Azhar, Kayoomars Karami",
+   "link": "https://arxiv.org/abs/2611.10604",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 10.0,
+   "must_read": true,
+   "one_liner": "作者用 Wald 型熵前因子 $Af_Q/4G$ 加修正项，导出 f(Q) 表观视界熵的闭式表达与紧凑主公式，并证明三个可行模型在整个宇宙史中均满足 GSL。",
+   "cn_summary": "f(Q) 对称远平行引力的视界热力学此前多停留在把 GR 的 Clausius 关系直接搬到 f(Q) 背景，熵究竟取 $A/4G$ 还是 $Af_Q/4G$、修正项从哪来，一直缺少自洽的闭式推导；而 GSL 是否成立直接决定这类模型能否作为热力学上自洽的暗能量替代。本文要补的正是这一环。\n作者从修正 Friedmann 方程出发，取 Wald 型熵前因子 $Af_Q/4G$ 并附加由方程本身导出的修正项，用符号计算验证了表观视界熵的闭式表达式，证明其时间导数与物质熵变率合并后给出极紧凑的主公式 $T_A\\dot S_{\\rm tot}=4\\pi\\dot H(\\dot H f_Q+H\\dot f_Q)/H^4$（$8\\pi G=1$），并在 GR 极限下正确退化。对幂律、指数、对数三个观测可行模型逐一检验，发现 GSL 在整个宇宙史中均成立；作者进一步指出一个理论无关的结构性条件：对满足零能条件的无压物质，GSL 成立等价于 $\\dot H$ 的符号，即总有效膨胀史不存在 phantom 穿越。几何扇区的能条件则依赖模型：幂律与指数模型只违反强能条件，对数模型在 $z>-1$ 违反零、弱、主能条件，在 $z<3.84$ 违反强能条件。",
+   "cn_review": "【创新点】把 f(Q) 视界熵从“借用 GR 公式”推进到由修正 Friedmann 方程自洽导出闭式熵与主公式，并给出 GSL 成立 ⟺ 无 phantom 穿越这一理论无关判据，比逐模型数值检验更有结构意义。\n【局限性】主公式依赖均匀各向同性 FRW 背景与表观视界这一特殊选取，未涉及各向异性或扰动扇区；GSL 判据的“理论无关”性建立在无压物质加零能条件之上，对含曲率项或非最小耦合的物质不适用；能条件违反的结论只是运动学诊断，未讨论稳定性。\n【对 Rao 的意义】直接对应 P2（f(Q) 宇宙学 P-V 临界点与允许变分）与 P5（动态热流与协变荷通量），其 $Af_Q/4G$ 熵前因子与主公式可作为你 f(Q) 视界熵工作的对照基准，也可检验你此前 f(Q) 视界熵论文中熵定义的约定差异。",
+   "learn": "可借用两点：一是“熵前因子取 $Af_Q/4G$ 加 Friedmann 方程修正项”的构造逻辑，与你熟悉的 Wald 熵 $S=-2\\pi\\int \\partial\\mathcal L/\\partial R_{abcd}\\epsilon^{ab}\\epsilon^{cd}$ 在 f(Q) 中的类比需注意 f(Q) 无曲率张量、熵来自联络/挠率扇区，前因子 $f_Q$ 的符号在 $f_{QQ}\\neq0$ 时可能翻转，须核对；二是 $T_A\\dot S_{\\rm tot}\\propto\\dot H$ 的判据提醒你：在 P-V 临界点附近 $\\dot H$ 变号处 GSL 与热容符号会同时出问题，做 P2 时应把 GSL 与局部稳定性放在同一张相图上检查。",
+   "topics": "课题一（接 P2）：把本文主公式搬到含曲率参数 $k=\\pm1$ 的 f(Q) FRW 中，检查 P-V 临界点两侧 $T_A\\dot S_{\\rm tot}$ 的符号与热容 $C_P$ 符号是否一致，第一步是重推 $k\\neq0$ 下的表观视界半径与 $\\dot H$ 关系，再代入三个模型画 $z$-$\\dot H$ 与 GSL 边界。课题二（接 P5）：在幂律模型上计算 $T_A\\dot S_{\\rm tot}$ 与 Misner-Sharp 能量通量的差值，看主公式是否可写成协变荷通量的边界项，第一步是用 Kodama 矢量写出表观视界上的能流。"
+  },
+  {
+   "id": "2611.12698",
+   "title": "On Thermodynamic Role of the Gauss-Bonnet Topological Term",
+   "cn_title": "论 Gauss-Bonnet 拓扑项的热力学角色",
+   "authors": "Marek Li\\v{s}ka, David Kubiznak",
+   "link": "https://arxiv.org/abs/2611.12698",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "score": 8.0,
+   "must_read": true,
+   "one_liner": "Liška 与 Kubizňák 指出 4D Gauss-Bonnet 拓扑项对黑洞熵的 Euler 特征数移动依赖视界边界作用量选取，并找到使 Wald 熵自然给出 Jacobson-Myers 熵的选取，还证明该拓扑项会改变 Hawking-Page 临界温度。",
+   "cn_summary": "4D Gauss-Bonnet 项是拓扑项，不改运动方程，但文献中曾声称它会给黑洞熵加上正比于视界 Euler 特征数的贡献。若这一说法成立，拓扑项就能通过热力学被“探测”，这与拓扑项不应影响物理的直觉冲突；问题核心在于视界上的边界作用量如何选取，以及 Wald 熵公式在非稳态情形下是否仍给出唯一答案。\n作者系统重审了这一结论：指出熵移动敏感于视界边界作用量的选择，并显式构造一种选取，使 Wald 熵表达式即使在非稳态黑洞上也自然复现 Jacobson-Myers 熵。他们进一步证明，无论外边界取何种边界条件、时空渐近行为如何，光滑外边界都不再贡献额外守恒量。随后证明拓扑 Gauss-Bonnet 项确实改变 Hawking-Page 相变的临界温度，从而在原则上提供探测其存在的途径；对正 Gauss-Bonnet 耦合，他们在高温高压区观察到零阶 Hawking 相变。作者强调结论虽以 4D GB 为例，但定性上适用于其他 Lovelock 理论在其临界维数的情形。",
+   "cn_review": "【创新点】把“拓扑项是否移动熵”这一争议归因到视界边界作用量的选择自由度，并给出使 Wald 熵与 Jacobson-Myers 熵在非稳态下一致的具体选取，同时证明外边界无额外贡献，这比此前只做稳态计算的论证更完整。\n【局限性】核心论证依赖对边界作用量的特定选取，未给出从第一原理唯一确定该选取的判据；Hawking-Page 临界温度移动的结论在 4D GB 这一临界维数上得到，向一般 Lovelock 理论的推广只是定性声明，缺少显式验证。\n【对 Rao 的意义】与你引力热力学学习模块中的 Wald 熵、Iyer-Wald Noether 荷与边界歧义直接相关，尤其“边界作用量选取改变熵”这一点，是你在 P5 协变荷通量计算中必须固定的约定；对 P1 中 NYTG 的边界项处理也有方法上的警示。",
+   "learn": "需记住的约定差异：Wald 熵 $S_W=-2\\pi\\int_{\\Sigma}\\mathbf{Q}[\\xi]$ 的取值依赖 $\\Sigma$ 的边界与边界项，拓扑项 $\\int \\sqrt{g}(R^2-4R_{ab}R^{ab}+R_{abcd}R^{abcd})$ 在 4D 是 Euler 密度，其熵贡献正比于 $\\chi$，但系数由边界作用量定；做 NYTG 或 f(Q) 的 Noether 荷计算时，应像本文一样先固定视界边界作用量再谈熵移动，否则会得到虚假的“拓扑项可探测”结论。",
+   "topics": "课题（接 P5）：把本文的边界作用量选取论证移植到 Nieh-Yan 项，检验 NY 拓扑项是否也只在特定视界边界作用量下才移动熵，第一步是在静态球对称视界上写出 NY 项的 Wald 熵与边界项，比较两种选取下的 $\\Delta S$。"
+  },
+  {
+   "id": "2611.11686",
+   "title": "Nonlinear Scalarization of Reissner-Nordstr\\\"om Black Holes in Scalar-Torsion-Maxwell Teleparallel Gravity",
+   "cn_title": "标量-挠率-Maxwell 远平行引力中 Reissner-Nordström 黑洞的非线性标量化",
+   "authors": "Joaqu\\'in Robledo, Yerko V\\'asquez, P. A. Gonz\\'{a}lez",
+   "link": "https://arxiv.org/abs/2611.11686",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 8.0,
+   "must_read": false,
+   "one_liner": "作者在标量非最小耦合 Weitzenböck 不变量的远平行引力中，用六阶耦合项驱动 RN 黑洞非线性标量化，数值构造出带标量毛的渐近平直带电黑洞并按节点数分类。",
+   "cn_summary": "标量化是绕过无毛定理的成熟机制，但多数工作依赖线性 tachyonic 不稳定性；若耦合函数在线性阶无快子，标量场能否靠非线性效应自发增长并饱和，此前在远平行引力框架下讨论很少。挠率标量 $T$ 作为非最小耦合对象与曲率标量情形有何异同，也缺少具体解。\n作者在标量-挠率-Maxwell 远平行引力中取多项式耦合函数，刻意避开线性快子不稳定性，研究非线性驱动的标量化。在退耦极限下演化有限振幅标量扰动，发现加入六阶耦合项后标量场可动力学演化到非平庸稳态，其机制是有效势出现非平庸局域极小实现非线性饱和。数值求解全耦合场方程后，构造出渐近平直、带标量毛的带电黑洞解，按标量场剖面节点数分类，发现多支解的结构与重数依赖耦合参数；高阶耦合逐步压制高节点分支，并通过度规函数与挠率标量相对 RN 背景的偏离刻画标量反作用。",
+   "cn_review": "【创新点】把标量化从“线性快子驱动”推广到“六阶耦合的非线性饱和”，并给出远平行引力中带毛带电黑洞的完整数值解族与节点分类，比只做线性微扰分析的工作前进了一步。\n【局限性】只在退耦极限下讨论扰动演化，全耦合解限于静态球对称且渐近平直，未涉及转动或宇宙学背景；节点分支的稳定性未做线性微扰分析，多支解中哪些是物理稳定的尚不清楚。\n【对 Rao 的意义】与 Q1（标准 NYTG 静态球对称分支与无毛条件审计）方法上同构：都是“耦合函数避开线性不稳定 → 非线性效应产生新分支 → 按节点分类”，可直接借用其分支扫描与节点计数流程来审计 NYTG 的无毛条件。",
+   "learn": "可借用其“有效势局域极小实现非线性饱和”的诊断方法：对标量场方程在 RN 背景上写出一维有效势 $V_{\\rm eff}(\\phi)$，检查是否存在非平庸极小，这比直接解全耦合方程便宜得多；注意远平行引力中标量场与 $T$ 的耦合使 $T$ 本身含联络，节点分类时须区分标量场零点与联络分支切换点，二者可能混淆。",
+   "topics": "课题（接 Q1）：把本文的六阶耦合加节点分类流程搬到 NYTG 静态球对称分支，第一步是在 NY 项存在时写出标量场在带电背景上的有效势，判断是否存在避开线性快子的非平庸极小，再决定是否值得做全耦合数值扫描。"
+  },
+  {
+   "id": "2611.11006",
+   "title": "Dynamical entropy on local causal horizons: the Einstein equation of state and canonical-energy flux",
+   "cn_title": "局域因果视界上的动力学熵：Einstein 状态方程与正则能量通量",
+   "authors": "Roh-Suan Tung",
+   "link": "https://arxiv.org/abs/2611.11006",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 8.0,
+   "must_read": false,
+   "one_liner": "Tung 证明 HWZ 局域熵 $S_{\\rm loc}=(4G)^{-1}\\int(1-V\\theta)dA$ 满足无线性展开项的精确 Raychaudhuri 恒等式，并由此在局域平衡与能量守恒下推出 $R_{kk}=8\\pi G T_{kk}$，即 Einstein 方程。",
+   "cn_summary": "Jacobson 纲领用视界热力学推出 Einstein 方程，但传统推导依赖最终平衡截面与线性展开项，非平衡与有限振幅情形下熵泛函是否单调、是否唯一，长期没有干净答案。HWZ 代表 $S_{\\rm loc}$ 虽局域于每个截面，其精确性质与唯一性此前未被系统建立。\n作者对无扭转零超曲面证明 HWZ 代表 $S_{\\rm loc}=(4G)^{-1}\\int(1-V\\theta)dA$ 满足无 $\\theta$ 线性项的精确 off-shell Raychaudhuri 恒等式，因而不需要最终平衡截面。给定熵密度 $1/4G$、局域 boost 的 Unruh 温度 $\\kappa/2\\pi$、局域平衡截面与应力张量守恒，令 $S_{\\rm loc}$ 的领头平衡变化等于物质 boost 热，即得每个零方向的 $R_{kk}=8\\pi G T_{kk}$，从而给出宇宙学常数未定的 Einstein 方程。在固定无焦散生成元束上定义 $S_{\\rm L}=(4G)^{-1}\\int(1+\\ln J-V\\theta)dA_{\\rm ref}$，证明其逐参考元精确平衡且曲率、剪切、展开项均正，故零收敛下 $S_{\\rm L}$ 在首个焦散前单调不减；反之要求该平衡对每个小束与零方向成立等价于 Einstein 方程。截面局域性、正性与一阶 HWZ 归一化在两函数类中唯一选出密度 $1+\\ln J-V\\theta$。两个泛函都依赖仿射原点，作者给出平移律并指出原点由平衡截面固定。近平衡时 $S_{\\rm L}$ 与 HWZ 动力学熵一阶一致，其 Hessian 的温度加权变化等于 HWZ 修正正则能量通量；有限振幅下 $S_{\\rm L}$ 只是单调几何泛函，读作熵需额外的粗粒化假设。",
+   "cn_review": "【创新点】给出无线性展开项的精确 Raychaudhuri 恒等式，使 Jacobson 推导摆脱最终平衡截面；并用截面局域性、正性与一阶归一化唯一确定熵密度 $1+\\ln J-V\\theta$，比此前只到一阶的 HWZ 结果更完整。\n【局限性】有限振幅下 $S_{\\rm L}$ 的熵解释依赖明确声明但未推导的粗粒化假设；两个泛函都依赖仿射原点，虽给出平移律，但“原点由平衡截面固定”在动力学情形下如何操作未充分展开。\n【对 Rao 的意义】直接服务 P5（动态热流与协变荷通量）与引力热力学模块中的 Jacobson 纲领、非平衡扩展，其“逐参考元精确平衡 + 正性”的构造可用来检验你 f(Q) 或 NYTG 中视界熵单调性的定义是否自洽。",
+   "learn": "关键恒等式：对无扭转零面，$\\theta$ 的演化与 $R_{kk}$ 的关系可写成不含 $\\theta$ 线性项的精确形式，这与你熟悉的 Raychaudhuri 方程 $\\dot\\theta=-\\frac12\\theta^2-\\sigma^2-R_{kk}$ 不同，做非平衡熵计算时应采用本文的 off-shell 版本；另需注意 $S_{\\rm L}$ 的仿射原点平移律，在 f(Q) 中联络选取会改变仿射参数，原点物理化这一步须重新论证。",
+   "topics": "课题（接 P5）：把 $S_{\\rm L}$ 的逐参考元平衡构造搬到 f(Q) 表观视界，检验在非度规性存在时曲率、剪切、展开项是否仍全正，第一步是在 FRW 表观视界上写出 $J$ 与 $\\theta$ 的 f(Q) 表达式并检查 $1+\\ln J-V\\theta$ 的单调性。"
+  },
+  {
+   "id": "2611.12482",
+   "title": "Cubic Curvature Corrections to Taub-NUT-AdS Black Holes and Their Thermodynamics",
+   "cn_title": "Taub-NUT-AdS 黑洞的三次曲率修正及其热力学",
+   "authors": "Yu-Qi Chen, Hai-Shan Liu, Hong Lu",
+   "link": "https://arxiv.org/abs/2611.12482",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "作者构造 4D Taub-NUT-AdS 黑洞到高阶导数耦合一阶的完整解析解，导出修正 Hawking 温度与 Wald 熵，并用两种改进 Reall-Santos 方法一致确定质量与 NUT 荷。",
+   "cn_summary": "Taub-NUT-AdS 黑洞因 NUT 荷与 Gibbs 自由能的重整化长期存在争议，加入高阶曲率修正后，Wald 熵、NUT 势与质量如何一致定义更不清楚；此前多数高阶修正计算限于无 NUT 荷的简单背景。\n作者构造四维 Taub-NUT-AdS 黑洞到高阶导数耦合一阶的完整解析解，导出修正 Hawking 温度与 Wald 熵。发现 NUT 势不变，而通过 Maxwell 关系重构 NUT 荷与 Gibbs 自由能后只剩一个 NUT 参数的未定函数。随后用两种改进 Reall-Santos 方法（基于场重定义与基于背景减除）独立计算 Gibbs 自由能，匹配热力学变量后两法给出相同结果并固定该未定函数，从而一致确定质量与 NUT 荷。结论是 Taub-NUT-AdS 黑洞热力学经得起高阶导数修正。",
+   "cn_review": "【创新点】首次在带 NUT 荷的 AdS 黑洞上完成三次曲率修正的一阶解析解与 Wald 熵，并用两种独立 Reall-Santos 方法交叉验证质量与 NUT 荷，解决了 NUT 荷在高阶修正下定义不唯一的问题。\n【局限性】只做到耦合一阶，未讨论解的存在性与稳定性；NUT 势不变的结论限于所取的三次曲率组合，对一般 Lovelock 或含挠率的高阶项是否成立未验证。\n【对 Rao 的意义】与引力热力学模块中 Wald 熵与高阶导数热力学直接相关，其“两种 Reall-Santos 方法交叉固定未定函数”的流程可用于 P2 中 f(Q) 高阶修正下热力学量定义的唯一性检验。",
+   "learn": "可借用 Reall-Santos 方法的操作逻辑：高阶修正下质量与荷的定义有场重定义歧义，需用背景减除与场重定义两条路径算同一 Gibbs 自由能并令其相等来固定自由函数；做 f(Q) 高阶项时对应的是联络重定义而非度规重定义，须先确认 f(Q) 中哪些量在联络重定义下不变。",
+   "topics": "课题（接 P2）：在 f(Q) 中加入 $Q^2$ 型高阶修正，仿本文用两种重整化路径计算 Gibbs 自由能与临界点，检验 P-V 临界温度是否依赖重整化选取，第一步是写出 $f(Q)=Q+\\alpha Q^2$ 的 Wald 型熵与温度到 $\\alpha$ 一阶。"
+  },
+  {
+   "id": "2611.11099",
+   "title": "Covariant Hamiltonian Gravity in Spherical Symmetry",
+   "cn_title": "球对称下的协变 Hamilton 引力",
+   "authors": "Cong Zhang, Zhoujian Cao",
+   "link": "https://arxiv.org/abs/2611.11099",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 7.0,
+   "must_read": false,
+   "one_liner": "Zhang 与 Cao 在球对称协变 Hamilton 引力中构造有效 Einstein 方程，使任意给定静态球对称度规族成为其真空解，并证明标准零尘埃可作为超越 GR 的动力黑洞几何之源。",
+   "cn_summary": "协变 Hamilton 引力此前主要在球对称下形式化，但如何把“给定度规族”反构造为某有效方程的解、以及标准物质源能否驱动超越 GR 的动力黑洞，缺少系统构造。这关系到规则黑洞与 Hawking 蒸发在修正框架下是否仍需违反零能条件。\n作者在球对称协变 Hamilton 引力基础上构造支配引力动力学的有效 Einstein 方程，证明对任意给定的单参数静态球对称度规族，都可构造该方程使其成为真空解。作为应用，他们构造有效 Einstein 方程的广义 Vaidya 解，证明对应能量动量张量恰为标准 Vaidya 形式。结果表明标准零尘埃源可作为超越 GR 的动力黑洞几何（含规则黑洞）的物质源；并进一步指出，在入射 Vaidya 解中质量损失必然要求违反零能条件，因此仅靠量子引力修正未必能解释 Hawking 式蒸发。",
+   "cn_review": "【创新点】给出“任意静态球对称族 → 有效 Einstein 方程真空解”的反构造流程，并把广义 Vaidya 解纳入同一框架，证明标准零尘埃足以驱动修正黑洞几何，这对规则黑洞建模是实用工具。\n【局限性】限于球对称与单参数静态族，未涉及转动或宇宙学背景；有效方程由构造给出而非从某个具体修正作用量导出，与 f(Q)、NYTG 等具体理论的对应关系未建立。\n【对 Rao 的意义】与 Q1（NYTG 静态球对称分支审计）直接相关：其反构造流程可用来检验 NYTG 中给定度规族能否成为某有效方程的解，从而判断哪些分支是“构造出来”而非理论本身允许的。",
+   "learn": "可借用其反构造思路：给定度规族 $ds^2=-f(r)dt^2+dr^2/g(r)+r^2d\\Omega^2$，反解有效 $T_{ab}$ 并检查其是否满足能条件，这比正向解场方程便宜；注意本文的“有效 Einstein 方程”是构造性的，与 NYTG 中由作用量变分得到的方程不等价，不能直接把其结论当作 NYTG 的无毛条件。",
+   "topics": "课题（接 Q1）：用本文反构造流程检验 NYTG 中若干候选静态球对称度规族，第一步是对每个族反解有效 $T_{ab}$ 并检查零能条件，筛掉那些必须靠 exotic 物质支撑的分支，再与 NYTG 实际场方程的解比对。"
+  }
+ ],
+ "radar": [
+  {
+   "id": "2611.12839",
+   "title": "Beyond $\\Lambda$CDM: Probing Structure Growth and Observational Viability of Generalized ${f\\,(Q , \\mathcal{L}_{m})}$ Gravity",
+   "cn_title": "超越 ΛCDM：广义 $f(Q,\\mathcal{L}_m)$ 引力的结构增长与观测可行性检验",
+   "authors": "Raj Kumar Das, Sivasish Paul",
+   "link": "https://arxiv.org/abs/2611.12839",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "score": 6.0,
+   "relation": "same-family",
+   "relation_label": "近邻",
+   "radar_fields": [
+    "f(Q)/STG"
+   ],
+   "one_liner": "该文用 OHD、DESI DR2 BAO 与三组 SNe Ia 数据约束加性最小耦合 $f(Q,\\mathcal{L}_m)=-Q^\\mu+\\alpha\\mathcal{L}_m^\\nu+\\beta$，并首次在物质不守恒下推导扰动方程。",
+   "cn_summary": "f(Q) 引力的非最小耦合推广此前多停留在背景层面：已有工作只做宇宙学制图学（cosmography）并与 ΛCDM 比较，既没有系统处理 $\\nu\\neq1$ 时物质连续性方程被破坏的后果，也缺少对扰动层结构增长的观测约束。而结构增长恰恰是区分修正引力与暗能量模型的关键战场，因此把该模型推进到扰动层并用最新数据检验，是必要的下一步。\n\n作者采用广义幂律加性耦合 $f(Q,\\mathcal{L}_m)=-Q^\\mu+\\alpha\\mathcal{L}_m^{\\nu}+\\beta$，通过一种新的参数化导出 $H(z)$；当 $\\nu\\neq1$ 时物质不再守恒，被解释为有效粒子产生机制。参数约束来自 Observational Hubble Data、DESI DR2 BAO 以及 Pantheon+、Union3、DES-SN5YR 三组 SNe Ia 汇编。在背景之上，作者在非守恒条件下推导了扰动场方程、Euler 方程与连续性方程，并讨论其对结构增长的影响（摘要在此处截断，具体增长指数与 $\\sigma_8$ 类结果未给出）。",
+   "cn_review": "【创新点】把 $f(Q,\\mathcal{L}_m)$ 从背景制图学推进到非守恒扰动层，明确给出 $\\nu\\neq1$ 时扰动场/Euler/连续性三组方程的修改形式，并用 DESI DR2 这一最新 BAO 数据约束，比此前同类工作数据更新、层次更深。\n【局限性】加性幂律耦合与“新参数化 $H(z)$”都是人为选择，$\\nu\\neq1$ 引入的粒子产生没有微观起源；摘要未说明是否做 MCMC 全参数扫描、是否报告 $\\chi^2$/AIC 与 ΛCDM 的定量比较，也未给出 $f\\sigma_8$ 的具体拟合结果，观测区分度存疑。\n【对 Rao 的意义】现象学类，方法新意有限，但与你 P2（f(Q) 宇宙学 P-V 临界点物理允许性）同属 f(Q) 扩展族，其“非守恒 ⇒ 有效粒子产生”的处理方式可作为 P2 讨论允许变分与守恒性时的对照案例；扰动方程推导可作联络分支约定的参考。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.10584",
+   "title": "ERG, axions, and a PT-symmetric accelerating Universe",
+   "cn_title": "ERG、轴子与 PT 对称加速宇宙",
+   "authors": "Nick E. Mavromatos, Sarben Sarkar",
+   "link": "https://arxiv.org/abs/2611.10584",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 5.0,
+   "relation": "same-family",
+   "relation_label": "近邻",
+   "radar_fields": [
+    "宇称破缺引力"
+   ],
+   "one_liner": "该文猜想弦启发的排斥引力相源于带反常 Chern–Simons 项、耦合轴子的 PT 对称引力理论，并用 ERG beta 函数奇点标定红外相变能标。",
+   "cn_summary": "标准量子力学要求哈密顿量厄米以保证实能谱，但满足 $\\mathcal{PT}$ 联合对称的非厄米哈密顿量也可拥有全实谱（未破缺 PT 相）。将这一机制移植到引力，是解释宇宙加速（排斥引力相）的一种非主流思路；此前缺少把 PT 相变与具体场论耦合（尤其是手征反常耦合）联系起来的可计算框架，因此该猜想值得在 ERG 语言下检验。\n\n作者在弦启发的场景中假设：引力的排斥相由 PT 对称引力理论描述，其特征是带反常 Chern–Simons 项并与轴子场耦合。论证基于轴子与电磁势的手征反常耦合行为。在修正局域势近似下的 Exact Renormalisation Group 框架中，作者指出这些耦合的 ERG beta 函数出现奇点，可能标志一个红外相变；在这些奇点对应的能标上，场论从厄米相过渡到 PT 对称相（摘要在此截断，相变后谱性质与宇宙学后果未完整给出）。",
+   "cn_review": "【创新点】把 PT 对称非厄米量子力学、手征反常 Chern–Simons 引力与 ERG 三者拼接，用 beta 函数奇点作为红外相变的判据，这一“反常耦合驱动 PT 相变”的机制在此前引力文献中未见。\n【局限性】全文是猜想性框架：PT 对称引力本身的定义、度规自由度如何组织、实谱条件在引力量子场论中如何表述均未严格建立；ERG 修正局域势近似下的奇点是否真对应物理相变，缺少独立判据；与宇宙加速的定量联系（$w(z)$、能标数值）摘要未体现。\n【对 Rao 的意义】与你宇称破缺引力线（Chern–Simons、手征反常耦合）有概念交集，可留意其“反常耦合 beta 函数奇点 ⇒ 红外相变”的判据是否能借到 f(Q)/NYTG 联络方程的跑动分析中；但 PT 对称引力与你现有课题卡无直接接口，属同领域参考。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.10616",
+   "title": "Scalar-tensor reconstruction of coherent quantum black holes",
+   "cn_title": "相干量子黑洞的标量-张量重构",
+   "authors": "R. Casadio, A. Giusti, R. da Rocha",
+   "link": "https://arxiv.org/abs/2611.10616",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 5.0,
+   "relation": "same-family",
+   "relation_label": "近邻",
+   "radar_fields": [
+    "mimetic/标量-张量"
+   ],
+   "one_liner": "该文把有限核、有限延展的球对称量子相干态黑洞几何重构为标量-张量与 Horndeski 理论，发现动能项仅在有限区域为正且无法同时覆盖视界内外。",
+   "cn_summary": "量子相干态方法给出的球对称黑洞几何具有有限核与有限空间延展，可避免经典奇点，但这类几何通常只作为“有效度规”给出，缺少一个自洽的标量-张量或 Horndeski 作用量来源。若找不到这样的作用量实现，就无法判断该几何是否对应健康的自由度与稳定性，因此重构问题值得做。\n\n作者对这类几何系统求解：确定与 Einstein–Hilbert 项的非最小耦合、动能耦合与标量势，发现动能项只在有限区域内为正。对固定黑洞质量，这些区域的边界给出核尺寸与空间延展同标量-张量动力学之间的自然联系。作者进一步证明同一几何也可由带导数耦合的 Horndeski 作用量得到，并确定其适用域。关键结论是：两种重构都不包含事件视界，也不能同时复现任意大的内部与外部区域，说明该几何的量子起源部分落在半经典引力适用范围之外。",
+   "cn_review": "【创新点】不是提出新几何，而是反向重构：给出量子相干态黑洞几何的标量-张量与 Horndeski 两种作用量实现，并用“动能项正定域”这一硬约束把核尺寸、延展与动力学参数绑定，同时明确指出重构在视界处失效。\n【局限性】只处理球对称静态高对称背景，未做扰动与自由度计数（Horndeski 的 Ostrogradsky/强耦合条件未检验）；“动能项仅在有限域为正”意味着重构在物理上并不全局健康，作者也未给出替代方案。\n【对 Rao 的意义】与你 Q1（NYTG 静态球对称分支与无毛条件审计）方法同构：都是“给定几何反解作用量/联络并检查健康性”。其“动能项正定域边界 ⇒ 参数约束”的做法可直接借到 Q1 的静态球对称分支审计中；也提醒你在做标量-张量重构时须先检查视界处作用量是否退化。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.10126",
+   "title": "Holographic warped CFTs on AdS$_3$, parity violation and unitarity",
+   "cn_title": "AdS$_3$ 上的全息 warped CFT、宇称破缺与幺正性",
+   "authors": "Kristiansen Lara, Ricardo Troncoso",
+   "link": "https://arxiv.org/abs/2611.10126",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "score": 6.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "宇称破缺引力"
+   ],
+   "one_liner": "该文在 AdS$_3$ 引力中加入不改真空场方程的宇称奇项，发现 Kac–Moody 能级非负（幺正）与黑洞熵非负要求互相冲突，只允许 $k_{KM}=0$ 的退化情形。",
+   "cn_summary": "AdS$_3$ 引力在特定边界条件下，正则生成元构成 warped 共形代数（Virasoro 与 $u(1)$ Kac–Moody 的半直和），是全息 warped CFT 的标准入口。此前对这类边界条件的研究多限于纯 Einstein–Hilbert 作用量；若加入不改真空场方程的宇称奇项（拓扑型项），中心扩展如何移动、幺正性与热力学是否兼容，尚不清楚。\n\n作者在 Einstein–Hilbert 作用量上补充宇称奇项，证明正则生成元获得非线性贡献，代数结构仍为 Virasoro 与 $u(1)$ Kac–Moody 的半直和，但中心扩展发生移动。对合适的宇称奇耦合，Kac–Moody 能级可非负（$k_{KM}\\geq0$），从而允许幺正表示；但要求黑洞熵非负则给出 $k_{KM}\\leq0$，与全息 warped CFT 的既有理解一致。两者兼容只留下 $k_{KM}=0$，而该情形场方程退化，作者通过施加零挠率约束修补，理论恰好化为 Topologically Massive Gravity 类。",
+   "cn_review": "【创新点】把宇称奇项对 warped 共形代数中心扩展的移动算清楚，并给出“幺正性 vs 熵非负”夹逼出 $k_{KM}=0$ 的干净结论；用零挠率约束修补退化场方程，把理论落到已知的拓扑大质量引力上，闭合了逻辑链。\n【局限性】纯三维、高对称边界条件，结论对四维无直接推广；宇称奇项被限制为不改真空场方程的拓扑型项，未涉及真正改变传播子的宇称破缺（如动力学 Chern–Simons 项）；$k_{KM}=0$ 的物理含义（是否意味着宇称奇耦合被完全排除）讨论有限。\n【对 Rao 的意义】与你宇称破缺引力线中“宇称奇项是否影响热力学量”的问题直接相关：其“中心荷移动 ⇒ 熵约束 ⇒ 耦合取值受限”的逻辑，可类比到 Wald 熵框架下 Chern–Simons/Nieh–Yan 项对黑洞熵的贡献是否给出耦合的符号约束。属同领域参考，方法可迁移但背景差异大。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.12715",
+   "title": "Boundary Formula for Volume Response of Entanglement Wedge Polygons",
+   "cn_title": "纠缠楔多边形体积响应的边界公式",
+   "authors": "Chen-Te Ma",
+   "link": "https://arxiv.org/abs/2611.12715",
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "score": 5.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "该文在 AdS$_3$ 中计算纠缠楔多边形真空体积对相干标量物质的半经典二次响应，发现体积响应与熵组合的加权能量积分不等价，并用 CFT 计算验证多边形边公式。",
+   "cn_summary": "在 AdS/CFT 中，纠缠楔体积是比纠缠熵更精细的体信息载体，其真空值在多边形情形下是拓扑量。已知熵的二次响应可由六区间熵的特定组合测出，但体积的二次响应是否也能由边界熵数据唯一确定、二者是否等价，此前没有系统答案，这直接关系到“体积能否从边界熵重构”的问题。\n\n作者研究 AdS$_3$ 中纠缠楔多边形真空体积对时间对称相干标量物质的半经典二次响应。结果显示：六区间熵的对比测度的是一个带非负权重的能量积分，而体积依赖于不带权重的积分。对于高于稳定性界的负质量平方，具有相同全局能量二次系数的扰动可以在二阶精度上匹配全部六个真空熵，却给出相反符号的体积响应。作者还用受控噪声的连续“收窄四元组”重构体积响应，并对维数 $3/2$ 的 primary 做独立 CFT 计算，精确复现了多边形边公式。",
+   "cn_review": "【创新点】构造出“熵相同、体积相反”的显式反例，说明纠缠楔体积的二次响应不能由有限个区间熵唯一重构，这对“体积 = 边界熵某种组合”的直觉是实质性否定；并用 $d=3/2$ primary 的 CFT 精确计算交叉验证边公式。\n【局限性】限于 AdS$_3$、时间对称相干态与二阶微扰，结论能否推广到高维或非相干/非高斯态未知；负质量平方虽在稳定性界之上，仍属特殊标量扇区；摘要未说明反例在完整非线性层面的稳健性。\n【对 Rao 的意义】与你引力热力学中“量子信息与引力：高斯态、相对熵、纠缠平衡”学习模块直接对接：其“同能量二次系数、不同体积响应”的反例，是检验你 P3（非绝热扰动相对熵模对视界熵的有限波长响应）中“熵能否完全刻画几何响应”这一前提的有用警示；高斯协方差方法可作 P1 的技术参照。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.11895",
+   "title": "Quasinormal Modes of Black holes in the generalized Schwarzschild-de Sitter solution of $f(R)$ gravity",
+   "cn_title": "f(R) 引力广义 Schwarzschild-de Sitter 解中黑洞的准正规模",
+   "authors": "Dhruba Jyoti Gogoi, Himanshu Chaudhary, Tiberiu Harko",
+   "link": "https://arxiv.org/abs/2611.11895",
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "astro-ph.CO",
+    "hep-ph"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "在含线性增长项与对数修正的 f(R) 静态球对称解上计算标量、矢量与轴向张量准正规模，发现参数 A 使振荡频率与阻尼率非线性增大。",
+   "cn_summary": "准正规模（QNM）是黑洞铃宕阶段的可观测特征，在广义相对论中已算得很清楚；修正引力若只改变背景度规而扰动方程仍沿用 GR 形式，就会给出可分辨的 QNM 偏移，因此这类计算常被当作检验修正引力的低成本途径。但多数工作只处理单一扇区或单一参数，缺少对同一解在不同扰动类型下的系统比较。\n本文针对 f(R) 引力中一个含四个积分常数的 Schwarzschild 型静态球对称解（相对 GR 多出线性增长项与对数修正），用高阶 WKB 近似与一种解析方法，分别计算标量、矢量与轴向张量扰动的 QNM。结果显示：在适当选取参数时 QNM 与 Schwarzschild 黑洞接近；模型参数 $A$ 使铃宕引力波的振荡频率与阻尼率都非线性增大；参数 $\\eta$ 在 $A$ 较小时有类似效应，$A$ 较大时效应反向，且标量扰动相对矢量与轴向张量出现明显偏离。文中还给出参数空间的等值线图。",
+   "cn_review": "【创新点】同一 f(R) 背景解上对标量、矢量、轴向张量三类扰动做系统对比，并指出标量扇区在 $A$ 较大时与张量扇区行为相反，这比只算一种扰动的工作多了一层扇区依赖性信息。\n【局限性】扰动方程是否由该 f(R) 解自洽线性化得到、还是直接套用 GR 的 Regge–Wheeler 型方程，摘要未说明；若属后者，QNM 偏移不能作为该理论的真实预言。高阶 WKB 在低多极数下精度有限，且未讨论 f(R) 额外标量自由度（ scalaron）的传播与质量。\n【对 Rao 的意义】现象学类，方法新意有限，但“联络/参数分支导致扇区行为反转”的现象与 Rao 在 f(Q) 联络分支上的关注点结构相似，可作为对照案例；与 P2 的 P-V 临界无直接关系。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.12772",
+   "title": "Gravitational waves and the exit from de Sitter in Inflation without an Inflaton",
+   "cn_title": "无暴胀子暴胀中的引力波与 de Sitter 退出",
+   "authors": "Daniele Bertacca, Raul Jimenez, Sabino Matarrese, Mariam Abdelaziz, Marisol Traforetti",
+   "link": "https://arxiv.org/abs/2611.12772",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-th"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "在无暴胀子暴胀框架中证明二阶 dS 引力子产生的曲率扰动可指数增强，而张量扇区因振荡相消不被增强，并给出退出到辐射主导的演化。",
+   "cn_summary": "标准暴胀需要一个标量暴胀子，其量子涨落同时给出标量谱与张量谱。无暴胀子暴胀（IWI）试图只用度规自由度解释原初曲率：二阶 de Sitter 引力子的梯度应力充当库仑型势源，每对贡献 $(p/k)^2$，随 e-fold 数指数增强。这一图像能否自洽，关键在于它是否满足全部标量二阶 Einstein 方程，以及张量扇区是否被同等增强（否则张量标量比会失控）。\n本文用精确 Bunch–Davies 演化构造解，证明其在纯 dS 中满足全部四个标量二阶 Einstein 方程。推迟的横向无迹解则有量级为 1 的 UV 核，比标量核低 $(k/p)^2$，单圈修正为 $\\Delta^2_{h,2}/\\Delta^2_h\\simeq0.04\\,\\Delta^2_h$；其源在内部冻结前起作用，但振荡相消阻止了张量增强。作者进一步让曲率经过平滑退出进入辐射主导，指出守恒曲率位于真空衰变超曲面上，并用一个全局“耗尽时钟”使每个尺度在视界出射后保持零剪切时间 $N_{\\rm w}$ 个 e-fold，从而所有尺度获得相同增强。",
+   "cn_review": "【创新点】给出 IWI 中张量扇区不被增强的具体机制（UV 核压低加振荡相消）与单圈量级 $0.04\\Delta^2_h$，并首次把该框架从纯 dS 推进到退出并进入辐射主导，这是该方案此前缺失的一环。\n【局限性】“全局耗尽时钟”与真空衰变超曲面的设定是额外假设，缺乏微观来源；所有尺度获得相同增强意味着标量谱近标度不变是构造出来的而非推导出的，且未与 CMB 观测做定量比对。\n【对 Rao 的意义】同领域参考。其“二阶引力子应力作源、张量扇区因相消被压制”的论证方式，对 Rao 在 P1 中处理张量—标量纠缠与手征分配时的二阶源计算有方法上的借鉴价值，但模型本身与 NYTG 无关。",
+   "action": "暂无"
+  },
+  {
+   "id": "2611.12792",
+   "title": "Coupled dark energy and apparent phantom crossing: a potential-independent lower bound",
+   "cn_title": "耦合暗能量与表观 phantom 穿越：一个与势无关的下界",
+   "authors": "Domenico Sapone, Esteban Arratia",
+   "link": "https://arxiv.org/abs/2611.12792",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "score": 4.0,
+   "relation": "field",
+   "relation_label": "风向",
+   "radar_fields": [
+    "修正引力宇宙学一般项"
+   ],
+   "one_liner": "证明只要暗物质与暗能量耦合，表观 phantom 穿越就要求耦合强度大于由 $H(z)$ 决定的下界 $\\beta_{\\rm min}$，该界对任意势成立。",
+   "cn_summary": "DESI 的 BAO 数据结合 CMB 与 Ia 型超新星，倾向于暗能量状态方程在过去小于 $-1$、今天大于 $-1$，即所谓 phantom 穿越。正则标量场无法真正穿越 phantom 分界，但若它与暗物质耦合，使暗物质质量随场演化，则观测到的有效 $w$ 可以表现出穿越。问题在于：这种解释需要多强的耦合，以及这个要求是否依赖所选势。\n本文证明表观穿越要求暗物质在复合之后至少损失由膨胀历史 $H(z)$ 固定的一部分质量。对常数耦合 $\\beta=d\\ln m/d\\phi$，质量变化速率受场运动速度限制，而场速本身由 $H(z)$ 决定，因此耦合必须大于一个仅依赖 $H(z)$ 的最小值 $\\beta_{\\rm min}[H(z)]$。该下界对任意势成立；当耦合随场变化时，它约束耦合的最大值；当场在观测范围内恰好静止时下界被取到。作者将结果应用于 DESI DR2 的 BAO 数据。",
+   "cn_review": "【创新点】把“表观 phantom 穿越需要多强耦合”从依赖具体势的数值扫描提升为与势无关的解析下界，且下界只由膨胀历史决定，这使结论可直接用 $H(z)$ 数据检验，比逐模型拟合更硬。\n【局限性】推导依赖暗物质质量随场线性对数变化这一参数化，以及“场在观测范围内静止时取到下界”的假设；结论是必要条件而非充分条件，未说明满足下界的模型是否能同时拟合增长因子与 $\\sigma_8$。\n【对 Rao 的意义】现象学类，方法新意有限，但“用膨胀历史给出与模型无关的耦合下界”这一思路可迁移到 f(Q)/NYTG 宇宙学中耦合项的允许性论证，与 P2 讨论物理允许性的逻辑相近。",
+   "action": "暂无"
+  }
+ ],
+ "radar_note": null,
+ "keyword": [
+  {
+   "id": "2611.11094",
+   "title": "Is Dark Energy Inhomogeneous?",
+   "cn_title": "暗能量是不均匀的吗？",
+   "authors": "Oem Trivedi, Abraham Loeb",
+   "link": "https://arxiv.org/abs/2611.11094",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "作者构建唯象框架，区分真实的暗能量缺失与普通物质空洞，发现10%的暗能量缺失可使非线性空洞膨胀率降低约2.7%，并产生60–100 km/s的奇异速度残差。",
+   "cn_summary": "暗物质缺失星系（如NGC1052-DF2类）的发现引出一个更激进的问题：宇宙中是否也存在暗能量缺失的大尺度区域？标准宇宙学把暗能量当作严格均匀的宇宙学常数，但若暗能量与物质一样成团，则空洞的膨胀历史、奇异速度场和密度—动量关联都会偏离ΛCDM预言，这为检验暗能量本质提供了新窗口。\n作者建立唯象框架，用非线性膨胀、相干奇异速度与密度—动量关联三重信号区分“暗能量缺失”与“普通物质空洞”。结果显示：10%的暗能量缺失使代表性非线性空洞的膨胀率压低约2.7%，在30–50 Mpc尺度上产生约60–100 km/s的奇异速度残差；若20%量级的缺失延伸到数百Mpc，还可能影响局域测得的哈勃常数，从而对$H_0$张力有所贡献，但需满足严格的各向同性与动力学一致性约束。作者提出用DESI、Rubin、奇异速度巡天与宇宙空洞星表联合检验的观测策略。",
+   "cn_review": "【创新点】把“暗物质缺失星系”的思辨推广到暗能量缺失，并给出可观测的判别量（膨胀率压低2.7%、60–100 km/s速度残差），比单纯讨论$H_0$张力的均匀暗能量模型更具可证伪性。\n【局限性】纯唯象参数化，未从任何修正引力或标量场作用量导出暗能量缺失的动力学；空洞内暗能量缺失与物质空洞的简并仅靠三重信号区分，实际观测系统误差（空洞选取、速度测量）可能淹没2.7%效应。\n【对 Rao 的意义】现象学类，方法新意有限；但“暗能量成团/缺失”与P2中f(Q)宇宙学背景扰动的物理允许性有概念交集，可留意其空洞膨胀判据能否用于检验f(Q)非度规联络下的有效暗能量扰动。"
+  },
+  {
+   "id": "2611.10084",
+   "title": "Optimal summary statistics to constrain w0waCDM with the DESI BGS",
+   "cn_title": "用DESI BGS约束w0waCDM的最优汇总统计量",
+   "authors": "Simon Bouchard",
+   "link": "https://arxiv.org/abs/2611.10084",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "该报告比较基于模拟的聚类汇总统计量，用于DESI亮星系巡天对w0waCDM的约束，以突破两点统计只能捕捉高斯信息的限制。",
+   "cn_summary": "DESI是安装于Kitt Peak 4米Mayall望远镜的首台Stage-4光谱仪，含5000根机器人光纤，单次观测约20分钟即可获取数千条星系光谱，2021–2028年巡天旨在精确约束暗能量随时间的演化。然而标准聚类分析基于两点相关函数，只捕捉物质密度场的高斯信息，且解析模型基于微扰论，仅适用于准线性尺度，密度场的非高斯与非线性信息未被利用。\n为突破这一限制，学界发展了基于模拟的聚类流程（simulation-based inference）及多种替代汇总统计量。本报告聚焦DESI亮星系巡天（BGS）样本，系统比较不同汇总统计量对$w_0w_a$CDM模型的约束能力，评估哪些统计量在BGS的低红移、高数密度条件下最优。摘要为会议报告体，未给出具体约束数值。",
+   "cn_review": "【创新点】针对DESI BGS这一特定样本比较汇总统计量的信息量，而非泛泛讨论模拟推断，对巡天实际分析流程有直接指导价值。\n【局限性】摘要为报告摘要，未给出任何定量结果（Fisher矩阵、参数误差改善因子均缺失），无法判断结论强度；模拟推断依赖模拟精度与外推可靠性。\n【对 Rao 的意义】纯观测方法与统计量选择，与Rao的引力热力学与修正引力理论主线无直接接口；仅作为DESI暗能量约束现状的背景参考。"
+  },
+  {
+   "id": "2611.11587",
+   "title": "Detecting Baryon Acoustic Oscillations from Galaxy Clusters: Distance Constraints",
+   "cn_title": "从星系团探测BAO：距离约束",
+   "authors": "Xiaoyun Shao, Paula S. Ferreira, Carlos A. P. Bengaly, Rodrigo S. Gon\\c{c}alves, Diego Garcia Lambas, Jailson Alcaniz",
+   "link": "https://arxiv.org/abs/2611.11587",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "作者用169,679个光谱星系团在z=0.25和0.43两个红移bin以约4σ以上显著性探测到BAO，测得$D_V/r_d=6.70\\pm0.48$与$11.25\\pm0.47$，并给出$H_0=66.6\\pm4.9$。",
+   "cn_summary": "BAO作为标准尺已被星系巡天确立为精确宇宙学探针，但此前测量主要依赖星系样本；星系团作为高偏置、大质量的示踪体，其BAO信号能否被干净提取、能否提供独立距离约束，一直缺乏大样本验证。若可行，星系团BAO可与星系BAO形成独立的系统误差交叉检验。\n作者使用迄今最大的光谱红移星系团样本——基于DESI Legacy Imaging Surveys的WH24星表选出的169,679个星系团，在$0.17\\leq z<0.35$与$0.35\\leq z<0.5$两个bin（$z_{\\rm eff}=0.25$、$0.43$）测量两点相关函数，两bin均以约4σ以上显著性探测到BAO。拟合得到膨胀参数$\\alpha=0.97\\pm0.07$与$1.01\\pm0.04$，对应$D_V/r_d=6.70\\pm0.48$与$11.25\\pm0.47$；采用Planck 2018声视界定标，在平坦ΛCDM下得$H_0=66.6\\pm4.9\\ \\mathrm{km\\,s^{-1}\\,Mpc^{-1}}$。作者进一步将星系团BAO与CMB及Pantheon+超新星数据联合。",
+   "cn_review": "【创新点】首次在近17万星系团的大样本上以≥4σ显著性测得BAO并给出两个红移bin的距离，验证了星系团作为BAO示踪体的可行性，误差与星系BAO同量级。\n【局限性】星系团样本由光学 richness 选择，光度红移与投影效应可能引入系统偏差；$H_0$误差达4.9，对$H_0$张力无判别力；摘要未说明与星系BAO的一致性检验细节。\n【对 Rao 的意义】纯观测数据处理类，与引力热力学及修正引力理论构造无直接关联；仅可作为检验修正引力宇宙学模型距离—红移关系的背景数据集参考。"
+  },
+  {
+   "id": "2611.11835",
+   "title": "Vacuum energy interacting with dark matter and dark radiation: alleviating the $H_0$-$S_8$ seesaw",
+   "cn_title": "真空能与暗物质、暗辐射相互作用：缓解$H_0$-$S_8$跷跷板",
+   "authors": "Li-Yang Gao, She-Sheng Xue, Xin Zhang",
+   "link": "https://arxiv.org/abs/2611.11835",
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "matched_keywords": [
+    "暗能量"
+   ],
+   "one_liner": "作者研究晚期真空与暗部门能量交换，耦合率$\\bar m H^{\\alpha}$在$\\alpha\\leq-2$时复合前可忽略，发现该交换能降低$S_8$达0.02–0.08但不抬高$H_0$。",
+   "cn_summary": "提高$H_0$的早期暗能量（EDE）与暗辐射方案普遍同时抬高$S_8$，形成所谓$H_0$-$S_8$跷跷板，这是ΛCDM扩展面临的核心张力。若能在晚期引入一种只压低结构增长而不改变复合前膨胀历史的能量交换机制，原则上可打破这一跷跷板。\n作者让真空与暗部门（暗物质、暗辐射）以$\\bar m H^{\\alpha}$的速率交换能量，$\\alpha\\leq-2$时复合前交换可忽略；能量沿测地冷暗物质四速传递，因此真空产生的暗物质不携带密度扰动，从而抑制结构增长。作者将交换分别加入暗辐射模型（$\\bar m\\tilde\\Lambda$CDM）与单参数EDE模型（$\\bar m$EDE），用Planck 2018、DESI DR2 BAO与Pantheon+（CBS）及加入SH0ES定标（CBSH）约束。CBS下后验以1.8–2.7σ偏好真空向暗物质流动，交换使$S_8$降低0.02–0.08，但并不抬高$H_0$。",
+   "cn_review": "【创新点】利用“真空产生的暗物质无扰动”这一动力学性质，构造出只降$S_8$不升$H_0$的单向机制，并明确给出$\\alpha\\leq-2$使交换在复合前失效的条件，逻辑清晰。\n【局限性】结果本质是负面的：交换未能同时解决$H_0$，跷跷板只被单边缓解；偏好仅1.8–2.7σ，统计显著性弱；耦合率$\\bar m H^{\\alpha}$为唯象假设，无基本理论导出。\n【对 Rao 的意义】现象学类，方法新意有限；但其“沿测地四速传能、产生无扰动暗物质”的处理方式，与P3非绝热扰动/相对熵模对增长的影响有方法上的相似性，可留意其扰动闭合假设是否自洽。"
+  }
+ ]
+}
