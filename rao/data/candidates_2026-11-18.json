@@ -1,0 +1,273 @@
+{
+ "listing_date": "2026-11-18",
+ "no_update": false,
+ "total_new_unseen": 65,
+ "passed_prefilter": 14,
+ "candidates": [
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Geometric optics for gravitational waves in dynamical Chern-Simons gravity: amplitude birefringence and tensor-scalar mixing on general backgrounds",
+   "link": "https://arxiv.org/abs/2611.22469",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.22469v1 Announce Type: new Abstract: We study the propagation of high-frequency gravitational waves in dynamical Chern-Simons gravity within the geometric optics approximation. In contrast to previous work, we allow for a general background with a nonvanishing scalar field, which enables a covariant treatment of amplitude birefringence. The background scalar gradient introduces third-derivative terms into the linearized field equations. These must be treated as subleading for the linearized system to be free of ghosts, which yields a covariant upper bound on the frequency. Tensor-scalar mixing is induced by the Weyl curvature through the Newman-Penrose scalar $\\Psi_0$ along the ray. When the mixing is efficient, the propagation eigenmodes consist of one luminal, one subluminal, and one superluminal mode, and a violation of the ghost-free condition leads to a classical instability. From the transport equations at next-to-leading order, we show that, when the mixing is negligible, the relative amplitude of the two helicities depends only on the scalar-field gradients along the ray at the emission and observation events, independently of the path in between.",
+   "authors": "Tsutomu Kobayashi",
+   "id": "2611.22469",
+   "version": "2611.22469",
+   "kscore": 10,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "New traversable wormholes without invoking exotic matter in $f(Q)$ from the freedom of different connections",
+   "link": "https://arxiv.org/abs/2611.21658",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21658v1 Announce Type: new Abstract: Wormhole solutions in General Relativity can only exist in the presence of exotic matter that violates the null energy condition. In this paper, we investigate the possibility of constructing wormhole solutions in $f(Q)$ gravity in which the extra connection degrees of freedom contribute such that no exotic matter is needed. Considering the Ellis-Bronnikov wormhole as an example, we find that the system admits two families of connections consistent with the spacetime symmetries and the requirements of symmetric teleparallel gravity. For both families, we show that constant non-metricity scalar $Q$ is not merely a simplifying assumption but arises naturally from the field equations when $f_{QQ}$ is regular, and that the resulting exact analytic solutions can satisfy the null energy condition throughout the entire spacetime. For the second family, which possesses richer connection degrees of freedom, we further demonstrate that solutions with a spatially varying $Q$ exist when $f_{QQ}$ is allowed to diverge at a finite value of $Q$, and that these too can satisfy the null energy condition everywhere. Our results show that the nontrivial connection degrees of freedom in $f(Q)$ gravity can naturally be responsible for supporting wormhole geometries, without resorting to any exotic matter.",
+   "authors": "Ismael Ayuso, Mariam Bouhmadi-L\\'opez, Che-Yu Chen, Konstantinos Dialektopoulos",
+   "id": "2611.21658",
+   "version": "2611.21658",
+   "kscore": 9,
+   "ktags": [
+    "自由度/稳定性",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.str-el",
+    "hep-lat"
+   ],
+   "title": "Center anomalies without twists: torsion, exact degeneracies, and condensates",
+   "link": "https://arxiv.org/abs/2611.21743",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21743v1 Announce Type: new Abstract: Mixed center anomalies are usually exposed by 't Hooft's twisted boundary conditions in a Hamiltonian formalism. On $\\mathbb {RP}^3$, torsion makes the twist unnecessary: a center operator on the untwisted $SU(2)$ Hilbert space anticommutes with time reversal in Yang-Mills theory at $\\theta=\\pi$ and with the chiral symmetry of super Yang-Mills theory, so every level is at least doubly degenerate. The relevant semiclassical object is the BPST instanton, which descends to a charge-$\\tfrac12$ saddle on the orbifold $\\mathbb R^4/\\mathbb Z_2$. We complete it in two ways: applying a conformal transformation maps the orbifold to $\\mathbb R\\times\\mathbb {RP}^3$, with the saddle describing the tunneling event between the two center sectors; by resolving the orbifold singularity, we obtain the Eguchi-Hanson space, which gives the gaugino condensate at its weak-coupling value.",
+   "authors": "Mohamed M. Anber",
+   "id": "2611.21743",
+   "version": "2611.21743",
+   "kscore": 9,
+   "ktags": [
+    "自由度/稳定性",
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Hidden wormholes from an action principle in $D=4$",
+   "link": "https://arxiv.org/abs/2611.21712",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21712v1 Announce Type: new Abstract: We present new black hole solutions for the class of gravitational effective field theories in four spacetime dimensions that extend General Relativity while retaining the graviton as the only degree of freedom of gravitational origin. We consider terms up to cubic order in curvature, solve the resulting field equations, and find one-way hidden wormholes as numerical solutions: these are regular black holes with an interior wormhole throat that is crossable in one direction and leads to a cosmological spacetime in its interior. They are regular and have no inner horizon, thus evading the mass inflation instability that afflicts conventional regular black hole geometries.",
+   "authors": "Francesco Del Porro, Alessia Platania, Samuele Silveravalle",
+   "id": "2611.21712",
+   "version": "2611.21712",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "The additive ambiguity of gravitational entropy fixed by the topology of the horizon",
+   "link": "https://arxiv.org/abs/2611.22731",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.22731v1 Announce Type: new Abstract: In quantum gravity the algebra of observables of a subregion is of type III$_1$ at leading order in the semiclassical expansion, and it becomes of type II once the gravitational constraint is imposed. Hence generalized entropy acquires a trace, however it is defined only up to an additive constant. In this work we argue that in four-dimensional Einstein--Gauss--Bonnet gravity this constant is the Gauss--Bonnet contribution to the Wald entropy, and that it is carried by the normalization of the trace and not by the state. In particular, the conical expansion of the Gauss--Bonnet density is exactly linear in the deficit angle, and on smooth squashed cones it reduces to the intrinsic curvature of the cut, so that the term is a constant on every smooth cross-section and carries no boost energy. Its Noether charge is invariant under all deformations within a topological sector and central in any algebra that preserves the sector, and thus a state-independent constant on such an algebra can only rescale the trace. Additionally, when the boundary of the subregion is completed as the Euler action requires, the Gauss--Bonnet term does not contribute to the presymplectic form, the crossed product is inherited from Einstein gravity, and the constant is the Euler number of the excised Euclidean tip. We state the hypotheses, we weaken factoriality to a central decomposition, and we illustrate the mechanism in Jackiw--Teitelboim gravity and in topological black holes in anti-de Sitter space, where the topological weight displaces the Hawking--Page temperature and a black-hole merger shifts the coarse-grained boundary entropy by a state-independent amount.",
+   "authors": "Stylianos A. Tsilioukas",
+   "id": "2611.22731",
+   "version": "2611.22731",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc",
+    "hep-ph"
+   ],
+   "title": "Probing Lorentz-violating electrodynamics with CMB polarization. II. Updated constraints and forecasts for the Simons Observatory and LiteBIRD",
+   "link": "https://arxiv.org/abs/2611.23082",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.23082v1 Announce Type: new Abstract: We update the constraints on Lorentz-violating electrodynamics from the polarization of the cosmic microwave background (CMB). Within the minimal Standard Model Extension, we consider the renormalizable CPT-odd and CPT-even operators of the photon sector, which source cosmic birefringence and circular polarization, respectively. Combining Planck, Atacama Cosmology Telescope (ACT) and South Pole Telescope (SPT) temperature and $E$-mode data with $B$-mode measurements from BICEP/Keck, SPT-3G D1 and SPTpol, we constrain the CPT-odd coefficients to $|k^{(3)}_{(V)00}|<7.75\\times10^{-45}$ GeV and $|\\mathbf{k_{AF}}|<3.82\\times10^{-45}$ GeV at 95% credible level. These are the strongest bounds to date from any probe, and are driven by the SPT-3G D1 $B$-mode data. For the first time in this type of analysis, we also include the Planck PR4 $EB$ spectrum, which yields a mild preference for a non-zero $|k^{(3)}_{(V)00}|$. For the CPT-even coefficient, we find $k_{F,E+B}<5.99\\times10^{-32}$. Including the latest circular polarization measurements from the Cosmology Large Angular Scale Surveyor (CLASS) tightens this bound by about 7%. This is the first time that CMB circular polarization data contribute to constraining this coefficient. Finally, we forecast the sensitivity of the Simons Observatory (SO) and LiteBIRD. With linear polarization only, the two experiments are complementary, with SO tightening the CPT-even bound by about 30% and LiteBIRD the CPT-odd ones by 40 to 45%. Exploiting the sensitivity to circular polarization provided by the non-idealities of its half-wave plate, LiteBIRD could also improve the CPT-even bound by more than an order of magnitude.",
+   "authors": "Margherita Lembo, Luca Caloni, Martina Gerbino, Serena Giardiello, Giulia Gubitosi, Massimiliano Lattanzi, Luca Pagano, Nicol\\`o Raffuzzi",
+   "id": "2611.23082",
+   "version": "2611.23082",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "A Universal Ratio Linking Cosmic Expansion and the Growth of Structure",
+   "link": "https://arxiv.org/abs/2611.23200",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.23200v1 Announce Type: new Abstract: We identify a universal relation between the onset of cosmic acceleration ($z_t$) and the turnover ($z_{\\rm pk}$) of the linear growth observable $f\\sigma_{8}$. In a spatially flat $\\Lambda$CDM Universe, these two redshifts obey $R \\equiv (1+z_t)/(1+z_{\\rm pk}) = 1.1596$, independent of the present matter fraction and the overall expansion and growth normalisations. This provides a new consistency test for $\\Lambda$CDM, linking both background and growth dynamics. We further establish the conditions under which this extends to broader classes of dark energy and modified gravity theories.",
+   "authors": "Anjan A Sen, Purba Mukherjee",
+   "id": "2611.23200",
+   "version": "2611.23200",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "宇宙学"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Gravitational Light Deflection via Fractional Calculus and Chebyshev Polynomial Approximation",
+   "link": "https://arxiv.org/abs/2611.22459",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.22459v1 Announce Type: new Abstract: We develop a fractional-calculus-based framework for evaluating gravitational light deflection in static, spherically symmetric spacetimes. By introducing a suitable transformation of the radial coordinate, the deflection integral is recast into an Abel-type integral equation, from which the associated kernel is reconstructed using fractional integration. The leading singular behaviour near the photon sphere is isolated analytically, and the remaining regular part is approximated by a finite Chebyshev polynomial expansion. This combination retains the correct strong-field behaviour while providing an efficient numerical representation of the deflection integral. We demonstrate the accuracy of the method using the Schwarzschild spacetime as a benchmark and compare the resulting deflection angles with the standard strong-deflection approximation and a two-term weak-deflection expansion. We further apply the method to calculate strong-field lensing observables, including the limiting angular position, angular separation, and relative magnification of relativistic images, for the supermassive black holes Sgr A*. The results show that the proposed approach provides an accurate and flexible means of evaluating gravitational deflection angles across a broad range of closest-approach radii. The framework can be extended to other static, spherically symmetric black-hole geometries, including solutions arising in modified theories of gravity.",
+   "authors": "Aniruddha Ghosh, Ujjal Debnath",
+   "id": "2611.22459",
+   "version": "2611.22459",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Shadows and Images of Black Holes with Purely Nonlinear Scalarization",
+   "link": "https://arxiv.org/abs/2611.22586",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.22586v1 Announce Type: new Abstract: We investigate the shadows and radiative images of static, spherically symmetric black holes with purely nonlinear scalarization in Einstein--scalar--Gauss--Bonnet gravity. The quartic exponential coupling supports scalarized backgrounds without a linear tachyonic instability of Schwarzschild black holes. We compare mass and coupling dependences and construct images on radially stable backgrounds using optically thin spherical emission and face-on thin disks. On the sampled radially stable branches, we find smaller shadow radii than those of Schwarzschild black holes at the same mass, with reductions reaching approximately $21.7\\%$. The sampled radially unstable branches show much smaller shadow-size deviations. The photon-orbit index, which measures radial instability per unit orbital angle, varies nonmonotonically even when the normalized shadow radius changes monotonically. The index also controls the asymptotic compression of higher-order images, providing information complementary to shadow size. For spherical emission, radial infall produces a darker center relative to the bright ring than static emission. For circular disks, we find that smooth metric variations can create an unstable interval separating two stable regions of timelike circular motion. When the disk occupies the stable region connected to infinity, its inner edge moves outward across this transition, suppressing emission inside the geometric shadow boundary while the normalized shadow radius changes only slightly. Our results show that purely nonlinear scalarization can alter images through both photon propagation and the orbital structure of emitting matter, with the visible features depending on the emission model.",
+   "authors": "Hao Yang",
+   "id": "2611.22586",
+   "version": "2611.22586",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Cosmic Censorship in the Landscape of SUSY-Broken AdS Vacua",
+   "link": "https://arxiv.org/abs/2611.21722",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21722v1 Announce Type: new Abstract: We investigate signatures of weak cosmic censorship in non-supersymmetric vacua of both IIA and IIB string theory. In particular, we examine the Penrose Inequality, which can be proven holographically using Ryu-Takayanagi, and can be independently proven in SUSY AdS vacua for spherically symmetric initial data. We prove that any EFT of scalars coupled to gravity in AdS, including in particular those of string compactifications, satisfies both the Penrose Inequality and a positive mass theorem if a function that we call a \"weak fake superpotential\" exists. We demonstrate that this condition is satisfied globally for the DGKT skew-whiffed vacua in IIA. Since there is no known nonperturbative instability in this DGKT vacuum, this provides evidence that the IIA SUSY-broken AdS vacua may be absolutely stable. We also find the weak fake superpotential exists locally in field space in some SUSY-broken AdS vacua in a KKLT construction in IIB. Thus, within the framework considered here, some false SUSY-broken KKLT AdS vacua are stable against vacuum decay. Conversely, we find that some KKLT vacua do not have a weak fake superpotential, and correspondingly violate the Penrose Inequality and fail to have a positive mass theorem; the DGKT vacua only violate the Penrose Inequality in the presence of designer gravity boundary conditions. In all cases studied, this is due to false vacuum decay. We discuss the implications of these violations for holography and black hole thermodynamics in these SUSY-broken AdS vacua.",
+   "authors": "Netta Engelhardt, Richard Nally",
+   "id": "2611.21722",
+   "version": "2611.21722",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Gravity/Thermodynamics Correspondence for Generic Dynamical Spacetimes",
+   "link": "https://arxiv.org/abs/2611.21730",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21730v1 Announce Type: new Abstract: Working within covariant phase space formalism, we establish \\textit{gravity-thermodynamics correspondence} for generic dynamical spacetimes. We derive local first and second laws of thermodynamics on general null boundaries, for generic non-stationary solutions to Einstein gravity {with minimally coupled matter} for physical observers that we carefully specify. Entropy variation, which receives contribution only from the gravitational sector, is the surface charge variation associated with a vector field generating the null boundary, and temperature is its non-affinity parameter (divided by $2\\pi$). The statement of the second law in our setting is that the entropy variation evaluated along the null vector field is strictly non-negative for the admissible positive-non-affinity clock and matter satisfying the null energy condition. Our dynamical entropy variation, which is non-integrable for generic non-stationary solutions, becomes integrable in near-stationary configurations, reproducing the Hollands--Wald--Zhang dynamical entropy formula. Strikingly, this local second law holds even when the boundary area is decreasing, disentangling thermodynamic irreversibility and the second law from standard area theorems. Our first-principles construction demonstrates that gravitational thermodynamics requires neither a stationary background, teleological event horizons, nor an exact entropy state function on individual codimension-1 spacelike slices of the null boundary (codimension two in spacetime).",
+   "authors": "Vahid Reza Shajiee, Mohammad Mehdi Sheikh-Jabbari, Vahid Taghiloo",
+   "id": "2611.21730",
+   "version": "2611.21730",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "Modular conjugations for thermal states and second worlds",
+   "link": "https://arxiv.org/abs/2611.21750",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21750v1 Announce Type: new Abstract: The modular conjugation $J$ maps an algebra of observables onto its commutant. For the vacuum on a Rindler wedge it is a spacetime reflection, but for thermal states in two-dimensional CFTs the known expressions involve chiral fields at the complex points $x\\pm i\\beta/2$, interpreted as belonging to a ``second world''. Here we compute $J$ for the geometric thermal state in explicit cyclic purifications, using either the vacuum vector, through the conformal map to a Rindler wedge, or a vector in the natural cone of a local algebra. The modular images are then fields at real points, and complex coordinates arise only when operators of the commutant outside the image of the thermal representation are written as fields on the original spacetime. For the chiral $U(1)$ current we also purify by doubling the Fock space, obtain explicit formulas for $J$, show that this purification coincides with Sorce's canonical purification, and treat all primary thermal states.",
+   "authors": "Alan Garbarz, Gabriel Palau, Guillem P\\'erez-Nadal",
+   "id": "2611.21750",
+   "version": "2611.21750",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "cond-mat.stat-mech"
+   ],
+   "title": "An Effective Theory for Hot Lines",
+   "link": "https://arxiv.org/abs/2611.23169",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.23169v1 Announce Type: new Abstract: We develop a high-temperature effective theory for spatial conformal line defects in theories with thermal screening. The defect partition function admits a local geometric expansion, whose leading terms describe the effective tension and bending response of the line. Using a convergent bulk OPE for heavy-state defect matrix elements, we derive asymptotic relations for averaged products of defect one-point coefficients and bulk OPE coefficients in the regime $1 \\ll \\Delta_\\chi \\ll \\Delta^{1/d}$. We compute the leading EFT coefficients for a twisted free scalar and for the magnetic line at the $\\mathrm{O}(N)$ Wilson-Fisher fixed point, large-$N$ Gross--Neveu model and $\\mathcal N = 2$ Chern-Simons-matter theory. For the three-dimensional Ising model, Monte Carlo simulations yield a perimeter coefficient in good agreement with a Pad\\'e interpolation of our $\\varepsilon$-expansion result.",
+   "authors": "Julien Barrat, Alessio Miscioscia, Fedor K. Popov",
+   "id": "2611.23169",
+   "version": "2611.23169",
+   "kscore": 5,
+   "ktags": [
+    "宇称破缺/双折射"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "astro-ph.GA",
+    "astro-ph.IM"
+   ],
+   "title": "The phase gradient spectrum: probing the squeezed bispectrum of the 21-cm signal during reionization",
+   "link": "https://arxiv.org/abs/2611.21760",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.21760v1 Announce Type: new Abstract: The 21-cm signal from the epoch of reionization is highly non-Gaussian. Standard analyses rely on the power spectrum, which is blind to the Fourier phases, while higher-order statistics such as the bispectrum are computationally expensive and spread information across triangle configurations. As an efficient alternative, we develop the \\textit{phase gradient spectrum}, which measures the circular coherence of phase differences between Fourier modes separated by a long-wavelength mode. We show analytically that this statistic measures the angle-averaged normalised squeezed bispectrum, which describes the response of small-scale power to long-wavelength fluctuations. Applied to reionization simulations with different ionizing source properties, the phase gradient spectrum of the 21-cm signal shows a characteristic non-monotonic evolution. At early times, the spectrum tracks the non-Gaussianity of the matter density field. Once the mean neutral fraction $\\langle x_\\mathrm{HI}\\rangle \\lesssim 0.9$, the spectrum follows the ionization topology. The phase coherence reaches a minimum midway through reionization and rises again as the remaining neutral regions shrink into isolated islands. Statistics that keep the sign of the squeezed bispectrum show that this minimum marks its sign change. This evolution holds for different reionization models and simulation frameworks. A Fisher forecast for a 1000-h Square Kilometre Array (SKA)-Low observation, combining five redshifts across reionization, shows that the phase gradient spectrum alone constrains the astrophysical parameters, and these constraints tighten by a factor of $\\gtrsim 2$ for a 10,000-h observation. Combining the phase gradient spectrum with the power spectrum tightens the marginalised constraints by up to $\\sim$20 per cent relative to the power spectrum alone.",
+   "authors": "Sambit K. Giri, P. Daniel Meerburg, L\\'eon V. E. Koopmans",
+   "id": "2611.21760",
+   "version": "2611.21760",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  }
+ ],
+ "errors": []
+}
