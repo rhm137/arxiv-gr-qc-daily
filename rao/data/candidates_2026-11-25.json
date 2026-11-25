@@ -1,0 +1,383 @@
+{
+ "listing_date": "2026-11-25",
+ "no_update": false,
+ "total_new_unseen": 83,
+ "passed_prefilter": 20,
+ "candidates": [
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Flat Space Entanglement from Wedge Holography",
+   "link": "https://arxiv.org/abs/2611.31414",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31414v1 Announce Type: new Abstract: We study holographic entanglement entropy in three-dimensional flat space by combining wedge holography with a controlled flat limit of AdS end-of-the-world branes. The limit takes a wedge of AdS$_4$ bounded by two AdS$_3$ branes to a Randall-Sundrum-like configuration of two flat branes, and the entanglement entropy of an interval in the two-dimensional corner CFT becomes that of an interval at null infinity of the branes. The result has the functional form of the entanglement entropy of a two-dimensional Carrollian CFT, the proposed holographic dual of gravity in asymptotically flat three-dimensional spacetimes. However, the inferred central charges yield $c_M=0$ and $c_L\\to\\infty$ in the flat limit. Adding a gravitational Chern-Simons term produces a $c_M$-like contribution, but we still find $c_L\\to\\infty$ and $c_M\\to0$ in this limit. Moreover, the corresponding extremal surfaces do not approach the swing surfaces proposed by Song and collaborators. Instead, they collapse onto null rays along null infinity. We argue that both features are generic for flat limits of AdS/CFT. They follow from entanglement entropy being a property of the domain of dependence and from the equality of causal and entanglement wedges for intervals in the vacuum.",
+   "authors": "Robert C. Myers, Bruno Sivilotti",
+   "id": "2611.31414",
+   "version": "2611.31414",
+   "kscore": 12,
+   "ktags": [
+    "宇称破缺/双折射",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Holographic Entanglement Entropy of Network CFT",
+   "link": "https://arxiv.org/abs/2611.32224",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32224v1 Announce Type: new Abstract: Miao et al. \\cite{Guo:2025sbm, Guo:2026prm} proposed the AdS/NCFT correspondence, which explores the gravity dual of conformal field theories defined on networks. While previous studies investigated this model within Einstein and Gauss-Bonnet gravity (first- and second-order Lovelock gravity), in this paper, we generalize the framework to higher-order Lovelock gravity and more complex network structures. We derive the extremal and junction conditions for generalized Ryu-Takayanagi (RT) surfaces in third-order Lovelock gravity, which can be naturally extended to arbitrary higher-order Lovelock theories. Focusing on a network model comprising one node and three branches, we numerically investigate the relationship between the network holographic entanglement entropy (HEE) and gravitational coupling coefficients. Furthermore, by analyzing the HEE across various network configurations, we find that the primary structural feature affecting the network HEE is the presence of internal nodes within line-shaped networks. Our results indicate that the network HEE decreases as the number or depth of internal branches increases.",
+   "authors": "Zhi-Rong Deng, Jie Yang",
+   "id": "2611.32224",
+   "version": "2611.32224",
+   "kscore": 10,
+   "ktags": [
+    "修正引力",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Holographic Spread Complexity of a Probe Particle with General Initial Data",
+   "link": "https://arxiv.org/abs/2611.32427",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32427v1 Announce Type: new Abstract: We investigate the holographic spread complexity of a massive particle probing global AdS$_3$ with general initial data. By constructing an adapted Hamiltonian, we map each bulk geodesic to a boundary Krylov dynamical pair, whose dynamics are governed solely by the conserved chiral charges. We find that, for generic initial data, the original identification $\\dot{C}\\sim p_\\rho$ fails; instead, both the complexity and its growth rate depend nonlinearly on the bulk Noether charges. We systematically analyze this nonlinear encoding via several perturbative expansions. We further investigate two refined variants: the symmetry-resolved spread complexity, which restores the bulk radial $\\pi$-periodicity, and the chiral spread complexity, which admits an exact closed form approaching the standard complexity at small angular momentum. Finally, by directly quantizing an effective AdS$_2$ theory, we obtain a new holographic interpretation of spread complexity in terms of the lapse function.",
+   "authors": "Zekun Qian, Zhehan Li, Jia Tian",
+   "id": "2611.32427",
+   "version": "2611.32427",
+   "kscore": 10,
+   "ktags": [
+    "引力热力学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO",
+    "gr-qc"
+   ],
+   "title": "Late-time cosmic acceleration from matter inhomogeneities: constraints from DESI DR2 and SNe Ia",
+   "link": "https://arxiv.org/abs/2611.31374",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31374v1 Announce Type: new Abstract: We present the first observational constraints on the Misner-Sharp (MS) mass of the universe, within a newly proposed exact General Relativity solution providing a non-perturbative description of nonlinear cosmic structure formation. At early times, when statistical homogeneity and isotropy are satisfied, our model reduces to usual FLRW cosmology, accommodating Cosmic Microwave Background (CMB) data. At late times, the departure from homogeneity and isotropy on scales $\\lesssim 200$ Mpc -- codified in the scale-dependent redshift distribution of the MS mass -- naturally induces cosmic acceleration, through an extensive term generated by the MS mass asymptotic limit on large scales. We derive the MS mass from Baryon Acoustic Oscillation data from the Dark Energy Spectroscopic Instrument (DESI) and Type Ia Supernovae, obtaining a value of the cosmological constant in agreement with $\\Lambda$CDM results. We outline broader implications and future observational prospects, highlighting how multi-probe strategies -- particularly CMB lensing and the late Integrated Sachs-Wolfe effect -- can ultimately test this solution to the dark energy puzzle.",
+   "authors": "Mariano Cadoni, Andrea Cozzumbo, Riccardo Murgia, Matteo Pili, Mirko Pitzalis, Andrea P. Sanna, Matteo Schulz, Ilaria Usai",
+   "id": "2611.31374",
+   "version": "2611.31374",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Parallel and perpendicular: a two-population test with POSSUM radio galaxies confirms hint of CMB birefringence",
+   "link": "https://arxiv.org/abs/2611.31411",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31411v1 Announce Type: new Abstract: Analyses of the cosmic microwave background (CMB) polarisation find an isotropic rotation of the linear polarisation plane, cosmic birefringence, of $\\beta\\sim0.2^\\circ$--$0.3^\\circ$, hinting at parity-violating physics. An independent test at low redshift with different systematics is needed. Radio galaxies provide such a test because their Faraday de-rotated polarisation angle $\\chi_0$ is statistically aligned with their position angle $\\psi$. Previous tests fitted only the population with $\\chi_0-\\psi\\approx90^\\circ$. We add the population with $\\chi_0-\\psi\\approx0^\\circ$, which is rotated by the same angle. We fit $\\chi_0-\\psi$ with two axial von-Mises distributions plus a uniform background, with an unbinned likelihood including each source's angle error. We apply this to 33,298 components of 16,649 double radio sources from the Polarisation Sky Survey of the Universe's Magnetism (POSSUM), with both components at polarised S/N $>10$ and separated by more than half the beam. Both populations are equally abundant. In the CMB convention we measure $\\beta=0.48^\\circ\\pm0.35^\\circ$, agreeing with the CMB in sign and amplitude. Including the $0^\\circ$ population halves the variance of $\\beta$. Components closer than half a beam carry no information on the source axis; excluding them leaves $\\beta$ unchanged and makes the two populations consistent in all morphological classes. Combining with the joint ACT and Planck likelihood for a late-time rotation yields $\\beta=0.282^\\circ\\pm0.056^\\circ$, $5.0\\sigma$ from zero. At $z\\sim0.5$, radio galaxies probe the rotation of the last $\\sim$ 5 Gyr. A CMB-sized rotation there would point to a late-evolving field such as axion-like dark energy, whereas a rotation before reionisation, e.g. by axion-like dark matter, predicts $\\beta\\approx0$. Given absolute angle calibration, the full POSSUM survey can test the CMB result independently.",
+   "authors": "Marcus Br\\\"uggen, Jorinde Dreismann, Pranjal Trivedi, Shane P. O'Sullivan, Takuya Akahori, Fumihiro Naokawa, Cameron L. Van Eck, Marco Regis",
+   "id": "2611.31411",
+   "version": "2611.31411",
+   "kscore": 10,
+   "ktags": [
+    "宇宙学",
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Classical phase space distributions for quantum states in cosmology: General states, operator ordering and the geometry of fading non-commutativity",
+   "link": "https://arxiv.org/abs/2611.31912",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31912v1 Announce Type: new Abstract: In earlier work with Ashtekar and Kesavan we showed that, for linear fields in any FLRW background, the vacuum defines a probability distribution $\\rho_o$ on the classical phase space whose moments are exactly the Weyl-ordered $n$-point functions. We extend that analysis in four directions. First, for an arbitrary state $\\Psi$ we give an explicit formula, in the Bargmann representation, for the distribution $\\rho_\\Psi$ that reproduces all Weyl-ordered expectation values. For pure states it is non-negative precisely for coherent and squeezed states, each the Gaussian of a compatible K\\\"ahler metric, and the Gaussian smoothing needed to make it positive is either zero or the full coherent-state width. Second, for linear observables every operator ordering differs from the Weyl ordering by explicit products of $c$-number commutators. Third, for two linear observables in a pure Gaussian state, the classical correlation coefficient, the ratio of commutator to anticommutator and the squeezing are functions of a single angle between their Hamiltonian vector fields; this bounds the departure of arbitrarily ordered $n$-point functions from the moments of $\\rho$. Fourth, for fields in FLRW the equality holds at arbitrary, possibly different, times and for every homogeneous isotropic quasi-free state. In de Sitter the non-commutative corrections fall as $e^{-N}$ for field and momentum and as $e^{-3N}/3$ for the field at two times. For the state inherited from inflation they stay suppressed in the radiation era, by the inverse occupation number, except near the nodes of the mode functions. The same squeezing entangles the modes $\\pm\\vec k$ relative to the radiation-era vacuum and makes displaced-parity measurements violate Bell inequalities, so the positive distribution describes a specified family of observables, not all measurements.",
+   "authors": "Alejandro Corichi",
+   "id": "2611.31912",
+   "version": "2611.31912",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Lensing ratios as a geometric probe of dark energy in the LSST and Simons Observatory era",
+   "link": "https://arxiv.org/abs/2611.32861",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32861v1 Announce Type: new Abstract: Ratios of galaxy-CMB and galaxy-galaxy lensing around the same foreground galaxies probe relative distances extending to recombination without a standard candle or ruler. For sufficiently narrow foreground redshift distributions, and with intrinsic alignments and lens magnification controlled, these lensing ratios (LRs) become geometrical. Here we characterize the geometrical limit and develop an end-to-end optimized framework for the probe with LSST Y10 and Simons Observatory uncertainties. In our forecast for LSST Y10, the individual ratios are measured to a median precision of 1.0%, with a total signal-to-noise ratio of 360. We then study the complementarity of LRs as an additional geometrical probe to constrain dark energy and curvature. We find that LRs improve the $w_0$-$w_a$ figure of merit of the combined CMB, Type Ia supernova, and baryon acoustic oscillation (BAO) data by 15%, after marginalizing over systematic uncertainties. As an independent geometric probe, they also enable competitive leave-one-out tests, in which one of the probes is dropped, and we find they are most effective at replacing the BAO: adding LRs to CMB+supernova raises the figure of merit from 33% to 66% of that of the full CMB+supernova+BAO combination. We also find LRs are especially valuable in extended model spaces constrained with minimal assumptions: in a seven-bin reconstruction of the dark-energy density, they reduce per-bin uncertainties by up to 16% at $z>1$, and by up to 50% when freeing curvature and dropping the non-geometrical part of the CMB likelihood (i.e. keeping the acoustic angular scale part), where they are able to break the degeneracy between curvature and dark energy.",
+   "authors": "Judit Prat, Carles S\\'anchez",
+   "id": "2611.32861",
+   "version": "2611.32861",
+   "kscore": 8,
+   "ktags": [
+    "宇宙学",
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "Topological Phase Transition of $ F_{\\alpha }{}^{\\gamma } F^{\\alpha \\beta } F_{\\beta }{}^{\\eta } \\ F^{\\lambda \\mu } R_{\\gamma \\eta \\lambda \\mu } $ AdS Black Holes",
+   "link": "https://arxiv.org/abs/2611.31433",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31433v1 Announce Type: new Abstract: We investigate the thermodynamic criticality and topological properties of four-dimensional charged anti-de Sitter black holes in the presence of a nonminimal electromagnetic-curvature interaction of the form \\(F_{\\alpha}{}^{\\gamma}F^{\\alpha\\beta}F_{\\beta}{}^{\\eta}F^{\\lambda\\mu}R_{\\gamma\\eta\\lambda\\mu}\\). Treating the coupling perturbatively to first order, we construct the corrected black hole solutions and derive their thermodynamic quantities in the extended phase space. Conventional critical behavior is examined through the criticality conditions for the Hawking temperature in both canonical and grand canonical ensembles. We then use thermodynamic topology to investigate the global structure of equilibrium configurations and its dependence on the thermodynamic parameters. In the canonical ensemble, two distinct regimes emerge: a noncritical region characterized by a total winding number \\(W=+1\\), and a critical region with \\(W=0\\). In the grand canonical ensemble, three distinct regimes are identified according to the electric potential. Interestingly, the low- and intermediate-potential regions share the same topological number, \\(W=+1\\), although conventional critical points occur only in the intermediate-potential region. The high-potential region, by contrast, is characterized by \\(W=0\\) and exhibits no conventional critical behavior. Our findings show that thermodynamic topology provides a global characterization of equilibrium configurations that complements conventional temperature-based criticality analysis, and that the global winding number alone does not uniquely determine the existence of conventional critical points.",
+   "authors": "Mehdi Sadeghi, Faramarz Rahmani",
+   "id": "2611.31433",
+   "version": "2611.31433",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "Entanglement island and Page curve for one-sided rotating Kerr black holes",
+   "link": "https://arxiv.org/abs/2611.32438",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32438v1 Announce Type: new Abstract: We investigate the information paradox for one-sided asymptotically flat rotating Kerr black holes formed through gravitational collapse using the island prescription. Near the horizon, the dynamics of a scalar field can be described by an effective two-dimensional theory, which provides the framework for our analysis. We study how rotation affects the location of the island boundary $\\partial I$, the Page time, and the scrambling time, treating non-extremal and extremal Kerr black holes separately. For non-extremal black holes, the emergence of an island prevents the unbounded growth of Hawking radiation entropy at late times and restores the unitary Page curve. We further find that the island boundary depends on the location of the cutoff surface, in contrast to the behaviour found for eternal Kerr black holes. In the extremal case, the late-time entanglement entropy of Hawking radiation approaches the Bekenstein-Hawking entropy of the extremal black hole. Our results demonstrate the important role of black hole geometry in determining the behaviour of entanglement entropy and suggest that the island prescription provides a semiclassical resolution of the information paradox for one-sided rotating Kerr black holes.",
+   "authors": "Soumen Pari",
+   "id": "2611.32438",
+   "version": "2611.32438",
+   "kscore": 7,
+   "ktags": [
+    "引力热力学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Robust Measurements of the Cosmic Microwave Background Lensing Power Spectrum in the Presence of Anisotropic Cosmic Birefringence",
+   "link": "https://arxiv.org/abs/2611.32120",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32120v1 Announce Type: new Abstract: Achieving the scientific potential of upcoming high-sensitivity cosmic microwave background (CMB) polarization surveys requires lensing analyses that are robust to unmodeled distortions of the polarization field. One such possible distortion is anisotropic cosmic birefringence, a direction-dependent rotation of the linear polarization plane that may arise from parity-violating physics such as axion-like fields. We quantify the impact of both modeled and unmodeled anisotropic birefringence on the CMB lensing measurement in the Marginal Unbiased Score Expansion (MUSE) framework. Considering noise levels expected for current and future CMB surveys, we find that neglecting birefringence produces a positive bias in the lensing bandpowers that increases towards small angular scales. For a scale-invariant birefringence power spectrum $L(L+1)C_L^{\\alpha\\alpha}/2\\pi=10^{-5}\\,{\\rm rad}^2$, the positive fractional bias can reach $(10.1\\pm1.1)\\%$ of the lensing power at $1375<L<2000$. Jointly estimating lensing and birefringence in the MUSE framework recovers the input lensing bandpowers and birefringence amplitude without detectable bias across all tested configurations. The joint MUSE estimator also reduces the scatter of the recovered birefringence amplitude by factors of $1.6\\pm0.2$ to $2.4\\pm0.3$ relative to a joint quadratic estimator, with the largest gains in the highest signal-to-noise configurations. These results indicate that a joint-field reconstruction with MUSE can recover unbiased estimates of the lensing and birefringence power spectra while still improving precision relative to quadratic estimators.",
+   "authors": "Rui Zhou, Michael Doohan, Christian L. Reichardt",
+   "id": "2611.32120",
+   "version": "2611.32120",
+   "kscore": 7,
+   "ktags": [
+    "宇称破缺/双折射",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "Scalar-tensor interactions selected through their first-order thermodynamic dynamics",
+   "link": "https://arxiv.org/abs/2611.33033",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.33033v1 Announce Type: new Abstract: We investigate the restrictive capability of first-order thermodynamics on scalar-tensor gravity. Starting from a general action containing nonlinear curvature dependence, an Einstein-tensor-Hessian coupling, and independent quadratic and cubic scalar-Hessian interactions, we derive the complete effective-fluid quantities. Simultaneously imposing Eckart's heat-conduction and shear-viscosity equations, while accounting for cancellations between interactions, substantially reduces the original operator basis and determines the geometric shear viscosity. Retaining the complete heat-conduction law, we establish an integrability condition that constrains the nonlinear Hessian interactions without prescribing the temperature and thermal conductivity. We construct explicit constitutive pairs and derive the associated thermal evolution, revealing contributions beyond the usual acceleration-aligned description. Remarkably, the thermodynamic integrability condition simplifies the scalar-metric kinetic structure such that imposing covariant degeneracy excludes the remaining nonlinear interactions, recovering the established luminal Horndeski subclass. Nonlinear thermodynamically compatible interactions nevertheless survive when degeneracy is restricted to the scalar-unitary gauge. These results establish a connection between thermodynamic integrability and dynamical degeneracy, demonstrating the potential of first-order thermodynamics as an independent and complementary criterion for selecting gravitational interactions.",
+   "authors": "David S. Pereira",
+   "id": "2611.33033",
+   "version": "2611.33033",
+   "kscore": 6,
+   "ktags": [
+    "修正引力",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "The double copy and perturbative teleparallel gravity",
+   "link": "https://arxiv.org/abs/2611.33146",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.33146v1 Announce Type: new Abstract: In this paper we analyze the double copy between gluon and graviton amplitudes within the context of teleparallel gravity. We first set up an effective Lagrangian based on minimal assumptions which reproduces the on-shell amplitudes stemming from the double-copy procedure. By straightforwardly computing the three- and four-point amplitude, this double-copy Lagrangian can be constrained up to a few real parameters when expanding to quartic order. For a specific choice of parameters, we find an exact equivalence with perturbative teleparallel gravity. This suggests that the teleparallel formulation might be well suited to make the double copy more transparent from a Lagrangian viewpoint.",
+   "authors": "Georg Stettinger",
+   "id": "2611.33146",
+   "version": "2611.33146",
+   "kscore": 6,
+   "ktags": [
+    "非黎曼几何/挠率"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Split Ends: UV Physics branches Black Hole Hair",
+   "link": "https://arxiv.org/abs/2611.31438",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31438v1 Announce Type: new Abstract: Coupling a shift-symmetric scalar field to the Gauss-Bonnet invariant modifies black holes (BHs) via scalar hair. Here we consider this field to be the Goldstone of a complex scalar field with a symmetry-breaking potential. For BHs of a size comparable with the inverse mass gap, the gapped field tries to restore the symmetry close to the horizon, enhancing the departure from standard BHs. Moreover, BHs of the same mass can have up to three different horizon areas and surface gravities. This branching has profound consequences for BH physics, potentially observable in gravitational waves.",
+   "authors": "Georg Trenkler, Leonardo G. Trombetta, Alexander Vikman",
+   "id": "2611.31438",
+   "version": "2611.31438",
+   "kscore": 5,
+   "ktags": [
+    "修正引力",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th",
+    "math-ph",
+    "math.MP"
+   ],
+   "title": "Horizon dynamical entropies and phase space topology",
+   "link": "https://arxiv.org/abs/2611.32444",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32444v1 Announce Type: new Abstract: We study phase space topologies induced by infinite-dimensional norms as a means to solve the problem of 'integrability' of Hamiltonian generators corresponding to diffeomorphisms of a null hypersurface, with the specific goal in mind to compare different prescriptions for the dynamical entropy of black holes, which replaces the area in non-stationary regimes. We first show that for a scalar field, there exists a family of norms that would provide integrability for different polarizations. We then show that a single member of this family applies to the gravitational field, and it is given by the Sobolev norm already considered in the literature. The obstruction to the other candidates lies in the semi-positivity of the metric.",
+   "authors": "Matteo Bruno, Simone Speziale",
+   "id": "2611.32444",
+   "version": "2611.32444",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc"
+   ],
+   "title": "Geometrothermodynamics characterization of ABG-AdS black hole immersed by string clouds",
+   "link": "https://arxiv.org/abs/2611.32907",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32907v1 Announce Type: new Abstract: Regular black holes, whose singular cores are replaced by smooth geometries sourced by nonlinear electrodynamics, provide a natural setting to study how thermodynamic stability is encoded in spacetime geometry. Conventional stability criteria, however, depend on the choice of thermodynamic potential. Here we develop the quasi-homogeneous geometrothermodynamics of the regular Ay\\'on-Beato--Garc\\'ia anti-de Sitter (ABG-AdS) black hole surrounded by a cloud of strings, a Legendre-invariant framework in which no potential needs to be preferred. We show that the entropy, electric monopole charge and AdS radius act as extensive variables obeying a generalized quasi-homogeneity condition, and that the equilibrium manifold then carries three families of thermodynamic metrics. We establish an exact correspondence between response-function anomalies and curvature singularities: the first metric's curvature diverges on the zero-temperature extremal boundary, where the heat capacity vanishes, signaling Davies first-order transitions, whereas the second's diverges precisely where the heat capacity does, pinpointing Davies second-order transitions. The Gibbs free energy displays a swallow-tail structure that reveals a first-order small/large black hole transition, whose metastable region is bounded by these divergences of the heat capacity, together with a Hawking--Page-type transition to thermal AdS. The string-cloud density and the electric charge jointly control the horizon structure, the admissible thermal domain and the stability intervals.",
+   "authors": "Sayed Farooq Ahmed Shah, Safia Taj",
+   "id": "2611.32907",
+   "version": "2611.32907",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "gr-qc",
+   "categories": [
+    "gr-qc",
+    "hep-th"
+   ],
+   "title": "The Cosmological Constant as a Clock and the Vilenkin Wavefunction as a Resonance",
+   "link": "https://arxiv.org/abs/2611.32987",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32987v1 Announce Type: new Abstract: We address the problem of time in quantum gravity using a covariant formulation of unimodular gravity. As a result, the cosmological constant is canonically conjugate to a global four-volume variable, which serves as a clock and leads to a time-dependent Wheeler--DeWitt equation. We construct exact, background-independent solutions related to the full Chern--Simons--Kodama state and demonstrate unitary evolution in minisuperspace. The Chern--Simons functional also provides an intrinsic gravitational clock. These solutions reveal that the Vilenkin wavefunction is a gravitational Gamow resonance, in which its non-normalizability follows from the outgoing boundary condition. The tunneling probability into the expanding branch increases with the positive cosmological constant. These results give a dynamical interpretation of the wavefunction of the universe and clarify the role of its boundary conditions.",
+   "authors": "Stephon Alexander, Marcell Howard",
+   "id": "2611.32987",
+   "version": "2611.32987",
+   "kscore": 5,
+   "ktags": [
+    "引力热力学"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th",
+    "gr-qc"
+   ],
+   "title": "The Relaxation of Quantum Near-Extremal Black Holes. (I) Microcanonical States, Pruning of Quasinormal Modes, and the Aretakis Instability",
+   "link": "https://arxiv.org/abs/2611.31459",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31459v1 Announce Type: new Abstract: The late-time relaxation of a near-extremal black hole is classically governed by an infinite tower of purely damped quasinormal modes. This poses a puzzle: the higher overtones decay at rates much larger than the energy $E$ of the black hole above extremality, so they would need black hole states below the extremal mass. We resolve it by including the quantum fluctuations that become large when $E$ falls below a scale $E_b$. We compute the retarded Green's function of a probe of conformal dimension $\\Delta$ in a black hole of fixed energy, and find that each classical mode splits into a pair of poles with real parts set by $E_b$. The perturbed black hole decays as an unstable quantum system, and a pair is a resonance, i.e., a quasinormal mode, only if its energy lies within the accessible black hole spectrum. This prunes the tower to finitely many modes, all damped faster than $\\Delta^2E_b$, and below $E=\\Delta^2E_b/2$ none is left. For generic $\\Delta$, the response of the black hole decays first as $t^{-2\\Delta}$ and finally as $t^{-3/2}$, with an exponential stage in between if $E\\gg\\Delta^2E_b$. The same quantum effects bear on the Aretakis instability of extremal black holes, in which transverse derivatives of a perturbation grow without bound on the horizon. Like the tower of modes, it originates in the scale invariance of the classical throat, which the quantum fluctuations break. The $t^{-2\\Delta}$ decay, which is the boundary counterpart of the Aretakis growth, ends by $t\\sim1/E_b$, when the throat ceases to be classical, and by then horizon derivatives have grown only to a finite value. Their unbounded growth is an artifact of taking the semiclassical limit before the late-time one, two limits that in quantum mechanics do not commute.",
+   "authors": "Roberto Emparan, Sameer Murthy, Stefano Trezzi",
+   "id": "2611.31459",
+   "version": "2611.31459",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "hep-th",
+   "categories": [
+    "hep-th"
+   ],
+   "title": "NS5-branes and the black hole/string transition",
+   "link": "https://arxiv.org/abs/2611.31945",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.31945v1 Announce Type: new Abstract: Near to the onset of BTZ black hole formation in string theory is a large ensemble of 6d BPS supergravity solutions sourced by slightly separated fundamental strings and Neveu-Schwarz fivebranes. We extend the construction of these geometries to include gauge excitations of the fivebranes, and then study the energetics of D-string solitons in relation to the deconfinement transition of little strings, which are the natural non-abelian degrees of freedom that deconfine in the transition to the black hole phase.",
+   "authors": "Asad Fayiz, Emil J. Martinec",
+   "id": "2611.31945",
+   "version": "2611.31945",
+   "kscore": 5,
+   "ktags": [
+    "背景相关",
+    "自由度/稳定性"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Resolving the Hubble Tension at $0.1\\sigma$ with Early Dark Energy: Key Role of the Highest-redshift Galaxies from JWST Observations",
+   "link": "https://arxiv.org/abs/2611.32552",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32552v1 Announce Type: new Abstract: We show that the Hubble tension can be resolved at the $0.1\\sigma$ level within the early dark energy (EDE) framework, with the highest-redshift galaxies from the JWST observations playing a key role. By accounting for the reference cosmologies of the JWST ultraviolet luminosity function measurements and combining them with cosmic microwave background (CMB) and DESI baryon acoustic oscillation data, we obtain $H_0=72.76\\pm1.00~\\mathrm{km\\,s^{-1}\\,Mpc^{-1}}$ in the axion EDE model, in excellent agreement with SH0ES at the $0.1\\sigma$ level. We find that the enhanced galaxy abundances at $z=11$ and $12.5$ play a key role in driving this result. These observations favor stronger small-scale matter power, which can be accommodated by increasing the primordial scalar spectral index $n_{\\rm s}$. Under the CMB constraints, the positive correlations among $n_{\\rm s}$, $f_{\\rm EDE}$, and $H_0$ lead to a higher inferred $H_0$. Allowing additional scale dependence in the primordial power spectrum through $\\alpha_{\\rm s}$ yields a positive running at more than $4\\sigma$, further increasing $H_0$ to $73.75\\pm1.04~\\mathrm{km\\,s^{-1}\\,Mpc^{-1}}$, with its value even exceeding the SH0ES measurement. These results reveal how high-redshift small-scale structure observations influence the inferred $H_0$ through the interplay between the primordial power spectrum and EDE parameter degeneracies.",
+   "authors": "Guo-Hong Du, Tian-Nuo Li, Jing-Fei Zhang, Xin Zhang",
+   "id": "2611.32552",
+   "version": "2611.32552",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  },
+  {
+   "source": "astro-ph.CO",
+   "categories": [
+    "astro-ph.CO"
+   ],
+   "title": "Modified recombination or dynamical dark energy (or both)?",
+   "link": "https://arxiv.org/abs/2611.32857",
+   "announce_type": "new",
+   "abstract": "arXiv:2611.32857v1 Announce Type: new Abstract: Several recent analyses report a hint of modified recombination when the latest cosmic microwave background (CMB) and baryon acoustic oscillation (BAO) data are jointly analysed. We examine whether this preference persists when allowing for departures in the late-time expansion history of the Universe. We fit a seven-parameter reconstruction of the free-electron fraction and a $w_0w_a$ dark-energy model, separately and jointly, to DESI DR2 BAO, a $5\\times2$pt combination of galaxy clustering and CMB lensing, and three CMB likelihoods: P-ACT, Planck PR4 and Planck 2018. With a cosmological constant, our baseline data combination favours early recombination near last scattering, agreeing with previous analyses. Allowing for dynamical dark energy (DDE) removes this preference, while the constraints on $w_0$ and $w_a$ change little when the recombination history is marginalised over. DDE has the lowest Akaike information criterion of the models we consider for every data combination, and adding recombination freedom to it raises the AIC by $5.1$--$11.7$ and is disfavoured by the Bayesian evidence. We interpret these results in terms of CMB predictions for the BAO distances: earlier recombination and DDE both shift these predictions towards the measurements, but only DDE also changes the redshift dependence of the late-time expansion, which anisotropic BAO measurements constrain. We support these conclusions using noiseless mock data, finding that fitting modified recombination to a mock Universe generated with DDE reproduces the apparent preference for modified recombination, whereas DDE cannot similarly reproduce the signatures of modified recombination. The preference for modified recombination found with a cosmological constant therefore reflects the discrepancy between the CMB and BAO, rather than independent evidence for departures from standard recombination physics.",
+   "authors": "Alexander Reeves, Gabriel P. Lynch, Andrina Nicola, Jens Chluba, Alexandre Refregier",
+   "id": "2611.32857",
+   "version": "2611.32857",
+   "kscore": 5,
+   "ktags": [
+    "宇宙学",
+    "背景相关"
+   ]
+  }
+ ],
+ "errors": []
+}
